@@ -22,6 +22,7 @@
 		903E2971240C7465001BED71 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2970240C7465001BED71 /* LocationController.swift */; };
 		903E2974240C7660001BED71 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2973240C7660001BED71 /* Extensions.swift */; };
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
+		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		903E2970240C7465001BED71 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		903E2973240C7660001BED71 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			children = (
 				9067F995240CA6AF00EBA858 /* PersistenceManager.swift */,
 				903E2970240C7465001BED71 /* LocationController.swift */,
+				90952BE5240DC060003F8ADF /* DeliveryController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				903E2971240C7465001BED71 /* LocationController.swift in Sources */,
 				9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */,
 				903E2942240C6472001BED71 /* SceneDelegate.swift in Sources */,
+				90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

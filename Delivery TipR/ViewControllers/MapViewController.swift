@@ -13,11 +13,14 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        LocationController.shared.createLocation()
-        LocationController.shared.getALLLocations()
-        let location = LocationController.shared.locations[0]
-        LocationController.shared.getLocation(with: location.address)
-        LocationController.shared.deleteDatabase()
+        LocationController.createLocation()
+        
+        let location = LocationController.getALLLocations()[0]
+        LocationController.getLocation(with: location.address)
+        DeliveryController.createDelivery(for: location)
+        DeliveryController.getALLDeliveries()
+        DeliveryController.deleteDeliveries()
+        LocationController.deleteDatabase()
     }
 
 

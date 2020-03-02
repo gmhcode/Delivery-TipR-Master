@@ -11,13 +11,14 @@ import CoreData
 
 class LocationController {
     
-    static let shared = LocationController()
-    private let persistentManager = PersistenceManager.shared
-    var locations : [Location] = []
+//    static let shared = LocationController()
+//    private let persistentManager = PersistenceManager.shared
+//    var locations : [Location] = []
     
     
     //Create
-    func createLocation() {
+    static func createLocation() {
+        let persistentManager = PersistenceManager.shared
         let location = Location(context: persistentManager.context)
         location.address = "address test 1"
         location.averageTip = 0
@@ -29,45 +30,48 @@ class LocationController {
         persistentManager.saveContext()
     }
     //Get
-    func getALLLocations() -> [Location] {
+    static func getALLLocations() -> [Location] {
+        let persistentManager = PersistenceManager.shared
         let locations = persistentManager.fetch(Location.self)
-        self.locations = locations
-        printLocation()
+//        self.locations = locations
+//        printLocation()
         return locations
     }
     
     
-    func getLocation(with address: String) {
+    static func getLocation(with address: String) -> Location?{
+        let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Location> = Location.fetchRequest()
         let predicate = NSPredicate(format: "address CONTAINS[cd] %@", address)
         request.predicate = predicate
         
         do {
             let array = try persistentManager.context.fetch(request)
+            
             print(array," 🤣 RETREIVED")
+            return array[0]
         } catch  {
             print("array could not be retrieved \(error)")
+            return nil
         }
     }
     
-    
-    
-    
-    func printLocation() {
-        self.locations.forEach({print($0.address)})
+    static func printLocation() {
+        let locations = getALLLocations()
+        locations.forEach({print($0.address, " Locations ⛽️")})
     }
     
     
-    //Update
-    
-    
-    
     //Delete
-    func deleteDatabase() {
+    static func deleteDatabase() {
+        let persistentManager = PersistenceManager.shared
         let locations = getALLLocations()
         for i in locations {
             persistentManager.delete(i)
         }
+        print("locations Delete ⛽️")
+        printLocation()
+        persistentManager.saveContext()
     }
     
     
