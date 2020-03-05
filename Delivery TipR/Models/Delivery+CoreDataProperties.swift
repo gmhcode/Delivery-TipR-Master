@@ -21,5 +21,7 @@ extension Delivery {
     @NSManaged public var address: String
     @NSManaged public var locationId: String
     @NSManaged public var id: String
+    /// 0 is false 1 is true
+    @NSManaged public var isFinished : Int16
 
 }

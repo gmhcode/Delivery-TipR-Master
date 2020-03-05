@@ -21,8 +21,14 @@
 		903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E296B240C7152001BED71 /* Delivery+CoreDataProperties.swift */; };
 		903E2971240C7465001BED71 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2970240C7465001BED71 /* LocationController.swift */; };
 		903E2974240C7660001BED71 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2973240C7660001BED71 /* Extensions.swift */; };
+		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
+		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
+		905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905216732410658B0020C238 /* MapViewLocationManager.swift */; };
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
 		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
+		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
+		90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3324103D61006C88C8 /* TabViewController.swift */; };
+		90BD5A3624104520006C88C8 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +60,14 @@
 		903E296B240C7152001BED71 /* Delivery+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Delivery+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		903E2970240C7465001BED71 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		903E2973240C7660001BED71 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
+		905216732410658B0020C238 /* MapViewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewLocationManager.swift; sourceTree = "<group>"; };
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
+		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
+		90BD5A3324103D61006C88C8 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +158,7 @@
 				9067F995240CA6AF00EBA858 /* PersistenceManager.swift */,
 				903E2970240C7465001BED71 /* LocationController.swift */,
 				90952BE5240DC060003F8ADF /* DeliveryController.swift */,
+				90521671241061C30020C238 /* LocationManagerController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -153,7 +166,12 @@
 		903E2967240C663A001BED71 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9052166E24105BFC0020C238 /* Views */,
 				903E2943240C6472001BED71 /* MapViewController.swift */,
+				90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */,
+				905216732410658B0020C238 /* MapViewLocationManager.swift */,
+				90BD5A3324103D61006C88C8 /* TabViewController.swift */,
+				90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -164,6 +182,14 @@
 				903E2973240C7660001BED71 /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9052166E24105BFC0020C238 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9052166F24105C110020C238 /* Views.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,13 +297,19 @@
 				903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */,
 				903E2944240C6472001BED71 /* MapViewController.swift in Sources */,
 				903E296D240C7152001BED71 /* Location+CoreDataProperties.swift in Sources */,
+				9052167024105C110020C238 /* Views.swift in Sources */,
 				903E296E240C7152001BED71 /* Delivery+CoreDataClass.swift in Sources */,
 				903E2974240C7660001BED71 /* Extensions.swift in Sources */,
 				903E2940240C6472001BED71 /* AppDelegate.swift in Sources */,
 				903E296C240C7152001BED71 /* Location+CoreDataClass.swift in Sources */,
+				90BD5A3624104520006C88C8 /* AddressSearchViewController.swift in Sources */,
+				905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */,
 				903E2971240C7465001BED71 /* LocationController.swift in Sources */,
 				9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */,
 				903E2942240C6472001BED71 /* SceneDelegate.swift in Sources */,
+				90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */,
+				90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */,
+				90521672241061C30020C238 /* LocationManagerController.swift in Sources */,
 				90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

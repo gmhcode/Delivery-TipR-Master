@@ -17,7 +17,25 @@ class LocationController {
     
     
     //Create
-    static func createLocation() {
+    
+    static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String) {
+        let persistentManager = PersistenceManager.shared
+        let location = Location(context: persistentManager.context)
+        location.address = address
+        location.averageTip = 0
+        location.confirmed = 0
+        location.id = address
+        location.latitude = latitude
+        location.longitude = longitude
+        location.subAddress = subAddress
+        persistentManager.saveContext()
+        
+    }
+    
+    
+    
+    ///use only for tests
+    private func createLocationFake() {
         let persistentManager = PersistenceManager.shared
         let location = Location(context: persistentManager.context)
         location.address = "address test 1"
@@ -33,12 +51,11 @@ class LocationController {
     static func getALLLocations() -> [Location] {
         let persistentManager = PersistenceManager.shared
         let locations = persistentManager.fetch(Location.self)
-//        self.locations = locations
-//        printLocation()
+        print(locations.count, " getALLLocations ⚡️")
         return locations
     }
     
-    
+    /// Find a location with a specific address
     static func getLocation(with address: String) -> Location?{
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Location> = Location.fetchRequest()
@@ -46,10 +63,9 @@ class LocationController {
         request.predicate = predicate
         
         do {
-            let array = try persistentManager.context.fetch(request)
-            
-            print(array," 🤣 RETREIVED")
-            return array[0]
+            let locations = try persistentManager.context.fetch(request)
+            print(locations," 🤣 RETREIVED")
+            return locations[0]
         } catch  {
             print("array could not be retrieved \(error)")
             return nil
