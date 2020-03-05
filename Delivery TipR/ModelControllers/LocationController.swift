@@ -11,14 +11,19 @@ import CoreData
 
 class LocationController {
     
-//    static let shared = LocationController()
-//    private let persistentManager = PersistenceManager.shared
-//    var locations : [Location] = []
+
     
     
     //Create
     
-    static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String) {
+    /// If the location already exists in the database, it will return that location. If not, it will return a new location.
+    static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String) -> Location {
+        
+        let existingLocation = getLocation(with: address)
+        if existingLocation.isEmpty == false {
+            return existingLocation[0]
+        }
+        
         let persistentManager = PersistenceManager.shared
         let location = Location(context: persistentManager.context)
         location.address = address
@@ -29,9 +34,10 @@ class LocationController {
         location.longitude = longitude
         location.subAddress = subAddress
         persistentManager.saveContext()
-        
+        return location
     }
     
+//    func 
     
     
     ///use only for tests
@@ -56,7 +62,7 @@ class LocationController {
     }
     
     /// Find a location with a specific address
-    static func getLocation(with address: String) -> Location?{
+    static func getLocation(with address: String) -> [Location] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Location> = Location.fetchRequest()
         let predicate = NSPredicate(format: "address CONTAINS[cd] %@", address)
@@ -65,10 +71,10 @@ class LocationController {
         do {
             let locations = try persistentManager.context.fetch(request)
             print(locations," 🤣 RETREIVED")
-            return locations[0]
+            return locations
         } catch  {
             print("array could not be retrieved \(error)")
-            return nil
+            return []
         }
     }
     
@@ -96,6 +102,5 @@ class LocationController {
     func findUnfinishedDelivery() {
         
     }
-    
-    
+
 }

@@ -12,7 +12,7 @@ import CoreData
 class DeliveryController {
     
     ///Creates a delivery with the address as the same address as the location
-    static func createDelivery(for location: Location) -> Delivery {
+    static func createDelivery(for location: Location, trip: Trip) -> Delivery {
         let persistentManager = PersistenceManager.shared
         let delivery = Delivery(context: persistentManager.context)
         
@@ -20,6 +20,7 @@ class DeliveryController {
         delivery.address = location.address
         delivery.locationId = location.id
         delivery.isFinished = 0
+        delivery.tripId = trip.id
         print(delivery.tipAmonut, " ❗️")
         persistentManager.saveContext()
         
@@ -41,7 +42,7 @@ class DeliveryController {
     
     
     /// Finds all the deliveries with the same address as the location with the isFinished == 0 (false)
-    static func getUnfinishedDeliveries(for location: Location) -> [Delivery]? {
+    static func getUnfinishedDeliveries(for location: Location) -> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let predicate = NSPredicate(format: "locationId CONTAINS[cd] %@ AND isFinished == 0", location.id)
@@ -53,7 +54,7 @@ class DeliveryController {
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
-            return nil
+            return []
         }
     }
     
