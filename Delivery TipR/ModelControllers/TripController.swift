@@ -46,5 +46,22 @@ class TripController {
             print("array could not be retrieved \(error)")
             return []
         }
-    }  
+    }
+    
+    private func getAllTrips() -> [Trip] {
+        let persistentManager = PersistenceManager.shared
+        let trips = persistentManager.fetch(Trip.self)
+        print(trips.count, "Trips ♊️")
+        return trips
+    }
+    func deleteTrips() {
+        let persistentManager = PersistenceManager.shared
+        
+        let trips = getAllTrips()
+        for i in trips {
+            persistentManager.delete(i)
+        }
+        print("Trips Delete")
+        persistentManager.saveContext()
+    }
 }
