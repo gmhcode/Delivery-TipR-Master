@@ -27,6 +27,7 @@
 		9053D94B24117FDE004692FC /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94924117FDE004692FC /* Trip+CoreDataClass.swift */; };
 		9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */; };
 		9053D94E2411814F004692FC /* TripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94D2411814F004692FC /* TripController.swift */; };
+		9053D95024143777004692FC /* AddTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94F24143777004692FC /* AddTipViewController.swift */; };
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
 		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
 		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
@@ -69,6 +70,7 @@
 		9053D94924117FDE004692FC /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9053D94D2411814F004692FC /* TripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripController.swift; sourceTree = "<group>"; };
+		9053D94F24143777004692FC /* AddTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTipViewController.swift; sourceTree = "<group>"; };
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
 		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				905216732410658B0020C238 /* MapViewLocationManager.swift */,
 				90BD5A3324103D61006C88C8 /* TabViewController.swift */,
 				90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */,
+				9053D94F24143777004692FC /* AddTipViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9053D95024143777004692FC /* AddTipViewController.swift in Sources */,
 				903E294A240C6472001BED71 /* Delivery_TipR.xcdatamodeld in Sources */,
 				903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */,
 				903E2944240C6472001BED71 /* MapViewController.swift in Sources */,

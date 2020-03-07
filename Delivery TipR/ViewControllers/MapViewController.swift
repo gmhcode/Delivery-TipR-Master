@@ -22,7 +22,7 @@ class MapViewController: UIViewController {
     lazy var topDrawerTarget = self.view.frame.maxY / 9
     lazy var bottomDrawerTarget = self.view.frame.maxY * 0.9
     let locationManager = CLLocationManager()
-    
+    var selectedLocation = Location()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +33,10 @@ class MapViewController: UIViewController {
         setDrawerFunctionality()
         checkLocationServices()
         
-        let locations = LocationController.getALLLocations()
+//        let locations = LocationController.getALLLocations()
 //        TripController.createNewTrip()
         
-        LocationController.deleteDatabase()
+        
         //        LocationManagerController(mapView: mapView)
         
         
@@ -75,6 +75,13 @@ class MapViewController: UIViewController {
         annotation.subtitle = subAddress
         annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         return annotation
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addTipSegue" {
+            guard let destination = segue.destination as? AddTipViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            destination.location = selectedLocation
+        }
     }
 }
 // MARK: - MapView Functions
@@ -140,6 +147,7 @@ extension MapViewController: AddressSearchViewControllerDelegate {
     func addPin(coord: CLLocationCoordinate2D, address: String, apt: String?, subAddress: String) {
         //Create location
         let location = LocationController.createLocation(address: address, latitude: coord.latitude, longitude: coord.longitude, subAddress: subAddress)
+//        let blah = DeliveryController.getFinishedDeliveries(for: location)
         //Create Annotation
         let annotation = createAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
         
@@ -158,9 +166,9 @@ extension MapViewController: AddressSearchViewControllerDelegate {
 extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let trip = TripController.getCurrentTrip()
-//        if trip.isEmpty {
-//            trip = [TripController.createNewTrip()]
-//        }
+        //        if trip.isEmpty {
+        //            trip = [TripController.createNewTrip()]
+        //        }
         let deliveries = DeliveryController.getTripDeliveries(trip: trip[0])
         return deliveries.count
     }
@@ -170,12 +178,26 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         
         let trip = TripController.getCurrentTrip()
         let deliveries = DeliveryController.getTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        
+        if deliveries[indexPath.row].isFinished == 1 {
+
+            cell.backgroundColor = #colorLiteral(red: 0.1738502085, green: 0.187876761, blue: 0.2066913247, alpha: 0.7112573099)
+            cell.textLabel?.textColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
+        }else {
+            cell.backgroundColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
+            cell.textLabel?.textColor = .black
+        }
         cell.textLabel?.text = deliveries[indexPath.row].address
-        
-        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let trip = TripController.getCurrentTrip()
+        let deliveries = DeliveryController.getTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        let location = LocationController.getLocation(with: deliveries[indexPath.row].address)
+        selectedLocation = location[0]
+        performSegue(withIdentifier: "addTipSegue", sender: nil)
+    }
     
     
     

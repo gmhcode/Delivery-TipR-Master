@@ -75,7 +75,7 @@ class DeliveryController {
         }
     }
     
-    static func getFinishedDeliveries(for location: Location) -> [Delivery]? {
+    static func getFinishedDeliveries(for location: Location) -> [Delivery] {
         
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
@@ -88,7 +88,7 @@ class DeliveryController {
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
-            return nil
+            return []
         }
     }
     
