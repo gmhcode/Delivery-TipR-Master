@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Delivery" representedClassName=".Delivery" syncable="YES">
         <attribute name="address" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="isFinished" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="locationId" attributeType="String"/>
@@ -23,7 +24,7 @@
         <attribute name="isCurrent" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Delivery" positionX="18" positionY="63" width="128" height="133"/>
+        <element name="Delivery" positionX="18" positionY="63" width="128" height="148"/>
         <element name="Location" positionX="-27" positionY="18" width="128" height="148"/>
         <element name="Trip" positionX="0" positionY="90" width="128" height="88"/>
     </elements>

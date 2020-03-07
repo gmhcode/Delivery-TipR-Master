@@ -21,6 +21,7 @@ class DeliveryController {
         delivery.locationId = location.id
         delivery.isFinished = 0
         delivery.tripId = trip.id
+        delivery.date = Date()
         print(delivery.tipAmonut, " ❗️")
         persistentManager.saveContext()
         
@@ -32,6 +33,22 @@ class DeliveryController {
         let deliveries = persistentManager.fetch(Delivery.self)
         printDeliveries()
         return deliveries
+    }
+    
+    static func getTripDeliveries(trip: Trip)-> [Delivery] {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let predicate = NSPredicate(format: "tripId == %@", trip.id)
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            print(deliveries,"getTripDeliveries ❇️")
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return []
+        }
     }
     
     static func printDeliveries() {

@@ -34,6 +34,7 @@ class MapViewController: UIViewController {
         checkLocationServices()
         
         let locations = LocationController.getALLLocations()
+//        TripController.createNewTrip()
         
         LocationController.deleteDatabase()
         //        LocationManagerController(mapView: mapView)
@@ -141,6 +142,10 @@ extension MapViewController: AddressSearchViewControllerDelegate {
         let location = LocationController.createLocation(address: address, latitude: coord.latitude, longitude: coord.longitude, subAddress: subAddress)
         //Create Annotation
         let annotation = createAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
+        
+        let trip = TripController.getCurrentTrip()
+        let delivery = DeliveryController.createDelivery(for: location, trip: trip[0])
+        tableView.reloadData()
         //Add Annotation to map
         mapView.removeAnnotation(annotation)
         mapView.addAnnotation(annotation)
@@ -152,11 +157,23 @@ extension MapViewController: AddressSearchViewControllerDelegate {
 // MARK: - TableView Functions
 extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        let trip = TripController.getCurrentTrip()
+//        if trip.isEmpty {
+//            trip = [TripController.createNewTrip()]
+//        }
+        let deliveries = DeliveryController.getTripDeliveries(trip: trip[0])
+        return deliveries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mapDeliveryCell", for: indexPath)
+        
+        let trip = TripController.getCurrentTrip()
+        let deliveries = DeliveryController.getTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        cell.textLabel?.text = deliveries[indexPath.row].address
+        
+        
+        return cell
     }
     
     

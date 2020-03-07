@@ -16,7 +16,7 @@ extension Location {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Location> {
         return NSFetchRequest<Location>(entityName: "Location")
     }
-    /// 0 is false and 1 is true
+    /// 0 is false and 1 is true, set to 1 when a delivery at the location is completed
     @NSManaged public var confirmed: Int16
     @NSManaged public var averageTip: Double
     @NSManaged public var latitude: Double

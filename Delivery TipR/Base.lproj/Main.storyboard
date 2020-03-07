@@ -22,7 +22,7 @@
                                 <rect key="frame" x="231" y="0.0" width="144" height="169"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Shp-j7-eh0" style="IBUITableViewCellStyleDefault" id="eGg-KB-10Z">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mapDeliveryCell" textLabel="Shp-j7-eh0" style="IBUITableViewCellStyleDefault" id="eGg-KB-10Z">
                                         <rect key="frame" x="0.0" y="28" width="144" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eGg-KB-10Z" id="OSi-bz-l7E">

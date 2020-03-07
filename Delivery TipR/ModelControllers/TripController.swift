@@ -11,8 +11,8 @@ import CoreData
 class TripController {
     
     
-    
-    func createNewTrip() -> Trip {
+    ///Finished the current trip, makes a new trip, makes that new trip the current trip
+    static func createNewTrip() -> Trip {
         let persistentManager = PersistenceManager.shared
         
         //Set the current trip to false
@@ -30,11 +30,11 @@ class TripController {
         persistentManager.saveContext()
         return trip
     }
+  
     
     
-    
-    ///Fetches and returns the current Trip
-    func getCurrentTrip() -> [Trip] {
+    ///Fetches and returns the current Trip, if there is no current trip
+    static func getCurrentTrip() -> [Trip] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Trip> = Trip.fetchRequest()
         let predicate = NSPredicate(format: "isCurrent == 1")

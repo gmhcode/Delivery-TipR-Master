@@ -136,7 +136,9 @@ extension AddressSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         ///tells the searchCompleter to look for new text
         searchCompleter.queryFragment = searchText
+        
     }
+   
 }
 
 
