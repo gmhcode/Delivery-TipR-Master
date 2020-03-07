@@ -120,24 +120,15 @@ extension AddressSearchViewController: MKLocalSearchCompleterDelegate{
         searchResults = completer.results
         tableView.reloadData()
     }
-    
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        // handle error
-        let alert = UIAlertController(title: "check internet", message: "check Internet", preferredStyle: .alert)
-        let button = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(button)
-        alert.show()
-        print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription)")
-        
-    }
 }
 // MARK: - Search Bar Delegate
-extension AddressSearchViewController: UISearchBarDelegate {
+extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         ///tells the searchCompleter to look for new text
         searchCompleter.queryFragment = searchText
         
     }
+        
    
 }
 
