@@ -37,10 +37,9 @@ class LocationController {
         return location
     }
     
-//    func 
     
     
-    ///use only for tests
+    ///Use only for tests
     private func createLocationFake() {
         let persistentManager = PersistenceManager.shared
         let location = Location(context: persistentManager.context)
@@ -96,11 +95,15 @@ class LocationController {
         persistentManager.saveContext()
     }
     
-    
-    
-    // Find the Unfinished Delivery
-    func findUnfinishedDelivery() {
-        
+    /// Loops through all the finished deliveries, gets the average tip, sets that to the location.
+    static func setAverageTipFor(location:Location) {
+        let persistentManager = PersistenceManager.shared
+        let finishedDeliveries = DeliveryController.getFinishedDeliveries(for: location)
+        // Gets all the deliveries' tips and adds them together
+        let averageTip = finishedDeliveries.map({$0.tipAmonut}).reduce(0,+)
+        location.averageTip = Double(averageTip)
+        persistentManager.saveContext()
+//        let retrievedLoc = getLocation(with: location.address)
+//        print(retrievedLoc[0].averageTip," fetched average tip 🏵")
     }
-
 }

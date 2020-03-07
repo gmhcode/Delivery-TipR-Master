@@ -84,12 +84,15 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eC-1Y-CZ8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <action selector="dismissSelfButtonTapped:" destination="UGd-1c-vOO" eventType="touchUpInside" id="b44-Qv-q5H"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqR-7U-JA0">
                                 <rect key="frame" x="16" y="25.5" width="343" height="616"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wb4-TK-pio">
-                                        <rect key="frame" x="17" y="0.0" width="309" height="32.5"/>
+                                        <rect key="frame" x="17" y="10" width="309" height="32.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -188,7 +191,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="56.5"/>
                                                 <color key="backgroundColor" red="0.96263154309999999" green="0.96601513900000002" blue="0.97616592639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                                <state key="normal" title="Confirm Amount">
+                                                <state key="normal">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -196,6 +199,9 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="confirmAmountButtonTapped:" destination="UGd-1c-vOO" eventType="touchUpInside" id="626-xL-aUp"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYy-dS-bVX">
                                                 <rect key="frame" x="0.0" y="76.5" width="274" height="56.5"/>
@@ -209,6 +215,9 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancelButtonTapped:" destination="UGd-1c-vOO" eventType="touchUpInside" id="bx6-Z8-Yup"/>
+                                                </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xug-Mk-zIZ">
                                                 <rect key="frame" x="0.0" y="143" width="274" height="0.0"/>
@@ -252,7 +261,7 @@
                                     <constraint firstItem="bxY-cN-L8M" firstAttribute="height" secondItem="rqR-7U-JA0" secondAttribute="height" multiplier="0.323864" id="2uw-d8-8zl"/>
                                     <constraint firstItem="ATN-ui-uad" firstAttribute="height" secondItem="rqR-7U-JA0" secondAttribute="height" multiplier="0.340097" id="7Sk-Jl-479"/>
                                     <constraint firstItem="Du1-S2-cQ2" firstAttribute="width" secondItem="rqR-7U-JA0" secondAttribute="width" multiplier="0.816327" id="7f7-5C-UW5"/>
-                                    <constraint firstItem="wb4-TK-pio" firstAttribute="top" secondItem="rqR-7U-JA0" secondAttribute="top" id="I1e-w2-ize"/>
+                                    <constraint firstItem="wb4-TK-pio" firstAttribute="top" secondItem="rqR-7U-JA0" secondAttribute="top" constant="10" id="I1e-w2-ize"/>
                                     <constraint firstItem="Du1-S2-cQ2" firstAttribute="centerY" secondItem="rqR-7U-JA0" secondAttribute="centerY" multiplier="0.3" id="IXv-ag-MwC"/>
                                     <constraint firstItem="wb4-TK-pio" firstAttribute="width" secondItem="rqR-7U-JA0" secondAttribute="width" multiplier="0.900875" id="Opt-38-P74"/>
                                     <constraint firstItem="wb4-TK-pio" firstAttribute="height" secondItem="rqR-7U-JA0" secondAttribute="height" multiplier="0.0527597" id="YhO-az-ue9"/>
@@ -298,6 +307,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5np-7p-IdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dAn-2A-42W">
+                    <connections>
+                        <action selector="dismissKeyboardTapped:" destination="UGd-1c-vOO" id="deN-Bk-sA0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1288.8" y="168.6656671664168"/>
         </scene>

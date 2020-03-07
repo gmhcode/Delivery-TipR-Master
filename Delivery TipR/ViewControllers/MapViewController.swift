@@ -23,6 +23,8 @@ class MapViewController: UIViewController {
     lazy var bottomDrawerTarget = self.view.frame.maxY * 0.9
     let locationManager = CLLocationManager()
     var selectedLocation = Location()
+    var selectedDelivery = Delivery()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +83,7 @@ class MapViewController: UIViewController {
         if segue.identifier == "addTipSegue" {
             guard let destination = segue.destination as? AddTipViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             destination.location = selectedLocation
+            destination.delivery = selectedDelivery
         }
     }
 }
@@ -152,11 +155,13 @@ extension MapViewController: AddressSearchViewControllerDelegate {
         let annotation = createAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
         
         let trip = TripController.getCurrentTrip()
-        let delivery = DeliveryController.createDelivery(for: location, trip: trip[0])
-        tableView.reloadData()
+        let _ = DeliveryController.createDelivery(for: location, trip: trip[0])
+        
+        
         //Add Annotation to map
         mapView.removeAnnotation(annotation)
         mapView.addAnnotation(annotation)
+        tableView.reloadData()
     }
 }
 
@@ -195,6 +200,9 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         let trip = TripController.getCurrentTrip()
         let deliveries = DeliveryController.getTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
         let location = LocationController.getLocation(with: deliveries[indexPath.row].address)
+        
+        let delivery = deliveries[indexPath.row]
+        selectedDelivery = delivery
         selectedLocation = location[0]
         performSegue(withIdentifier: "addTipSegue", sender: nil)
     }

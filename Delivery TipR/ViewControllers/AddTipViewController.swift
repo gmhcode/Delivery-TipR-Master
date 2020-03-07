@@ -23,43 +23,66 @@ class AddTipViewController: UIViewController {
  @IBOutlet weak var addressLabel: UILabel!
     
     var location : Location!
-    
+    var delivery : Delivery!
     lazy var finishedDeliveries = DeliveryController.getFinishedDeliveries(for: location)
+//        .sorted{$0.date > $1.date}
     lazy var unfinishedDeliveries = DeliveryController.getUnfinishedDeliveries(for: location)
+//        .sorted{$0.date > $1.date}
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-//        setViews()
-        // Do any additional setup after loading the view.
+
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        tipTextField.delegate = self
         setViews()
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func confirmAmountButtonTapped(_ sender: Any) {
+        
+        let amount = Float(tipTextField.text ?? "0.00") ?? 0.00
+        let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: amount)
+        LocationController.setAverageTipFor(location: location)
+        MapViewController.MapVC.tableView.reloadData()
+        dismissKeyboard()
+        self.dismiss(animated: true, completion: nil)
+        
     }
-    */
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func dismissSelfButtonTapped(_ sender: Any) {
+        if tipTextField.isFirstResponder == true {
+            tipTextField.resignFirstResponder()
+        }
+        else {
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
+    @IBAction func dismissKeyboardTapped(_ sender: Any) {
+        dismissKeyboard()
+    }
+    
+    
+    func dismissKeyboard(){
+        if tipTextField.isFirstResponder == true {
+            tipTextField.resignFirstResponder()
+        }
+    }
+    
+    
     func setViews(){
         averageTipLabel.text = finishedDeliveries.count > 0 ? "\(location.averageTip.doubleToMoneyString())" : "N/A"
-
+        
+        
         delivNumberLabel.text = "\(finishedDeliveries.count)"
         
         addressLabel.text = location.address
-        
+        okButton.setTitle("Confirm Amount", for: .normal)
         
         containerView.layer.borderWidth = 1
         containerView.layer.borderColor = #colorLiteral(red: 0.05126404017, green: 0.05128084868, blue: 0.05126182735, alpha: 1)
@@ -97,9 +120,27 @@ class AddTipViewController: UIViewController {
         undoLastButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         undoLastButton.layer.shadowRadius = 2
         undoLastButton.layer.masksToBounds = false
-        
-        
-        
     }
 
+}
+extension AddTipViewController : UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Find out what the text field will be after adding the current edit
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+
+        if Double(text) != nil || text == "" {
+            // Text field converted to an Int
+            okButton.isEnabled = true
+            okButton.setTitle("Confirm Amount", for: .normal)
+
+        } else {
+            // Text field is not an Int
+            okButton.isEnabled = false
+//            okButton.setTitle("Invalid Amount", for: .normal)
+            okButton.titleLabel?.text = "Invalid Amount"
+        }
+        // Return true so the text field will be changed
+        return true
+    }
 }

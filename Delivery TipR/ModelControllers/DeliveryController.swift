@@ -28,7 +28,7 @@ class DeliveryController {
         return delivery
     }
     
-    static func getALLDeliveries() -> [Delivery]{
+    static func getALLDeliveries() -> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let deliveries = persistentManager.fetch(Delivery.self)
         printDeliveries()

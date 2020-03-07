@@ -56,6 +56,8 @@ class AddressSearchViewController: UIViewController {
         if searchBar.isFirstResponder == true {
             searchBar.resignFirstResponder()
         }
+        
+        
     }
     // MARK: - Confirm Delivery Alert
     func confirmDelivery() {
