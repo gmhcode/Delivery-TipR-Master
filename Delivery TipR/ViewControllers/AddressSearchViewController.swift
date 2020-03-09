@@ -53,12 +53,16 @@ class AddressSearchViewController: UIViewController {
     }
     // MARK: - Dismiss Keyboard
     @IBAction func dismissKeyboard(_ sender: Any) {
-        if searchBar.isFirstResponder == true {
-            searchBar.resignFirstResponder()
-        }
+        dismissKeyboard()
         
         
     }
+    func dismissKeyboard() {
+        if searchBar.isFirstResponder == true {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
     // MARK: - Confirm Delivery Alert
     func confirmDelivery() {
         let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)

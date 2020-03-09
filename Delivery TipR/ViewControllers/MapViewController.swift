@@ -28,9 +28,8 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         MapViewController.MapVC = self
-        
         setDelegates()
         setDrawerFunctionality()
         checkLocationServices()
@@ -171,10 +170,8 @@ extension MapViewController: AddressSearchViewControllerDelegate {
 extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let trip = TripController.getCurrentTrip()
-        //        if trip.isEmpty {
-        //            trip = [TripController.createNewTrip()]
-        //        }
         let deliveries = DeliveryController.getTripDeliveries(trip: trip[0])
+        tableView.isHidden = deliveries.count == 0 ? true : false
         return deliveries.count
     }
     
@@ -182,6 +179,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mapDeliveryCell", for: indexPath)
         
         let trip = TripController.getCurrentTrip()
+        // Sort the dates from earliest to greatest
         let deliveries = DeliveryController.getTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
         
         if deliveries[indexPath.row].isFinished == 1 {
@@ -206,10 +204,4 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         selectedLocation = location[0]
         performSegue(withIdentifier: "addTipSegue", sender: nil)
     }
-    
-    
-    
-    
-    
-    
 }

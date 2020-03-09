@@ -9,38 +9,40 @@
 import UIKit
 
 class AddTipViewController: UIViewController {
-
- @IBOutlet weak var tipTextField: UITextField!
- @IBOutlet weak var averageTipLabel: UILabel!
- @IBOutlet weak var okButton: UIButton!
- @IBOutlet weak var cancelButton: UIButton!
- @IBOutlet weak var undoLastButton: UIButton!
- @IBOutlet weak var containerView: UIView!
- 
- 
- ///shows the total amount of deliveries sent to this location
- @IBOutlet weak var delivNumberLabel: UILabel!
- @IBOutlet weak var addressLabel: UILabel!
+    
+    @IBOutlet weak var tipTextField: UITextField!
+    @IBOutlet weak var averageTipLabel: UILabel!
+    @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var undoLastButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
+    
+    
+    
+    ///Shows the total amount of deliveries sent to this location
+    @IBOutlet weak var delivNumberLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     var location : Location!
     var delivery : Delivery!
     lazy var finishedDeliveries = DeliveryController.getFinishedDeliveries(for: location)
-//        .sorted{$0.date > $1.date}
     lazy var unfinishedDeliveries = DeliveryController.getUnfinishedDeliveries(for: location)
-//        .sorted{$0.date > $1.date}
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tipTextField.delegate = self
         setViews()
     }
-
+    
+    @IBAction func dismissKeyboardTappedContainer(_ sender: Any) {
+        dismissKeyboard()
+    }
     
     @IBAction func confirmAmountButtonTapped(_ sender: Any) {
         
@@ -53,6 +55,8 @@ class AddTipViewController: UIViewController {
         
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismissKeyboard()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func dismissSelfButtonTapped(_ sender: Any) {
@@ -121,23 +125,23 @@ class AddTipViewController: UIViewController {
         undoLastButton.layer.shadowRadius = 2
         undoLastButton.layer.masksToBounds = false
     }
-
+    
 }
 extension AddTipViewController : UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Find out what the text field will be after adding the current edit
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-
+        
         if Double(text) != nil || text == "" {
             // Text field converted to an Int
             okButton.isEnabled = true
             okButton.setTitle("Confirm Amount", for: .normal)
-
+            
         } else {
             // Text field is not an Int
             okButton.isEnabled = false
-//            okButton.setTitle("Invalid Amount", for: .normal)
+            //            okButton.setTitle("Invalid Amount", for: .normal)
             okButton.titleLabel?.text = "Invalid Amount"
         }
         // Return true so the text field will be changed
