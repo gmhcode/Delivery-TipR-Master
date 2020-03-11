@@ -154,6 +154,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         let deliveries = DeliveryController.getTripDeliveries(trip: trip[0])
         //If there are no deliveries, hide the tableView
         tableView.isHidden = deliveries.count == 0 ? true : false
+        directions()
         return deliveries.count
     }
     

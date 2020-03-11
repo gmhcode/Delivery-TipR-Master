@@ -11,17 +11,17 @@ import MapKit
 import CoreLocation
 extension MapViewController {
     
-    ///gets directions and sets the polyline to the delivery Locations
+    ///Gets directions and sets the polyline to the delivery Locations
     func directions(){
         mapView.removeOverlays(mapView.overlays)
         
         let currentTrip = TripController.getCurrentTrip()[0]
-        let deliveries = DeliveryController.getTripDeliveries(trip: currentTrip)
+        let deliveries = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip)
         let locations = deliveries.map({LocationController.getLocation(with: $0.locationId)}).joined()
         
         
         
-        guard locations.count != 0,
+        guard deliveries.count != 0,
             let location = CLLocationManager().location?.coordinate else {print("🔥❇️>>>\(#file) \(#line): guard ket failed<<<"); return }
         
         var previousCoord : CLLocationCoordinate2D?
@@ -53,15 +53,11 @@ extension MapViewController {
                     let fastestRoute = routes.sorted(by: {$0.expectedTravelTime <
                         $1.expectedTravelTime})[0]
                     
-                    
-                    
                     if rIndex == 0 {
                         
                         let overlay = RouteOverlay(route: fastestRoute)
                         self.mapView.addOverlay(overlay.polyLine)
                         self.mapView.setVisibleMapRect(overlay.polyLine.boundingMapRect, animated: true)
-                        
-                        
                     }
                 }
             }

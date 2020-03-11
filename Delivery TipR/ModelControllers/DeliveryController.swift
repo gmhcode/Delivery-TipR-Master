@@ -51,6 +51,25 @@ class DeliveryController {
         }
     }
     
+    static func getUnfinishedTripDeliveries(trip: Trip)-> [Delivery] {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let predicate = NSPredicate(format: "tripId == %@ AND isFinished == 0", trip.id)
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            print(deliveries,"getTripDeliveries ❇️")
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return []
+        }
+    }
+    
+    
+    
+    
     static func printDeliveries() {
         let persistentManager = PersistenceManager.shared
         let deliveries = persistentManager.fetch(Delivery.self)

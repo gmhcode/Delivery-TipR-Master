@@ -51,6 +51,10 @@ class AddressSearchViewController: UIViewController {
     // MARK: - NewTrip Tapped
     @IBAction func newTripButtonTapped(_ sender: Any) {
         newTripButton.pulsate()
+        let _ = TripController.createNewTrip()
+        MapViewController.MapVC.tableView.reloadData()
+        MapViewController.MapVC.mapView.removeAnnotations(MapViewController.MapVC.mapView.annotations)
+        
     }
     // MARK: - Dismiss Keyboard
     @IBAction func dismissKeyboard(_ sender: Any) {
@@ -103,8 +107,8 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.textLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        cell?.detailTextLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        cell?.textLabel?.textColor = #colorLiteral(red: 0.939237535, green: 0.939237535, blue: 0.939237535, alpha: 1)
+        cell?.detailTextLabel?.textColor = #colorLiteral(red: 0.947724402, green: 0.947724402, blue: 0.947724402, alpha: 1)
         let completion = searchResults[indexPath.row]
         let searchRequest = MKLocalSearch.Request(completion: completion)
         

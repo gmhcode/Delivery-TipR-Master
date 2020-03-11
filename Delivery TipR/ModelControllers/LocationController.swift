@@ -100,7 +100,7 @@ class LocationController {
         let persistentManager = PersistenceManager.shared
         let finishedDeliveries = DeliveryController.getFinishedDeliveries(for: location)
         // Gets all the deliveries' tips and adds them together
-        let averageTip = finishedDeliveries.map({$0.tipAmonut}).reduce(0,+)
+        let averageTip = finishedDeliveries.map({$0.tipAmonut}).reduce(0,+) / Float(finishedDeliveries.count)
         location.averageTip = Double(averageTip)
         persistentManager.saveContext()
 //        let retrievedLoc = getLocation(with: location.address)

@@ -49,6 +49,8 @@ class AddTipViewController: UIViewController {
         let amount = Float(tipTextField.text ?? "0.00") ?? 0.00
         let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: amount)
         LocationController.setAverageTipFor(location: location)
+        //Remove the annotation for this delivery
+        checkLocationForUnfinished(location)
         MapViewController.MapVC.tableView.reloadData()
         dismissKeyboard()
         self.dismiss(animated: true, completion: nil)
@@ -77,7 +79,16 @@ class AddTipViewController: UIViewController {
             tipTextField.resignFirstResponder()
         }
     }
-    
+    /// Checks to see if there are any more unfinished deliveries for the current location. If there aren't, remove the annotation for that location
+    func checkLocationForUnfinished(_ location: Location) {
+            
+        let finishedDeliveries = DeliveryController.getUnfinishedDeliveries(for: location)
+        
+        if finishedDeliveries.isEmpty {
+            let annotation = MapViewController.MapVC.mapView.annotations.filter({$0.subtitle == location.subAddress})
+            MapViewController.MapVC.mapView.removeAnnotations(annotation)
+        }
+    }
     
     func setViews(){
         averageTipLabel.text = finishedDeliveries.count > 0 ? "\(location.averageTip.doubleToMoneyString())" : "N/A"
