@@ -30,6 +30,7 @@
 		9053D95024143777004692FC /* AddTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94F24143777004692FC /* AddTipViewController.swift */; };
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
 		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
+		90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5DDC024196235000DD266 /* MapViewDirections.swift */; };
 		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
 		90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3324103D61006C88C8 /* TabViewController.swift */; };
 		90BD5A3624104520006C88C8 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */; };
@@ -73,6 +74,7 @@
 		9053D94F24143777004692FC /* AddTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTipViewController.swift; sourceTree = "<group>"; };
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
+		90A5DDC024196235000DD266 /* MapViewDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDirections.swift; sourceTree = "<group>"; };
 		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
 		90BD5A3324103D61006C88C8 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				9052166E24105BFC0020C238 /* Views */,
 				903E2943240C6472001BED71 /* MapViewController.swift */,
+				90A5DDC024196235000DD266 /* MapViewDirections.swift */,
 				90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */,
 				905216732410658B0020C238 /* MapViewLocationManager.swift */,
 				90BD5A3324103D61006C88C8 /* TabViewController.swift */,
@@ -326,6 +329,7 @@
 				90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */,
 				90521672241061C30020C238 /* LocationManagerController.swift in Sources */,
 				9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */,
+				90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */,
 				90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

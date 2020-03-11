@@ -33,42 +33,17 @@ class MapViewController: UIViewController {
         setDelegates()
         setDrawerFunctionality()
         checkLocationServices()
-        
-//        let locations = LocationController.getALLLocations()
-//        TripController.createNewTrip()
-        
-        
-        //        LocationManagerController(mapView: mapView)
-        
-        
-        
-        
-        //        LocationController.createLocation(address: <#String#>, latitude: <#Double#>, longitude: <#Double#>, subAddress: <#String#>)
-        
-        //        let location = LocationController.getALLLocations()[0]
-        //        LocationController.getLocation(with: location.address)
-        //        DeliveryController.createDelivery(for: location)
-        //        DeliveryController.getALLDeliveries()
-        //
-        //
-        //
-        //        let unfinishedDelivery = DeliveryController.getUnfinishedDeliveries(for: location)
-        //        let finishedDelivery = DeliveryController.finishDelivery(delivery: unfinishedDelivery![0], tipAmount: 1.0)
-        //        DeliveryController.getUnfinishedDeliveries(for: location)
-        //        let finishedDeliveries = DeliveryController.getFinishedDeliveries(for: location)
-        //
-        //
-        //
-        //
-        //        DeliveryController.deleteDeliveries()
-        //        LocationController.deleteDatabase()
+        directions()
         
     }
+    
+    
     func setDelegates() {
         mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     // MARK: - Create Annotation
     func createAnnotation(address: String, subAddress: String, latitude: Double, longitude: Double) -> MKPointAnnotation {
         let annotation = MKPointAnnotation()
@@ -131,7 +106,8 @@ extension MapViewController : MKMapViewDelegate {
     // MARK: - Directions Line
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        renderer.strokeColor = .blue
+        renderer.strokeColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.6856268275)
+        renderer.lineWidth = 5
         return renderer
     }
 }
@@ -147,9 +123,10 @@ extension MapViewController: AddressSearchViewControllerDelegate {
     
     // MARK: - Add Pin
     func addPin(coord: CLLocationCoordinate2D, address: String, apt: String?, subAddress: String) {
+       
         //Create location
         let location = LocationController.createLocation(address: address, latitude: coord.latitude, longitude: coord.longitude, subAddress: subAddress)
-//        let blah = DeliveryController.getFinishedDeliveries(for: location)
+
         //Create Annotation
         let annotation = createAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
         
@@ -161,6 +138,7 @@ extension MapViewController: AddressSearchViewControllerDelegate {
         mapView.removeAnnotation(annotation)
         mapView.addAnnotation(annotation)
         tableView.reloadData()
+        directions()
     }
 }
 
@@ -168,9 +146,13 @@ extension MapViewController: AddressSearchViewControllerDelegate {
 
 // MARK: - TableView Functions
 extension MapViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //Get the current trip
         let trip = TripController.getCurrentTrip()
+        //Get the deliveries assigned to that trip
         let deliveries = DeliveryController.getTripDeliveries(trip: trip[0])
+        //If there are no deliveries, hide the tableView
         tableView.isHidden = deliveries.count == 0 ? true : false
         return deliveries.count
     }

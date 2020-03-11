@@ -38,6 +38,7 @@ class AddressSearchViewController: UIViewController {
         searchBar.delegate = self
         searchCompleter.delegate = self
         
+        
     }
     override func viewDidLayoutSubviews() {
         buttonSetUp()
@@ -101,6 +102,9 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
     // MARK: - SelectRow
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.textLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        cell?.detailTextLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         let completion = searchResults[indexPath.row]
         let searchRequest = MKLocalSearch.Request(completion: completion)
         
@@ -117,6 +121,14 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         }
         self.view.endEditing(true)
     }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.textLabel?.textColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
+        cell?.detailTextLabel?.textColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
+    }
+    
+    
 }
 
 // MARK: - SearchCompleterDelegate
@@ -154,10 +166,12 @@ extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate 
 extension AddressSearchViewController {
     func buttonSetUp(){
         
+        searchBar.searchTextField.textColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
         searchBar.layer.cornerRadius = 10
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = #colorLiteral(red: 0.1456923485, green: 0.1448334754, blue: 0.1463571787, alpha: 1)
         searchBar.layer.masksToBounds = true
+        
         
         tableView.layer.cornerRadius = 10
         tableView.layer.borderWidth = 1
