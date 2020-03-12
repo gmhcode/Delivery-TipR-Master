@@ -47,7 +47,11 @@ class AddressSearchViewController: UIViewController {
     // MARK: - Go Button Tapped
     @IBAction func goButtonTapped(_ sender: Any) {
         goButton.pulsate()
+        mapsAlert()
     }
+    
+    
+    
     // MARK: - NewTrip Tapped
     @IBAction func newTripButtonTapped(_ sender: Any) {
         newTripButton.pulsate()
@@ -59,20 +63,59 @@ class AddressSearchViewController: UIViewController {
     // MARK: - Dismiss Keyboard
     @IBAction func dismissKeyboard(_ sender: Any) {
         dismissKeyboard()
-        
-        
     }
+    
     func dismissKeyboard() {
         if searchBar.isFirstResponder == true {
             searchBar.resignFirstResponder()
         }
     }
+    ///Opens the maps app to the location
+    func openInMaps(){
+        //Get the current trip
+        let trip = TripController.getCurrentTrip()
+        //Get the oldest undelivered delivery
+        let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        if !delivery.isEmpty {
+            //Get the location from the oldest undelivered delivery
+            let location = LocationController.getLocation(with: delivery[0].address)[0]
+            
+            let place = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), addressDictionary: [CNPostalAddressStreetKey:location.address])
+            
+            let mapItem = MKMapItem(placemark: place)
+            mapItem.name = location.address
+            
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey:
+                MKLaunchOptionsDirectionsModeDriving]
+            
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }else {return}
+    }
+    ///Opens the oldest delivery's location in the apple Maps app
+    func mapsAlert() {
+        //Get the current trip
+        let trip = TripController.getCurrentTrip()
+        //Get the oldest undelivered delivery
+        let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        
+        let alertController = UIAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+            self.openInMaps()
+        }
+        let cancelButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+        present(alertController, animated: true, completion: nil)
+    }
     
     // MARK: - Confirm Delivery Alert
+    ///Displays the confirm delivery alert
     func confirmDelivery() {
         let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
-            // Add pin,
+            
             guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             // MARK: - AddPin
             self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)

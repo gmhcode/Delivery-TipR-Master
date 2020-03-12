@@ -50,8 +50,6 @@ extension UIView {
         blurEffectView.alpha = 0.7
         self.addSubview(blurEffectView)
     }
-    
-    
 }
 
 
