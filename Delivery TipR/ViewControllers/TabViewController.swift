@@ -29,11 +29,11 @@ class TabViewController: UIViewController {
             
             viewController.view.frame = containerView.bounds
             viewController.delegate = MapViewController.MapVC
-            containerView.addSubview(viewController.view)
-            
             
             return viewController
         }()
+        
+        containerView.addSubview(createDeliveryViewController!.view)
     }
     
  
@@ -44,11 +44,13 @@ class TabViewController: UIViewController {
     @IBAction func tripButtonTapped(_ sender: Any) {
         tripsButton.pulsate()
         IphoneSystem.vibrate()
+        MapViewController.MapVC.drawerTogglePosition()
 
     }
     @IBAction func advancedButtonTapped(_ sender: Any) {
         advancedButton.pulsate()
         IphoneSystem.vibrate()
+        MapViewController.MapVC.drawerTogglePosition()
     }
 
     

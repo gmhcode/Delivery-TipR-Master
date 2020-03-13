@@ -14,7 +14,7 @@ class AddTipViewController: UIViewController {
     @IBOutlet weak var averageTipLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var undoLastButton: UIButton!
+    @IBOutlet weak var unfinishButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
     
@@ -37,6 +37,7 @@ class AddTipViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tipTextField.delegate = self
+        tipTextField.keyboardType = UIKeyboardType.decimalPad
         setViews()
     }
     
@@ -46,14 +47,18 @@ class AddTipViewController: UIViewController {
     
     @IBAction func confirmAmountButtonTapped(_ sender: Any) {
         
-        let amount = Float(tipTextField.text ?? "0.00") ?? 0.00
-        let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: amount)
-        LocationController.setAverageTipFor(location: location)
-        //Remove the annotation for this delivery
-        checkLocationForUnfinished(location)
-        MapViewController.MapVC.tableView.reloadData()
-        dismissKeyboard()
-        self.dismiss(animated: true, completion: nil)
+        if let amount = Float(tipTextField.text ?? "0.00") {
+            let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: amount)
+            LocationController.setAverageTipFor(location: location)
+            //Remove the annotation for this delivery
+            checkLocationForUnfinished(location)
+            MapViewController.MapVC.tableView.reloadData()
+            dismissKeyboard()
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            invalidTipAmountAlert()
+        }
+        
         
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -90,6 +95,30 @@ class AddTipViewController: UIViewController {
         }
     }
     
+    
+}
+// MARK: - Alerts
+extension AddTipViewController {
+    
+    func invalidTipAmountAlert() {
+        let alertController = UIAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0.00' ", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+
+// MARK: - TextField Delegate
+extension AddTipViewController : UITextFieldDelegate {
+    
+
+}
+// MARK: - Setup Views
+extension AddTipViewController {
     func setViews(){
         averageTipLabel.text = finishedDeliveries.count > 0 ? "\(location.averageTip.doubleToMoneyString())" : "N/A"
         
@@ -125,37 +154,16 @@ class AddTipViewController: UIViewController {
         cancelButton.layer.masksToBounds = false
         
         
-        undoLastButton.layer.borderWidth = 1
-        undoLastButton.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.241182383)
-        undoLastButton.layer.shadowPath =
-            UIBezierPath(roundedRect: undoLastButton.bounds,
-                         cornerRadius: undoLastButton.layer.cornerRadius).cgPath
-        undoLastButton.layer.shadowColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        undoLastButton.layer.shadowOpacity = 0.5
-        undoLastButton.layer.shadowOffset = CGSize(width: 2, height: 2)
-        undoLastButton.layer.shadowRadius = 2
-        undoLastButton.layer.masksToBounds = false
+        unfinishButton.layer.borderWidth = 1
+        unfinishButton.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.241182383)
+        unfinishButton.layer.shadowPath =
+            UIBezierPath(roundedRect: unfinishButton.bounds,
+                         cornerRadius: unfinishButton.layer.cornerRadius).cgPath
+        unfinishButton.layer.shadowColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        unfinishButton.layer.shadowOpacity = 0.5
+        unfinishButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+        unfinishButton.layer.shadowRadius = 2
+        unfinishButton.layer.masksToBounds = false
     }
     
-}
-extension AddTipViewController : UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Find out what the text field will be after adding the current edit
-        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        
-        if Double(text) != nil || text == "" {
-            // Text field converted to an Int
-            okButton.isEnabled = true
-            okButton.setTitle("Confirm Amount", for: .normal)
-            
-        } else {
-            // Text field is not an Int
-            okButton.isEnabled = false
-            //            okButton.setTitle("Invalid Amount", for: .normal)
-            okButton.titleLabel?.text = "Invalid Amount"
-        }
-        // Return true so the text field will be changed
-        return true
-    }
 }

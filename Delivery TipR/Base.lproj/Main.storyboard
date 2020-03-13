@@ -243,7 +243,7 @@
                                                 <rect key="frame" x="0.0" y="153" width="274" height="56.5"/>
                                                 <color key="backgroundColor" red="0.96263154309999999" green="0.96601513900000002" blue="0.97616592639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="Undo Last">
+                                                <state key="normal" title="Undo">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -313,7 +313,7 @@
                         <outlet property="delivNumberLabel" destination="Y2E-Tx-J8C" id="Tib-eD-meT"/>
                         <outlet property="okButton" destination="6ex-ea-Bq4" id="kYK-d3-tkS"/>
                         <outlet property="tipTextField" destination="38m-UT-DeQ" id="kj8-mF-hcm"/>
-                        <outlet property="undoLastButton" destination="3Le-BX-Th7" id="vTB-Oa-9F8"/>
+                        <outlet property="unfinishButton" destination="3Le-BX-Th7" id="vTB-Oa-9F8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5np-7p-IdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
