@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TripController().deleteTrips()
         DeliveryController.deleteDeliveries()
         //If there are no current trips, make one
-        if TripController.getCurrentTrip().isEmpty {
+        if  TripController.getCurrentTrip() == nil {
            let _ = TripController.createNewTrip()
         }
         return true

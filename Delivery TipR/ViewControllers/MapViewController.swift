@@ -130,8 +130,9 @@ extension MapViewController: AddressSearchViewControllerDelegate {
         //Create Annotation
         let annotation = createAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
         
-        let trip = TripController.getCurrentTrip()
-        let _ = DeliveryController.createDelivery(for: location, trip: trip[0])
+        if let trip = TripController.getCurrentTrip(){
+            
+        let _ = DeliveryController.createDelivery(for: location, trip: trip)
         
         
         //Add Annotation to map
@@ -139,6 +140,7 @@ extension MapViewController: AddressSearchViewControllerDelegate {
         mapView.addAnnotation(annotation)
         tableView.reloadData()
         directions()
+        }
     }
 }
 
@@ -149,9 +151,11 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Get the current trip
-        let trip = TripController.getCurrentTrip()
+        guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return 0}
+
+        
         //Get the deliveries assigned to that trip
-        let deliveries = DeliveryController.getTripDeliveries(trip: trip[0])
+        let deliveries = DeliveryController.getTripDeliveries(trip: trip)
         //If there are no deliveries, hide the tableView
         tableView.isHidden = deliveries.count == 0 ? true : false
         directions()
@@ -159,11 +163,13 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return UITableViewCell()}
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "mapDeliveryCell", for: indexPath)
         
-        let trip = TripController.getCurrentTrip()
         // Sort the dates from earliest to greatest
-        let deliveries = DeliveryController.getTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        let deliveries = DeliveryController.getTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         
         if deliveries[indexPath.row].isFinished == 1 {
             cell.backgroundColor = #colorLiteral(red: 0.1738502085, green: 0.187876761, blue: 0.2066913247, alpha: 0.7112573099)
@@ -177,8 +183,8 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let trip = TripController.getCurrentTrip()
-        let deliveries = DeliveryController.getTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
+        let deliveries = DeliveryController.getTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         let location = LocationController.getLocation(with: deliveries[indexPath.row].address)
         
         let delivery = deliveries[indexPath.row]

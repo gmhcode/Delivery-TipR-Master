@@ -113,7 +113,7 @@ class DeliveryController {
         
         do {
             let deliveries = try persistentManager.context.fetch(request)
-            print(deliveries.count,"Get Finished Deliveries 🥶")
+//            print(deliveries.count,"Get Finished Deliveries 🥶")
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")

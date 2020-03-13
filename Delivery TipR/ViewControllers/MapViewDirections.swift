@@ -14,8 +14,7 @@ extension MapViewController {
     ///Gets directions and sets the polyline to the delivery Locations
     func directions(){
         mapView.removeOverlays(mapView.overlays)
-        
-        let currentTrip = TripController.getCurrentTrip()[0]
+        guard let currentTrip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         let deliveries = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip)
         let locations = deliveries.map({LocationController.getLocation(with: $0.locationId)}).joined()
         
@@ -58,7 +57,7 @@ extension MapViewController {
                         let overlay = RouteOverlay(route: fastestRoute)
                         self.mapView.addOverlay(overlay.polyLine)
                         self.mapView.setVisibleMapRect(overlay.polyLine.boundingMapRect, animated: true)
-                        self.firstRoute = false
+//                        self.firstRoute = false
                         //breaking here makes sure that we dont get more than one route per location
                         break
                     }

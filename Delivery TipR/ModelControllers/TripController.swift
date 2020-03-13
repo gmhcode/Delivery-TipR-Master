@@ -16,10 +16,8 @@ class TripController {
         let persistentManager = PersistenceManager.shared
         
         //Set the current trip to false
-        let currentTrip = getCurrentTrip()
-        if currentTrip.isEmpty == false {
-            currentTrip[0].isCurrent = 0
-            
+        if let currentTrip = getCurrentTrip() {
+            currentTrip.isCurrent = 0
         }
         
         //Set a new current trip
@@ -34,17 +32,20 @@ class TripController {
     
     
     ///Fetches and returns the current Trip, if there is no current trip
-    static func getCurrentTrip() -> [Trip] {
+    static func getCurrentTrip() -> Trip? {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Trip> = Trip.fetchRequest()
         let predicate = NSPredicate(format: "isCurrent == 1")
         request.predicate = predicate
         do {
             let trips = try persistentManager.context.fetch(request)
-            return trips
+            if !trips.isEmpty {
+                return trips[0]
+            }
+            return nil
         } catch  {
             print("array could not be retrieved \(error)")
-            return []
+            return nil
         }
     }
     

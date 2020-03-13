@@ -69,7 +69,7 @@ class LocationController {
         
         do {
             let locations = try persistentManager.context.fetch(request)
-            print(locations," 🤣 RETREIVED")
+//            print(locations," 🤣 RETREIVED")
             return locations
         } catch  {
             print("array could not be retrieved \(error)")

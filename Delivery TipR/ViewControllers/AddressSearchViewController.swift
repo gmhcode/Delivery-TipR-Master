@@ -54,28 +54,41 @@ class AddressSearchViewController: UIViewController {
     
     // MARK: - NewTrip Tapped
     @IBAction func newTripButtonTapped(_ sender: Any) {
+        guard let currentTrip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         newTripButton.pulsate()
-        let _ = TripController.createNewTrip()
-        MapViewController.MapVC.tableView.reloadData()
-        MapViewController.MapVC.mapView.removeAnnotations(MapViewController.MapVC.mapView.annotations)
-        
+        if DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).isEmpty {
+            let _ = TripController.createNewTrip()
+            MapViewController.MapVC.tableView.reloadData()
+            MapViewController.MapVC.mapView.removeAnnotations(MapViewController.MapVC.mapView.annotations)
+            MapViewController.MapVC.centerViewOnUserLocation()
+        } else {
+            // If the ok button is tapped in the alert, the newTripButtonTapped will be called again
+            newTripAlert(currentTrip: currentTrip)
+        }
     }
+    
+    
     // MARK: - Dismiss Keyboard
     @IBAction func dismissKeyboard(_ sender: Any) {
         dismissKeyboard()
     }
+    
     
     func dismissKeyboard() {
         if searchBar.isFirstResponder == true {
             searchBar.resignFirstResponder()
         }
     }
+    
+    
     ///Opens the maps app to the location
     func openInMaps(){
         //Get the current trip
-        let trip = TripController.getCurrentTrip()
+        guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+        
         //Get the oldest undelivered delivery
-        let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         if !delivery.isEmpty {
             //Get the location from the oldest undelivered delivery
             let location = LocationController.getLocation(with: delivery[0].address)[0]
@@ -91,12 +104,15 @@ class AddressSearchViewController: UIViewController {
             mapItem.openInMaps(launchOptions: launchOptions)
         }else {return}
     }
+    
+    
     ///Opens the oldest delivery's location in the apple Maps app
     func mapsAlert() {
         //Get the current trip
-        let trip = TripController.getCurrentTrip()
+        guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+      
         //Get the oldest undelivered delivery
-        let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
+        let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         
         let alertController = UIAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.", preferredStyle: .alert)
         
@@ -109,6 +125,24 @@ class AddressSearchViewController: UIViewController {
         alertController.addAction(cancelButton)
         present(alertController, animated: true, completion: nil)
     }
+    // MARK: - New Trip Alert
+    /// If the user hits ok, all unfinished deliveries for this trip will be deleted, if the user hits cancel, they will not be deleted.
+    func newTripAlert(currentTrip: Trip) {
+        let alertController = UIAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+            
+            DeliveryController.deleteUnFinDelFor(trip: currentTrip)
+            self.newTripButtonTapped(self)
+            
+        }
+        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
+            
+        }
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     
     // MARK: - Confirm Delivery Alert
     ///Displays the confirm delivery alert
@@ -129,6 +163,7 @@ class AddressSearchViewController: UIViewController {
     }
 }
 
+
 // MARK: - TableView Delegate
 extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSource {
     // MARK: - Rows In section
@@ -145,6 +180,7 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
+    
     
     // MARK: - SelectRow
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -174,9 +210,8 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         cell?.textLabel?.textColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
         cell?.detailTextLabel?.textColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
     }
-    
-    
 }
+
 
 // MARK: - SearchCompleterDelegate
 extension AddressSearchViewController: MKLocalSearchCompleterDelegate{
@@ -186,6 +221,8 @@ extension AddressSearchViewController: MKLocalSearchCompleterDelegate{
         tableView.reloadData()
     }
 }
+
+
 // MARK: - Search Bar Delegate
 extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -193,8 +230,6 @@ extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate 
         searchCompleter.queryFragment = searchText
         
     }
-        
-   
 }
 
 
