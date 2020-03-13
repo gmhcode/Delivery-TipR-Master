@@ -131,7 +131,15 @@ class DeliveryController {
         return delivery
     }
     
-
+    /// unFinishes the delivery, removes the tip amount and saves
+    static func unFinishDelivery(delivery: Delivery) -> Delivery{
+        let persistentManager = PersistenceManager.shared
+        delivery.isFinished = 0
+        delivery.tipAmonut = 0
+        persistentManager.saveContext()
+        return delivery
+    }
+    
     ///Deletes all of the deliveries
     static func deleteDeliveries(){
         let persistentManager = PersistenceManager.shared

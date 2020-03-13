@@ -41,18 +41,13 @@ class AddTipViewController: UIViewController {
         setViews()
     }
     
-    @IBAction func dismissKeyboardTappedContainer(_ sender: Any) {
-        dismissKeyboard()
-    }
+  
     
     @IBAction func confirmAmountButtonTapped(_ sender: Any) {
         
         if let amount = Float(tipTextField.text ?? "0.00") {
             let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: amount)
-            LocationController.setAverageTipFor(location: location)
-            //Remove the annotation for this delivery
-            checkLocationForUnfinished(location)
-            MapViewController.MapVC.tableView.reloadData()
+            getReadyForDismiss()
             dismissKeyboard()
             self.dismiss(animated: true, completion: nil)
         } else {
@@ -66,6 +61,20 @@ class AddTipViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func undoButtonTapped(_ sender: Any) {
+        if delivery.isFinished == 1 {
+            let _ = DeliveryController.unFinishDelivery(delivery: delivery)
+            getReadyForDismiss()
+            MapViewController.MapVC.createAddAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
+            cancelButtonTapped(self)
+        }else {
+            undoTappedInvalid()
+        }
+        
+        
+    }
+    
+    
     @IBAction func dismissSelfButtonTapped(_ sender: Any) {
         if tipTextField.isFirstResponder == true {
             tipTextField.resignFirstResponder()
@@ -74,6 +83,12 @@ class AddTipViewController: UIViewController {
             self.dismiss(animated: false, completion: nil)
         }
     }
+    
+    @IBAction func dismissKeyboardTappedContainer(_ sender: Any) {
+        dismissKeyboard()
+    }
+
+    
     @IBAction func dismissKeyboardTapped(_ sender: Any) {
         dismissKeyboard()
     }
@@ -87,25 +102,40 @@ class AddTipViewController: UIViewController {
     /// Checks to see if there are any more unfinished deliveries for the current location. If there aren't, remove the annotation for that location
     func checkLocationForUnfinished(_ location: Location) {
             
-        let finishedDeliveries = DeliveryController.getUnfinishedDeliveries(for: location)
+        let unfinishedDeliveries = DeliveryController.getUnfinishedDeliveries(for: location)
         
-        if finishedDeliveries.isEmpty {
+        if unfinishedDeliveries.isEmpty {
             let annotation = MapViewController.MapVC.mapView.annotations.filter({$0.subtitle == location.subAddress})
             MapViewController.MapVC.mapView.removeAnnotations(annotation)
         }
     }
-    
+    ///Sets average tip for location, removes finished Annotations, reloads tableView
+    func getReadyForDismiss(){
+        LocationController.setAverageTipFor(location: location)
+        //Remove the annotation for this delivery
+        checkLocationForUnfinished(location)
+        MapViewController.MapVC.tableView.reloadData()
+    }
     
 }
 // MARK: - Alerts
 extension AddTipViewController {
     
     func invalidTipAmountAlert() {
-        let alertController = UIAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0.00' ", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func undoTappedInvalid() {
+        let alertController = UIAlertController(title: "Nothing to Undo", message: "This delivery's tip must first be confirmed, in order to undo", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(okButton)
+//        alertController.addAction(cancelButton)
         present(alertController, animated: true, completion: nil)
     }
     

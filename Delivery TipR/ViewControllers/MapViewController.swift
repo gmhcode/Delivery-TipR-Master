@@ -44,14 +44,7 @@ class MapViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    // MARK: - Create Annotation
-    func createAnnotation(address: String, subAddress: String, latitude: Double, longitude: Double) -> MKPointAnnotation {
-        let annotation = MKPointAnnotation()
-        annotation.title = address
-        annotation.subtitle = subAddress
-        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        return annotation
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTipSegue" {
@@ -127,20 +120,36 @@ extension MapViewController: AddressSearchViewControllerDelegate {
         //Create location
         let location = LocationController.createLocation(address: address, latitude: coord.latitude, longitude: coord.longitude, subAddress: subAddress)
 
-        //Create Annotation
-        let annotation = createAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
+        
         
         if let trip = TripController.getCurrentTrip(){
             
         let _ = DeliveryController.createDelivery(for: location, trip: trip)
-        
-        
-        //Add Annotation to map
-        mapView.removeAnnotation(annotation)
-        mapView.addAnnotation(annotation)
+        createAddAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
+//        //Create Annotation
+//        let annotation = createAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
+//        //Add Annotation to map
+//        mapView.removeAnnotation(annotation)
+//        mapView.addAnnotation(annotation)
         tableView.reloadData()
         directions()
         }
+    }
+    // MARK: - Create Annotation
+//    func createAnnotation(address: String, subAddress: String, latitude: Double, longitude: Double) -> MKPointAnnotation {
+//        let annotation = MKPointAnnotation()
+//        annotation.title = address
+//        annotation.subtitle = subAddress
+//        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//        return annotation
+//    }
+    
+    func createAddAnnotation(address: String, subAddress: String, latitude: Double, longitude: Double) {
+        let annotation = MKPointAnnotation()
+        annotation.title = address
+        annotation.subtitle = subAddress
+        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        mapView.addAnnotation(annotation)
     }
 }
 

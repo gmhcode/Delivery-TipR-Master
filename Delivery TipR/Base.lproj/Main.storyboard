@@ -251,6 +251,9 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="undoButtonTapped:" destination="UGd-1c-vOO" eventType="touchUpInside" id="u2H-QQ-xjN"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
