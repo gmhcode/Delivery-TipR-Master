@@ -90,3 +90,10 @@ extension Date {
     }
 }
 
+struct IphoneSystem {
+    static func vibrate() {
+         if #available(iOS 10.0, *) {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+         }
+     }
+}

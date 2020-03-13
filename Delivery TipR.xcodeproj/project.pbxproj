@@ -20,7 +20,7 @@
 		903E296E240C7152001BED71 /* Delivery+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E296A240C7152001BED71 /* Delivery+CoreDataClass.swift */; };
 		903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E296B240C7152001BED71 /* Delivery+CoreDataProperties.swift */; };
 		903E2971240C7465001BED71 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2970240C7465001BED71 /* LocationController.swift */; };
-		903E2974240C7660001BED71 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2973240C7660001BED71 /* Extensions.swift */; };
+		903E2974240C7660001BED71 /* ExtensionsAndUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */; };
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
 		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
 		905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905216732410658B0020C238 /* MapViewLocationManager.swift */; };
@@ -64,7 +64,7 @@
 		903E296A240C7152001BED71 /* Delivery+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Delivery+CoreDataClass.swift"; sourceTree = "<group>"; };
 		903E296B240C7152001BED71 /* Delivery+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Delivery+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		903E2970240C7465001BED71 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
-		903E2973240C7660001BED71 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndUtilities.swift; sourceTree = "<group>"; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
 		905216732410658B0020C238 /* MapViewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewLocationManager.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		903E2972240C7655001BED71 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				903E2973240C7660001BED71 /* Extensions.swift */,
+				903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 				903E296D240C7152001BED71 /* Location+CoreDataProperties.swift in Sources */,
 				9052167024105C110020C238 /* Views.swift in Sources */,
 				903E296E240C7152001BED71 /* Delivery+CoreDataClass.swift in Sources */,
-				903E2974240C7660001BED71 /* Extensions.swift in Sources */,
+				903E2974240C7660001BED71 /* ExtensionsAndUtilities.swift in Sources */,
 				903E2940240C6472001BED71 /* AppDelegate.swift in Sources */,
 				903E296C240C7152001BED71 /* Location+CoreDataClass.swift in Sources */,
 				90BD5A3624104520006C88C8 /* AddressSearchViewController.swift in Sources */,

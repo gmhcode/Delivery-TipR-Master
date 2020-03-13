@@ -43,10 +43,12 @@ class TabViewController: UIViewController {
     
     @IBAction func tripButtonTapped(_ sender: Any) {
         tripsButton.pulsate()
+        IphoneSystem.vibrate()
 
     }
     @IBAction func advancedButtonTapped(_ sender: Any) {
         advancedButton.pulsate()
+        IphoneSystem.vibrate()
     }
 
     
