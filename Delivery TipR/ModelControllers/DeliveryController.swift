@@ -77,7 +77,14 @@ class DeliveryController {
         persistentManager.saveContext()
     }
     
-    
+    static func deleteDelivery(deliveries:[Delivery]) {
+        let persistentManager = PersistenceManager.shared
+        for i in deliveries {
+            persistentManager.delete(i)
+        }
+        print("Deliveries Delete⛵️")
+        persistentManager.saveContext()
+    }
     
     
     static func printDeliveries() {
@@ -141,7 +148,7 @@ class DeliveryController {
     }
     
     ///Deletes all of the deliveries
-    static func deleteDeliveries(){
+    static func deleteALLDeliveries(){
         let persistentManager = PersistenceManager.shared
         let deliveries = getALLDeliveries()
         for i in deliveries {

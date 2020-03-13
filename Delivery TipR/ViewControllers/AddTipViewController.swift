@@ -15,6 +15,7 @@ class AddTipViewController: UIViewController {
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var unfinishButton: UIButton!
+    @IBOutlet weak var removeDeliveryButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
     
@@ -70,8 +71,16 @@ class AddTipViewController: UIViewController {
         }else {
             undoTappedInvalid()
         }
-        
-        
+    }
+    ///If the delivery is finished, this will show an alert explaining they cant remove the delivery till they undo. if the delivery is unfinished, this will delete the delivery and remove annotations
+    @IBAction func removeDeliveryButtonTapped(_ sender: Any) {
+        if delivery.isFinished == 1 {
+            cannotRemoveFinishedAlert()
+        }else {
+            DeliveryController.deleteDelivery(deliveries: [delivery])
+            getReadyForDismiss()
+            cancelButtonTapped(self)
+        }
     }
     
     
@@ -132,10 +141,15 @@ extension AddTipViewController {
     
     func undoTappedInvalid() {
         let alertController = UIAlertController(title: "Nothing to Undo", message: "This delivery's tip must first be confirmed, in order to undo", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(okButton)
-//        alertController.addAction(cancelButton)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func cannotRemoveFinishedAlert() {
+        let alertController = UIAlertController(title: "Unable to remove", message: "This delivery has already been confirmed, if you wish to remove this delivery, first tap the undo button", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okButton)
         present(alertController, animated: true, completion: nil)
     }
     
@@ -177,7 +191,7 @@ extension AddTipViewController {
         cancelButton.layer.shadowPath =
             UIBezierPath(roundedRect: cancelButton.bounds,
                          cornerRadius: cancelButton.layer.cornerRadius).cgPath
-        cancelButton.layer.shadowColor = #colorLiteral(red: 0.5911776423, green: 0, blue: 0, alpha: 1)
+        cancelButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         cancelButton.layer.shadowOpacity = 0.5
         cancelButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         cancelButton.layer.shadowRadius = 2
@@ -194,6 +208,19 @@ extension AddTipViewController {
         unfinishButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         unfinishButton.layer.shadowRadius = 2
         unfinishButton.layer.masksToBounds = false
+        
+        
+        removeDeliveryButton.layer.borderWidth = 1
+        removeDeliveryButton.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.241182383)
+        removeDeliveryButton.layer.shadowPath =
+            UIBezierPath(roundedRect: removeDeliveryButton.bounds,
+                         cornerRadius: removeDeliveryButton.layer.cornerRadius).cgPath
+        removeDeliveryButton.layer.shadowColor = #colorLiteral(red: 0.5911776423, green: 0, blue: 0, alpha: 1)
+        removeDeliveryButton.layer.shadowOpacity = 0.5
+        removeDeliveryButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+        removeDeliveryButton.layer.shadowRadius = 2
+        removeDeliveryButton.layer.masksToBounds = false
+        
     }
     
 }

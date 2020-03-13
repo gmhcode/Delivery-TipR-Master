@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         LocationController.deleteDatabase()
         TripController().deleteTrips()
-        DeliveryController.deleteDeliveries()
+        DeliveryController.deleteALLDeliveries()
         //If there are no current trips, make one
         if  TripController.getCurrentTrip() == nil {
            let _ = TripController.createNewTrip()

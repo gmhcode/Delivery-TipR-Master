@@ -195,7 +195,7 @@
                                         <rect key="frame" x="34.5" y="330" width="274" height="209.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ex-ea-Bq4">
-                                                <rect key="frame" x="0.0" y="0.0" width="274" height="56.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="274" height="37.5"/>
                                                 <color key="backgroundColor" red="0.96263154309999999" green="0.96601513900000002" blue="0.97616592639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                 <state key="normal">
@@ -211,7 +211,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYy-dS-bVX">
-                                                <rect key="frame" x="0.0" y="76.5" width="274" height="56.5"/>
+                                                <rect key="frame" x="0.0" y="57.5" width="274" height="37.5"/>
                                                 <color key="backgroundColor" red="0.96263154309999999" green="0.96601513900000002" blue="0.97616592639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="Cancel">
@@ -227,7 +227,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xug-Mk-zIZ">
-                                                <rect key="frame" x="0.0" y="143" width="274" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="105" width="274" height="0.0"/>
                                                 <color key="backgroundColor" red="0.96263154309999999" green="0.96601513900000002" blue="0.97616592639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <state key="normal" title="MapsButton">
@@ -240,8 +240,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Le-BX-Th7">
-                                                <rect key="frame" x="0.0" y="153" width="274" height="56.5"/>
-                                                <color key="backgroundColor" red="0.96263154309999999" green="0.96601513900000002" blue="0.97616592639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <rect key="frame" x="0.0" y="115" width="274" height="37.5"/>
+                                                <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="Undo">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -253,6 +253,22 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="undoButtonTapped:" destination="UGd-1c-vOO" eventType="touchUpInside" id="u2H-QQ-xjN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkT-4N-GBi">
+                                                <rect key="frame" x="0.0" y="172.5" width="274" height="37"/>
+                                                <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="Remove Delivery">
+                                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="removeDeliveryButtonTapped:" destination="UGd-1c-vOO" eventType="touchUpInside" id="Xbp-Cp-l5Y"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -315,6 +331,7 @@
                         <outlet property="containerView" destination="rqR-7U-JA0" id="0OQ-gO-Qwk"/>
                         <outlet property="delivNumberLabel" destination="Y2E-Tx-J8C" id="Tib-eD-meT"/>
                         <outlet property="okButton" destination="6ex-ea-Bq4" id="kYK-d3-tkS"/>
+                        <outlet property="removeDeliveryButton" destination="wkT-4N-GBi" id="5Rm-YV-wVN"/>
                         <outlet property="tipTextField" destination="38m-UT-DeQ" id="kj8-mF-hcm"/>
                         <outlet property="unfinishButton" destination="3Le-BX-Th7" id="vTB-Oa-9F8"/>
                     </connections>
