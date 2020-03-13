@@ -16,7 +16,7 @@ class TabViewController: UIViewController {
     @IBOutlet weak var advancedButton: UIButton!
     
     var createDeliveryViewController : AddressSearchViewController?
-    
+    var navView : NavViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,17 @@ class TabViewController: UIViewController {
             
             return viewController
         }()
-        
+        navView = {
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            
+            let viewController = storyboard.instantiateViewController(withIdentifier: "NavViewController") as! NavViewController
+            
+            viewController.view.frame = containerView.bounds
+//            viewController.delegate = MapViewController.MapVC
+            
+            return viewController
+        }()
+//        containerView.addSubview(navView!.view)
         containerView.addSubview(createDeliveryViewController!.view)
     }
     
@@ -44,13 +54,30 @@ class TabViewController: UIViewController {
     @IBAction func tripButtonTapped(_ sender: Any) {
         tripsButton.pulsate()
         IphoneSystem.vibrate()
-        MapViewController.MapVC.drawerTogglePosition()
+        if containerView.subviews.contains(navView!.view) {
+            navView?.view.removeFromSuperview()
+            containerView.addSubview(createDeliveryViewController!.view)
+            MapViewController.MapVC.openDrawer()
+        } else {
+             MapViewController.MapVC.drawerTogglePosition()
+        }
 
     }
     @IBAction func advancedButtonTapped(_ sender: Any) {
         advancedButton.pulsate()
         IphoneSystem.vibrate()
-        MapViewController.MapVC.drawerTogglePosition()
+
+        
+        if containerView.subviews.contains(createDeliveryViewController!.view) {
+            createDeliveryViewController?.view.removeFromSuperview()
+            containerView.addSubview(navView!.view)
+            MapViewController.MapVC.openDrawer()
+        } else {
+             MapViewController.MapVC.drawerTogglePosition()
+        }
+        
+        
+        
     }
 
     

@@ -116,14 +116,14 @@ extension MapViewController {
     }
     
     
-    fileprivate func openDrawer() {
+    func openDrawer() {
         
         // Sets target locations of views & then animates.
         let target = topDrawerTarget
         self.userInteractionAnimate(view: self.drawerView, edge: self.drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y)
     }
     
-    fileprivate func closeDrawer() {
+    func closeDrawer() {
         let target = bottomDrawerTarget
         self.userInteractionAnimate(view: drawerView, edge: drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y)
         self.tabViewController?.createDeliveryViewController?.dismissKeyboard()
