@@ -166,7 +166,6 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         let deliveries = DeliveryController.getTripDeliveries(trip: trip[0]).sorted {$0.date < $1.date}
         
         if deliveries[indexPath.row].isFinished == 1 {
-
             cell.backgroundColor = #colorLiteral(red: 0.1738502085, green: 0.187876761, blue: 0.2066913247, alpha: 0.7112573099)
             cell.textLabel?.textColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
         }else {

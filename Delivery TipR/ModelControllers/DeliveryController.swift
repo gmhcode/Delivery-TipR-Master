@@ -66,6 +66,16 @@ class DeliveryController {
             return []
         }
     }
+    /// Deletes all the unfinished deliveries for the specified trip
+    static func deleteUnFinDelFor(trip:Trip) {
+        let persistentManager = PersistenceManager.shared
+        let deliveries = getUnfinishedTripDeliveries(trip: trip)
+        for i in deliveries {
+            persistentManager.delete(i)
+        }
+        print("Deliveries Delete for Trip ⛵️")
+        persistentManager.saveContext()
+    }
     
     
     
@@ -93,7 +103,7 @@ class DeliveryController {
             return []
         }
     }
-    
+    ///Gets all the finished deliveries for a location
     static func getFinishedDeliveries(for location: Location) -> [Delivery] {
         
         let persistentManager = PersistenceManager.shared
