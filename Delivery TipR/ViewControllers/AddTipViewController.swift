@@ -10,12 +10,12 @@ import UIKit
 //import MaterialComponents.MaterialDialogs
 //import MaterialComponents.MaterialDialogs_Theming
 //import MaterialComponents.MaterialContainerScheme
-//import MaterialComponents.MaterialTextFields
+import MaterialComponents.MaterialTextFields
 import MaterialComponents.MaterialDialogs
 
 class AddTipViewController: UIViewController {
   
-    @IBOutlet weak var tipTextField: UITextField!
+    @IBOutlet weak var tipTextField:  UITextField!
     
     @IBOutlet weak var averageTipLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
@@ -23,13 +23,11 @@ class AddTipViewController: UIViewController {
     @IBOutlet weak var unfinishButton: UIButton!
     @IBOutlet weak var removeDeliveryButton: UIButton!
     @IBOutlet weak var containerView: UIView!
-    
-    
-    
+ 
     ///Shows the total amount of deliveries sent to this location
     @IBOutlet weak var delivNumberLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    
+    var nameController: MDCTextInputControllerOutlined?
     var location : Location!
     var delivery : Delivery!
     lazy var finishedDeliveries = DeliveryController.getFinishedDeliveries(for: location)
@@ -38,7 +36,7 @@ class AddTipViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         
     }
     override func viewDidLayoutSubviews() {
@@ -46,6 +44,7 @@ class AddTipViewController: UIViewController {
         tipTextField.delegate = self
         tipTextField.keyboardType = UIKeyboardType.decimalPad
         setViews()
+       
     }
     
   

@@ -17,7 +17,7 @@ protocol AddressSearchViewControllerDelegate: class {
 
 
 class AddressSearchViewController: UIViewController {
-    @IBOutlet weak var goButton:  MDCButton!
+    @IBOutlet weak var goButton:  UIButton!
     @IBOutlet weak var newTripButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -38,9 +38,8 @@ class AddressSearchViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         searchCompleter.delegate = self
+       
         
-        
-//        MDCContainedButtonThemer.applyScheme(buttonScheme, to: goButton)
     
     }
     override func viewDidLayoutSubviews() {
@@ -118,18 +117,26 @@ class AddressSearchViewController: UIViewController {
         //Get the oldest undelivered delivery
         let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         
-        let alertController = MDCAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.")
-        let okButton = MDCAlertAction(title: "OK") { (action) in
-            self.openInMaps()
-        }
-
-        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-
-        alertController.addAction(okButton)
-        alertController.addAction(cancelButton)
-
-        present(alertController, animated:true, completion:nil)
         
+        if delivery.count > 0 {
+            let alertController = MDCAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.")
+            let okButton = MDCAlertAction(title: "OK") { (action) in
+                self.openInMaps()
+            }
+
+            let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+
+            alertController.addAction(okButton)
+            alertController.addAction(cancelButton)
+
+            present(alertController, animated:true, completion:nil)
+        }else {
+            let alertController = MDCAlertController(title: "No Deliveries Entered", message: "You must first have a destination to open the directions in Maps")
+            let okButton = MDCAlertAction(title: "OK") { (action) in}
+            alertController.addAction(okButton)
+
+            present(alertController, animated:true, completion:nil)
+        }
         
 //        let alertController = UIAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.", preferredStyle: .alert)
 //
@@ -142,6 +149,8 @@ class AddressSearchViewController: UIViewController {
 //        alertController.addAction(cancelButton)
 //        present(alertController, animated: true, completion: nil)
     }
+    
+    
     // MARK: - New Trip Alert
     /// If the user hits ok, all unfinished deliveries for this trip will be deleted, if the user hits cancel, they will not be deleted.
     func newTripAlert(currentTrip: Trip) {
@@ -282,17 +291,6 @@ extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate 
         
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 // MARK: - View Setuo

@@ -325,6 +325,7 @@
                         <outlet property="cancelButton" destination="YYy-dS-bVX" id="G7O-eh-sL1"/>
                         <outlet property="containerView" destination="rqR-7U-JA0" id="0OQ-gO-Qwk"/>
                         <outlet property="delivNumberLabel" destination="Y2E-Tx-J8C" id="Tib-eD-meT"/>
+                        <outlet property="enter" destination="Du1-S2-cQ2" id="cJg-kc-QgY"/>
                         <outlet property="okButton" destination="6ex-ea-Bq4" id="kYK-d3-tkS"/>
                         <outlet property="removeDeliveryButton" destination="wkT-4N-GBi" id="5Rm-YV-wVN"/>
                         <outlet property="tipTextField" destination="38m-UT-DeQ" id="kj8-mF-hcm"/>
@@ -449,7 +450,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" translatesAutoresizingMaskIntoConstraints="NO" id="Dch-v1-TFr">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Enter Delivery address" translatesAutoresizingMaskIntoConstraints="NO" id="Dch-v1-TFr">
                                 <rect key="frame" x="41" y="118" width="293" height="56"/>
                                 <color key="backgroundColor" red="0.9215573668" green="0.92156273129999999" blue="0.92157685759999997" alpha="0.86586257310000003" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -492,7 +493,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTA-3T-xzM">
                                 <rect key="frame" x="41" y="0.0" width="105.5" height="105.5"/>
-                                <color key="backgroundColor" red="0.89657235359999998" green="0.89657235359999998" blue="0.89657235359999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wTA-3T-xzM" secondAttribute="height" multiplier="1:1" id="sKw-0Z-THU"/>
                                 </constraints>
