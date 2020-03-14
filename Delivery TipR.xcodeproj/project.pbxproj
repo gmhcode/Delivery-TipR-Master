@@ -21,6 +21,7 @@
 		903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E296B240C7152001BED71 /* Delivery+CoreDataProperties.swift */; };
 		903E2971240C7465001BED71 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2970240C7465001BED71 /* LocationController.swift */; };
 		903E2974240C7660001BED71 /* ExtensionsAndUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */; };
+		90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90470007241C6FC2009575AE /* AdvancedViewController.swift */; };
 		9047FFA1241C327C009575AE /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047FFA0241C327C009575AE /* NavViewController.swift */; };
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
 		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
@@ -66,6 +67,7 @@
 		903E296B240C7152001BED71 /* Delivery+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Delivery+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		903E2970240C7465001BED71 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndUtilities.swift; sourceTree = "<group>"; };
+		90470007241C6FC2009575AE /* AdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
 		9047FFA0241C327C009575AE /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
@@ -181,15 +183,15 @@
 		903E2967240C663A001BED71 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				90470006241C6F7F009575AE /* Trip */,
+				90470005241C6F67009575AE /* Advanced */,
 				9052166E24105BFC0020C238 /* Views */,
 				903E2943240C6472001BED71 /* MapViewController.swift */,
 				90A5DDC024196235000DD266 /* MapViewDirections.swift */,
 				90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */,
 				905216732410658B0020C238 /* MapViewLocationManager.swift */,
 				90BD5A3324103D61006C88C8 /* TabViewController.swift */,
-				90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */,
 				9053D94F24143777004692FC /* AddTipViewController.swift */,
-				9047FFA0241C327C009575AE /* NavViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -200,6 +202,23 @@
 				903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		90470005241C6F67009575AE /* Advanced */ = {
+			isa = PBXGroup;
+			children = (
+				9047FFA0241C327C009575AE /* NavViewController.swift */,
+				90470007241C6FC2009575AE /* AdvancedViewController.swift */,
+			);
+			path = Advanced;
+			sourceTree = "<group>";
+		};
+		90470006241C6F7F009575AE /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */,
+			);
+			path = Trip;
 			sourceTree = "<group>";
 		};
 		9052166E24105BFC0020C238 /* Views */ = {
@@ -312,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9053D95024143777004692FC /* AddTipViewController.swift in Sources */,
+				90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */,
 				903E294A240C6472001BED71 /* Delivery_TipR.xcdatamodeld in Sources */,
 				903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */,
 				903E2944240C6472001BED71 /* MapViewController.swift in Sources */,

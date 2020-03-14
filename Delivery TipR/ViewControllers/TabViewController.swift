@@ -15,17 +15,17 @@ class TabViewController: UIViewController {
     @IBOutlet weak var tripsButton: UIButton!
     @IBOutlet weak var advancedButton: UIButton!
     
-    var createDeliveryViewController : AddressSearchViewController?
+    var addressSearchViewController : AddressSearchViewController?
     var navView : NavViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
   
-        createDeliveryViewController = {
+        addressSearchViewController = {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             
-            let viewController = storyboard.instantiateViewController(withIdentifier: "NewViewController") as! AddressSearchViewController
+            let viewController = storyboard.instantiateViewController(withIdentifier: "AddressSearchViewController") as! AddressSearchViewController
             
             viewController.view.frame = containerView.bounds
             viewController.delegate = MapViewController.MapVC
@@ -43,7 +43,7 @@ class TabViewController: UIViewController {
             return viewController
         }()
 //        containerView.addSubview(navView!.view)
-        containerView.addSubview(createDeliveryViewController!.view)
+        containerView.addSubview(addressSearchViewController!.view)
     }
     
  
@@ -56,7 +56,7 @@ class TabViewController: UIViewController {
         IphoneSystem.vibrate()
         if containerView.subviews.contains(navView!.view) {
             navView?.view.removeFromSuperview()
-            containerView.addSubview(createDeliveryViewController!.view)
+            containerView.addSubview(addressSearchViewController!.view)
             MapViewController.MapVC.openDrawer()
         } else {
              MapViewController.MapVC.drawerTogglePosition()
@@ -68,8 +68,8 @@ class TabViewController: UIViewController {
         IphoneSystem.vibrate()
 
         
-        if containerView.subviews.contains(createDeliveryViewController!.view) {
-            createDeliveryViewController?.view.removeFromSuperview()
+        if containerView.subviews.contains(addressSearchViewController!.view) {
+            addressSearchViewController?.view.removeFromSuperview()
             containerView.addSubview(navView!.view)
             MapViewController.MapVC.openDrawer()
         } else {

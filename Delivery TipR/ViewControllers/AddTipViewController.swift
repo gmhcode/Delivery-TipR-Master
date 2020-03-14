@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class AddTipViewController: UIViewController {
     
     @IBOutlet weak var tipTextField: UITextField!
