@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Contacts
+import MaterialComponents
 
 protocol AddressSearchViewControllerDelegate: class {
     func addPin(coord: CLLocationCoordinate2D, address: String, apt: String?, subAddress: String)
@@ -16,7 +17,7 @@ protocol AddressSearchViewControllerDelegate: class {
 
 
 class AddressSearchViewController: UIViewController {
-    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var goButton:  MDCButton!
     @IBOutlet weak var newTripButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -39,6 +40,8 @@ class AddressSearchViewController: UIViewController {
         searchCompleter.delegate = self
         
         
+//        MDCContainedButtonThemer.applyScheme(buttonScheme, to: goButton)
+    
     }
     override func viewDidLayoutSubviews() {
         buttonSetUp()
@@ -109,57 +112,105 @@ class AddressSearchViewController: UIViewController {
     ///Opens the oldest delivery's location in the apple Maps app
     func mapsAlert() {
         //Get the current trip
+        
         guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
       
         //Get the oldest undelivered delivery
         let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         
-        let alertController = UIAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.", preferredStyle: .alert)
-        
-        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+        let alertController = MDCAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.")
+        let okButton = MDCAlertAction(title: "OK") { (action) in
             self.openInMaps()
         }
-        let cancelButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
-        
+
+        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
-        present(alertController, animated: true, completion: nil)
+
+        present(alertController, animated:true, completion:nil)
+        
+        
+//        let alertController = UIAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.", preferredStyle: .alert)
+//
+//        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+//            self.openInMaps()
+//        }
+//        let cancelButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
+//
+//        alertController.addAction(okButton)
+//        alertController.addAction(cancelButton)
+//        present(alertController, animated: true, completion: nil)
     }
     // MARK: - New Trip Alert
     /// If the user hits ok, all unfinished deliveries for this trip will be deleted, if the user hits cancel, they will not be deleted.
     func newTripAlert(currentTrip: Trip) {
-        let alertController = UIAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
-            
+        
+        let alertController = MDCAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?")
+        let okButton = MDCAlertAction(title: "Yes") { (action) in
             DeliveryController.deleteUnFinDelFor(trip: currentTrip)
             self.newTripButtonTapped(self)
-            
         }
-        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
-            
-        }
+
+        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
-        present(alertController, animated: true, completion: nil)
+
+        present(alertController, animated:true, completion:nil)
+        
+        
+        
+        
+//        let alertController = UIAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?", preferredStyle: .alert)
+//        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+//
+//            DeliveryController.deleteUnFinDelFor(trip: currentTrip)
+//            self.newTripButtonTapped(self)
+//
+//        }
+//        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
+//
+//        }
+//        alertController.addAction(okButton)
+//        alertController.addAction(cancelButton)
+//        present(alertController, animated: true, completion: nil)
     }
     
     
     // MARK: - Confirm Delivery Alert
     ///Displays the confirm delivery alert
     func confirmDelivery() {
-        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
-            
+        
+        let alertController = MDCAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip")
+        let okButton = MDCAlertAction(title: "Yes") { (action) in
             guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             // MARK: - AddPin
             self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
         }
-        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
-            
-        }
+
+        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
-        present(alertController, animated: true, completion: nil)
+
+        present(alertController, animated:true, completion:nil)
+        
+        
+        
+//        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
+//        let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
+//
+//            guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//            // MARK: - AddPin
+//            self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
+//        }
+//        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
+//
+//        }
+//        alertController.addAction(okButton)
+//        alertController.addAction(cancelButton)
+//        present(alertController, animated: true, completion: nil)
     }
 }
 

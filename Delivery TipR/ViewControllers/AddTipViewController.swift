@@ -7,11 +7,16 @@
 //
 
 import UIKit
-
+//import MaterialComponents.MaterialDialogs
+//import MaterialComponents.MaterialDialogs_Theming
+//import MaterialComponents.MaterialContainerScheme
+//import MaterialComponents.MaterialTextFields
+import MaterialComponents.MaterialDialogs
 
 class AddTipViewController: UIViewController {
-    
+  
     @IBOutlet weak var tipTextField: UITextField!
+    
     @IBOutlet weak var averageTipLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -131,34 +136,74 @@ class AddTipViewController: UIViewController {
 // MARK: - Alerts
 extension AddTipViewController {
     
-    func invalidTipAmountAlert() {
-        let alertController = UIAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    
+    func alertThing() {
+        
+        
+        let alertController = MDCAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ")
+        let okButton = MDCAlertAction(title: "Ok", emphasis: .high, handler: nil)
+
+        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
-        present(alertController, animated: true, completion: nil)
+
+        present(alertController, animated:true, completion:nil)
+    }
+    
+    func invalidTipAmountAlert() {
+        
+        let alertController = MDCAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ")
+        let okButton = MDCAlertAction(title: "Ok", emphasis: .high, handler: nil)
+
+        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+
+        present(alertController, animated:true, completion:nil)
+        
+        
+//        let alertController = UIAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ", preferredStyle: .alert)
+//        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        alertController.addAction(okButton)
+//        alertController.addAction(cancelButton)
+//        present(alertController, animated: true, completion: nil)
     }
     
     func undoTappedInvalid() {
-        let alertController = UIAlertController(title: "Nothing to Undo", message: "This delivery's tip must first be confirmed, in order to undo", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        
+        let alertController = MDCAlertController(title: "Nothing to Undo", message: "This delivery's tip must first be confirmed, in order to undo")
+        let okButton = MDCAlertAction(title: "Ok", emphasis: .high, handler: nil)
         alertController.addAction(okButton)
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated:true, completion:nil)
+        
+//        let alertController = UIAlertController(title: "Nothing to Undo", message: "This delivery's tip must first be confirmed, in order to undo", preferredStyle: .alert)
+//        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//        alertController.addAction(okButton)
+//        present(alertController, animated: true, completion: nil)
     }
     
     func cannotRemoveFinishedAlert() {
-        let alertController = UIAlertController(title: "Unable to remove", message: "This delivery has already been confirmed, if you wish to remove this delivery, first tap the undo button", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        let alertController = MDCAlertController(title: "Unable to remove", message: "This delivery has already been confirmed, if you wish to remove this delivery, first tap the undo button")
+        let okButton = MDCAlertAction(title: "Ok", emphasis: .high, handler: nil)
         alertController.addAction(okButton)
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated:true, completion:nil)
+        
+//        let alertController = UIAlertController(title: "Unable to remove", message: "This delivery has already been confirmed, if you wish to remove this delivery, first tap the undo button", preferredStyle: .alert)
+//        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//        alertController.addAction(okButton)
+//        present(alertController, animated: true, completion: nil)
     }
     
 }
 
 
 // MARK: - TextField Delegate
-extension AddTipViewController : UITextFieldDelegate {
+extension AddTipViewController : UITextFieldDelegate, UITextViewDelegate {
     
 
 }
