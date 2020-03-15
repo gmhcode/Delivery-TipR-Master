@@ -15,50 +15,47 @@ class TabViewController: UIViewController {
     @IBOutlet weak var tripsButton: UIButton!
     @IBOutlet weak var advancedButton: UIButton!
     
-    var addressSearchViewController : AddressSearchViewController?
-    var navView : NavViewController?
+    lazy var addressSearchViewController : AddressSearchViewController =  {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AddressSearchViewController") as! AddressSearchViewController
+        
+        viewController.view.frame = containerView.bounds
+        viewController.delegate = MapViewController.MapVC
+        
+        return viewController
+    }()
+    lazy var navView : NavViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let viewController = storyboard.instantiateViewController(withIdentifier: "NavViewController") as! NavViewController
+        
+        viewController.view.frame = containerView.bounds
+        
+        return viewController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-  
-        addressSearchViewController = {
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            
-            let viewController = storyboard.instantiateViewController(withIdentifier: "AddressSearchViewController") as! AddressSearchViewController
-            
-            viewController.view.frame = containerView.bounds
-            viewController.delegate = MapViewController.MapVC
-            
-            return viewController
-        }()
-        navView = {
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-
-            let viewController = storyboard.instantiateViewController(withIdentifier: "NavViewController") as! NavViewController
-
-            viewController.view.frame = containerView.bounds
-//            viewController.delegate = MapViewController.MapVC
-
-            return viewController
-        }()
-        containerView.addSubview(navView!.view)
-        containerView.addSubview(addressSearchViewController!.view)
-//        navView?.view.removeFromSuperview()
+//        setupAddressSearch()
+        containerView.addSubview(addressSearchViewController.view)
         
     }
     
  
     override func viewDidLayoutSubviews() {
+       
         setupViews()
     }
     
     @IBAction func tripButtonTapped(_ sender: Any) {
         tripsButton.pulsate()
         IphoneSystem.vibrate()
-        if containerView.subviews.contains(navView!.view) {
-            navView?.view.removeFromSuperview()
-            containerView.addSubview(addressSearchViewController!.view)
+        if containerView.subviews.contains(navView.view) {
+            navView.view.removeFromSuperview()
+            containerView.addSubview(addressSearchViewController.view)
             MapViewController.MapVC.openDrawer()
         } else {
              MapViewController.MapVC.drawerTogglePosition()
@@ -66,13 +63,14 @@ class TabViewController: UIViewController {
 
     }
     @IBAction func advancedButtonTapped(_ sender: Any) {
+   
         advancedButton.pulsate()
         IphoneSystem.vibrate()
-
         
-        if containerView.subviews.contains(addressSearchViewController!.view) {
-            addressSearchViewController?.view.removeFromSuperview()
-            containerView.addSubview(navView!.view)
+        if containerView.subviews.contains(addressSearchViewController.view) {
+            addressSearchViewController.view.removeFromSuperview()
+//            setupNav()
+            containerView.addSubview(navView.view)
             MapViewController.MapVC.openDrawer()
         } else {
              MapViewController.MapVC.drawerTogglePosition()
@@ -81,18 +79,35 @@ class TabViewController: UIViewController {
         
         
     }
-    func navContstraints() {
-        if navView?.view != nil {
-            guard let superView = navView?.view.superview else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
-            navView?.view.translatesAutoresizingMaskIntoConstraints = true
-            navView?.view.topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
-            navView?.view.leadingAnchor.constraint(equalTo: superView.leadingAnchor).isActive = true
-            navView?.view.trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
-            navView?.view.bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
-        }
-    }
     
+//    func setupAddressSearch() {
+//        guard addressSearchViewController == nil else{return}
+//        if addressSearchViewController != nil{return}
+//        addressSearchViewController = {
+//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "AddressSearchViewController") as! AddressSearchViewController
+//
+//            viewController.view.frame = containerView.bounds
+//            viewController.delegate = MapViewController.MapVC
+//
+//            return viewController
+//        }()
+//    }
+//
+//    func setupNav() {
+//        guard navView == nil else{return}
+//        navView = {
+//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "NavViewController") as! NavViewController
+//
+//            viewController.view.frame = containerView.bounds
+//
+//            return viewController
+//        }()
+//    }
     
     func setupViews() {
         pullTabView.layer.borderWidth = 2

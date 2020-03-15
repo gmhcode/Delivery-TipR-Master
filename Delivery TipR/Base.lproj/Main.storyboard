@@ -406,7 +406,7 @@
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRL-cu-N4s">
                                 <rect key="frame" x="0.0" y="74" width="375" height="593"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="0.68252354449999997" colorSpace="custom" customColorSpace="displayP3"/>
@@ -420,7 +420,7 @@
                             <constraint firstItem="3P9-el-pBM" firstAttribute="trailing" secondItem="chM-Sf-EZw" secondAttribute="trailing" id="INq-lK-ba9"/>
                             <constraint firstItem="ke1-ml-EbV" firstAttribute="centerX" secondItem="chM-Sf-EZw" secondAttribute="centerX" multiplier="0.5" id="TFI-er-hif"/>
                             <constraint firstItem="ke1-ml-EbV" firstAttribute="width" secondItem="chM-Sf-EZw" secondAttribute="width" multiplier="0.362319" id="ZtJ-im-A9U"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="tRL-cu-N4s" secondAttribute="bottom" id="eF6-9H-Vho"/>
+                            <constraint firstAttribute="bottom" secondItem="tRL-cu-N4s" secondAttribute="bottom" id="eF6-9H-Vho"/>
                             <constraint firstItem="3P9-el-pBM" firstAttribute="height" secondItem="chM-Sf-EZw" secondAttribute="height" multiplier="0.0647321" constant="-28.000000000000007" id="fOW-9T-M3E"/>
                             <constraint firstItem="tRL-cu-N4s" firstAttribute="leading" secondItem="chM-Sf-EZw" secondAttribute="leading" id="hVK-D1-5m4"/>
                             <constraint firstItem="tRL-cu-N4s" firstAttribute="trailing" secondItem="chM-Sf-EZw" secondAttribute="trailing" id="ky4-TF-CoQ"/>
