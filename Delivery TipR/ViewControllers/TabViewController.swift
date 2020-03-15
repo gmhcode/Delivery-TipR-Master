@@ -34,16 +34,17 @@ class TabViewController: UIViewController {
         }()
         navView = {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            
+
             let viewController = storyboard.instantiateViewController(withIdentifier: "NavViewController") as! NavViewController
-            
+
             viewController.view.frame = containerView.bounds
 //            viewController.delegate = MapViewController.MapVC
-            
+
             return viewController
         }()
-//        containerView.addSubview(navView!.view)
+        containerView.addSubview(navView!.view)
         containerView.addSubview(addressSearchViewController!.view)
+        
     }
     
  

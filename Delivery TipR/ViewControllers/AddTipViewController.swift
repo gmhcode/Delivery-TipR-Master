@@ -36,7 +36,7 @@ class AddTipViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
     }
     override func viewDidLayoutSubviews() {
@@ -215,6 +215,7 @@ extension AddTipViewController {
         delivNumberLabel.text = "\(finishedDeliveries.count)"
         
         addressLabel.text = location.address
+        addressLabel.adjustsFontSizeToFitWidth = true
         okButton.setTitle("Confirm Amount", for: .normal)
         
         containerView.layer.borderWidth = 1
