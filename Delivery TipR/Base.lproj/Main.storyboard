@@ -406,7 +406,7 @@
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRL-cu-N4s">
                                 <rect key="frame" x="0.0" y="74" width="375" height="593"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="0.68252354449999997" colorSpace="custom" customColorSpace="displayP3"/>
@@ -596,8 +596,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UM1-Jg-6XM">
+                                <rect key="frame" x="31" y="501" width="89" height="34"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" History" image="clock.fill" catalog="system">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYE-HL-aNT">
+                                <rect key="frame" x="142" y="500" width="89" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" History" image="clock.fill" catalog="system">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBR-0q-r8i">
+                                <rect key="frame" x="254" y="501" width="89" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" History" image="clock.fill" catalog="system">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6w-lW-u1u">
+                                <rect key="frame" x="43" y="561" width="77" height="34"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" History" image="clock.fill" catalog="system">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWY-RS-8aO">
+                                <rect key="frame" x="142" y="560" width="89" height="34"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" History" image="clock.fill" catalog="system">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c41-Rj-TIY">
+                                <rect key="frame" x="254" y="560" width="89" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" History" image="clock.fill" catalog="system">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eOJ-zV-gdN">
+                                <rect key="frame" x="31" y="59" width="313" height="41"/>
+                                <segments>
+                                    <segment title="Today"/>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                    <segment title="Year"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OpZ-sd-jA1">
-                                <rect key="frame" x="31" y="53" width="313" height="330"/>
+                                <rect key="frame" x="31" y="107" width="313" height="330"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IK-yW-otR">
                                         <rect key="frame" x="98" y="8" width="117" height="44"/>
@@ -715,82 +782,24 @@
                                     <constraint firstItem="AcV-IN-baN" firstAttribute="height" secondItem="OpZ-sd-jA1" secondAttribute="height" multiplier="0.704545" id="hXi-3T-bBc"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UM1-Jg-6XM">
-                                <rect key="frame" x="31" y="405" width="89" height="34"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" History" image="clock.fill" catalog="system">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYE-HL-aNT">
-                                <rect key="frame" x="143" y="404" width="89" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" History" image="clock.fill" catalog="system">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBR-0q-r8i">
-                                <rect key="frame" x="255" y="405" width="89" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" History" image="clock.fill" catalog="system">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6w-lW-u1u">
-                                <rect key="frame" x="31" y="465" width="89" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" History" image="clock.fill" catalog="system">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWY-RS-8aO">
-                                <rect key="frame" x="143" y="464" width="89" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" History" image="clock.fill" catalog="system">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c41-Rj-TIY">
-                                <rect key="frame" x="255" y="464" width="89" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" History" image="clock.fill" catalog="system">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3A-xf-V3l">
-                                <rect key="frame" x="0.0" y="550" width="375" height="70"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="0.39948830409356723" alpha="0.78184393274853803" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="n3A-xf-V3l" firstAttribute="height" secondItem="VAS-6v-13B" secondAttribute="height" multiplier="0.104948" id="15e-fb-KTE"/>
                             <constraint firstItem="UM1-Jg-6XM" firstAttribute="width" secondItem="VAS-6v-13B" secondAttribute="width" multiplier="0.221333" constant="6" id="20C-5V-Yzf"/>
                             <constraint firstItem="UM1-Jg-6XM" firstAttribute="leading" secondItem="ZQ3-ak-Y6j" secondAttribute="leading" constant="31" id="5BH-iB-mPp"/>
                             <constraint firstItem="OpZ-sd-jA1" firstAttribute="height" secondItem="VAS-6v-13B" secondAttribute="height" multiplier="0.494753" id="Brq-51-xNy"/>
-                            <constraint firstItem="UM1-Jg-6XM" firstAttribute="top" secondItem="OpZ-sd-jA1" secondAttribute="bottom" constant="22" id="Gal-Dk-QEd"/>
+                            <constraint firstItem="UM1-Jg-6XM" firstAttribute="top" secondItem="OpZ-sd-jA1" secondAttribute="bottom" constant="64" id="Gal-Dk-QEd"/>
                             <constraint firstItem="OpZ-sd-jA1" firstAttribute="width" secondItem="VAS-6v-13B" secondAttribute="width" multiplier="0.834667" id="Gso-Po-TX3"/>
-                            <constraint firstItem="OpZ-sd-jA1" firstAttribute="top" secondItem="ZQ3-ak-Y6j" secondAttribute="top" constant="9" id="bme-Rr-r4j"/>
+                            <constraint firstItem="CWY-RS-8aO" firstAttribute="leading" secondItem="j6w-lW-u1u" secondAttribute="trailing" constant="22" id="N5C-GJ-nO0"/>
+                            <constraint firstItem="eOJ-zV-gdN" firstAttribute="leading" secondItem="OpZ-sd-jA1" secondAttribute="leading" id="XBk-B8-Gk8"/>
+                            <constraint firstItem="j6w-lW-u1u" firstAttribute="top" secondItem="UM1-Jg-6XM" secondAttribute="bottom" constant="26" id="aL7-Mx-AlJ"/>
+                            <constraint firstItem="ZQ3-ak-Y6j" firstAttribute="bottom" secondItem="j6w-lW-u1u" secondAttribute="bottom" constant="72" id="b3T-CB-ftf"/>
+                            <constraint firstItem="eOJ-zV-gdN" firstAttribute="trailing" secondItem="OpZ-sd-jA1" secondAttribute="trailing" id="bbg-G0-Bnl"/>
+                            <constraint firstItem="OpZ-sd-jA1" firstAttribute="top" secondItem="ZQ3-ak-Y6j" secondAttribute="top" constant="63" id="bme-Rr-r4j"/>
+                            <constraint firstItem="eOJ-zV-gdN" firstAttribute="top" secondItem="ZQ3-ak-Y6j" secondAttribute="top" constant="15" id="eEo-cF-WjT"/>
                             <constraint firstItem="UM1-Jg-6XM" firstAttribute="height" secondItem="VAS-6v-13B" secondAttribute="height" multiplier="0.047976" constant="2" id="gBW-M3-TWF"/>
-                            <constraint firstItem="ZQ3-ak-Y6j" firstAttribute="bottom" secondItem="n3A-xf-V3l" secondAttribute="bottom" constant="47" id="niW-my-1y5"/>
-                            <constraint firstItem="n3A-xf-V3l" firstAttribute="centerX" secondItem="ZQ3-ak-Y6j" secondAttribute="centerX" id="oq5-g7-4JD"/>
-                            <constraint firstItem="n3A-xf-V3l" firstAttribute="width" secondItem="VAS-6v-13B" secondAttribute="width" id="xny-tn-QAo"/>
+                            <constraint firstItem="j6w-lW-u1u" firstAttribute="trailing" secondItem="UM1-Jg-6XM" secondAttribute="trailing" id="jxK-3a-Xwr"/>
+                            <constraint firstItem="eOJ-zV-gdN" firstAttribute="height" secondItem="VAS-6v-13B" secondAttribute="height" multiplier="0.06" id="uuE-wZ-mDY"/>
                             <constraint firstItem="OpZ-sd-jA1" firstAttribute="centerX" secondItem="ZQ3-ak-Y6j" secondAttribute="centerX" id="ymT-Q3-RRS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZQ3-ak-Y6j"/>
@@ -802,7 +811,6 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="p4k-8f-Avb"/>
                     <connections>
-                        <outlet property="picketView" destination="n3A-xf-V3l" id="SGT-51-dgv"/>
                         <outlet property="tripInfoView" destination="OpZ-sd-jA1" id="Bsm-hA-TRE"/>
                     </connections>
                 </viewController>

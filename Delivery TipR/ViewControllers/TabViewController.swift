@@ -44,6 +44,7 @@ class TabViewController: UIViewController {
         }()
         containerView.addSubview(navView!.view)
         containerView.addSubview(addressSearchViewController!.view)
+//        navView?.view.removeFromSuperview()
         
     }
     
@@ -80,7 +81,17 @@ class TabViewController: UIViewController {
         
         
     }
+    func navContstraints() {
+        if navView?.view != nil {
+            guard let superView = navView?.view.superview else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
+            navView?.view.translatesAutoresizingMaskIntoConstraints = true
+            navView?.view.topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
+            navView?.view.leadingAnchor.constraint(equalTo: superView.leadingAnchor).isActive = true
+            navView?.view.trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
+            navView?.view.bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
+        }
+    }
     
     
     func setupViews() {

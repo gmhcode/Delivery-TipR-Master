@@ -10,7 +10,6 @@ import UIKit
 
 class AdvancedViewController: UIViewController {
     
-//    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tripInfoView: UIView!
     
     @IBOutlet weak var picketView: UIPickerView!
@@ -22,9 +21,11 @@ class AdvancedViewController: UIViewController {
 //        tableView.dataSource = self
         
         
+        
 
     }
     override func viewDidLayoutSubviews() {
+        
         setupViews()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +36,9 @@ class AdvancedViewController: UIViewController {
     }
     
 }
+
+
+
 //extension AdvancedViewController: UITableViewDelegate, UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return 10

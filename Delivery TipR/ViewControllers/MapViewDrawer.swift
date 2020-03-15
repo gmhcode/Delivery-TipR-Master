@@ -94,7 +94,7 @@ extension MapViewController {
         if drawerView.frame.maxY < self.view.frame.maxY {
             
             // the /2 slows down then ability for the user to keep swiping past a certain point
-            drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y / 2
+            drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y / 100
             
         } else {
             drawerView.center.y += drawerPanGestureRecognizer.translation(in: drawerView).y
@@ -121,12 +121,15 @@ extension MapViewController {
         // Sets target locations of views & then animates.
         let target = topDrawerTarget
         self.userInteractionAnimate(view: self.drawerView, edge: self.drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y)
+        
+        drawerIsOpen = true
     }
     
     func closeDrawer() {
         let target = bottomDrawerTarget
         self.userInteractionAnimate(view: drawerView, edge: drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y)
         self.tabViewController?.addressSearchViewController?.dismissKeyboard()
+        drawerIsOpen = false
         
     }
     fileprivate func userInteractionAnimate(view: UIView, edge: CGFloat, to target: CGFloat, velocity: CGFloat) {

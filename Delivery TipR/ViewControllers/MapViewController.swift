@@ -24,7 +24,7 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     var selectedLocation = Location()
     var selectedDelivery = Delivery()
-    
+    var drawerIsOpen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
