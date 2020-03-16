@@ -11,17 +11,14 @@ import UIKit
 class AdvancedViewController: UIViewController {
     
     @IBOutlet weak var tripInfoView: UIView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var viewTitle: UILabel!
     
-    @IBOutlet weak var picketView: UIPickerView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.delegate = self
-//        tableView.dataSource = self
-        
-        
-        
+
 
     }
     override func viewDidLayoutSubviews() {
@@ -34,6 +31,22 @@ class AdvancedViewController: UIViewController {
         
         
     }
+    
+    @IBAction func segmentChanged(_ sender: Any) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0 :
+            viewTitle.text = segmentControl.titleForSegment(at: 0)
+            segmentControl.sele
+            break
+        case 1:
+            viewTitle.text = segmentControl.titleForSegment(at: 1)
+            break
+        default :
+            break
+        }
+    }
+    
+    
     
 }
 
@@ -60,9 +73,8 @@ extension AdvancedViewController {
         navigationController?.navigationBar.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         navigationController?.navigationBar.layer.borderWidth = 1
         navigationController?.navigationBar.backgroundColor = .black
-        navigationController?.navigationBar.layer.cornerRadius = 10
         navigationController?.navigationBar.clipsToBounds = true
-        
+
 //        tableView.layer.cornerRadius = 10
 //        tableView.layer.borderWidth = 1
 //        tableView.layer.borderColor = #colorLiteral(red: 0.1456923485, green: 0.1448334754, blue: 0.1463571787, alpha: 1)

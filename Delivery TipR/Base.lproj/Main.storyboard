@@ -661,7 +661,10 @@
                                     <segment title="Month"/>
                                     <segment title="Year"/>
                                 </segments>
-                                <color key="selectedSegmentTintColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="selectedSegmentTintColor" white="0.93999999999999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="R69-mh-VQO" eventType="valueChanged" id="34j-JW-ri0"/>
+                                </connections>
                             </segmentedControl>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OpZ-sd-jA1">
                                 <rect key="frame" x="31" y="107" width="313" height="330"/>
@@ -783,7 +786,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.39948830409356723" alpha="0.78184393274853803" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UM1-Jg-6XM" firstAttribute="width" secondItem="VAS-6v-13B" secondAttribute="width" multiplier="0.221333" constant="6" id="20C-5V-Yzf"/>
                             <constraint firstItem="UM1-Jg-6XM" firstAttribute="leading" secondItem="ZQ3-ak-Y6j" secondAttribute="leading" constant="31" id="5BH-iB-mPp"/>
@@ -811,7 +814,9 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="p4k-8f-Avb"/>
                     <connections>
+                        <outlet property="segmentControl" destination="eOJ-zV-gdN" id="Yiv-rz-Oc6"/>
                         <outlet property="tripInfoView" destination="OpZ-sd-jA1" id="Bsm-hA-TRE"/>
+                        <outlet property="viewTitle" destination="3IK-yW-otR" id="KSy-LY-MVt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xb4-BD-F0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
