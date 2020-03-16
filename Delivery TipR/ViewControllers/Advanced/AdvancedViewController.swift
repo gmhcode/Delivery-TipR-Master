@@ -11,7 +11,7 @@ import UIKit
 
 class AdvancedViewController: UIViewController {
     
-    @IBOutlet weak var tripInfoView: UIView!
+    @IBOutlet weak var tripInfoView: AdvancedDisplayView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var viewTitle: UILabel!
     
@@ -19,6 +19,7 @@ class AdvancedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tripInfoView.tripCountView.text = "Hello"
 
     }
     override func viewDidLayoutSubviews() {
@@ -32,6 +33,13 @@ class AdvancedViewController: UIViewController {
         
         
     }
+    func setupTripInfoView() {
+//        Date().
+        
+        
+        
+    }
+    
     
     @IBAction func segmentChanged(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {

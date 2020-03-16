@@ -21,7 +21,7 @@ class DeliveryController {
         delivery.locationId = location.id
         delivery.isFinished = 0
         delivery.tripId = trip.id
-        delivery.date = Date()
+        delivery.date = Date().timeIntervalSince1970 
         print(delivery.tipAmonut, " ❗️")
         persistentManager.saveContext()
         

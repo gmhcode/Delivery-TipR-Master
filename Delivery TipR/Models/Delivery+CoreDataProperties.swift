@@ -24,6 +24,6 @@ extension Delivery {
     /// 0 is false 1 is true
     @NSManaged public var isFinished : Int16
     @NSManaged public var tripId : String
-    @NSManaged public var date : Date
+    @NSManaged public var date : Double
 
 }

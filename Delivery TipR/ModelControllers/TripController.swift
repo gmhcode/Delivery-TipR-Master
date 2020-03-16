@@ -22,7 +22,7 @@ class TripController {
         
         //Set a new current trip
         let trip = Trip(context: persistentManager.context)
-        trip.date = Date()
+        trip.date = Date().timeIntervalSince1970
         trip.id = UUID().uuidString
         trip.isCurrent = 1
         persistentManager.saveContext()

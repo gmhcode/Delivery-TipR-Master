@@ -644,7 +644,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c41-Rj-TIY">
-                                <rect key="frame" x="254" y="560" width="89" height="34"/>
+                                <rect key="frame" x="254" y="553" width="89" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -667,7 +667,7 @@
                                     <action selector="segmentChanged:" destination="R69-mh-VQO" eventType="valueChanged" id="34j-JW-ri0"/>
                                 </connections>
                             </segmentedControl>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OpZ-sd-jA1">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OpZ-sd-jA1" customClass="AdvancedDisplayView" customModule="Delivery_TipR" customModuleProvider="target">
                                 <rect key="frame" x="31" y="107" width="313" height="330"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IK-yW-otR">
@@ -785,6 +785,9 @@
                                     <constraint firstItem="3IK-yW-otR" firstAttribute="width" secondItem="OpZ-sd-jA1" secondAttribute="width" multiplier="0.373802" id="eUm-PC-BrL"/>
                                     <constraint firstItem="AcV-IN-baN" firstAttribute="height" secondItem="OpZ-sd-jA1" secondAttribute="height" multiplier="0.704545" id="hXi-3T-bBc"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="tripCountView" destination="68N-Un-FaM" id="EPk-td-vVS"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -822,7 +825,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xb4-BD-F0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3383" y="815"/>
+            <point key="canvasLocation" x="3381.5999999999999" y="814.54272863568224"/>
         </scene>
         <!--Nav View Controller-->
         <scene sceneID="IIv-3k-324">

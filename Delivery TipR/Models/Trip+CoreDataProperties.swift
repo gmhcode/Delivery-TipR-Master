@@ -18,6 +18,7 @@ extension Trip {
     }
 
     @NSManaged public var id: String
-    @NSManaged public var date: Date
+    @NSManaged public var date: Double
     @NSManaged public var isCurrent: Int16
+    @NSManaged public var thing : Double
 }

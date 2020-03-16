@@ -76,6 +76,7 @@
 		903E2970240C7465001BED71 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndUtilities.swift; sourceTree = "<group>"; };
 		904217642420339600F67287 /* AdvancedDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedDisplayView.swift; sourceTree = "<group>"; };
+		9042176624203B3F00F67287 /* Delivery_TipR 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Delivery_TipR 2.xcdatamodel"; sourceTree = "<group>"; };
 		90470007241C6FC2009575AE /* AdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
 		9047FFA0241C327C009575AE /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
@@ -733,6 +734,7 @@
 		903E2948240C6472001BED71 /* Delivery_TipR.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9042176624203B3F00F67287 /* Delivery_TipR 2.xcdatamodel */,
 				903E2949240C6472001BED71 /* Delivery_TipR.xcdatamodel */,
 			);
 			currentVersion = 903E2949240C6472001BED71 /* Delivery_TipR.xcdatamodel */;
