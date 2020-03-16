@@ -22,8 +22,8 @@ class MapViewController: UIViewController {
     lazy var topDrawerTarget = self.view.frame.maxY / 9
     lazy var bottomDrawerTarget = self.view.frame.maxY * 0.9
     let locationManager = CLLocationManager()
-    var selectedLocation = Location()
-    var selectedDelivery = Delivery()
+    var selectedLocation : Location!
+    var selectedDelivery : Delivery!
     var drawerIsOpen = false
     
     override func viewDidLoad() {

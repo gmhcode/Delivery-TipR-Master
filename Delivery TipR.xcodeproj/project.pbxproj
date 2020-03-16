@@ -23,6 +23,7 @@
 		903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E296B240C7152001BED71 /* Delivery+CoreDataProperties.swift */; };
 		903E2971240C7465001BED71 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2970240C7465001BED71 /* LocationController.swift */; };
 		903E2974240C7660001BED71 /* ExtensionsAndUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */; };
+		904217652420339600F67287 /* AdvancedDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904217642420339600F67287 /* AdvancedDisplayView.swift */; };
 		90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90470007241C6FC2009575AE /* AdvancedViewController.swift */; };
 		9047FFA1241C327C009575AE /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047FFA0241C327C009575AE /* NavViewController.swift */; };
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
@@ -74,6 +75,7 @@
 		903E296B240C7152001BED71 /* Delivery+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Delivery+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		903E2970240C7465001BED71 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndUtilities.swift; sourceTree = "<group>"; };
+		904217642420339600F67287 /* AdvancedDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedDisplayView.swift; sourceTree = "<group>"; };
 		90470007241C6FC2009575AE /* AdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
 		9047FFA0241C327C009575AE /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				9052166F24105C110020C238 /* Views.swift */,
+				904217642420339600F67287 /* AdvancedDisplayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				9053D95024143777004692FC /* AddTipViewController.swift in Sources */,
 				90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */,
 				903E294A240C6472001BED71 /* Delivery_TipR.xcdatamodeld in Sources */,
+				904217652420339600F67287 /* AdvancedDisplayView.swift in Sources */,
 				903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */,
 				903E2944240C6472001BED71 /* MapViewController.swift in Sources */,
 				903E296D240C7152001BED71 /* Location+CoreDataProperties.swift in Sources */,

@@ -35,16 +35,20 @@ class AdvancedViewController: UIViewController {
     
     @IBAction func segmentChanged(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {
+            //Today
         case 0 :
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             
             break
+            //This Week
         case 1:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             break
+            //This Month
         case 2:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             break
+            //This Year
         case 3:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             break

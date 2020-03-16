@@ -21,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DeliveryController.deleteALLDeliveries()
         //If there are no current trips, make one
         if  TripController.getCurrentTrip() == nil {
-           let _ = TripController.createNewTrip()
+            let _ = TripController.createNewTrip()
         }
+       
         return true
     }
 
