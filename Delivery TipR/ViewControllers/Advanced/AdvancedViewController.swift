@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class AdvancedViewController: UIViewController {
     
     @IBOutlet weak var tripInfoView: UIView!
@@ -19,11 +20,11 @@ class AdvancedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
     }
     override func viewDidLayoutSubviews() {
         
         setupViews()
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -35,11 +36,17 @@ class AdvancedViewController: UIViewController {
     @IBAction func segmentChanged(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {
         case 0 :
-            viewTitle.text = segmentControl.titleForSegment(at: 0)
-            segmentControl.sele
+            viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+            
             break
         case 1:
-            viewTitle.text = segmentControl.titleForSegment(at: 1)
+            viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+            break
+        case 2:
+            viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+            break
+        case 3:
+            viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             break
         default :
             break

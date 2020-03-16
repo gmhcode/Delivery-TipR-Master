@@ -43,7 +43,7 @@ class DeliveryController {
         
         do {
             let deliveries = try persistentManager.context.fetch(request)
-            print(deliveries,"getTripDeliveries ❇️")
+//            print(deliveries,"getTripDeliveries ❇️")
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
@@ -59,7 +59,7 @@ class DeliveryController {
         
         do {
             let deliveries = try persistentManager.context.fetch(request)
-            print(deliveries,"getTripDeliveries ❇️")
+//            print(deliveries,"getTripDeliveries ❇️")
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")

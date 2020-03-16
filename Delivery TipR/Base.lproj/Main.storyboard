@@ -655,6 +655,7 @@
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eOJ-zV-gdN">
                                 <rect key="frame" x="31" y="59" width="313" height="41"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <segments>
                                     <segment title="Today"/>
                                     <segment title="Week"/>
@@ -821,7 +822,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xb4-BD-F0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3320.8000000000002" y="814.54272863568224"/>
+            <point key="canvasLocation" x="3383" y="815"/>
         </scene>
         <!--Nav View Controller-->
         <scene sceneID="IIv-3k-324">

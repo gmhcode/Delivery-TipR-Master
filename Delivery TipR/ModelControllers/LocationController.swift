@@ -56,7 +56,7 @@ class LocationController {
     static func getALLLocations() -> [Location] {
         let persistentManager = PersistenceManager.shared
         let locations = persistentManager.fetch(Location.self)
-        print(locations.count, " getALLLocations ⚡️")
+//        print(locations.count, " getALLLocations ⚡️")
         return locations
     }
     
@@ -90,7 +90,7 @@ class LocationController {
         for i in locations {
             persistentManager.delete(i)
         }
-        print("locations Delete ⛽️")
+//        print("locations Delete ⛽️")
         printLocation()
         persistentManager.saveContext()
     }

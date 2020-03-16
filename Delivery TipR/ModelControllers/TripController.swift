@@ -52,7 +52,7 @@ class TripController {
     private func getAllTrips() -> [Trip] {
         let persistentManager = PersistenceManager.shared
         let trips = persistentManager.fetch(Trip.self)
-        print(trips.count, "Trips ♊️")
+//        print(trips.count, "Trips ♊️")
         return trips
     }
     func deleteTrips() {
