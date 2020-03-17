@@ -39,7 +39,6 @@ class AddressSearchViewController: UIViewController {
         searchBar.delegate = self
         searchCompleter.delegate = self
        
-        TestFuncs.setUpTestDeliveries()
         
     
     }

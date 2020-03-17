@@ -15,30 +15,32 @@ class AdvancedViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var viewTitle: UILabel!
     
-    
+    var deliveries : [Delivery]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tripInfoView.tripCountView.text = "Hello"
+        
 
     }
     override func viewDidLayoutSubviews() {
         
         setupViews()
         
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
+        deliveries = TestFuncs.setUpTestDeliveries()
         
     }
     func setupTripInfoView() {
-//        Date().
-        
+
         
         
     }
+    
     
     
     @IBAction func segmentChanged(_ sender: Any) {
@@ -46,7 +48,10 @@ class AdvancedViewController: UIViewController {
             //Today
         case 0 :
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+            guard let deliveries = DeliveryController.fetchTodaysDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            let todaysDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInToday})
             
+            tripInfoView.deliveries = todaysDeliveries
             break
             //This Week
         case 1:
@@ -64,7 +69,9 @@ class AdvancedViewController: UIViewController {
             break
         }
     }
-    
+    func advancedDisplaySetup() {
+        
+    }
     
     
 }

@@ -10,6 +10,10 @@ import Foundation
 import CoreData
 
 class DeliveryController {
+    static let secondsInYear : Double = 31536000
+    static let secondsInMonth : Double = 2592000
+    static let secondsInWeek : Double = 604800
+    static let secondsInDay : Double = 86400
     
     ///Creates a delivery with the address as the same address as the location
     static func createDelivery(for location: Location, trip: Trip) -> Delivery {
@@ -113,6 +117,22 @@ class DeliveryController {
             return []
         }
     }
+    static func fetchTodaysDeliveries() -> [Delivery]? {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let date = Date().timeIntervalSince1970 - secondsInDay
+        let predicate = NSPredicate(format: "date >= \(date)")
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return nil
+        }
+    }
+    
     ///Gets all the finished deliveries for a location
     static func getFinishedDeliveries(for location: Location) -> [Delivery] {
         
@@ -137,7 +157,7 @@ class DeliveryController {
         delivery.isFinished = 1
         delivery.tipAmonut = tipAmount
         persistentManager.saveContext()
-        print(delivery.isFinished, " finished Delivery with address \(delivery.address)")
+//        print(delivery.isFinished, " finished Delivery with address \(delivery.address)")
         return delivery
     }
     

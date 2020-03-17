@@ -70,6 +70,8 @@ class TabViewController: UIViewController {
         if containerView.subviews.contains(addressSearchViewController.view) {
             addressSearchViewController.view.removeFromSuperview()
 //            setupNav()
+            let advancedVC = navView.viewControllers[0] as? AdvancedViewController
+            advancedVC?.setupTripInfoView()
             containerView.addSubview(navView.view)
             MapViewController.MapVC.openDrawer()
         } else {

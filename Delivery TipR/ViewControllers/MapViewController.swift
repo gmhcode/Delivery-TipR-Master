@@ -33,6 +33,7 @@ class MapViewController: UIViewController {
         setDelegates()
         setDrawerFunctionality()
         checkLocationServices()
+         #warning("UNCOMMENT DIRECTIONS")
 //        directions()
         
     }
@@ -132,7 +133,8 @@ extension MapViewController: AddressSearchViewControllerDelegate {
 //        mapView.removeAnnotation(annotation)
 //        mapView.addAnnotation(annotation)
         tableView.reloadData()
-        directions()
+            #warning("UNCOMMENT DIRECTIONS")
+//        directions()
         }
     }
     // MARK: - Create Annotation
@@ -167,7 +169,8 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         let deliveries = DeliveryController.getTripDeliveries(trip: trip)
         //If there are no deliveries, hide the tableView
         tableView.isHidden = deliveries.count == 0 ? true : false
-        directions()
+        #warning("UnComment Directions")
+//        directions()
         return deliveries.count
     }
     

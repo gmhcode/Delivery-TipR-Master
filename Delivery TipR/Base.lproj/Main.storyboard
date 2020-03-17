@@ -786,6 +786,10 @@
                                     <constraint firstItem="AcV-IN-baN" firstAttribute="height" secondItem="OpZ-sd-jA1" secondAttribute="height" multiplier="0.704545" id="hXi-3T-bBc"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="avgDeliveryTipLabel" destination="1qZ-Ec-nSv" id="gJs-A4-yMw"/>
+                                    <outlet property="avgTripTipLabel" destination="w5f-S9-Saj" id="x8P-IQ-bto"/>
+                                    <outlet property="deliveryCountLabel" destination="pbM-gE-rH5" id="Y4S-eA-w9f"/>
+                                    <outlet property="totalTipsLabel" destination="clL-7N-sLE" id="B8c-kP-a0y"/>
                                     <outlet property="tripCountView" destination="68N-Un-FaM" id="EPk-td-vVS"/>
                                 </connections>
                             </view>

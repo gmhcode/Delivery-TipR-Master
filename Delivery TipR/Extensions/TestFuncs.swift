@@ -20,21 +20,39 @@ struct TestFuncs {
     static func setUpTestDeliveries() -> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let deliveries = persistentManager.fetch(Delivery.self)
+        var thisYear : [Any] = []
+        var thisMonth : [Any] = []
+        var thisWeek : [Any] = []
+        var today: [Any] = []
+       
         print(deliveries.count, "DeliveryCount 🎷")
         for (index,delivery) in deliveries.enumerated() {
             let finishedD = DeliveryController.finishDelivery(delivery: delivery, tipAmount: Float(index))
             if index % 5 == 0 {
-                finishedD.date -= secondsInYear
+                
+                finishedD.date -= secondsInYear - secondsInMonth
+                thisYear.append(delivery)
+                
             }
             else if index % 3 == 0 {
-                finishedD.date -= secondsInMonth
+                
+                finishedD.date -= secondsInMonth - secondsInDay
+                thisMonth.append(delivery)
+                
             }
             else if index % 2 == 0 {
-                finishedD.date -= secondsInWeek
+                finishedD.date -= secondsInWeek - secondsInDay
+                thisWeek.append(delivery)
+                
             } else {
-                finishedD.date -= secondsInDay
+                today.append(delivery)
+                
             }
         }
+        print("this Year Deliveries 🧗🏾 ", thisYear.count)
+        print("this day Deliveries 🧩 ", today.count)
+        print("this week Deliveries 🎰 ", thisWeek.count)
+        print("this month Deliveries 🎳 ", thisMonth.count)
         persistentManager.saveContext()
         return deliveries
     }
