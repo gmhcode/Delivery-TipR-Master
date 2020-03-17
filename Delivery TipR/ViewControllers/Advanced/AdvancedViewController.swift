@@ -32,7 +32,7 @@ class AdvancedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        deliveries = TestFuncs.setUpTestDeliveries()
+//        deliveries = TestFuncs.setUpTestDeliveries()
         
     }
     func setupTripInfoView() {
