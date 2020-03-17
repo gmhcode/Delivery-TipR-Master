@@ -9,6 +9,14 @@
 
 import UIKit
 
+func getAverageTipString(deliveries: [Delivery]) -> String {
+    let average = Double(deliveries.map({$0.tipAmonut}).reduce(0,+) / Float(deliveries.count)).doubleToMoneyString()
+    return average
+}
+func getAverageTip(deliveries:[Delivery]) -> Double {
+    let average = Double(deliveries.map({$0.tipAmonut}).reduce(0,+) / Float(deliveries.count))
+    return average
+}
 
 extension Double {
     func doubleToMoneyString() -> String {

@@ -28,8 +28,21 @@ class TripController {
         persistentManager.saveContext()
         return trip
     }
-  
-    
+    ///Get Trip from delivery
+    static func getTrip(from tripId: String) -> [Trip] {
+          let persistentManager = PersistenceManager.shared
+          let request : NSFetchRequest<Trip> = Trip.fetchRequest()
+          let predicate = NSPredicate(format: "id == %@", tripId)
+          request.predicate = predicate
+          
+          do {
+              let trips = try persistentManager.context.fetch(request)
+              return trips
+          } catch  {
+              print("array could not be retrieved \(error)")
+              return []
+          }
+      }
     
     ///Fetches and returns the current Trip, if there is no current trip
     static func getCurrentTrip() -> Trip? {
