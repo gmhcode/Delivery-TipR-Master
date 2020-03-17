@@ -33,7 +33,7 @@ class MapViewController: UIViewController {
         setDelegates()
         setDrawerFunctionality()
         checkLocationServices()
-        directions()
+//        directions()
         
     }
     

@@ -39,6 +39,7 @@ class AddressSearchViewController: UIViewController {
         searchBar.delegate = self
         searchCompleter.delegate = self
        
+        TestFuncs.setUpTestDeliveries()
         
     
     }
@@ -206,7 +207,7 @@ class AddressSearchViewController: UIViewController {
         present(alertController, animated:true, completion:nil)
         
         
-        
+//
 //        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
 //        let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
 //
@@ -237,6 +238,8 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
+        
+        TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
         
         return cell
     }
@@ -341,4 +344,21 @@ extension AddressSearchViewController {
         newTripButton.layer.masksToBounds = false
         
     }
+    
+    func populateDeliveryTests(indexPath: IndexPath) {
+           let searchResult = searchResults[indexPath.row]
+           let searchRequest = MKLocalSearch.Request(completion: searchResult)
+           let search = MKLocalSearch(request: searchRequest)
+
+           search.start { (response, error) in
+               self.coordinate = response?.mapItems[0].placemark.coordinate
+               self.address = self.searchResults[indexPath.row].title
+               self.subAddress = self.searchResults[indexPath.row].subtitle
+               guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+               self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
+           }
+        
+        
+       }
+    
 }
