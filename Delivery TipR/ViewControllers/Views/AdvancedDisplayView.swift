@@ -28,39 +28,16 @@ class AdvancedDisplayView: UIView {
         guard let deliveries = deliveries else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         // Seperate all the duplicate tripId's with Set, for each tripId, find the matching trip
         let trips = Set(deliveries.map({$0.tripId})).compactMap({TripController.getTrip(from: $0)[0]})
-//        let tripTips = trips.map({getAverageTip(deliveries:DeliveryController.getTripDeliveries(trip: $0))}).reduce(0,+) / Double(trips.count)
+        let tripTips = (trips.map({getAverageTip(deliveries:DeliveryController.getTripDeliveries(trip: $0))}).reduce(0,+) / Double(trips.count)).doubleToMoneyString()
         
-        
-   
-        var pocket3 : [Double] = []
-        for trip in trips {
-            
-            let deliveries = DeliveryController.getTripDeliveries(trip: trip)
-            let avgTip = getAverageTip(deliveries: deliveries)
-            pocket3.append(avgTip)
-        }
-        let avgTips = Double(pocket3.reduce(0,+) / Double(pocket3.count)).doubleToMoneyString()
-        
-        
-//        .reduce(0,+) / Float(deliveries.count))
         let totalTips = Double(deliveries.map({$0.tipAmonut}).reduce(0,+)).doubleToMoneyString()
         
         tripCountView.text = String(trips.count)
         deliveryCountLabel.text = String(deliveries.count)
         //Get the average of all the deliveries
         avgDeliveryTipLabel.text = getAverageTipString(deliveries: deliveries)
-        avgTripTipLabel.text = avgTips
+        avgTripTipLabel.text = tripTips
         totalTipsLabel.text = totalTips
         
     }
-    
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }
