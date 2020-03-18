@@ -25,6 +25,7 @@
 		903E2974240C7660001BED71 /* ExtensionsAndUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */; };
 		904217652420339600F67287 /* AdvancedDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904217642420339600F67287 /* AdvancedDisplayView.swift */; };
 		9042176824204FDA00F67287 /* TestFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042176724204FDA00F67287 /* TestFuncs.swift */; };
+		9042176A2422C9DB00F67287 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904217692422C9DB00F67287 /* HistoryTableViewController.swift */; };
 		90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90470007241C6FC2009575AE /* AdvancedViewController.swift */; };
 		9047FFA1241C327C009575AE /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047FFA0241C327C009575AE /* NavViewController.swift */; };
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
@@ -79,6 +80,7 @@
 		904217642420339600F67287 /* AdvancedDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedDisplayView.swift; sourceTree = "<group>"; };
 		9042176624203B3F00F67287 /* Delivery_TipR 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Delivery_TipR 2.xcdatamodel"; sourceTree = "<group>"; };
 		9042176724204FDA00F67287 /* TestFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFuncs.swift; sourceTree = "<group>"; };
+		904217692422C9DB00F67287 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		90470007241C6FC2009575AE /* AdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
 		9047FFA0241C327C009575AE /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				9047FFA0241C327C009575AE /* NavViewController.swift */,
 				90470007241C6FC2009575AE /* AdvancedViewController.swift */,
+				904217692422C9DB00F67287 /* HistoryTableViewController.swift */,
 			);
 			path = Advanced;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */,
 				903E294A240C6472001BED71 /* Delivery_TipR.xcdatamodeld in Sources */,
 				904217652420339600F67287 /* AdvancedDisplayView.swift in Sources */,
+				9042176A2422C9DB00F67287 /* HistoryTableViewController.swift in Sources */,
 				903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */,
 				903E2944240C6472001BED71 /* MapViewController.swift in Sources */,
 				903E296D240C7152001BED71 /* Location+CoreDataProperties.swift in Sources */,

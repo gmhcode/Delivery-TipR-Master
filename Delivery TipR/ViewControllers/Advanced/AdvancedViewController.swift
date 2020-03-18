@@ -32,7 +32,7 @@ class AdvancedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        deliveries = TestFuncs.setUpTestDeliveries()
+        deliveries = TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
         
     }
     func setupTripInfoView() {
@@ -84,6 +84,15 @@ class AdvancedViewController: UIViewController {
     }
     func advancedDisplaySetup() {
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "displaySegue"{
+            guard  let historyVC = segue.destination as? HistoryTableViewController,
+                let deliveries = tripInfoView.deliveries else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            historyVC.deliveries = deliveries
+           
+        }
     }
     
     

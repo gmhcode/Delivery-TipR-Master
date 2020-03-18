@@ -43,6 +43,9 @@ class AddressSearchViewController: UIViewController {
     
     }
     override func viewDidLayoutSubviews() {
+//        guard let currentTrip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//
+//        goButton.isHidden = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).count == 0
         buttonSetUp()
     }
     
@@ -58,7 +61,13 @@ class AddressSearchViewController: UIViewController {
     @IBAction func newTripButtonTapped(_ sender: Any) {
         guard let currentTrip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         newTripButton.pulsate()
+        
         if DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).isEmpty {
+            noFinishedDeliveriesAlert(currentTrip: currentTrip)
+            
+        }
+        
+        else if DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).isEmpty {
             let _ = TripController.createNewTrip()
             MapViewController.MapVC.tableView.reloadData()
             MapViewController.MapVC.mapView.removeAnnotations(MapViewController.MapVC.mapView.annotations)
@@ -149,7 +158,37 @@ class AddressSearchViewController: UIViewController {
 //        alertController.addAction(cancelButton)
 //        present(alertController, animated: true, completion: nil)
     }
-    
+       func noFinishedDeliveriesAlert(currentTrip: Trip) {
+            
+            let alertController = MDCAlertController(title: "Unable To Create A New Trip", message: "There need to be completed deliveries in the current trip for you to create a new trip")
+            let okButton = MDCAlertAction(title: "OK") { (action) in
+
+            }
+
+//            let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+
+            alertController.addAction(okButton)
+//            alertController.addAction(cancelButton)
+
+            present(alertController, animated:true, completion:nil)
+            
+            
+            
+            
+    //        let alertController = UIAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?", preferredStyle: .alert)
+    //        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+    //
+    //            DeliveryController.deleteUnFinDelFor(trip: currentTrip)
+    //            self.newTripButtonTapped(self)
+    //
+    //        }
+    //        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
+    //
+    //        }
+    //        alertController.addAction(okButton)
+    //        alertController.addAction(cancelButton)
+    //        present(alertController, animated: true, completion: nil)
+        }
     
     // MARK: - New Trip Alert
     /// If the user hits ok, all unfinished deliveries for this trip will be deleted, if the user hits cancel, they will not be deleted.
@@ -344,20 +383,20 @@ extension AddressSearchViewController {
         
     }
     
-    func populateDeliveryTests(indexPath: IndexPath) {
-           let searchResult = searchResults[indexPath.row]
-           let searchRequest = MKLocalSearch.Request(completion: searchResult)
-           let search = MKLocalSearch(request: searchRequest)
-
-           search.start { (response, error) in
-               self.coordinate = response?.mapItems[0].placemark.coordinate
-               self.address = self.searchResults[indexPath.row].title
-               self.subAddress = self.searchResults[indexPath.row].subtitle
-               guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-               self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
-           }
-        
-        
-       }
+//    func populateDeliveryTests(indexPath: IndexPath) {
+//           let searchResult = searchResults[indexPath.row]
+//           let searchRequest = MKLocalSearch.Request(completion: searchResult)
+//           let search = MKLocalSearch(request: searchRequest)
+//
+//           search.start { (response, error) in
+//               self.coordinate = response?.mapItems[0].placemark.coordinate
+//               self.address = self.searchResults[indexPath.row].title
+//               self.subAddress = self.searchResults[indexPath.row].subtitle
+//               guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//               self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
+//           }
+//
+//
+//       }
     
 }

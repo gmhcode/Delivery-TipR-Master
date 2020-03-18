@@ -15,7 +15,8 @@ import MaterialComponents.MaterialDialogs
 
 class AddTipViewController: UIViewController {
   
-    @IBOutlet weak var tipTextField:  UITextField!
+    @IBOutlet weak var amountOwedTextField:  UITextField!
+    @IBOutlet weak var amountReceivedTextField: UITextField!
     
     @IBOutlet weak var averageTipLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
@@ -41,8 +42,10 @@ class AddTipViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tipTextField.delegate = self
-        tipTextField.keyboardType = UIKeyboardType.decimalPad
+        amountReceivedTextField.delegate = self
+        amountReceivedTextField.keyboardType = UIKeyboardType.decimalPad
+        amountOwedTextField.delegate = self
+        amountOwedTextField.keyboardType = UIKeyboardType.decimalPad
         setViews()
        
     }
@@ -51,8 +54,10 @@ class AddTipViewController: UIViewController {
     
     @IBAction func confirmAmountButtonTapped(_ sender: Any) {
         
-        if let amount = Float(tipTextField.text ?? "0.00") {
-            let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: amount)
+        if let amountOwed = Float(amountOwedTextField.text ?? "0.00"),
+            let amountReceived = Float(amountReceivedTextField.text ?? "0.00") {
+            let tip = amountReceived - amountOwed
+            let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tip)
             getReadyForDismiss()
             dismissKeyboard()
             self.dismiss(animated: true, completion: nil)
@@ -90,8 +95,8 @@ class AddTipViewController: UIViewController {
     
     
     @IBAction func dismissSelfButtonTapped(_ sender: Any) {
-        if tipTextField.isFirstResponder == true {
-            tipTextField.resignFirstResponder()
+        if amountOwedTextField.isFirstResponder == true {
+            amountOwedTextField.resignFirstResponder()
         }
         else {
             self.dismiss(animated: false, completion: nil)
@@ -109,8 +114,8 @@ class AddTipViewController: UIViewController {
     
     
     func dismissKeyboard(){
-        if tipTextField.isFirstResponder == true {
-            tipTextField.resignFirstResponder()
+        if amountOwedTextField.isFirstResponder == true {
+            amountOwedTextField.resignFirstResponder()
         }
     }
     /// Checks to see if there are any more unfinished deliveries for the current location. If there aren't, remove the annotation for that location
@@ -208,7 +213,7 @@ extension AddTipViewController : UITextFieldDelegate, UITextViewDelegate {
 }
 // MARK: - Setup Views
 extension AddTipViewController {
-    func setViews(){
+    func setViews() {
         averageTipLabel.text = finishedDeliveries.count > 0 ? "\(location.averageTip.doubleToMoneyString())" : "N/A"
         
         

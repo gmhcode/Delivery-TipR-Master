@@ -15,7 +15,8 @@ class AdvancedDisplayView: UIView {
     @IBOutlet weak var avgDeliveryTipLabel: UILabel!
     @IBOutlet weak var avgTripTipLabel: UILabel!
     @IBOutlet weak var totalTipsLabel: UILabel!
-
+ 
+    
     
     var deliveries : [Delivery]? {
         didSet {
@@ -23,6 +24,9 @@ class AdvancedDisplayView: UIView {
         }
     }
     
+    @IBAction func displayViewTapped(_ sender: Any) {
+        print("lol")
+     }
     
     func setViews() {
         guard let deliveries = deliveries else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
