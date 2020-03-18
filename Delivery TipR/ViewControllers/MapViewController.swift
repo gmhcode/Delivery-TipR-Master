@@ -68,7 +68,9 @@ extension MapViewController : MKMapViewDelegate {
         if location.isEmpty == false {
             //if there are NOT unfinished deliveries, set the image to finishedDeliveryView
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: address)
-            view?.image = UIImage(view: AnnotationViews.finishedDeliveryView)
+            let deliveryView = AnnotationViews.finishedDeliveryView
+            view?.image = UIImage(view: deliveryView)
+            
          
         }
         view?.canShowCallout = true
@@ -179,7 +181,6 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "mapDeliveryCell", for: indexPath)
-        
         // Sort the dates from earliest to greatest
         let deliveries = DeliveryController.getTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         

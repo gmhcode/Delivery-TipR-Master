@@ -119,71 +119,7 @@ class DeliveryController {
             return []
         }
     }
-    static func fetchTodaysDeliveries() -> [Delivery]? {
-        let persistentManager = PersistenceManager.shared
-        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let date = Date().timeIntervalSince1970 - (secondsInDay * 2)
-        let predicate = NSPredicate(format: "date >= \(date)")
-        request.predicate = predicate
-        
-        do {
-            let deliveries = try persistentManager.context.fetch(request)
-            return deliveries
-        } catch  {
-            print("array could not be retrieved \(error)")
-            return nil
-        }
-    }
-    static func fetchThisWeeksDeliveries() -> [Delivery]? {
-        let persistentManager = PersistenceManager.shared
-        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let date = Date().timeIntervalSince1970 - (secondsInWeek + secondsInDay)
-        let predicate = NSPredicate(format: "date >= \(date)")
-        request.predicate = predicate
-        
-        do {
-            let deliveries = try persistentManager.context.fetch(request)
-            print(deliveries)
-            return deliveries
-        } catch  {
-            print("array could not be retrieved \(error)")
-            return nil
-        }
-    }
     
-    static func fetchThisMonthsDeliveries() -> [Delivery]? {
-        let persistentManager = PersistenceManager.shared
-        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let date = Date().timeIntervalSince1970 - (secondsInMonth + secondsInWeek)
-        let predicate = NSPredicate(format: "date >= \(date)")
-        request.predicate = predicate
-        
-        do {
-            let deliveries = try persistentManager.context.fetch(request)
-            print(deliveries)
-            return deliveries
-        } catch  {
-            print("array could not be retrieved \(error)")
-            return nil
-        }
-    }
-    
-    static func fetchThisYearsDeliveries() -> [Delivery]? {
-        let persistentManager = PersistenceManager.shared
-        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let date = Date().timeIntervalSince1970 - (secondsInYear + secondsInMonth)
-        let predicate = NSPredicate(format: "date >= \(date)")
-        request.predicate = predicate
-        
-        do {
-            let deliveries = try persistentManager.context.fetch(request)
-            print(deliveries)
-            return deliveries
-        } catch  {
-            print("array could not be retrieved \(error)")
-            return nil
-        }
-    }
     
     ///Gets all the finished deliveries for a location
     static func getFinishedDeliveries(for location: Location) -> [Delivery] {
@@ -232,5 +168,70 @@ class DeliveryController {
         print("Deliveries Delete ⛵️")
         printDeliveries()
         persistentManager.saveContext()
+    }
+    
+    // MARK: - AdvancedViewController Functions
+    
+    static func fetchTodaysDeliveries() -> [Delivery]? {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let date = Date().timeIntervalSince1970 - (secondsInDay * 2)
+        let predicate = NSPredicate(format: "date >= \(date)")
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return nil
+        }
+    }
+    static func fetchThisWeeksDeliveries() -> [Delivery]? {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let date = Date().timeIntervalSince1970 - (secondsInWeek + secondsInDay)
+        let predicate = NSPredicate(format: "date >= \(date)")
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return nil
+        }
+    }
+    
+    static func fetchThisMonthsDeliveries() -> [Delivery]? {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let date = Date().timeIntervalSince1970 - (secondsInMonth + secondsInWeek)
+        let predicate = NSPredicate(format: "date >= \(date)")
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return nil
+        }
+    }
+    
+    static func fetchThisYearsDeliveries() -> [Delivery]? {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let date = Date().timeIntervalSince1970 - (secondsInYear + secondsInMonth)
+        let predicate = NSPredicate(format: "date >= \(date)")
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return nil
+        }
     }
 }
