@@ -56,14 +56,27 @@ class AdvancedViewController: UIViewController {
             //This Week
         case 1:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+            
+            guard let deliveries = DeliveryController.fetchThisWeeksDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            let thisWeeksDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisWeek})
+            
+            tripInfoView.deliveries = thisWeeksDeliveries
             break
             //This Month
         case 2:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+            guard let deliveries = DeliveryController.fetchThisMonthsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            let thisWeeksDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisMonth})
+            
+            tripInfoView.deliveries = thisWeeksDeliveries
             break
             //This Year
         case 3:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+            guard let deliveries = DeliveryController.fetchThisYearsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            let thisWeeksDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisYear})
+            
+            tripInfoView.deliveries = thisWeeksDeliveries
             break
         default :
             break

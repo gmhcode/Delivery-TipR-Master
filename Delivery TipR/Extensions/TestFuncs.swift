@@ -30,18 +30,18 @@ struct TestFuncs {
             let finishedD = DeliveryController.finishDelivery(delivery: delivery, tipAmount: Float(index))
             if index % 5 == 0 {
                 
-                finishedD.date -= secondsInYear - secondsInMonth
+                finishedD.date -= (secondsInMonth * 2)
                 thisYear.append(delivery)
                 
             }
             else if index % 3 == 0 {
                 
-                finishedD.date -= secondsInMonth - secondsInDay
+                finishedD.date -= secondsInWeek 
                 thisMonth.append(delivery)
                 
             }
             else if index % 2 == 0 {
-                finishedD.date -= secondsInWeek - secondsInDay
+                finishedD.date -=  (secondsInDay * 2)
                 thisWeek.append(delivery)
                 
             } else {

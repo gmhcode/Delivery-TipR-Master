@@ -658,9 +658,9 @@
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <segments>
                                     <segment title="Today"/>
-                                    <segment title="Week"/>
-                                    <segment title="Month"/>
-                                    <segment title="Year"/>
+                                    <segment title="This Week"/>
+                                    <segment title="This Month"/>
+                                    <segment title="This Year"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" white="0.93999999999999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
