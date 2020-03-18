@@ -26,7 +26,28 @@ extension Double {
         return numberFormatter.string(from: NSNumber(value: self)) ?? "0.00"
     }
 }
+extension UITableViewCell {
+    //Adds a space between tableview cells
+    override open var frame: CGRect {
+        get {
+            return super.frame
+        }
+        set (newFrame) {
+            var frame =  newFrame
+//            frame.origin.y += 10
+//            frame.origin.x += 10
+            frame.size.height -= 3
+//            frame.size.width -= 2 * 10
+            super.frame = frame
+        }
+    }
 
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+        layer.cornerRadius = 15
+        layer.masksToBounds = false
+    }
+}
 
 extension UIView {
     
