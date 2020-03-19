@@ -187,6 +187,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         if deliveries[indexPath.row].isFinished == 1 {
             cell.backgroundColor = #colorLiteral(red: 0.1738502085, green: 0.187876761, blue: 0.2066913247, alpha: 0.7112573099)
             cell.textLabel?.textColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
+//            cell.textLabel?.textColor = cell.isSelected ? #colorLiteral(red: 0.1738502085, green: 0.187876761, blue: 0.2066913247, alpha: 0.7112573099) : #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
         }else {
             cell.backgroundColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
             cell.textLabel?.textColor = .black
@@ -200,9 +201,34 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         let deliveries = DeliveryController.getTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         let location = LocationController.getLocation(with: deliveries[indexPath.row].address)
         
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        if deliveries[indexPath.row].isFinished == 1 {
+            cell?.backgroundColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
+            cell?.textLabel?.textColor = #colorLiteral(red: 0.1738502085, green: 0.187876761, blue: 0.2066913247, alpha: 0.7112573099)
+        }else {
+            cell?.backgroundColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
+            cell?.textLabel?.textColor = .black
+        }
+        
+        
         let delivery = deliveries[indexPath.row]
         selectedDelivery = delivery
         selectedLocation = location[0]
         performSegue(withIdentifier: "addTipSegue", sender: nil)
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
+        let deliveries = DeliveryController.getTripDeliveries(trip: trip).sorted {$0.date < $1.date}
+        
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        if deliveries[indexPath.row].isFinished == 1 {
+            cell?.backgroundColor = #colorLiteral(red: 0.1738502085, green: 0.187876761, blue: 0.2066913247, alpha: 0.7112573099)
+            cell?.textLabel?.textColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
+        }else {
+            cell?.backgroundColor = #colorLiteral(red: 0.8430537581, green: 0.843195796, blue: 0.8430350423, alpha: 0.6826800073)
+            cell?.textLabel?.textColor = .black
+        }
     }
 }

@@ -32,7 +32,7 @@ class AdvancedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        deliveries = TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
+//        deliveries = TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
         
     }
     func setupTripInfoView() {
