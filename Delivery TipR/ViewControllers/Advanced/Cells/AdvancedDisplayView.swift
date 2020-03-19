@@ -29,7 +29,7 @@ class AdvancedDisplayView: UIView {
      }
     
     func setViews() {
-        guard let deliveries = deliveries else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        guard let deliveries = deliveries else { print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
         // Seperate all the duplicate tripId's with Set, for each tripId, find the matching trip
         let trips = Set(deliveries.map({$0.tripId})).compactMap({TripController.getTrip(from: $0)[0]})
         let tripTips = (trips.map({getAverageTip(deliveries:DeliveryController.getTripDeliveries(trip: $0))}).reduce(0,+) / Double(trips.count)).doubleToMoneyString()
