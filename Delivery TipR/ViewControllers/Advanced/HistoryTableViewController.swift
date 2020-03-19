@@ -54,7 +54,17 @@ class HistoryTableViewController: UITableViewController {
         return 60
     }
     
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "editDeliverySegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = tableView.indexPathForSelectedRow,
+            let destination = segue.destination as? EditDeliveryTableViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        let delivery = deliveries[indexPath.row]
+        destination.delivery = delivery
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

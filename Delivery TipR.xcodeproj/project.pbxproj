@@ -36,6 +36,8 @@
 		9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */; };
 		9053D94E2411814F004692FC /* TripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94D2411814F004692FC /* TripController.swift */; };
 		9053D95024143777004692FC /* AddTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94F24143777004692FC /* AddTipViewController.swift */; };
+		9055441F24240EC20027CC08 /* EditDeliveryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055441E24240EC20027CC08 /* EditDeliveryTableViewController.swift */; };
+		9055442124241C700027CC08 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055442024241C700027CC08 /* TextFields.swift */; };
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
 		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
 		90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5DDC024196235000DD266 /* MapViewDirections.swift */; };
@@ -92,6 +94,8 @@
 		9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9053D94D2411814F004692FC /* TripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripController.swift; sourceTree = "<group>"; };
 		9053D94F24143777004692FC /* AddTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTipViewController.swift; sourceTree = "<group>"; };
+		9055441E24240EC20027CC08 /* EditDeliveryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeliveryTableViewController.swift; sourceTree = "<group>"; };
+		9055442024241C700027CC08 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
 		90A5DDC024196235000DD266 /* MapViewDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDirections.swift; sourceTree = "<group>"; };
@@ -164,7 +168,7 @@
 		903E293E240C6472001BED71 /* Delivery TipR */ = {
 			isa = PBXGroup;
 			children = (
-				903E2972240C7655001BED71 /* Extensions */,
+				903E2972240C7655001BED71 /* ExtensionsAndUtilities */,
 				903E2967240C663A001BED71 /* ViewControllers */,
 				903E2966240C6632001BED71 /* ModelControllers */,
 				903E2965240C662C001BED71 /* Models */,
@@ -237,13 +241,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		903E2972240C7655001BED71 /* Extensions */ = {
+		903E2972240C7655001BED71 /* ExtensionsAndUtilities */ = {
 			isa = PBXGroup;
 			children = (
 				903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */,
 				9042176724204FDA00F67287 /* TestFuncs.swift */,
+				9055442024241C700027CC08 /* TextFields.swift */,
 			);
-			path = Extensions;
+			path = ExtensionsAndUtilities;
 			sourceTree = "<group>";
 		};
 		9042176B2423EBFB00F67287 /* Cells */ = {
@@ -262,6 +267,7 @@
 				9047FFA0241C327C009575AE /* NavViewController.swift */,
 				90470007241C6FC2009575AE /* AdvancedViewController.swift */,
 				904217692422C9DB00F67287 /* HistoryTableViewController.swift */,
+				9055441E24240EC20027CC08 /* EditDeliveryTableViewController.swift */,
 			);
 			path = Advanced;
 			sourceTree = "<group>";
@@ -475,10 +481,12 @@
 				90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */,
 				90521672241061C30020C238 /* LocationManagerController.swift in Sources */,
 				9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */,
+				9055441F24240EC20027CC08 /* EditDeliveryTableViewController.swift in Sources */,
 				90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */,
 				9047FFA1241C327C009575AE /* NavViewController.swift in Sources */,
 				90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */,
 				9042176824204FDA00F67287 /* TestFuncs.swift in Sources */,
+				9055442124241C700027CC08 /* TextFields.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

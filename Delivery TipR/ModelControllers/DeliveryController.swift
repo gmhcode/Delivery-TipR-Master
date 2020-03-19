@@ -35,7 +35,29 @@ class DeliveryController {
   
     
     
+    static func editDelivery(delivery: Delivery, phoneNumber: String, tipAmount: Float, address : String ) {
+        let persistentManager = PersistenceManager.shared
+        delivery.locationId = phoneNumber
+        delivery.tipAmonut = tipAmount
+        delivery.address = address
+        persistentManager.saveContext()
+    }
     
+    static func getDeliveryWith(id:String) -> [Delivery] {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let predicate = NSPredicate(format: "id == %@ ",id)
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            //            print(deliveries,"getTripDeliveries ❇️")
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return []
+        }
+    }
     
     static func getALLDeliveries() -> [Delivery] {
         let persistentManager = PersistenceManager.shared
