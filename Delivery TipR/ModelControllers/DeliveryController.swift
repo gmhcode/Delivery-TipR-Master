@@ -40,7 +40,11 @@ class DeliveryController {
         delivery.locationId = phoneNumber
         delivery.tipAmonut = tipAmount
         delivery.address = address
+        
         persistentManager.saveContext()
+        let location = LocationController.getLocation(address: address)
+        let deliv = getDeliveryWith(id: delivery.id)[0]
+        print(deliv.tipAmonut," 🚣🏼‍♂️")
     }
     
     static func getDeliveryWith(id:String) -> [Delivery] {
