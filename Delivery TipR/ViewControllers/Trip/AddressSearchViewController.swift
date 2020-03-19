@@ -38,14 +38,14 @@ class AddressSearchViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         searchCompleter.delegate = self
-       
         
-    
+        
+        
     }
     override func viewDidLayoutSubviews() {
-//        guard let currentTrip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-//
-//        goButton.isHidden = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).count == 0
+        //        guard let currentTrip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        //
+        //        goButton.isHidden = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).count == 0
         buttonSetUp()
     }
     
@@ -66,7 +66,7 @@ class AddressSearchViewController: UIViewController {
             noFinishedDeliveriesAlert(currentTrip: currentTrip)
             
         }
-        
+            
         else if DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).isEmpty {
             let _ = TripController.createNewTrip()
             MapViewController.MapVC.tableView.reloadData()
@@ -96,7 +96,7 @@ class AddressSearchViewController: UIViewController {
     func openInMaps(){
         //Get the current trip
         guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
+        
         
         //Get the oldest undelivered delivery
         let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip).sorted {$0.date < $1.date}
@@ -119,10 +119,11 @@ class AddressSearchViewController: UIViewController {
     
     ///Opens the oldest delivery's location in the apple Maps app
     func mapsAlert() {
-        //Get the current trip
         
+        
+        //Get the current trip
         guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-      
+        
         //Get the oldest undelivered delivery
         let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         
@@ -132,63 +133,63 @@ class AddressSearchViewController: UIViewController {
             let okButton = MDCAlertAction(title: "OK") { (action) in
                 self.openInMaps()
             }
-          
+            
             let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-//            alertController.add
+            //            alertController.add
             alertController.addAction(okButton)
             alertController.addAction(cancelButton)
-
+            
             present(alertController, animated:true, completion:nil)
         }else {
             let alertController = MDCAlertController(title: "No Deliveries Entered", message: "You must first have a destination to open the directions in Maps")
             let okButton = MDCAlertAction(title: "OK") { (action) in}
             alertController.addAction(okButton)
-
+            
             present(alertController, animated:true, completion:nil)
         }
         
-//        let alertController = UIAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.", preferredStyle: .alert)
-//
-//        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
-//            self.openInMaps()
-//        }
-//        let cancelButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
-//
-//        alertController.addAction(okButton)
-//        alertController.addAction(cancelButton)
-//        present(alertController, animated: true, completion: nil)
+        //        let alertController = UIAlertController(title: "Opening in Maps", message: "The Maps app is about to open and direct you to \(delivery[0].address), switch back to this app when you have reached your destination to enter your tip.", preferredStyle: .alert)
+        //
+        //        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+        //            self.openInMaps()
+        //        }
+        //        let cancelButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        //
+        //        alertController.addAction(okButton)
+        //        alertController.addAction(cancelButton)
+        //        present(alertController, animated: true, completion: nil)
     }
-       func noFinishedDeliveriesAlert(currentTrip: Trip) {
+    func noFinishedDeliveriesAlert(currentTrip: Trip) {
+        
+        let alertController = MDCAlertController(title: "Unable To Create A New Trip", message: "There need to be completed deliveries in the current trip for you to create a new trip")
+        let okButton = MDCAlertAction(title: "OK") { (action) in
             
-            let alertController = MDCAlertController(title: "Unable To Create A New Trip", message: "There need to be completed deliveries in the current trip for you to create a new trip")
-            let okButton = MDCAlertAction(title: "OK") { (action) in
-
-            }
-
-//            let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-
-            alertController.addAction(okButton)
-//            alertController.addAction(cancelButton)
-
-            present(alertController, animated:true, completion:nil)
-            
-            
-            
-            
-    //        let alertController = UIAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?", preferredStyle: .alert)
-    //        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
-    //
-    //            DeliveryController.deleteUnFinDelFor(trip: currentTrip)
-    //            self.newTripButtonTapped(self)
-    //
-    //        }
-    //        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
-    //
-    //        }
-    //        alertController.addAction(okButton)
-    //        alertController.addAction(cancelButton)
-    //        present(alertController, animated: true, completion: nil)
         }
+        
+        //            let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+        
+        alertController.addAction(okButton)
+        //            alertController.addAction(cancelButton)
+        
+        present(alertController, animated:true, completion:nil)
+        
+        
+        
+        
+        //        let alertController = UIAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?", preferredStyle: .alert)
+        //        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+        //
+        //            DeliveryController.deleteUnFinDelFor(trip: currentTrip)
+        //            self.newTripButtonTapped(self)
+        //
+        //        }
+        //        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
+        //
+        //        }
+        //        alertController.addAction(okButton)
+        //        alertController.addAction(cancelButton)
+        //        present(alertController, animated: true, completion: nil)
+    }
     
     // MARK: - New Trip Alert
     /// If the user hits ok, all unfinished deliveries for this trip will be deleted, if the user hits cancel, they will not be deleted.
@@ -199,30 +200,30 @@ class AddressSearchViewController: UIViewController {
             DeliveryController.deleteUnFinDelFor(trip: currentTrip)
             self.newTripButtonTapped(self)
         }
-
+        
         let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-
+        
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
-
+        
         present(alertController, animated:true, completion:nil)
         
         
         
         
-//        let alertController = UIAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?", preferredStyle: .alert)
-//        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
-//
-//            DeliveryController.deleteUnFinDelFor(trip: currentTrip)
-//            self.newTripButtonTapped(self)
-//
-//        }
-//        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
-//
-//        }
-//        alertController.addAction(okButton)
-//        alertController.addAction(cancelButton)
-//        present(alertController, animated: true, completion: nil)
+        //        let alertController = UIAlertController(title: "New Trip?", message: "This will delete all unfinished deliveries from the current trip, are you sure you want to create a new Trip?", preferredStyle: .alert)
+        //        let okButton = UIAlertAction(title: "Yes", style: .default) { (tapped) in
+        //
+        //            DeliveryController.deleteUnFinDelFor(trip: currentTrip)
+        //            self.newTripButtonTapped(self)
+        //
+        //        }
+        //        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
+        //
+        //        }
+        //        alertController.addAction(okButton)
+        //        alertController.addAction(cancelButton)
+        //        present(alertController, animated: true, completion: nil)
     }
     
     
@@ -230,34 +231,34 @@ class AddressSearchViewController: UIViewController {
     ///Displays the confirm delivery alert
     func confirmDelivery(phoneNumber:String) {
         
-//        let alertController = MDCAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip")
-//        let okButton = MDCAlertAction(title: "Yes") { (action) in
-//            guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-//            // MARK: - AddPin
-//            self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
-//        }
-//
-//        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-//
-//        alertController.addAction(okButton)
-//        alertController.addAction(cancelButton)
-//
-//        present(alertController, animated:true, completion:nil)
+        //        let alertController = MDCAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip")
+        //        let okButton = MDCAlertAction(title: "Yes") { (action) in
+        //            guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        //            // MARK: - AddPin
+        //            self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
+        //        }
+        //
+        //        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+        //
+        //        alertController.addAction(okButton)
+        //        alertController.addAction(cancelButton)
+        //
+        //        present(alertController, animated:true, completion:nil)
         
         
-
+        
         let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
         
         
         let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
-
+            
             guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             // MARK: - AddPin
             self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress, phoneNumber: phoneNumber)
             
         }
         let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
-
+            
         }
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
@@ -280,13 +281,13 @@ class AddressSearchViewController: UIViewController {
                 self.checkIfRealPhoneNumber()}
             else {
                 guard let text = textField.text?.filter({Int(String($0)) != nil}) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
+                
                 self.confirmDelivery(phoneNumber: text)
             }
             
         }
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (cancel) in
-
+            
         }
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
@@ -319,7 +320,7 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         
-//        TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
+        //        TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
         
         return cell
     }
@@ -327,7 +328,7 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
     
     // MARK: - SelectRow
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         let cell = tableView.cellForRow(at: indexPath)
         cell?.textLabel?.textColor = #colorLiteral(red: 0.939237535, green: 0.939237535, blue: 0.939237535, alpha: 1)
         cell?.detailTextLabel?.textColor = #colorLiteral(red: 0.947724402, green: 0.947724402, blue: 0.947724402, alpha: 1)
@@ -373,12 +374,13 @@ extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate 
         searchCompleter.queryFragment = searchText
         
     }
+    /// Phone number entering format
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText:String = textField.text else {return true}
         if string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil { return false }
         let newCount:Int = currentText.count + string.count - range.length
         let addingCharacter:Bool = range.length <= 0
-
+        
         if(newCount == 1){
             textField.text = addingCharacter ? currentText + "(\(string)" : String(currentText.dropLast(2))
             return false
@@ -389,11 +391,11 @@ extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate 
             textField.text = addingCharacter ? currentText + "-\(string)" : String(currentText.dropLast(2))
             return false
         }
-
+        
         if(newCount > 14){
             return false
         }
-
+        
         return true
     }
 }
@@ -419,8 +421,8 @@ extension AddressSearchViewController {
         goButton.layer.borderWidth = 1
         goButton.layer.borderColor = #colorLiteral(red: 0.01656158641, green: 0.01656158641, blue: 0.01656158641, alpha: 1)
         goButton.layer.cornerRadius = //10
-        goButton.frame.width / 2
-
+            goButton.frame.width / 2
+        
         
         goButton.layer.shadowPath =
             UIBezierPath(roundedRect: self.goButton.bounds,
@@ -431,11 +433,11 @@ extension AddressSearchViewController {
         goButton.layer.shadowRadius = 5
         goButton.layer.masksToBounds = false
         
-    
+        
         newTripButton.layer.borderWidth = 1
         newTripButton.layer.borderColor = #colorLiteral(red: 0.01939361915, green: 0.002321439795, blue: 0, alpha: 1)
         newTripButton.layer.cornerRadius = //10
-        newTripButton.frame.width / 2
+            newTripButton.frame.width / 2
         
         newTripButton.layer.shadowPath =
             UIBezierPath(roundedRect: self.newTripButton.bounds,
@@ -448,20 +450,20 @@ extension AddressSearchViewController {
         
     }
     
-//    func populateDeliveryTests(indexPath: IndexPath) {
-//           let searchResult = searchResults[indexPath.row]
-//           let searchRequest = MKLocalSearch.Request(completion: searchResult)
-//           let search = MKLocalSearch(request: searchRequest)
-//
-//           search.start { (response, error) in
-//               self.coordinate = response?.mapItems[0].placemark.coordinate
-//               self.address = self.searchResults[indexPath.row].title
-//               self.subAddress = self.searchResults[indexPath.row].subtitle
-//               guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-//               self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
-//           }
-//
-//
-//       }
+    //    func populateDeliveryTests(indexPath: IndexPath) {
+    //           let searchResult = searchResults[indexPath.row]
+    //           let searchRequest = MKLocalSearch.Request(completion: searchResult)
+    //           let search = MKLocalSearch(request: searchRequest)
+    //
+    //           search.start { (response, error) in
+    //               self.coordinate = response?.mapItems[0].placemark.coordinate
+    //               self.address = self.searchResults[indexPath.row].title
+    //               self.subAddress = self.searchResults[indexPath.row].subtitle
+    //               guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+    //               self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
+    //           }
+    //
+    //
+    //       }
     
 }
