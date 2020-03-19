@@ -590,7 +590,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COo-ol-pUV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4662" y="775"/>
+            <point key="canvasLocation" x="5090" y="-410"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Byt-rO-1dM">
@@ -601,13 +601,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="displayDeliveryCell" id="5wR-PM-9Cz">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="displayDeliveryCell" rowHeight="63" id="5wR-PM-9Cz" customClass="HistoryTableViewCell" customModule="Delivery_TipR" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5wR-PM-9Cz" id="wEx-K5-qcs">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxu-Nl-Klh">
+                                            <rect key="frame" x="16" y="11" width="84" height="41"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjG-dx-Rh2">
+                                            <rect key="frame" x="102" y="11" width="186" height="41"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAE-pu-e6t">
+                                            <rect key="frame" x="291" y="11" width="68" height="41"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YAE-pu-e6t" firstAttribute="width" secondItem="wEx-K5-qcs" secondAttribute="width" multiplier="0.181333" id="3hp-dL-wMt"/>
+                                        <constraint firstItem="kxu-Nl-Klh" firstAttribute="height" secondItem="wEx-K5-qcs" secondAttribute="height" multiplier="0.650794" id="9gq-Se-5e5"/>
+                                        <constraint firstItem="kxu-Nl-Klh" firstAttribute="leading" secondItem="wEx-K5-qcs" secondAttribute="leadingMargin" id="AQ0-mW-yFP"/>
+                                        <constraint firstItem="kxu-Nl-Klh" firstAttribute="width" secondItem="wEx-K5-qcs" secondAttribute="width" multiplier="0.224" id="Gml-7x-Xfb"/>
+                                        <constraint firstItem="YAE-pu-e6t" firstAttribute="height" secondItem="wEx-K5-qcs" secondAttribute="height" multiplier="0.650794" id="MQa-Lh-bpb"/>
+                                        <constraint firstItem="jjG-dx-Rh2" firstAttribute="height" secondItem="wEx-K5-qcs" secondAttribute="height" multiplier="0.650794" id="T3h-gA-wPT"/>
+                                        <constraint firstItem="jjG-dx-Rh2" firstAttribute="width" secondItem="wEx-K5-qcs" secondAttribute="width" multiplier="0.496" id="WjK-ts-mF2"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="YAE-pu-e6t" secondAttribute="trailing" id="bgj-CM-KbN"/>
+                                        <constraint firstItem="YAE-pu-e6t" firstAttribute="leading" secondItem="jjG-dx-Rh2" secondAttribute="trailing" constant="3" id="cHK-Fs-lRe"/>
+                                        <constraint firstItem="YAE-pu-e6t" firstAttribute="centerY" secondItem="wEx-K5-qcs" secondAttribute="centerY" id="egP-Ws-mon"/>
+                                        <constraint firstItem="jjG-dx-Rh2" firstAttribute="leading" secondItem="kxu-Nl-Klh" secondAttribute="trailing" constant="8" symbolic="YES" id="gKd-Bq-uTl"/>
+                                        <constraint firstItem="kxu-Nl-Klh" firstAttribute="centerY" secondItem="wEx-K5-qcs" secondAttribute="centerY" id="vQL-Fq-lrc"/>
+                                        <constraint firstItem="jjG-dx-Rh2" firstAttribute="centerY" secondItem="wEx-K5-qcs" secondAttribute="centerY" id="yz9-X1-IrB"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addressLabel" destination="jjG-dx-Rh2" id="yLo-rK-m8H"/>
+                                    <outlet property="timeLabel" destination="kxu-Nl-Klh" id="kUS-Bf-wce"/>
+                                    <outlet property="tipLabel" destination="YAE-pu-e6t" id="CQl-S1-arJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -619,7 +659,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdS-73-uw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4662" y="1574"/>
+            <point key="canvasLocation" x="4366" y="815"/>
         </scene>
         <!--Advanced View Controller-->
         <scene sceneID="Gmo-q5-HPF">
@@ -629,15 +669,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UM1-Jg-6XM">
-                                <rect key="frame" x="31" y="501" width="89" height="34"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" Adjust" image="clock.fill" catalog="system">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYE-HL-aNT">
                                 <rect key="frame" x="142" y="500" width="89" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -649,14 +680,17 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBR-0q-r8i">
-                                <rect key="frame" x="254" y="501" width="89" height="34"/>
+                                <rect key="frame" x="31" y="459" width="89" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" History" image="clock.fill" catalog="system">
+                                <state key="normal" title="Details" image="clock.fill" catalog="system">
                                     <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="detailsTapped:" destination="R69-mh-VQO" eventType="touchUpInside" id="6OH-KR-ks6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6w-lW-u1u">
                                 <rect key="frame" x="43" y="561" width="77" height="34"/>
@@ -691,9 +725,9 @@
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <segments>
                                     <segment title="Today"/>
-                                    <segment title="This Week"/>
-                                    <segment title="This Month"/>
-                                    <segment title="This Year"/>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                    <segment title="Year"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" white="0.93999999999999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -828,6 +862,15 @@
                                     <outletCollection property="gestureRecognizers" destination="F5s-Ca-tnE" appends="YES" id="aJx-Ma-Tz7"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UM1-Jg-6XM">
+                                <rect key="frame" x="255" y="459" width="89" height="34"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" Adjust" image="clock.fill" catalog="system">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

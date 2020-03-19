@@ -26,6 +26,14 @@ extension Double {
         return numberFormatter.string(from: NSNumber(value: self)) ?? "0.00"
     }
 }
+extension Float {
+    func toCurrencyString() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = .current
+        return numberFormatter.string(from: NSNumber(value: self)) ?? "0.00"
+    }
+}
 extension UITableViewCell {
     //Adds a space between tableview cells
     override open var frame: CGRect {
@@ -127,6 +135,15 @@ extension Date {
         return formatter.string(from: self)
         
     }
+    
+    var asTimeString : String {
+        let dateFormatterGet = DateFormatter()
+//        dateFormatterGet.dateFormat = "HH:mm"
+        dateFormatterGet.timeStyle = .short
+        
+        return dateFormatterGet.string(from: self)
+    }
+    
     func isEqual(to date: Date, toGranularity component: Calendar.Component, in calendar: Calendar = .current) -> Bool {
         calendar.isDate(self, equalTo: date, toGranularity: component)
     }

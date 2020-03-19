@@ -11,10 +11,13 @@ import UIKit
 class HistoryTableViewController: UITableViewController {
 
     var deliveries : [Delivery] = []
+    var navigationTitle : String = ""
+    let timeFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = navigationTitle
+        timeFormatter.timeStyle = .short
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -36,11 +39,15 @@ class HistoryTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "displayDeliveryCell", for: indexPath)
-        
-        cell.textLabel?.text = String(deliveries[indexPath.row].date)
-        // Configure the cell...
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "displayDeliveryCell", for: indexPath) as? HistoryTableViewCell  else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return UITableViewCell()}
 
+        let dateString = timeFormatter.string(from: Date(timeIntervalSince1970: deliveries[indexPath.row].date))
+        
+        cell.delivery = deliveries[indexPath.row]
+        cell.timeLabel.text = dateString
+        
+        
+        
         return cell
     }
     

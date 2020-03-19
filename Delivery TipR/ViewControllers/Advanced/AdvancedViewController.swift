@@ -19,7 +19,6 @@ class AdvancedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tripInfoView.tripCountView.text = "Hello"
         
 
     }
@@ -31,8 +30,8 @@ class AdvancedViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        deliveries = TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
+        segmentChanged(self)
+        deliveries = TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
         
     }
     func setupTripInfoView() {
@@ -42,6 +41,9 @@ class AdvancedViewController: UIViewController {
     }
     
     
+    @IBAction func detailsTapped(_ sender: Any) {
+        performSegue(withIdentifier: "displaySegue", sender: nil)
+    }
     
     @IBAction func segmentChanged(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {
@@ -64,6 +66,7 @@ class AdvancedViewController: UIViewController {
             break
             //This Month
         case 2:
+            
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             guard let deliveries = DeliveryController.fetchThisMonthsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             let thisWeeksDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisMonth})
@@ -91,6 +94,7 @@ class AdvancedViewController: UIViewController {
             guard  let historyVC = segue.destination as? HistoryTableViewController,
                 let deliveries = tripInfoView.deliveries else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             historyVC.deliveries = deliveries
+            historyVC.navigationTitle = viewTitle.text ?? ""
            
         }
     }
