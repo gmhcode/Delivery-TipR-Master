@@ -11,12 +11,20 @@ class AnnotationViews {
     
     static let finishedDeliveryView = { () -> UILabel in
         let label = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
-        label.backgroundColor = #colorLiteral(red: 0.7141265273, green: 0.7141265273, blue: 0.7141265273, alpha: 0.8205637792)
+        
         label.numberOfLines = 0
         label.font = label.font.withSize(35)
         label.layer.cornerRadius = label.frame.width / 2
         label.clipsToBounds = true
         label.layer.borderWidth = 1
+        
+        if label.traitCollection.userInterfaceStyle == .light {
+            label.backgroundColor = #colorLiteral(red: 0.7141265273, green: 0.7141265273, blue: 0.7141265273, alpha: 0.8205637792)
+            label.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        } else {
+            label.backgroundColor = #colorLiteral(red: 0.9433091283, green: 0.9433091283, blue: 0.9433091283, alpha: 1)
+            label.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
         
         label.textAlignment = .center
         

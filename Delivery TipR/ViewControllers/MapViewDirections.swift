@@ -16,7 +16,7 @@ extension MapViewController {
         mapView.removeOverlays(mapView.overlays)
         guard let currentTrip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         let deliveries = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip)
-        let locations = deliveries.map({LocationController.getLocation(with: $0.locationId)}).joined()
+        let locations = deliveries.map({LocationController.getLocation(with: $0.address)}).joined()
         
         
         

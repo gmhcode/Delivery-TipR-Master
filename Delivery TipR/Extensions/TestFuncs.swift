@@ -119,7 +119,7 @@ struct TestFuncs {
             guard let coordinateA = coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
             
-            MapViewController.MapVC.addPin(coord: coordinateA, address: address, apt: nil, subAddress: subAddress)
+            MapViewController.MapVC.addPin(coord: coordinateA, address: address, apt: nil, subAddress: subAddress, phoneNumber: "1234123412")
         }
     }
 }

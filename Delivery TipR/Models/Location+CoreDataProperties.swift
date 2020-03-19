@@ -25,4 +25,5 @@ extension Location {
     /// This value is going to be the address, can't be a unique id or else the future backend won't work
     @NSManaged public var id: String
     @NSManaged public var subAddress: String
+    @NSManaged public var phoneNumber : String
 }

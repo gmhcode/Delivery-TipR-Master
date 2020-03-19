@@ -12,12 +12,10 @@ import CoreData
 class LocationController {
     
 
-    
-    
     //Create
     
     /// If the location already exists in the database, it will return that location. If not, it will return a new location.
-    static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String) -> Location {
+    static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String, phoneNumber: String) -> Location {
         
         let existingLocation = getLocation(with: address)
         if existingLocation.isEmpty == false {
@@ -29,7 +27,8 @@ class LocationController {
         location.address = address
         location.averageTip = 0
         location.confirmed = 0
-        location.id = address
+        location.id = phoneNumber
+        location.phoneNumber = phoneNumber
         location.latitude = latitude
         location.longitude = longitude
         location.subAddress = subAddress

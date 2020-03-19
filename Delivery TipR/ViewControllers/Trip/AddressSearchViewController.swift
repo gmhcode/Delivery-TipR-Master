@@ -12,7 +12,7 @@ import Contacts
 import MaterialComponents
 
 protocol AddressSearchViewControllerDelegate: class {
-    func addPin(coord: CLLocationCoordinate2D, address: String, apt: String?, subAddress: String)
+    func addPin(coord: CLLocationCoordinate2D, address: String, apt: String?, subAddress: String, phoneNumber: String)
 }
 
 
@@ -132,9 +132,9 @@ class AddressSearchViewController: UIViewController {
             let okButton = MDCAlertAction(title: "OK") { (action) in
                 self.openInMaps()
             }
-
+          
             let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-
+//            alertController.add
             alertController.addAction(okButton)
             alertController.addAction(cancelButton)
 
@@ -228,37 +228,79 @@ class AddressSearchViewController: UIViewController {
     
     // MARK: - Confirm Delivery Alert
     ///Displays the confirm delivery alert
-    func confirmDelivery() {
+    func confirmDelivery(phoneNumber:String) {
         
-        let alertController = MDCAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip")
-        let okButton = MDCAlertAction(title: "Yes") { (action) in
-            guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            // MARK: - AddPin
-            self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
-        }
-
-        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-
-        alertController.addAction(okButton)
-        alertController.addAction(cancelButton)
-
-        present(alertController, animated:true, completion:nil)
-        
-        
-//
-//        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
-//        let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
-//
+//        let alertController = MDCAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip")
+//        let okButton = MDCAlertAction(title: "Yes") { (action) in
 //            guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 //            // MARK: - AddPin
 //            self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress)
 //        }
-//        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
 //
-//        }
+//        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+//
 //        alertController.addAction(okButton)
 //        alertController.addAction(cancelButton)
-//        present(alertController, animated: true, completion: nil)
+//
+//        present(alertController, animated:true, completion:nil)
+        
+        
+
+        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
+        
+        
+        let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
+
+            guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            // MARK: - AddPin
+            self.delegate?.addPin(coord: coordinate, address: self.address, apt: self.apartmentText, subAddress: self.subAddress, phoneNumber: phoneNumber)
+            
+        }
+        let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in
+
+        }
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func addPhoneNumberAlert(){
+        let alertController = UIAlertController(title: "Phone Number", message: "Please Enter The Phone Number For This Location", preferredStyle: .alert)
+        
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Phone Number"
+            textField.delegate = self
+            textField.keyboardType = .phonePad
+        }
+        
+        let okButton = UIAlertAction(title: "Confirm", style: .default) { (yes) in
+            guard let textField = alertController.textFields?.first else {return}
+            if textField.text?.count != 14 {
+                self.checkIfRealPhoneNumber()}
+            else {
+                guard let text = textField.text?.filter({Int(String($0)) != nil}) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+                self.confirmDelivery(phoneNumber: text)
+            }
+            
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (cancel) in
+
+        }
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func checkIfRealPhoneNumber(){
+        
+        let alertController = UIAlertController(title: "Not Enough Numbers", message: "Phone Number must have 10 Digits", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .cancel) { (_) in
+            self.addPhoneNumberAlert()
+        }
+        alertController.addAction(okButton)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -277,7 +319,7 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         
-        TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
+//        TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
         
         return cell
     }
@@ -300,7 +342,7 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
             self.address = self.searchResults[indexPath.row].title
             self.subAddress = self.searchResults[indexPath.row].subtitle
             
-            self.confirmDelivery()
+            self.addPhoneNumberAlert()
             print(String(describing: self.coordinate))
         }
         self.view.endEditing(true)
@@ -330,6 +372,29 @@ extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate 
         ///tells the searchCompleter to look for new text
         searchCompleter.queryFragment = searchText
         
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText:String = textField.text else {return true}
+        if string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil { return false }
+        let newCount:Int = currentText.count + string.count - range.length
+        let addingCharacter:Bool = range.length <= 0
+
+        if(newCount == 1){
+            textField.text = addingCharacter ? currentText + "(\(string)" : String(currentText.dropLast(2))
+            return false
+        }else if(newCount == 5){
+            textField.text = addingCharacter ? currentText + ") \(string)" : String(currentText.dropLast(2))
+            return false
+        }else if(newCount == 10){
+            textField.text = addingCharacter ? currentText + "-\(string)" : String(currentText.dropLast(2))
+            return false
+        }
+
+        if(newCount > 14){
+            return false
+        }
+
+        return true
     }
 }
 

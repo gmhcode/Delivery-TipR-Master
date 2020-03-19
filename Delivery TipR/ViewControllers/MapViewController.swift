@@ -118,10 +118,10 @@ extension MapViewController: AddressSearchViewControllerDelegate {
     
     
     // MARK: - Add Pin
-    func addPin(coord: CLLocationCoordinate2D, address: String, apt: String?, subAddress: String) {
+    func addPin(coord: CLLocationCoordinate2D, address: String, apt: String?, subAddress: String, phoneNumber: String) {
        
         //Create location
-        let location = LocationController.createLocation(address: address, latitude: coord.latitude, longitude: coord.longitude, subAddress: subAddress)
+        let location = LocationController.createLocation(address: address, latitude: coord.latitude, longitude: coord.longitude, subAddress: subAddress, phoneNumber: phoneNumber)
 
         
         
