@@ -199,7 +199,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
         let deliveries = DeliveryController.getTripDeliveries(trip: trip).sorted {$0.date < $1.date}
-        let location = LocationController.getExistingLocation(address: deliveries[indexPath.row].address)
+        let location = LocationController.getExistingLocation(phoneNumber: deliveries[indexPath.row].locationId)
         
         
         let cell = tableView.cellForRow(at: indexPath)

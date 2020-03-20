@@ -17,12 +17,23 @@ class LocationController {
     /// If the location already exists in the database, it will return that location. If not, it will return a new location.
     @discardableResult static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String, phoneNumber: String) -> Location {
         
-        let existingLocation = getExistingLocation(address: address)
+        let persistentManager = PersistenceManager.shared
+        
+        let existingLocation = getExistingLocation(phoneNumber: phoneNumber)
         if existingLocation.isEmpty == false {
+            let _ = existingLocation[0]
+//            if location.address != address {
+//                location.address = address
+//                location.subAddress = subAddress
+//                location.latitude = latitude
+//                location.longitude = longitude
+//                location.phoneNumber = phoneNumber
+//                persistentManager.saveContext()
+//            }
             return existingLocation[0]
         }
         
-        let persistentManager = PersistenceManager.shared
+        
         let location = Location(context: persistentManager.context)
         location.address = address
         location.averageTip = 0
@@ -55,8 +66,25 @@ class LocationController {
     static func getALLLocations() -> [Location] {
         let persistentManager = PersistenceManager.shared
         let locations = persistentManager.fetch(Location.self)
-//        print(locations.count, " getALLLocations ⚡️")
+        //        print(locations.count, " getALLLocations ⚡️")
         return locations
+    }
+    
+    /// Find a location with a specific address
+    static func getExistingLocation(phoneNumber: String) -> [Location] {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Location> = Location.fetchRequest()
+        let predicate = NSPredicate(format: "id CONTAINS[cd] %@", phoneNumber)
+        request.predicate = predicate
+        
+        do {
+            let locations = try persistentManager.context.fetch(request)
+//            print(locations," 🤣 RETREIVED")
+            return locations
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return []
+        }
     }
     
     /// Find a location with a specific address
@@ -68,7 +96,7 @@ class LocationController {
         
         do {
             let locations = try persistentManager.context.fetch(request)
-//            print(locations," 🤣 RETREIVED")
+            //            print(locations," 🤣 RETREIVED")
             return locations
         } catch  {
             print("array could not be retrieved \(error)")

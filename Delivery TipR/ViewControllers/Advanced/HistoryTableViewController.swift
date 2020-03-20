@@ -40,7 +40,11 @@ class HistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "displayDeliveryCell", for: indexPath) as? HistoryTableViewCell  else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return UITableViewCell()}
-
+        cell.textLabel?.textColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
+        cell.detailTextLabel?.textColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
+        cell.selectedBackgroundView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3062865497)
+        
+        
         let dateString = timeFormatter.string(from: Date(timeIntervalSince1970: deliveries[indexPath.row].date))
         
         cell.delivery = deliveries[indexPath.row]

@@ -310,17 +310,28 @@ class AddressSearchViewController: UIViewController {
 extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSource {
     // MARK: - Rows In section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //Deselect Row
+//        if let selectedRow = tableView.indexPathForSelectedRow {
+//            tableView.deselectRow(at: selectedRow, animated: true)
+//        }
+        
+        
         return searchResults.count
     }
     // MARK: - CellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
         let searchResult = searchResults[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
+        
+        cell.textLabel?.textColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
+        cell.detailTextLabel?.textColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         #warning("DeleteTestFunc")
-                TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
+//                TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
         
         return cell
     }
@@ -361,6 +372,7 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
 extension AddressSearchViewController: MKLocalSearchCompleterDelegate{
     ///when the results changed (because the text changed) this will be called
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        
         searchResults = completer.results
         tableView.reloadData()
     }
@@ -372,6 +384,7 @@ extension AddressSearchViewController: UISearchBarDelegate, UITextFieldDelegate 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         ///tells the searchCompleter to look for new text
         searchCompleter.queryFragment = searchText
+       
         
     }
     /// Phone number entering format

@@ -165,6 +165,24 @@ class DeliveryController {
         }
     }
     
+    ///Gets all the finished deliveries for a location
+        static func getAllFinishedDeliveries() -> [Delivery] {
+            
+            let persistentManager = PersistenceManager.shared
+            let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+            let predicate = NSPredicate(format: "isFinished == 1")
+            request.predicate = predicate
+            
+            do {
+                let deliveries = try persistentManager.context.fetch(request)
+    //            print(deliveries.count,"Get Finished Deliveries 🥶")
+                return deliveries
+            } catch  {
+                print("array could not be retrieved \(error)")
+                return []
+            }
+        }
+    
     /// Finishes the delivery, adds the tip amount and saves
     static func finishDelivery(delivery: Delivery, tipAmount: Float) -> Delivery {
         let persistentManager = PersistenceManager.shared
@@ -202,7 +220,7 @@ class DeliveryController {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInDay * 2)
-        let predicate = NSPredicate(format: "date >= \(date)")
+        let predicate = NSPredicate(format: "date >= \(date) AND isFinished == 1")
         request.predicate = predicate
         
         do {

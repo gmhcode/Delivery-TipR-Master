@@ -21,6 +21,7 @@ class EditDeliveryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryEditCell")
+        view.backgroundColor = #colorLiteral(red: 0.9598043561, green: 0.9649370313, blue: 0.9775747657, alpha: 1)
     }
     
     // MARK: - Table view data source
@@ -45,6 +46,9 @@ class EditDeliveryTableViewController: UITableViewController {
         guard let delivery = delivery else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return UITableViewCell()}
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1,
                                    reuseIdentifier: "deliveryEditCell")
+        cell.textLabel?.textColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
+        cell.detailTextLabel?.textColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
+        cell.backgroundColor = #colorLiteral(red: 0.9598043561, green: 0.9649370313, blue: 0.9775747657, alpha: 1)
         
         switch indexPath.section {
         //Tip
