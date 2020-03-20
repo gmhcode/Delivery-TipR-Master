@@ -10,11 +10,7 @@ import UIKit
 
 class EditDeliveryTableViewController: UITableViewController {
     
-    var delivery : Delivery? {
-        didSet {
-            
-        }
-    }
+    var delivery : Delivery?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +36,7 @@ class EditDeliveryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        editTipAlert()
+        performSegue(withIdentifier: "changeAddressSegue", sender: nil)
         
     }
     
@@ -50,8 +45,6 @@ class EditDeliveryTableViewController: UITableViewController {
         guard let delivery = delivery else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return UITableViewCell()}
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1,
                                    reuseIdentifier: "deliveryEditCell")
-        
-        
         
         switch indexPath.section {
         //Tip
@@ -72,12 +65,9 @@ class EditDeliveryTableViewController: UITableViewController {
         cell.detailTextLabel?.text = "Edit"
         return cell
     }
-    
-    
-    
-    
-    
 }
+
+
 // MARK: - Alerts
 extension EditDeliveryTableViewController {
     
@@ -108,6 +98,8 @@ extension EditDeliveryTableViewController {
         alertController.addAction(okButton)
         present(alertController, animated: true, completion: nil)
     }
+    
+    
     func invalidTipAmountAlert() {
         
         

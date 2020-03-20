@@ -102,7 +102,7 @@ class AddressSearchViewController: UIViewController {
         let delivery = DeliveryController.getUnfinishedTripDeliveries(trip: trip).sorted {$0.date < $1.date}
         if !delivery.isEmpty {
             //Get the location from the oldest undelivered delivery
-            let location = LocationController.getLocation(address: delivery[0].address)[0]
+            let location = LocationController.getExistingLocation(address: delivery[0].address)[0]
             
             let place = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), addressDictionary: [CNPostalAddressStreetKey:location.address])
             

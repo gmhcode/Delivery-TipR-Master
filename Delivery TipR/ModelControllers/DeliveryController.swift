@@ -42,7 +42,7 @@ class DeliveryController {
         delivery.address = address
         
         persistentManager.saveContext()
-        let location = LocationController.getLocation(address: address)
+        let location = LocationController.getExistingLocation(address: address)
         let deliv = getDeliveryWith(id: delivery.id)[0]
         print(deliv.tipAmonut," 🚣🏼‍♂️")
     }

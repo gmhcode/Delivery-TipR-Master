@@ -15,9 +15,9 @@ class LocationController {
     //Create
     
     /// If the location already exists in the database, it will return that location. If not, it will return a new location.
-    static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String, phoneNumber: String) -> Location {
+    @discardableResult static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String, phoneNumber: String) -> Location {
         
-        let existingLocation = getLocation(address: address)
+        let existingLocation = getExistingLocation(address: address)
         if existingLocation.isEmpty == false {
             return existingLocation[0]
         }
@@ -60,7 +60,7 @@ class LocationController {
     }
     
     /// Find a location with a specific address
-    static func getLocation(address: String) -> [Location] {
+    static func getExistingLocation(address: String) -> [Location] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Location> = Location.fetchRequest()
         let predicate = NSPredicate(format: "address CONTAINS[cd] %@", address)
