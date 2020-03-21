@@ -37,6 +37,26 @@ class EditDeliveryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        //Tip
+        case  0:
+            editTipAlert()
+            break
+        //Address
+        case  1:
+            performSegue(withIdentifier: "changeAddressSegue", sender: nil)
+            break
+        //Edit Phone Number
+        case  2:
+            editPhoneNumberAlert()
+            break
+        default :
+            break
+            
+            
+            
+            
+        }
         performSegue(withIdentifier: "changeAddressSegue", sender: nil)
         
     }

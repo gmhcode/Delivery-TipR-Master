@@ -15,8 +15,8 @@ import MaterialComponents.MaterialDialogs
 
 class AddTipViewController: UIViewController {
   
-    @IBOutlet weak var amountOwedTextField:  UITextField!
-    @IBOutlet weak var amountReceivedTextField: UITextField!
+    @IBOutlet weak var tipTextField:  UITextField!
+   
     
     @IBOutlet weak var averageTipLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
@@ -26,8 +26,11 @@ class AddTipViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
  
     ///Shows the total amount of deliveries sent to this location
+    @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var delivNumberLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    
+    var isPhoneTextField = false
     var nameController: MDCTextInputControllerOutlined?
     var location : Location!
     var delivery : Delivery!
@@ -42,11 +45,12 @@ class AddTipViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        amountReceivedTextField.delegate = self
-        amountReceivedTextField.keyboardType = UIKeyboardType.decimalPad
-        amountOwedTextField.delegate = self
-        amountOwedTextField.keyboardType = UIKeyboardType.decimalPad
+       
+        tipTextField.delegate = self
+        tipTextField.keyboardType = UIKeyboardType.decimalPad
         setViews()
+        phoneButton.setTitle(format(phoneNumber: delivery.locationId), for: .normal)
+        
        
     }
     
@@ -54,9 +58,8 @@ class AddTipViewController: UIViewController {
     
     @IBAction func confirmAmountButtonTapped(_ sender: Any) {
         
-        if let amountOwed = Float(amountOwedTextField.text ?? "0.00"),
-            let amountReceived = Float(amountReceivedTextField.text ?? "0.00") {
-            let tip = amountReceived - amountOwed
+        if let tip = Float(tipTextField.text ?? "0.00"){
+            
             let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tip)
             getReadyForDismiss()
             dismissKeyboard()
@@ -95,8 +98,8 @@ class AddTipViewController: UIViewController {
     
     
     @IBAction func dismissSelfButtonTapped(_ sender: Any) {
-        if amountOwedTextField.isFirstResponder == true {
-            amountOwedTextField.resignFirstResponder()
+        if tipTextField.isFirstResponder == true {
+            tipTextField.resignFirstResponder()
         }
         else {
             self.dismiss(animated: false, completion: nil)
@@ -112,10 +115,15 @@ class AddTipViewController: UIViewController {
         dismissKeyboard()
     }
     
+    @IBAction func phoneEditButton(_ sender: Any) {
+        editPhoneNumberAlert()
+    }
+    
+    
     
     func dismissKeyboard(){
-        if amountOwedTextField.isFirstResponder == true {
-            amountOwedTextField.resignFirstResponder()
+        if tipTextField.isFirstResponder == true {
+            tipTextField.resignFirstResponder()
         }
     }
     /// Checks to see if there are any more unfinished deliveries for the current location. If there aren't, remove the annotation for that location
@@ -130,30 +138,61 @@ class AddTipViewController: UIViewController {
     }
     ///Sets average tip for location, removes finished Annotations, reloads tableView
     func getReadyForDismiss(){
+//        let location = LocationController.getExistingLocation(phoneNumber: )
         LocationController.setAverageTipFor(location: location)
         //Remove the annotation for this delivery
         checkLocationForUnfinished(location)
         MapViewController.MapVC.tableView.reloadData()
     }
     
+    func checkIfRealPhoneNumber(){
+           
+           let alertController = UIAlertController(title: "Not Enough Numbers", message: "Phone Number must have 10 Digits", preferredStyle: .alert)
+           let okButton = UIAlertAction(title: "Ok", style: .cancel) { (_) in
+               self.editPhoneNumberAlert()
+           }
+           alertController.addAction(okButton)
+           present(alertController, animated: true, completion: nil)
+       }
+    
+    func returnPhoneString(number: String) -> String {
+        return format(phoneNumber: number)
+    }
+    func format(phoneNumber: String, shouldRemoveLastDigit: Bool = false) -> String {
+        guard !phoneNumber.isEmpty else { return "" }
+        guard let regex = try? NSRegularExpression(pattern: "[\\s-\\(\\)]", options: .caseInsensitive) else { return "" }
+        let r = NSString(string: phoneNumber).range(of: phoneNumber)
+        var number = regex.stringByReplacingMatches(in: phoneNumber, options: .init(rawValue: 0), range: r, withTemplate: "")
+
+        if number.count > 10 {
+            let tenthDigitIndex = number.index(number.startIndex, offsetBy: 10)
+            number = String(number[number.startIndex..<tenthDigitIndex])
+        }
+
+        if shouldRemoveLastDigit {
+            let end = number.index(number.startIndex, offsetBy: number.count-1)
+            number = String(number[number.startIndex..<end])
+        }
+
+        if number.count < 7 {
+            let end = number.index(number.startIndex, offsetBy: number.count)
+            let range = number.startIndex..<end
+            number = number.replacingOccurrences(of: "(\\d{3})(\\d+)", with: "($1) $2", options: .regularExpression, range: range)
+
+        } else {
+            let end = number.index(number.startIndex, offsetBy: number.count)
+            let range = number.startIndex..<end
+            number = number.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "($1) $2-$3", options: .regularExpression, range: range)
+        }
+
+        return number
+    }
 }
 // MARK: - Alerts
 extension AddTipViewController {
     
     
-    func alertThing() {
-        
-        
-        let alertController = MDCAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ")
-        let okButton = MDCAlertAction(title: "Ok", emphasis: .high, handler: nil)
-
-        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-
-        alertController.addAction(okButton)
-        alertController.addAction(cancelButton)
-
-        present(alertController, animated:true, completion:nil)
-    }
+    
     
     func invalidTipAmountAlert() {
         
@@ -203,11 +242,74 @@ extension AddTipViewController {
 //        present(alertController, animated: true, completion: nil)
     }
     
+    func editPhoneNumberAlert(){
+        guard let delivery = delivery, let location = location else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        isPhoneTextField = true
+        
+        let alertController = UIAlertController(title: "Phone Number", message: "Please Enter The Phone Number For This Delivery", preferredStyle: .alert)
+        
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Phone Number"
+            textField.delegate = self
+            textField.keyboardType = .phonePad
+            textField.text = self.format(phoneNumber: delivery.locationId)
+        }
+        
+        let okButton = UIAlertAction(title: "Confirm", style: .default) { (yes) in
+            guard let textField = alertController.textFields?.first else {self.isPhoneTextField = false;return}
+            if textField.text?.count != 14 {
+                self.checkIfRealPhoneNumber()}
+            else {
+                guard let text = textField.text?.filter({Int(String($0)) != nil}) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");self.isPhoneTextField = false; return}
+                DeliveryController.editDelivery(delivery: delivery, phoneNumber: text, tipAmount: delivery.tipAmonut, address: delivery.address)
+                
+                self.location = LocationController.createLocation(address: location.address, latitude: location.latitude, longitude: location.longitude, subAddress: location.subAddress, phoneNumber: text)
+                self.phoneButton.setTitle(text, for: .normal)
+                self.isPhoneTextField = false
+            }
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (actions) in
+            self.isPhoneTextField = false
+        }
+        alertController.addAction(cancelButton)
+        alertController.addAction(okButton)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 
 // MARK: - TextField Delegate
-extension AddTipViewController : UITextFieldDelegate, UITextViewDelegate {
+extension AddTipViewController : UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard isPhoneTextField == true else { return true }
+            
+        
+        guard let currentText:String = textField.text else {return true}
+        if string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil { return false }
+        let newCount:Int = currentText.count + string.count - range.length
+        let addingCharacter:Bool = range.length <= 0
+        
+        if(newCount == 1){
+            textField.text = addingCharacter ? currentText + "(\(string)" : String(currentText.dropLast(2))
+            return false
+        }else if(newCount == 5){
+            textField.text = addingCharacter ? currentText + ") \(string)" : String(currentText.dropLast(2))
+            return false
+        }else if(newCount == 10){
+            textField.text = addingCharacter ? currentText + "-\(string)" : String(currentText.dropLast(2))
+            return false
+        }
+        
+        if(newCount > 14){
+            return false
+        }
+        
+        return true
+    }
     
 
 }

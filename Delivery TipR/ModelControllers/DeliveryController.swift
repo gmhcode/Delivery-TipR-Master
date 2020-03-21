@@ -42,9 +42,9 @@ class DeliveryController {
         delivery.address = address
         
         persistentManager.saveContext()
-        let location = LocationController.getExistingLocation(address: address)
-        let deliv = getDeliveryWith(id: delivery.id)[0]
-        print(deliv.tipAmonut," 🚣🏼‍♂️")
+//        let location = LocationController.getExistingLocation(address: address)
+//        let deliv = getDeliveryWith(id: delivery.id)[0]
+//        print(deliv.tipAmonut," 🚣🏼‍♂️")
     }
     
     static func getDeliveryWith(id:String) -> [Delivery] {
@@ -146,6 +146,21 @@ class DeliveryController {
         }
     }
     
+    static func getFinishedDeliveries(trip: Trip) -> [Delivery] {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let predicate = NSPredicate(format: "tripId CONTAINS[cd] %@ AND isFinished == 1", trip.id)
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            //            print(deliveries.count,"Get Finished Deliveries 🥶")
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return []
+        }
+    }
     
     ///Gets all the finished deliveries for a location
     static func getFinishedDeliveries(for location: Location) -> [Delivery] {

@@ -21,15 +21,16 @@ class LocationController {
         
         let existingLocation = getExistingLocation(phoneNumber: phoneNumber)
         if existingLocation.isEmpty == false {
-            let _ = existingLocation[0]
-//            if location.address != address {
-//                location.address = address
-//                location.subAddress = subAddress
-//                location.latitude = latitude
-//                location.longitude = longitude
-//                location.phoneNumber = phoneNumber
-//                persistentManager.saveContext()
-//            }
+            let location = existingLocation[0]
+            if location.address != address {
+                location.address = address
+                location.subAddress = subAddress
+                location.latitude = latitude
+                location.longitude = longitude
+                location.phoneNumber = phoneNumber
+                location.id = phoneNumber
+                persistentManager.saveContext()
+            }
             return existingLocation[0]
         }
         
@@ -47,7 +48,12 @@ class LocationController {
         return location
     }
     
-    
+    static func editLocationPhone(location: Location,phoneNumber: String) {
+        let persistentManager = PersistenceManager.shared
+        location.phoneNumber = phoneNumber
+        persistentManager.saveContext()
+               //        print(locations.count, " getALLLocations ⚡️")
+    }
     
     ///Use only for tests
     private func createLocationFake() {

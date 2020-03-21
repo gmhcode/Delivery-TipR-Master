@@ -61,17 +61,25 @@ class AddressSearchViewController: UIViewController {
     @IBAction func newTripButtonTapped(_ sender: Any) {
         guard let currentTrip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         newTripButton.pulsate()
+        let finishedDeliveries = DeliveryController.getFinishedDeliveries(trip: currentTrip)
+        let unfinishedDeliveries = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip)
         
-        if DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).isEmpty {
+        // If there arent any finished deliveries
+        if finishedDeliveries.isEmpty &&
+            !unfinishedDeliveries.isEmpty {
             noFinishedDeliveriesAlert(currentTrip: currentTrip)
-            
         }
-            
-        else if DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip).isEmpty {
+        else if finishedDeliveries.isEmpty &&
+            unfinishedDeliveries.isEmpty {
+            noFinishedDeliveriesAlert(currentTrip: currentTrip)
+        }
+            // If there are completed deliveries but not unfinished delivereis
+        else if !finishedDeliveries.isEmpty && unfinishedDeliveries.isEmpty {
             let _ = TripController.createNewTrip()
             MapViewController.MapVC.tableView.reloadData()
             MapViewController.MapVC.mapView.removeAnnotations(MapViewController.MapVC.mapView.annotations)
             MapViewController.MapVC.centerViewOnUserLocation()
+            // If there are any unfinished Deliveries
         } else {
             // If the ok button is tapped in the alert, the newTripButtonTapped will be called again
             newTripAlert(currentTrip: currentTrip)
