@@ -48,6 +48,7 @@ class AddTipViewController: UIViewController {
        
         tipTextField.delegate = self
         tipTextField.keyboardType = UIKeyboardType.decimalPad
+        tipTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
         setViews()
         phoneButton.setTitle(format(phoneNumber: delivery.locationId), for: .normal)
         
@@ -58,13 +59,16 @@ class AddTipViewController: UIViewController {
     
     @IBAction func confirmAmountButtonTapped(_ sender: Any) {
         
-        if let tip = Float(tipTextField.text ?? "0.00"){
+        var tip = tipTextField.text ?? "0.00"
             
-            let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tip)
+        tip.removeAll(where: {$0 == "$" || $0 == ","})
+        if let tipFloat = Float(tip) {
+            let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tipFloat)
             getReadyForDismiss()
             dismissKeyboard()
             self.dismiss(animated: true, completion: nil)
-        } else {
+        }
+        else {
             invalidTipAmountAlert()
         }
         
@@ -279,7 +283,13 @@ extension AddTipViewController {
     }
     
 }
-
+extension AddTipViewController {
+    @objc func myTextFieldDidChange(_ textField: UITextField) {
+        if let amountString = tipTextField.text?.currencyInputFormatting() {
+            tipTextField.text = amountString
+        }
+    }
+}
 
 // MARK: - TextField Delegate
 extension AddTipViewController : UITextFieldDelegate {
