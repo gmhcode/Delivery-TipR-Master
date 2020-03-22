@@ -15,8 +15,8 @@ class AdvancedViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var viewTitle: UILabel!
     
-    var deliveries : [Delivery]!
-    
+//    var deliveries : [Delivery]!
+    var deliveryfetch : (() -> [Delivery]?)?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +37,7 @@ class AdvancedViewController: UIViewController {
 //        } else {
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)], for: .normal)
        
-            deliveries = DeliveryController.getAllFinishedDeliveries()
+//            deliveries = DeliveryController.getAllFinishedDeliveries()
 //        }
         segmentChanged(self)
         
@@ -58,7 +58,10 @@ class AdvancedViewController: UIViewController {
             //Today
         case 0 :
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
-            guard let deliveries = DeliveryController.fetchTodaysDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+            deliveryfetch = DeliveryController.fetchTodaysDeliveries
+            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
             let todaysDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInToday})
             
             tripInfoView.deliveries = todaysDeliveries
@@ -67,7 +70,11 @@ class AdvancedViewController: UIViewController {
         case 1:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             
-            guard let deliveries = DeliveryController.fetchThisWeeksDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            deliveryfetch = DeliveryController.fetchThisWeeksDeliveries
+            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+            
+//            guard let deliveries = DeliveryController.fetchThisWeeksDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             let thisWeeksDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisWeek})
             
             tripInfoView.deliveries = thisWeeksDeliveries
@@ -76,18 +83,30 @@ class AdvancedViewController: UIViewController {
         case 2:
             
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
-            guard let deliveries = DeliveryController.fetchThisMonthsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            let thisWeeksDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisMonth})
             
-            tripInfoView.deliveries = thisWeeksDeliveries
+            deliveryfetch = DeliveryController.fetchThisMonthsDeliveries
+            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+            
+//            guard let deliveries = DeliveryController.fetchThisMonthsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            let thisMonthssDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisMonth})
+            
+            tripInfoView.deliveries = thisMonthssDeliveries
             break
             //This Year
         case 3:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
-            guard let deliveries = DeliveryController.fetchThisYearsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            let thisWeeksDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisYear})
             
-            tripInfoView.deliveries = thisWeeksDeliveries
+            
+            deliveryfetch = DeliveryController.fetchThisYearsDeliveries
+            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+            
+            
+//            guard let deliveries = DeliveryController.fetchThisYearsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            let thisYearsDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisYear})
+            
+            tripInfoView.deliveries = thisYearsDeliveries
             break
         default :
             break
@@ -100,8 +119,9 @@ class AdvancedViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "displaySegue"{
             guard  let historyVC = segue.destination as? HistoryTableViewController,
-                let deliveries = tripInfoView.deliveries else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            historyVC.deliveries = deliveries
+                let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+//            historyVC.deliveries = deliveries
+            historyVC.deliveryfetch = deliveryFetch
             historyVC.navigationTitle = viewTitle.text ?? ""
            
         }

@@ -14,83 +14,90 @@ class EditDeliveryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+      
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryEditCell")
         view.backgroundColor = #colorLiteral(red: 0.9598043561, green: 0.9649370313, blue: 0.9775747657, alpha: 1)
     }
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        //Tip
-        case  0:
-            editTipAlert()
-            break
-        //Address
-        case  1:
-            performSegue(withIdentifier: "changeAddressSegue", sender: nil)
-            break
-        //Edit Phone Number
-        case  2:
-            editPhoneNumberAlert()
-            break
-        default :
-            break
-            
-            
-            
-            
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "changeAddressSegue" {
+            guard let destination = segue.destination as? EditAddressViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            destination.delivery = delivery
+
         }
-        performSegue(withIdentifier: "changeAddressSegue", sender: nil)
-        
     }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let delivery = delivery else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return UITableViewCell()}
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1,
-                                   reuseIdentifier: "deliveryEditCell")
-        cell.textLabel?.textColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
-        cell.detailTextLabel?.textColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
-        cell.backgroundColor = #colorLiteral(red: 0.9598043561, green: 0.9649370313, blue: 0.9775747657, alpha: 1)
-        
-        switch indexPath.section {
-        //Tip
-        case 0:
-            cell.textLabel?.text = delivery.tipAmonut.toCurrencyString()
-            break
-        //Address
-        case 1:
-            cell.textLabel?.text = delivery.address
-            break
-        //CustomerPhone
-        case 2:
-            cell.textLabel?.text = delivery.locationId
-            break
-        default:
-            break
-        }
-        cell.detailTextLabel?.text = "Edit"
-        return cell
-    }
+   
 }
 
+// MARK: - TableView Functions
+extension EditDeliveryTableViewController {
+     // MARK: - Table view data source
+        
+        override func numberOfSections(in tableView: UITableView) -> Int {
+            // #warning Incomplete implementation, return the number of sections
+            return 3
+        }
+        
+        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            // #warning Incomplete implementation, return the number of rows
+            return 1
+        }
+        
+        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            switch indexPath.section {
+            //Tip
+            case  0:
+                editTipAlert()
+                break
+            //Address
+            case  1:
+                performSegue(withIdentifier: "changeAddressSegue", sender: nil)
+                break
+            //Edit Phone Number
+            case  2:
+    //            editPhoneNumberAlert()
+                break
+            default :
+                break
+                
+                
+                
+                
+            }
+            performSegue(withIdentifier: "changeAddressSegue", sender: nil)
+            
+        }
+        
+        
+        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            guard let delivery = delivery else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return UITableViewCell()}
+            let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1,
+                                       reuseIdentifier: "deliveryEditCell")
+            cell.textLabel?.textColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
+            cell.detailTextLabel?.textColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
+            cell.backgroundColor = #colorLiteral(red: 0.9598043561, green: 0.9649370313, blue: 0.9775747657, alpha: 1)
+            
+            switch indexPath.section {
+            //Tip
+            case 0:
+                cell.textLabel?.text = delivery.tipAmonut.toCurrencyString()
+                cell.detailTextLabel?.text = "Edit"
+                break
+            //Address
+            case 1:
+                cell.textLabel?.text = delivery.address
+                cell.detailTextLabel?.text = "Edit"
+                break
+            //CustomerPhone
+            case 2:
+                cell.textLabel?.text = delivery.locationId
+                break
+            default:
+                break
+            }
+            
+            return cell
+        }
+}
 
 // MARK: - Alerts
 extension EditDeliveryTableViewController {
@@ -154,6 +161,7 @@ extension EditDeliveryTableViewController {
             else {
                 guard let text = textField.text?.filter({Int(String($0)) != nil}) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
                 DeliveryController.editDelivery(delivery: delivery, phoneNumber: text, tipAmount: delivery.tipAmonut, address: delivery.address)
+                
             }
         }
         

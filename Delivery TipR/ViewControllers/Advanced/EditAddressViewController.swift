@@ -70,9 +70,7 @@ extension EditAddressViewController : UITableViewDelegate , UITableViewDataSourc
             self.coordinate = response?.mapItems[0].placemark.coordinate
             self.address = self.searchResults[indexPath.row].title
             self.subAddress = self.searchResults[indexPath.row].subtitle
-            
-            
-            
+            self.confirmAddressAlert()
             print(String(describing: self.coordinate))
         }
         self.view.endEditing(true)
@@ -102,7 +100,7 @@ extension EditAddressViewController {
     func confirmAddressAlert() {
         guard let delivery = delivery else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
-        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to change this delivery's address to \(address)", preferredStyle: .alert)
         
         
         let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
@@ -114,6 +112,7 @@ extension EditAddressViewController {
             LocationController.createLocation(address: self.address, latitude: coordinate.latitude, longitude: coordinate.longitude, subAddress: self.subAddress, phoneNumber: delivery.locationId)
             
             DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: delivery.tipAmonut, address: self.address)
+            MapViewController.MapVC.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
             
         }

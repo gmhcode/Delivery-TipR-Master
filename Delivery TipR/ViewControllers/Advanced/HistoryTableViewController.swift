@@ -11,6 +11,8 @@ import UIKit
 class HistoryTableViewController: UITableViewController {
 
     var deliveries : [Delivery] = []
+    var deliveryfetch : (() -> [Delivery]?)?
+    
     var navigationTitle : String = ""
     let timeFormatter = DateFormatter()
     
@@ -24,7 +26,13 @@ class HistoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        deliveries = deliveryFetch() ?? []
+        print(deliveries.count)
+        tableView.reloadData()
+    }
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
