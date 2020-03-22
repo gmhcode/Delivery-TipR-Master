@@ -55,13 +55,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-Ef-qQG">
+                                <rect key="frame" x="0.0" y="44" width="66" height="63"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bQr-Ef-qQG" secondAttribute="height" multiplier="22:21" id="9kw-qz-9lL"/>
+                                </constraints>
+                                <state key="normal" image="location.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="centerOnLocationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NXD-Y5-MYW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="bQr-Ef-qQG" firstAttribute="width" secondItem="NZ3-HZ-QMA" secondAttribute="width" multiplier="0.15942" id="5K2-fH-4J7"/>
                             <constraint firstItem="NZ3-HZ-QMA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EH6-Nx-vOL"/>
+                            <constraint firstItem="bQr-Ef-qQG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="It0-lp-KPT"/>
                             <constraint firstAttribute="bottom" secondItem="NZ3-HZ-QMA" secondAttribute="bottom" id="UV3-OM-4Qa"/>
                             <constraint firstItem="NZ3-HZ-QMA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ayx-F4-AQY"/>
                             <constraint firstItem="5jv-Vx-TiY" firstAttribute="width" secondItem="NZ3-HZ-QMA" secondAttribute="width" multiplier="0.384" id="eYD-nk-Yr2"/>
+                            <constraint firstItem="bQr-Ef-qQG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pqH-ar-1Wi"/>
                             <constraint firstItem="NZ3-HZ-QMA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="py4-jS-Zkl"/>
                             <constraint firstItem="5jv-Vx-TiY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="w2x-Ju-qmo"/>
                             <constraint firstItem="5jv-Vx-TiY" firstAttribute="height" secondItem="NZ3-HZ-QMA" secondAttribute="height" multiplier="0.253373" id="z6c-bo-Drj"/>
@@ -70,6 +86,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="centerOnLocationButton" destination="bQr-Ef-qQG" id="QLG-Fx-MvK"/>
                         <outlet property="mapView" destination="NZ3-HZ-QMA" id="Uky-AM-TPD"/>
                         <outlet property="tableView" destination="5jv-Vx-TiY" id="TlV-GH-a0l"/>
                         <segue destination="UGd-1c-vOO" kind="presentation" identifier="addTipSegue" modalPresentationStyle="overCurrentContext" id="vDQ-VT-aQs"/>
@@ -77,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="116.49175412293854"/>
+            <point key="canvasLocation" x="136.23188405797103" y="115.84821428571428"/>
         </scene>
         <!--Add Tip View Controller-->
         <scene sceneID="uAP-6m-oUF">
@@ -852,8 +869,10 @@
                                         </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyi-43-Tsi">
-                                        <rect key="frame" x="111" y="685" width="158" height="51"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="110.5" y="685" width="158" height="51"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Enter Delivery address" translatesAutoresizingMaskIntoConstraints="NO" id="7h7-VB-RGf">
                                         <rect key="frame" x="15" y="8" width="349" height="52.5"/>
@@ -1419,5 +1438,6 @@
     </scenes>
     <resources>
         <image name="clock.fill" catalog="system" width="64" height="60"/>
+        <image name="location.fill" catalog="system" width="64" height="56"/>
     </resources>
 </document>

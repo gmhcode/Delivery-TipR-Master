@@ -71,8 +71,6 @@ class AddTipViewController: UIViewController {
         else {
             invalidTipAmountAlert()
         }
-        
-        
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismissKeyboard()

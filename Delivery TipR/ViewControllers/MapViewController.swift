@@ -12,6 +12,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var centerOnLocationButton: UIButton!
     
     var drawerView : UIView!
     var tabViewController : TabViewController?
@@ -35,7 +36,23 @@ class MapViewController: UIViewController {
         checkLocationServices()
          #warning("UNCOMMENT DIRECTIONS")
         directions()
+        centerOnLocationButton.layer.borderWidth = 1
+        centerOnLocationButton.layer.borderColor = #colorLiteral(red: 0.01656158641, green: 0.01656158641, blue: 0.01656158641, alpha: 1)
+        centerOnLocationButton.layer.cornerRadius = //10
+            centerOnLocationButton.frame.width / 2
         
+        centerOnLocationButton.layer.shadowPath =
+            UIBezierPath(roundedRect: self.centerOnLocationButton.bounds,
+                         cornerRadius: self.centerOnLocationButton.layer.cornerRadius).cgPath
+        centerOnLocationButton.layer.shadowColor = #colorLiteral(red: 0.1003180668, green: 0.1003180668, blue: 0.1003180668, alpha: 1)
+        centerOnLocationButton.layer.shadowOpacity = 0.5
+        centerOnLocationButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        centerOnLocationButton.layer.shadowRadius = 3
+        centerOnLocationButton.layer.masksToBounds = false
+        
+    }
+    @IBAction func centerOnLocationTapped(_ sender: Any) {
+        centerViewOnUserLocation()
     }
     
     
