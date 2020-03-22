@@ -246,6 +246,8 @@ class DeliveryController {
             return nil
         }
     }
+    
+    
     static func fetchThisWeeksDeliveries() -> [Delivery]? {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()

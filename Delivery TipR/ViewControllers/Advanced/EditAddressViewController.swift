@@ -13,6 +13,7 @@ import Contacts
 class EditAddressViewController: UIViewController {
     
     var delivery : Delivery?
+    weak var editDeliveryTableViewConttroller : EditDeliveryTableViewController?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -48,7 +49,7 @@ extension EditAddressViewController : UITableViewDelegate , UITableViewDataSourc
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         #warning("DeleteTestFunc")
-                TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
+//                TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
         
         return cell
     }
@@ -103,17 +104,19 @@ extension EditAddressViewController {
         let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to change this delivery's address to \(address)", preferredStyle: .alert)
         
         
-        let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in
+        let okButton = UIAlertAction(title: "Yes", style: .default) { [weak self] (yes) in
             
-            guard let coordinate = self.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            guard let strongSelf = self, let coordinate = strongSelf.coordinate else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             
 
             #warning("TAKE A CLOSER LOOK AT THIS, MIGHT CAUSE BUGS")
-            LocationController.createLocation(address: self.address, latitude: coordinate.latitude, longitude: coordinate.longitude, subAddress: self.subAddress, phoneNumber: delivery.locationId)
+            LocationController.createLocation(address: strongSelf.address, latitude: coordinate.latitude, longitude: coordinate.longitude, subAddress: strongSelf.subAddress, phoneNumber: delivery.locationId)
             
-            DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: delivery.tipAmonut, address: self.address)
+            DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: delivery.tipAmonut, address: strongSelf.address)
             MapViewController.MapVC.tableView.reloadData()
-            self.dismiss(animated: true, completion: nil)
+            self?.editDeliveryTableViewConttroller?.tableView.reloadData()
+            self?.editDeliveryTableViewConttroller?.historyTVC?.tableView.reloadData()
+            strongSelf.dismiss(animated: true, completion: nil)
             
         }
         let cancelButton = UIAlertAction(title: "No", style: .cancel) { (cancel) in

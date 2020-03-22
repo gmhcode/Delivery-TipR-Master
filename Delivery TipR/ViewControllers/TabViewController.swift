@@ -40,6 +40,7 @@ class TabViewController: UIViewController {
 
         
 //        setupAddressSearch()
+        
         containerView.addSubview(addressSearchViewController.view)
         
     }

@@ -283,14 +283,14 @@ class AddressSearchViewController: UIViewController {
             textField.keyboardType = .phonePad
         }
         
-        let okButton = UIAlertAction(title: "Confirm", style: .default) { (yes) in
+        let okButton = UIAlertAction(title: "Confirm", style: .default) { [weak self](yes) in
             guard let textField = alertController.textFields?.first else {return}
             if textField.text?.count != 14 {
-                self.checkIfRealPhoneNumber()}
+                self?.checkIfRealPhoneNumber()}
             else {
                 guard let text = textField.text?.filter({Int(String($0)) != nil}) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
                 
-                self.confirmDelivery(phoneNumber: text)
+                self?.confirmDelivery(phoneNumber: text)
             }
             
         }
@@ -305,8 +305,8 @@ class AddressSearchViewController: UIViewController {
     func checkIfRealPhoneNumber(){
         
         let alertController = UIAlertController(title: "Not Enough Numbers", message: "Phone Number must have 10 Digits", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Ok", style: .cancel) { (_) in
-            self.addPhoneNumberAlert()
+        let okButton = UIAlertAction(title: "Ok", style: .cancel) { [weak self] (_) in
+            self?.addPhoneNumberAlert()
         }
         alertController.addAction(okButton)
         present(alertController, animated: true, completion: nil)
@@ -356,14 +356,15 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         
         let search = MKLocalSearch(request: searchRequest)
         // the response holds the mapItems which holds the coordinates
-        search.start { (response, error) in
+        search.start { [weak self] (response, error) in
+            guard let strongSelf = self else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+            strongSelf.coordinate = response?.mapItems[0].placemark.coordinate
+            strongSelf.address = strongSelf.searchResults[indexPath.row].title
+            strongSelf.subAddress = strongSelf.searchResults[indexPath.row].subtitle
             
-            self.coordinate = response?.mapItems[0].placemark.coordinate
-            self.address = self.searchResults[indexPath.row].title
-            self.subAddress = self.searchResults[indexPath.row].subtitle
-            
-            self.addPhoneNumberAlert()
-            print(String(describing: self.coordinate))
+            self?.addPhoneNumberAlert()
+            print(String(describing: strongSelf.coordinate))
         }
         self.view.endEditing(true)
     }

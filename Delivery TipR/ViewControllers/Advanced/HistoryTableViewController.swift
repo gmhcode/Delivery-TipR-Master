@@ -26,13 +26,8 @@ class HistoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-        deliveries = deliveryFetch() ?? []
-        print(deliveries.count)
-        tableView.reloadData()
-    }
+    
+    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,6 +37,10 @@ class HistoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return deliveries.count}
+        
+        deliveries = deliveryFetch() ?? []
+        print(deliveries.count)
         return deliveries.count
     }
 
@@ -75,6 +74,7 @@ class HistoryTableViewController: UITableViewController {
             let destination = segue.destination as? EditDeliveryTableViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         let delivery = deliveries[indexPath.row]
         destination.delivery = delivery
+//        destination.historyTVC = self
         
     }
     /*

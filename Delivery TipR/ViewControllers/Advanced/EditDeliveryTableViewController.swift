@@ -11,6 +11,7 @@ import UIKit
 class EditDeliveryTableViewController: UITableViewController {
     
     var delivery : Delivery?
+    weak var historyTVC : HistoryTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +19,18 @@ class EditDeliveryTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryEditCell")
         view.backgroundColor = #colorLiteral(red: 0.9598043561, green: 0.9649370313, blue: 0.9775747657, alpha: 1)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "changeAddressSegue" {
             guard let destination = segue.destination as? EditAddressViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             destination.delivery = delivery
+            destination.editDeliveryTableViewConttroller = self
 
         }
     }
-   
 }
 
 // MARK: - TableView Functions
@@ -34,11 +39,19 @@ extension EditDeliveryTableViewController {
         
         override func numberOfSections(in tableView: UITableView) -> Int {
             // #warning Incomplete implementation, return the number of sections
+            if let delivery = delivery {
+               let deliveries = DeliveryController.getDeliveryWith(id: delivery.id)
+                if !deliveries.isEmpty {
+                    self.delivery = deliveries[0]
+                }
+            }
+            
             return 3
         }
         
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             // #warning Incomplete implementation, return the number of rows
+            
             return 1
         }
         
@@ -63,7 +76,7 @@ extension EditDeliveryTableViewController {
                 
                 
             }
-            performSegue(withIdentifier: "changeAddressSegue", sender: nil)
+//            performSegue(withIdentifier: "changeAddressSegue", sender: nil)
             
         }
         
