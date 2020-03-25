@@ -329,8 +329,6 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
     // MARK: - CellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         let searchResult = searchResults[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
         
@@ -339,7 +337,6 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         #warning("DeleteTestFunc")
-//                TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
         
         return cell
     }

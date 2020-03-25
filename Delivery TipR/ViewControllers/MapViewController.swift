@@ -36,6 +36,14 @@ class MapViewController: UIViewController {
         checkLocationServices()
          #warning("UNCOMMENT DIRECTIONS")
         directions()
+        setViews()
+        
+    }
+    @IBAction func centerOnLocationTapped(_ sender: Any) {
+        centerViewOnUserLocation()
+    }
+    
+    func setViews(){
         centerOnLocationButton.layer.borderWidth = 1
         centerOnLocationButton.layer.borderColor = #colorLiteral(red: 0.01656158641, green: 0.01656158641, blue: 0.01656158641, alpha: 1)
         centerOnLocationButton.layer.cornerRadius = //10
@@ -51,10 +59,6 @@ class MapViewController: UIViewController {
         centerOnLocationButton.layer.masksToBounds = false
         
     }
-    @IBAction func centerOnLocationTapped(_ sender: Any) {
-        centerViewOnUserLocation()
-    }
-    
     
     func setDelegates() {
         mapView.delegate = self
