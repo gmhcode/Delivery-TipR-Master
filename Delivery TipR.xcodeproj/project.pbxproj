@@ -42,6 +42,7 @@
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
 		9094E5572435842700B18C91 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 9094E5562435842700B18C91 /* awsconfiguration.json */; };
 		9094E5592435851200B18C91 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E5582435851200B18C91 /* Authentication.swift */; };
+		9094E55B243651FC00B18C91 /* BlahViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E55A243651FC00B18C91 /* BlahViewController.swift */; };
 		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
 		90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5DDC024196235000DD266 /* MapViewDirections.swift */; };
 		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
@@ -103,6 +104,7 @@
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		9094E5562435842700B18C91 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		9094E5582435851200B18C91 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		9094E55A243651FC00B18C91 /* BlahViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlahViewController.swift; sourceTree = "<group>"; };
 		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
 		90A5DDC024196235000DD266 /* MapViewDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDirections.swift; sourceTree = "<group>"; };
 		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				903E2965240C662C001BED71 /* Models */,
 				903E2964240C65A1001BED71 /* Resourses */,
 				903E2945240C6472001BED71 /* Main.storyboard */,
+				9094E55A243651FC00B18C91 /* BlahViewController.swift */,
 				903E2950240C6475001BED71 /* Info.plist */,
 				903E2948240C6472001BED71 /* Delivery_TipR.xcdatamodeld */,
 			);
@@ -495,6 +498,7 @@
 				9055441F24240EC20027CC08 /* EditDeliveryTableViewController.swift in Sources */,
 				90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */,
 				9047FFA1241C327C009575AE /* NavViewController.swift in Sources */,
+				9094E55B243651FC00B18C91 /* BlahViewController.swift in Sources */,
 				90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */,
 				9042176824204FDA00F67287 /* TestFuncs.swift in Sources */,
 				9055442124241C700027CC08 /* TextFields.swift in Sources */,
