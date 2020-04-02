@@ -40,6 +40,7 @@
 		9055442124241C700027CC08 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055442024241C700027CC08 /* TextFields.swift */; };
 		905544232424480A0027CC08 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905544222424480A0027CC08 /* EditAddressViewController.swift */; };
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
+		9094E5572435842700B18C91 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 9094E5562435842700B18C91 /* awsconfiguration.json */; };
 		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
 		90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5DDC024196235000DD266 /* MapViewDirections.swift */; };
 		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
@@ -99,6 +100,7 @@
 		9055442024241C700027CC08 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		905544222424480A0027CC08 /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		9094E5562435842700B18C91 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
 		90A5DDC024196235000DD266 /* MapViewDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDirections.swift; sourceTree = "<group>"; };
 		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		903E293E240C6472001BED71 /* Delivery TipR */ = {
 			isa = PBXGroup;
 			children = (
+				9094E5562435842700B18C91 /* awsconfiguration.json */,
 				903E2972240C7655001BED71 /* ExtensionsAndUtilities */,
 				903E2967240C663A001BED71 /* ViewControllers */,
 				903E2966240C6632001BED71 /* ModelControllers */,
@@ -375,6 +378,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9094E5572435842700B18C91 /* awsconfiguration.json in Resources */,
 				903E294F240C6475001BED71 /* LaunchScreen.storyboard in Resources */,
 				903E294C240C6475001BED71 /* Assets.xcassets in Resources */,
 				903E2947240C6472001BED71 /* Main.storyboard in Resources */,

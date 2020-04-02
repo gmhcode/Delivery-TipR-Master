@@ -7,6 +7,7 @@ target 'Delivery TipR' do
 
   # Pods for Delivery TipR
 	pod 'MaterialComponents'
+	pod 'AWSMobileClient'
   target 'Delivery TipRTests' do
     inherit! :search_paths
     # Pods for testing
