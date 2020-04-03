@@ -9,18 +9,20 @@
 import UIKit
 import MaterialComponents
 
-class BlahViewController: UIViewController {
+class SignInViewController: UIViewController {
 
     @IBOutlet weak var helloTextField: MDCTextField!
     @IBOutlet weak var blahTextField: MDCTextField!
     
     var nameController: MDCTextInputControllerOutlined?
+    var passwordController : MDCTextInputControllerOutlined?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
         nameController = MDCTextInputControllerOutlined(textInput: helloTextField)
+        passwordController = MDCTextInputControllerOutlined(textInput: blahTextField)
     }
     
 

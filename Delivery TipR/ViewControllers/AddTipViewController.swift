@@ -15,7 +15,7 @@ import MaterialComponents.MaterialDialogs
 
 class AddTipViewController: UIViewController {
   
-    @IBOutlet weak var tipTextField:  UITextField!
+    @IBOutlet weak var tipTextField:  MDCTextField!
    
     
     @IBOutlet weak var averageTipLabel: UILabel!
@@ -51,6 +51,7 @@ class AddTipViewController: UIViewController {
         tipTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
         setViews()
         phoneButton.setTitle(format(phoneNumber: delivery.locationId), for: .normal)
+         nameController = MDCTextInputControllerOutlined(textInput: tipTextField)
         
        
     }
