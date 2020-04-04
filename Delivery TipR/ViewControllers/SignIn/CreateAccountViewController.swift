@@ -24,10 +24,15 @@ class CreateAccountViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        setTextControllers()
     }
     
     func setTextControllers(){
         emailController = MDCTextInputControllerOutlined(textInput: emailTextField)
+        
+        passwordController = MDCTextInputControllerOutlined(textInput: passwordTextField)
+        
+        retypeController = MDCTextInputControllerOutlined(textInput: retypePasswordTextField)
     }
 
     /*

@@ -44,6 +44,7 @@
 		9094E5592435851200B18C91 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E5582435851200B18C91 /* Authentication.swift */; };
 		9094E55B243651FC00B18C91 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E55A243651FC00B18C91 /* SignInViewController.swift */; };
 		9094E55E2436A49400B18C91 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E55D2436A49400B18C91 /* CreateAccountViewController.swift */; };
+		9094E5602436C70D00B18C91 /* ConfirmNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E55F2436C70D00B18C91 /* ConfirmNewViewController.swift */; };
 		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
 		90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5DDC024196235000DD266 /* MapViewDirections.swift */; };
 		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
@@ -107,6 +108,7 @@
 		9094E5582435851200B18C91 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		9094E55A243651FC00B18C91 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9094E55D2436A49400B18C91 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		9094E55F2436C70D00B18C91 /* ConfirmNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmNewViewController.swift; sourceTree = "<group>"; };
 		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
 		90A5DDC024196235000DD266 /* MapViewDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDirections.swift; sourceTree = "<group>"; };
 		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				9094E55A243651FC00B18C91 /* SignInViewController.swift */,
 				9094E55D2436A49400B18C91 /* CreateAccountViewController.swift */,
+				9094E55F2436C70D00B18C91 /* ConfirmNewViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				90521672241061C30020C238 /* LocationManagerController.swift in Sources */,
 				9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */,
 				9055441F24240EC20027CC08 /* EditDeliveryTableViewController.swift in Sources */,
+				9094E5602436C70D00B18C91 /* ConfirmNewViewController.swift in Sources */,
 				90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */,
 				9047FFA1241C327C009575AE /* NavViewController.swift in Sources */,
 				9094E55B243651FC00B18C91 /* SignInViewController.swift in Sources */,

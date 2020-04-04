@@ -1,5 +1,5 @@
 //
-//  BlahViewController.swift
+//  ConfirmNewViewController.swift
 //  Delivery TipR
 //
 //  Created by Greg Hughes on 4/2/20.
@@ -8,25 +8,25 @@
 
 import UIKit
 import MaterialComponents
+class ConfirmNewViewController: UIViewController {
 
-class SignInViewController: UIViewController {
-
-    @IBOutlet weak var helloTextField: MDCTextField!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var confirmationTextField: MDCTextField!
     
-    @IBOutlet weak var passwordTextField: MDCTextField!
+    var confirmationController: MDCTextInputControllerOutlined?
     
-    var nameController: MDCTextInputControllerOutlined?
-    var passwordController : MDCTextInputControllerOutlined?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        nameController = MDCTextInputControllerOutlined(textInput: helloTextField)
-        passwordController = MDCTextInputControllerOutlined(textInput: passwordTextField)
+        confirmationController = MDCTextInputControllerOutlined(textInput: confirmationTextField)
+        // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func confirmCodeTapped(_ sender: Any) {
+    }
+    @IBAction func sendNewCodeTapped(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
