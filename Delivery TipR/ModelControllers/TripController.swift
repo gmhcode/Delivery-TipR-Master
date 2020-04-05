@@ -28,6 +28,8 @@ class TripController {
         persistentManager.saveContext()
         return trip
     }
+    
+    
     ///Get Trip from delivery
     static func getTrip(from tripId: String) -> [Trip] {
           let persistentManager = PersistenceManager.shared
@@ -65,9 +67,10 @@ class TripController {
     private func getAllTrips() -> [Trip] {
         let persistentManager = PersistenceManager.shared
         let trips = persistentManager.fetch(Trip.self)
-//        print(trips.count, "Trips ♊️")
         return trips
     }
+    
+    
     func deleteTrips() {
         let persistentManager = PersistenceManager.shared
         

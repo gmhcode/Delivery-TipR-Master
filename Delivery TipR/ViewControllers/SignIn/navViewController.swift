@@ -1,34 +1,26 @@
 //
-//  BlahViewController.swift
+//  navViewController.swift
 //  Delivery TipR
 //
-//  Created by Greg Hughes on 4/2/20.
+//  Created by Greg Hughes on 4/5/20.
 //  Copyright © 2020 Greg Hughes. All rights reserved.
 //
 
 import UIKit
-import MaterialComponents.MaterialTextFields
 
-class SignInViewController: UIViewController {
+class navViewController: UIViewController {
 
-    @IBOutlet weak var helloTextField: MDCTextField!
-    
-    @IBOutlet weak var passwordTextField: MDCTextField!
-    
-    var nameController: MDCTextInputControllerOutlined?
-    var passwordController : MDCTextInputControllerOutlined?
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        nameController = MDCTextInputControllerOutlined(textInput: helloTextField)
-        passwordController = MDCTextInputControllerOutlined(textInput: passwordTextField)
     }
     
 
+    @IBAction func tapped(_ sender: Any) {
+//             self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

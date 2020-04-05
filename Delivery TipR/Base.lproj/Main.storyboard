@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="36e-Jk-vbp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bmN-KY-Utt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -11,6 +11,7 @@
         <scene sceneID="bLx-36-xD2">
             <objects>
                 <navigationController id="36e-Jk-vbp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QLh-dT-yEe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y2S-bN-LWD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -22,6 +23,117 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5q-Tc-U6Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3688" y="-635"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gY4-Qv-9Po">
+            <objects>
+                <viewController id="bmN-KY-Utt" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AyP-4I-H6p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbc-6e-I4H">
+                                <rect key="frame" x="109" y="386" width="196" height="134"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="36e-Jk-vbp" kind="presentation" modalPresentationStyle="overCurrentContext" id="2os-QV-ANA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cbc-6e-I4H" firstAttribute="centerY" secondItem="CZC-Fc-k28" secondAttribute="centerY" id="3WZ-jJ-HeA"/>
+                            <constraint firstItem="cbc-6e-I4H" firstAttribute="height" secondItem="AyP-4I-H6p" secondAttribute="height" multiplier="0.149554" id="ELh-pK-sdj"/>
+                            <constraint firstItem="cbc-6e-I4H" firstAttribute="centerX" secondItem="CZC-Fc-k28" secondAttribute="centerX" id="jrb-rM-Cun"/>
+                            <constraint firstItem="cbc-6e-I4H" firstAttribute="width" secondItem="AyP-4I-H6p" secondAttribute="width" multiplier="0.47343" id="ydR-fd-Bjf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CZC-Fc-k28"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYP-QD-it7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5075" y="-723"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EWq-aX-K0w">
+            <objects>
+                <navigationController id="vUD-GF-ujh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KJ7-oH-6qw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AU7-uw-r0x" kind="relationship" relationship="rootViewController" id="P7B-ad-esh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VDf-86-Oj8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4990" y="478"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HLR-5p-L12">
+            <objects>
+                <viewController id="AU7-uw-r0x" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ki5-49-Nei">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nax-Ti-eHh">
+                                <rect key="frame" x="124" y="415" width="166" height="120"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="bxw-yQ-eJ0" kind="show" id="nwa-QN-Du3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Nax-Ti-eHh" firstAttribute="width" secondItem="Ki5-49-Nei" secondAttribute="width" multiplier="0.400966" id="5R8-uA-dHJ"/>
+                            <constraint firstItem="Nax-Ti-eHh" firstAttribute="height" secondItem="Ki5-49-Nei" secondAttribute="height" multiplier="0.133929" id="FzU-fO-75n"/>
+                            <constraint firstItem="Nax-Ti-eHh" firstAttribute="centerX" secondItem="AGb-iS-a7Q" secondAttribute="centerX" id="dZs-HF-UdX"/>
+                            <constraint firstItem="Nax-Ti-eHh" firstAttribute="centerY" secondItem="AGb-iS-a7Q" secondAttribute="centerY" id="jPA-Vd-Fgn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AGb-iS-a7Q"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EYo-8O-leC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0QV-A8-dDR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3975.36231884058" y="494.86607142857139"/>
+        </scene>
+        <!--Nav View Controller-->
+        <scene sceneID="VS6-LF-GR0">
+            <objects>
+                <viewController id="bxw-yQ-eJ0" customClass="navViewController" customModule="Delivery_TipR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BY6-49-DIS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxj-kw-jYF">
+                                <rect key="frame" x="133" y="340.5" width="148" height="269"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="tapped:" destination="bxw-yQ-eJ0" eventType="touchUpInside" id="Jgy-qd-R6d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Oxj-kw-jYF" firstAttribute="height" secondItem="BY6-49-DIS" secondAttribute="height" multiplier="0.300223" id="IfS-07-VBd"/>
+                            <constraint firstItem="Oxj-kw-jYF" firstAttribute="width" secondItem="BY6-49-DIS" secondAttribute="width" multiplier="0.357488" id="Ofr-b1-aDN"/>
+                            <constraint firstItem="Oxj-kw-jYF" firstAttribute="centerY" secondItem="y8Q-1B-fgT" secondAttribute="centerY" id="glt-kn-rql"/>
+                            <constraint firstItem="Oxj-kw-jYF" firstAttribute="centerX" secondItem="y8Q-1B-fgT" secondAttribute="centerX" id="xwS-4w-1aQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="y8Q-1B-fgT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3Ti-WI-aE3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FzY-qL-XIW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3215.9420289855075" y="521.65178571428567"/>
         </scene>
         <!--Sign In-->
         <scene sceneID="tlT-gs-XiL">
@@ -248,7 +360,6 @@
                                         </state>
                                         <connections>
                                             <action selector="sendConfirmationButtonTapped:" destination="8Ma-Z2-eV9" eventType="touchUpInside" id="oVs-Vj-9Hl"/>
-                                            <segue destination="lal-A8-rrP" kind="show" id="tmd-Er-JHP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -267,6 +378,7 @@
                         <outlet property="emailTextField" destination="yQv-MM-Nuf" id="5k5-Tv-lyW"/>
                         <outlet property="passwordTextField" destination="O4h-JS-aou" id="bas-xM-ZRu"/>
                         <outlet property="retypePasswordTextField" destination="3yc-An-StB" id="cyo-BI-Jc2"/>
+                        <segue destination="lal-A8-rrP" kind="show" identifier="codeSentSegue" id="JIC-7Q-LLh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFH-tS-hbq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -324,7 +436,7 @@
                                     <action selector="sendNewCodeTapped:" destination="lal-A8-rrP" eventType="touchUpInside" id="hst-tP-hG5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation code has been sent to your email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOi-G8-r48">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation code has been sent to your email address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOi-G8-r48">
                                 <rect key="frame" x="32" y="109" width="350" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>

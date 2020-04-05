@@ -13,12 +13,16 @@ class UserController {
     
     
     /// Checks to see if a user already exists, if not, creates one
-    static func createUser(email: String, uuid: String, username: String, password: String) -> User{
+    static func createUser(email: String, uuid: String, username: String, password: String) -> User {
         
-        
-        if let fetchedUser = fetchUser(){
+        // If the user already exists with the preferred email, return that user
+        if let fetchedUser = fetchUserWith(email: email) {
             return fetchedUser
-        } else {
+        }
+        ///If Someone enteres the wrong email when signing up, we need to delete the old user
+        if let _ = fetchUser() {
+            deleteUser()
+        }
             
             let persistentManager = PersistenceManager.shared
             let user = User(context: persistentManager.context)
@@ -29,8 +33,29 @@ class UserController {
             persistentManager.saveContext()
             
             return user
-        }
         
+        
+    }
+    
+    static func fetchUserWith(email:String) -> User? {
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<User> = User.fetchRequest()
+        let predicate = NSPredicate(format: "email CONTAINS[cd] %@", email)
+        request.predicate = predicate
+        
+        do {
+            let users = try persistentManager.context.fetch(request)
+            if users.count >= 1 {
+                print(users, "🥇")
+                return users[0]
+            } else {
+                return nil
+            }
+           
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return nil
+        }
     }
     
     /// Fetches the existsing user, if there is one
@@ -42,7 +67,8 @@ class UserController {
         do {
             let users = try persistentManager.context.fetch(request)
             if users.count >= 1 {
-                 return users[0]
+                print(users, "🥇")
+                return users[0]
             } else {
                 return nil
             }
@@ -61,40 +87,4 @@ class UserController {
         }
         persistentManager.saveContext()
     }
-    
-
-    
-    
-    //    @discardableResult static func createLocation(address: String, latitude: Double, longitude: Double, subAddress: String, phoneNumber: String) -> Location {
-//
-//           let persistentManager = PersistenceManager.shared
-//
-//           let existingLocation = getExistingLocation(phoneNumber: phoneNumber)
-//           if existingLocation.isEmpty == false {
-//               let location = existingLocation[0]
-//               if location.address != address {
-//                   location.address = address
-//                   location.subAddress = subAddress
-//                   location.latitude = latitude
-//                   location.longitude = longitude
-//                   location.phoneNumber = phoneNumber
-//                   location.id = phoneNumber
-//                   persistentManager.saveContext()
-//               }
-//               return existingLocation[0]
-//           }
-//
-//
-//           let location = Location(context: persistentManager.context)
-//           location.address = address
-//           location.averageTip = 0
-//           location.confirmed = 0
-//           location.id = phoneNumber
-//           location.phoneNumber = phoneNumber
-//           location.latitude = latitude
-//           location.longitude = longitude
-//           location.subAddress = subAddress
-//           persistentManager.saveContext()
-//           return location
-//       }
 }

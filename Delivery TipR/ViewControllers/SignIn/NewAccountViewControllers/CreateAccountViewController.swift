@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import MaterialComponents
 import MaterialComponents.MaterialTextFields
 
 class CreateAccountViewController: UIViewController {
@@ -35,18 +34,29 @@ class CreateAccountViewController: UIViewController {
         
         retypeController = MDCTextInputControllerOutlined(textInput: retypePasswordTextField)
     }
-    @IBAction func sendConfirmationButtonTapped(_ sender: Any) {
-//        Auth
-    }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    @IBAction func sendConfirmationButtonTapped(_ sender: Any) {
+        guard let emailText = emailTextField.text,
+            let passwordText = passwordTextField.text,
+            let retypePassword = retypePasswordTextField.text,
+            let username = emailTextField.text else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        
+               
+               if passwordText != retypePassword {
+                // Show passwords do not match alert
+                Authorization.global.passwordDontMatchAlert(vc: self)
+                return
+               }
+        
+        
+        
+        Authorization.global.signUp(vc: self, email: emailText, password: passwordText, username: username, uuid: UUID().uuidString) { [weak self] (confirmationState) in
+            if confirmationState == Authorization.ConfirmationState.emailWillBeSent {
+                DispatchQueue.main.async {
+                    self?.performSegue(withIdentifier: "codeSentSegue", sender: nil)
+                }
+            }
+        }
+    } 
 }
