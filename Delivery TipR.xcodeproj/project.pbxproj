@@ -32,6 +32,7 @@
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
 		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
 		905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905216732410658B0020C238 /* MapViewLocationManager.swift */; };
+		905367A22439732800484796 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905367A12439732800484796 /* ForgotPasswordViewController.swift */; };
 		9053D94B24117FDE004692FC /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94924117FDE004692FC /* Trip+CoreDataClass.swift */; };
 		9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */; };
 		9053D94E2411814F004692FC /* TripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94D2411814F004692FC /* TripController.swift */; };
@@ -96,6 +97,7 @@
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
 		905216732410658B0020C238 /* MapViewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewLocationManager.swift; sourceTree = "<group>"; };
+		905367A12439732800484796 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		9053D94924117FDE004692FC /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9053D94D2411814F004692FC /* TripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripController.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				9094E55A243651FC00B18C91 /* SignInViewController.swift */,
 				9094E55D2436A49400B18C91 /* CreateAccountViewController.swift */,
 				9094E55F2436C70D00B18C91 /* ConfirmNewViewController.swift */,
+				905367A12439732800484796 /* ForgotPasswordViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				904217652420339600F67287 /* AdvancedDisplayView.swift in Sources */,
 				9042176A2422C9DB00F67287 /* HistoryTableViewController.swift in Sources */,
 				905544232424480A0027CC08 /* EditAddressViewController.swift in Sources */,
+				905367A22439732800484796 /* ForgotPasswordViewController.swift in Sources */,
 				903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */,
 				903E2944240C6472001BED71 /* MapViewController.swift in Sources */,
 				9042176D2423EC1F00F67287 /* HistoryTableViewCell.swift in Sources */,
