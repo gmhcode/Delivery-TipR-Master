@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bmN-KY-Utt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RrQ-88-P1T">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -255,63 +255,97 @@
                         <viewLayoutGuide key="safeArea" id="ULv-pC-QBl"/>
                     </view>
                     <navigationItem key="navigationItem" id="2Mk-ES-9ik"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="HGW-9A-YVj" id="tTW-36-Kau"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eW5-Pr-20D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Ajr-om-Llv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1728" y="-430"/>
         </scene>
-        <!--View Controller-->
+        <!--New Password View Controller-->
         <scene sceneID="qJL-A9-wFP">
             <objects>
-                <viewController id="RrQ-88-P1T" sceneMemberID="viewController">
+                <viewController id="RrQ-88-P1T" customClass="NewPasswordViewController" customModule="Delivery_TipR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VuZ-zi-ZsA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0qh-yx-QKg">
-                                <rect key="frame" x="32" y="170" width="350" height="234"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0qh-yx-QKg">
+                                <rect key="frame" x="32" y="170" width="350" height="190"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmation Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sdd-v4-CEn">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="46.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmation Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sdd-v4-CEn" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="P5D-oS-LJI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NewPassword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXH-VS-vTR">
-                                        <rect key="frame" x="0.0" y="62.5" width="350" height="46.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NewPassword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXH-VS-vTR" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="70" width="350" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-type Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-S8-vgo">
-                                        <rect key="frame" x="0.0" y="125" width="350" height="46.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-type Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-S8-vgo" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="140" width="350" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-lz-QGL">
-                                        <rect key="frame" x="0.0" y="187.5" width="350" height="46.5"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                        <state key="normal" title="Update Password">
-                                            <color key="titleColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-lz-QGL">
+                                <rect key="frame" x="32" y="410" width="350" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JYF-iy-cod"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="Update Password">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="updatePasswordTapped:" destination="RrQ-88-P1T" eventType="touchUpInside" id="YQ3-Hf-oDn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation code has been sent to your email address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0H-wt-WcV">
+                                <rect key="frame" x="0.0" y="120" width="414" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0qh-yx-QKg" firstAttribute="height" secondItem="VuZ-zi-ZsA" secondAttribute="height" multiplier="0.261161" id="R2z-0R-Zgu"/>
+                            <constraint firstItem="I0H-wt-WcV" firstAttribute="centerX" secondItem="kyG-d9-njG" secondAttribute="centerX" id="3d1-75-AOJ"/>
+                            <constraint firstItem="I0H-wt-WcV" firstAttribute="height" secondItem="VuZ-zi-ZsA" secondAttribute="height" multiplier="0.046875" id="5WW-eG-rWv"/>
+                            <constraint firstItem="HdW-lz-QGL" firstAttribute="top" secondItem="0qh-yx-QKg" secondAttribute="bottom" constant="50" id="QYS-xg-vwh"/>
+                            <constraint firstItem="I0H-wt-WcV" firstAttribute="width" secondItem="VuZ-zi-ZsA" secondAttribute="width" id="f0c-o5-qDO"/>
                             <constraint firstItem="0qh-yx-QKg" firstAttribute="width" secondItem="VuZ-zi-ZsA" secondAttribute="width" multiplier="0.845411" id="g8S-Qi-yHX"/>
+                            <constraint firstItem="HdW-lz-QGL" firstAttribute="width" secondItem="VuZ-zi-ZsA" secondAttribute="width" multiplier="0.845411" id="lZh-HS-8Dg"/>
+                            <constraint firstItem="0qh-yx-QKg" firstAttribute="top" secondItem="I0H-wt-WcV" secondAttribute="bottom" constant="8" id="ncv-8d-6Du"/>
                             <constraint firstItem="0qh-yx-QKg" firstAttribute="centerX" secondItem="kyG-d9-njG" secondAttribute="centerX" id="wAJ-YQ-TNT"/>
                             <constraint firstItem="0qh-yx-QKg" firstAttribute="top" secondItem="kyG-d9-njG" secondAttribute="top" constant="82" id="y3T-41-DBD"/>
+                            <constraint firstItem="HdW-lz-QGL" firstAttribute="centerX" secondItem="kyG-d9-njG" secondAttribute="centerX" id="zEI-ui-Acj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kyG-d9-njG"/>
                     </view>
                     <navigationItem key="navigationItem" id="FXr-Sg-6OF"/>
+                    <connections>
+                        <outlet property="confirmationCodeTextField" destination="Sdd-v4-CEn" id="w81-i2-f4T"/>
+                        <outlet property="newPasswordTextField" destination="KXH-VS-vTR" id="RXc-VJ-DqR"/>
+                        <outlet property="retypePasswordTextField" destination="6gC-S8-vgo" id="4my-8v-rDf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pME-8b-qnL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-890" y="-435"/>
+            <point key="canvasLocation" x="-894.20289855072474" y="-431.25"/>
         </scene>
         <!--Create New Account-->
         <scene sceneID="UnB-pO-Qrb">
@@ -384,7 +418,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFH-tS-hbq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cWY-B3-Ngp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1707.2463768115942" y="-1139.0625"/>
+            <point key="canvasLocation" x="-1729" y="-1122"/>
         </scene>
         <!--Confirmation-->
         <scene sceneID="tmF-Bv-lcC">
@@ -402,6 +436,11 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Confirmation Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wht-Ss-0cF" customClass="MDCTextField">
                                         <rect key="frame" x="0.0" y="78" width="350" height="48"/>
@@ -415,48 +454,64 @@
                                         <state key="normal" title="Confirm Code">
                                             <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="confirmCodeTapped:" destination="lal-A8-rrP" eventType="touchUpInside" id="KOj-rz-Vmb"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="McP-Uu-pcJ" firstAttribute="height" secondItem="wht-Ss-0cF" secondAttribute="height" id="50b-nk-eGB"/>
                                     <constraint firstAttribute="width" constant="350" id="Uwz-iu-d4H"/>
                                     <constraint firstItem="wht-Ss-0cF" firstAttribute="height" secondItem="ajo-Dq-rXZ" secondAttribute="height" multiplier="0.0558036" constant="36.551339285714285" id="ajb-N1-Ocs"/>
+                                    <constraint firstItem="iDQ-Vk-InX" firstAttribute="height" secondItem="wht-Ss-0cF" secondAttribute="height" id="blZ-Nh-yNP"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation code has been sent to your email address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOi-G8-r48">
+                                <rect key="frame" x="32" y="109" width="350" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uiw-xN-pfo">
-                                <rect key="frame" x="32" y="449" width="350" height="52"/>
+                                <rect key="frame" x="32" y="803.5" width="350" height="53.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                 <state key="normal" title="Send New Code">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sendNewCodeTapped:" destination="lal-A8-rrP" eventType="touchUpInside" id="hst-tP-hG5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation code has been sent to your email address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOi-G8-r48">
-                                <rect key="frame" x="32" y="109" width="350" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Uiw-xN-pfo" firstAttribute="height" secondItem="GX8-EP-dUq" secondAttribute="height" multiplier="0.0580357" id="7Wy-Xy-MYs"/>
-                            <constraint firstItem="Uiw-xN-pfo" firstAttribute="centerY" secondItem="ZCs-jq-MaY" secondAttribute="centerY" id="YtS-Mk-mq2"/>
+                            <constraint firstItem="Uiw-xN-pfo" firstAttribute="height" secondItem="GX8-EP-dUq" secondAttribute="height" multiplier="0.0597098" id="Mf8-sG-91r"/>
                             <constraint firstItem="dOi-G8-r48" firstAttribute="width" secondItem="GX8-EP-dUq" secondAttribute="width" multiplier="0.845411" id="aTv-7y-eIz"/>
                             <constraint firstItem="ajo-Dq-rXZ" firstAttribute="top" secondItem="ZCs-jq-MaY" secondAttribute="top" constant="50" id="dBK-4A-mBf"/>
-                            <constraint firstItem="Uiw-xN-pfo" firstAttribute="width" secondItem="GX8-EP-dUq" secondAttribute="width" multiplier="0.845411" id="fwM-VE-bX0"/>
-                            <constraint firstItem="Uiw-xN-pfo" firstAttribute="centerX" secondItem="ZCs-jq-MaY" secondAttribute="centerX" id="gtU-QD-6tx"/>
+                            <constraint firstItem="ZCs-jq-MaY" firstAttribute="bottom" secondItem="Uiw-xN-pfo" secondAttribute="bottom" constant="5" id="i9V-yt-bBw"/>
                             <constraint firstItem="ajo-Dq-rXZ" firstAttribute="top" secondItem="dOi-G8-r48" secondAttribute="bottom" constant="8" id="ouF-Aa-0XX"/>
                             <constraint firstItem="dOi-G8-r48" firstAttribute="centerX" secondItem="ZCs-jq-MaY" secondAttribute="centerX" id="pcc-0d-bz7"/>
                             <constraint firstItem="ajo-Dq-rXZ" firstAttribute="centerX" secondItem="GX8-EP-dUq" secondAttribute="centerX" id="qza-Xh-DQZ"/>
+                            <constraint firstItem="Uiw-xN-pfo" firstAttribute="width" secondItem="GX8-EP-dUq" secondAttribute="width" multiplier="0.845411" id="rXK-hx-V98"/>
+                            <constraint firstItem="Uiw-xN-pfo" firstAttribute="centerX" secondItem="ZCs-jq-MaY" secondAttribute="centerX" id="t5I-TG-x6H"/>
                             <constraint firstItem="dOi-G8-r48" firstAttribute="height" secondItem="GX8-EP-dUq" secondAttribute="height" multiplier="0.0234375" id="tQ0-Ny-J91"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZCs-jq-MaY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="1Sy-p2-2td" appends="YES" id="SvR-c2-GCL"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Confirmation" id="YOR-vS-c7u"/>
                     <connections>
@@ -465,8 +520,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PzK-6F-lQx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1Sy-p2-2td">
+                    <connections>
+                        <action selector="dismissKeyboardTapped:" destination="lal-A8-rrP" id="DOc-Pb-XSi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-959" y="-1139"/>
+            <point key="canvasLocation" x="-894" y="-1139"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">

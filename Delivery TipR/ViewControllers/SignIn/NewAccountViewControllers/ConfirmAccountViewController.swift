@@ -19,6 +19,7 @@ class ConfirmAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextControllers()
+        setDelegates()
         
         guard let email = UserController.fetchUser()?.email else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         
@@ -26,11 +27,19 @@ class ConfirmAccountViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+      
+    }
+    
+    
     
     func setTextControllers() {
         confirmationController = MDCTextInputControllerOutlined(textInput: confirmationTextField)
     }
-    
+    func setDelegates(){
+        confirmationTextField.delegate = self
+    }
     
     @IBAction func confirmCodeTapped(_ sender: Any) {
         guard let confirmationCode = confirmationTextField.text else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
@@ -51,6 +60,14 @@ class ConfirmAccountViewController: UIViewController {
         Authorization.global.resendConfirmationCode()
     }
     
+    
+    @IBAction func dismissKeyboardTapped(_ sender: Any) {
+        if confirmationTextField.isFirstResponder == true {
+            confirmationTextField.resignFirstResponder()
+        }
+        
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -60,5 +77,8 @@ class ConfirmAccountViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+}
+extension ConfirmAccountViewController : UITextFieldDelegate {
     
 }

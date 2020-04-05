@@ -66,7 +66,9 @@ class Authorization {
                     print("Error: Could not change password.")
                     completion(nil)
                 }
-            } else if let error = error {
+            } else if let error = error as? AWSMobileClientError {
+                self.awsError(error: error, vc: vc)
+                
                 print("Error occurred: \(error.localizedDescription)")
                 completion(nil)
             }
@@ -90,14 +92,7 @@ class Authorization {
             } else if let error = error as? AWSMobileClientError{
                 print("Error occurred: \(error)")
                 
-                switch error {
-                case  .userNotFound(let message):
-                    print(message)
-                    self.userNotFoundError(vc: vc)
-                    
-                default:
-                    break
-                }
+                self.awsError(error: error, vc: vc)
                 completion(nil)
             }
         }
@@ -140,6 +135,7 @@ class Authorization {
             if let signUpResult = result {
                 print("A verification code has been sent via \(signUpResult.codeDeliveryDetails!.deliveryMedium) at \(signUpResult.codeDeliveryDetails!.destination!)")
             } else if let error = error {
+                
                 print("\(error.localizedDescription)")
             }
         })
@@ -164,13 +160,7 @@ class Authorization {
                 }
             } else if let error = error as? AWSMobileClientError {
                 print("\(error.localizedDescription)")
-                switch error {
-                case .codeMismatch(let message):
-                    self.errorMessageAlert(vc: vc, message: message)
-                    break
-                default:
-                    break
-                }
+                self.awsError(error: error, vc: vc)
             }
             completion(nil)
         }
@@ -227,14 +217,14 @@ class Authorization {
             }
         }
     }
-    private func userNotFoundError(vc:UIViewController) {
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "Email Not Found", message: "Unable to locate and users with the provided email address", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Ok", style: .cancel)
-            alertController.addAction(okButton)
-            vc.present(alertController, animated: true, completion: nil)
-        }
-    }
+//    private func userNotFoundError(vc:UIViewController) {
+//        DispatchQueue.main.async {
+//            let alertController = UIAlertController(title: "Email Not Found", message: "Unable to locate and users with the provided email address", preferredStyle: .alert)
+//            let okButton = UIAlertAction(title: "Ok", style: .cancel)
+//            alertController.addAction(okButton)
+//            vc.present(alertController, animated: true, completion: nil)
+//        }
+//    }
     
     private func confirmationCodeSentAlert(vc:UIViewController){
         DispatchQueue.main.async {
@@ -309,7 +299,145 @@ class Authorization {
     //                    vc.present(alertController, animated: true, completion: nil)
     //                }
     //    }
-    
+    private func awsError(error: Error, vc: UIViewController){
+        guard let error = error as? AWSMobileClientError else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+        
+        switch error {
+        case .aliasExists(let message):
+            errorMessageAlert(vc: vc, message: message)
+            break
+        case .badRequest(let message):
+            errorMessageAlert(vc: vc, message: message)
+            break
+        case .codeDeliveryFailure(let message):
+            errorMessageAlert(vc: vc, message: message)
+            break
+        case .codeMismatch(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .cognitoIdentityPoolNotConfigured(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .deviceNotRemembered(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .errorLoadingPage(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .expiredCode(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .expiredRefreshToken(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .federationProviderExists(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .groupExists(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .guestAccessNotAllowed(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .identityIdUnavailable(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .idTokenAndAcceessTokenNotIssued(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .idTokenNotIssued(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .internalError(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .invalidConfiguration(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .invalidLambdaResponse(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .invalidOAuthFlow(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .invalidParameter(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .invalidPassword(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .invalidState(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .invalidUserPoolConfiguration(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .limitExceeded(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .mfaMethodNotFound(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .notAuthorized(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .notSignedIn(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .passwordResetRequired(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .resourceNotFound(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .scopeDoesNotExist(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .securityFailed(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .softwareTokenMFANotFound(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .tooManyFailedAttempts(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .tooManyRequests(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .unableToSignIn(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .unexpectedLambda(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .unknown(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .userCancelledSignIn(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .userLambdaValidation(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .usernameExists(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .userNotConfirmed(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .userNotFound(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        case .userPoolNotConfigured(let message):
+                errorMessageAlert(vc: vc, message: message)
+            break
+        
+        default:
+            break
+        }
+    }
     enum ConfirmationState {
         case emailWillBeSent
         case accepted

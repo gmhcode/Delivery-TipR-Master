@@ -29,7 +29,7 @@
 		9042176D2423EC1F00F67287 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042176C2423EC1F00F67287 /* HistoryTableViewCell.swift */; };
 		90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90470007241C6FC2009575AE /* AdvancedViewController.swift */; };
 		9047FFA1241C327C009575AE /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047FFA0241C327C009575AE /* NavViewController.swift */; };
-		90485319243A8C3F00750779 /* navViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90485318243A8C3F00750779 /* navViewController.swift */; };
+		9048531B243A9DA900750779 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048531A243A9DA900750779 /* NewPasswordViewController.swift */; };
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
 		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
 		905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905216732410658B0020C238 /* MapViewLocationManager.swift */; };
@@ -98,7 +98,7 @@
 		9042176C2423EC1F00F67287 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		90470007241C6FC2009575AE /* AdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
 		9047FFA0241C327C009575AE /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
-		90485318243A8C3F00750779 /* navViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navViewController.swift; sourceTree = "<group>"; };
+		9048531A243A9DA900750779 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
 		905216732410658B0020C238 /* MapViewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewLocationManager.swift; sourceTree = "<group>"; };
@@ -332,7 +332,7 @@
 				9094E55A243651FC00B18C91 /* SignInViewController.swift */,
 				905367A3243A62D300484796 /* NewAccountViewControllers */,
 				905367A12439732800484796 /* ForgotPasswordViewController.swift */,
-				90485318243A8C3F00750779 /* navViewController.swift */,
+				9048531A243A9DA900750779 /* NewPasswordViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -508,7 +508,6 @@
 			files = (
 				905367B5243A679100484796 /* UserController.swift in Sources */,
 				9094E55E2436A49400B18C91 /* CreateAccountViewController.swift in Sources */,
-				90485319243A8C3F00750779 /* navViewController.swift in Sources */,
 				9053D95024143777004692FC /* AddTipViewController.swift in Sources */,
 				90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */,
 				903E294A240C6472001BED71 /* Delivery_TipR.xcdatamodeld in Sources */,
@@ -518,6 +517,7 @@
 				905367A22439732800484796 /* ForgotPasswordViewController.swift in Sources */,
 				903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */,
 				903E2944240C6472001BED71 /* MapViewController.swift in Sources */,
+				9048531B243A9DA900750779 /* NewPasswordViewController.swift in Sources */,
 				9042176D2423EC1F00F67287 /* HistoryTableViewCell.swift in Sources */,
 				903E296D240C7152001BED71 /* Location+CoreDataProperties.swift in Sources */,
 				9052167024105C110020C238 /* Views.swift in Sources */,

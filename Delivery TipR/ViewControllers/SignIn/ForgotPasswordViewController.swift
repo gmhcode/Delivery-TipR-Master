@@ -11,8 +11,7 @@ import UIKit
 class ForgotPasswordViewController: UIViewController {
 
     
-    @IBAction func emailTextField(_ sender: Any) {
-    }
+    @IBOutlet weak var emailTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +24,16 @@ class ForgotPasswordViewController: UIViewController {
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        guard let destination = segue.destination as? NewPasswordViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        destination.email = emailTextField.text
+ 
     }
-    */
+    
 
 }
