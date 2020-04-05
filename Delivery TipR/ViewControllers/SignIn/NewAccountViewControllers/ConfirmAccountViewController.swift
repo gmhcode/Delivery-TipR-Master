@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import MaterialComponents
-class ConfirmNewViewController: UIViewController {
+//import MaterialComponents
+import MaterialComponents.MaterialTextFields
+
+class ConfirmAccountViewController: UIViewController {
 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var confirmationTextField: MDCTextField!

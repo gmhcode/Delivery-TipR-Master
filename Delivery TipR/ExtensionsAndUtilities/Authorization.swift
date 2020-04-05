@@ -8,21 +8,21 @@
 
 import UIKit
 import AWSMobileClient
-class User : Codable {
-    
-    
-    let email : String
-    let uuid : String
-    let username : String
-    let password : String
-    
-    init(email: String, uuid: String, username: String, password: String) {
-        self.email = email
-        self.uuid = uuid
-        self.username = username
-        self.password = password
-    }
-}
+//class User : Codable {
+//    
+//    
+//    let email : String
+//    let uuid : String
+//    let username : String
+//    let password : String
+//    
+//    init(email: String, uuid: String, username: String, password: String) {
+//        self.email = email
+//        self.uuid = uuid
+//        self.username = username
+//        self.password = password
+//    }
+//}
 
 var theUser : User!
 struct Authorization {
@@ -179,7 +179,13 @@ struct Authorization {
             completion(nil)
         }
         
-        let user = User(email: emailText, uuid: UUID().uuidString, username: username, password: passwordText)
+        
+        
+        let user = UserController.createUser(email: emailText, uuid: UUID().uuidString, username: username, password: passwordText)
+        
+        
+        
+        
         Authorization.global.theUser = user
         AWSMobileClient.default().signUp(username: user.email,
                                          password: user.password,

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import MaterialComponents
+//import MaterialComponents
+import MaterialComponents.MaterialTextFields
 
 class CreateAccountViewController: UIViewController {
 
@@ -34,7 +35,10 @@ class CreateAccountViewController: UIViewController {
         
         retypeController = MDCTextInputControllerOutlined(textInput: retypePasswordTextField)
     }
-
+    @IBAction func sendConfirmationButtonTapped(_ sender: Any) {
+//        Auth
+    }
+    
     /*
     // MARK: - Navigation
 

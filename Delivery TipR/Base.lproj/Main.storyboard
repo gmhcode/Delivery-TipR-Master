@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="-2765" y="-635"/>
         </scene>
-        <!--View Controller-->
+        <!--Forgot Password View Controller-->
         <scene sceneID="8KT-0C-iRn">
             <objects>
-                <viewController id="RHE-fr-cHY" sceneMemberID="viewController">
+                <viewController id="RHE-fr-cHY" customClass="ForgotPasswordViewController" customModule="Delivery_TipR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PyZ-VR-Hgo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,6 +114,10 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="emailTextField:" destination="RHE-fr-cHY" eventType="editingDidEnd" id="9wJ-HZ-Lgt"/>
+                                            <action selector="emailTextField:" destination="Ajr-om-Llv" eventType="editingDidEnd" id="w3g-UI-5VY"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CiT-Bk-n3o">
                                         <rect key="frame" x="0.0" y="65" width="350" height="50"/>
@@ -123,6 +127,7 @@
                                             <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
+                                            <action selector="resetPasswordButtonTapped:" destination="RHE-fr-cHY" eventType="touchUpInside" id="Pit-wk-hua"/>
                                             <segue destination="RrQ-88-P1T" kind="show" id="KHP-BG-wAK"/>
                                         </connections>
                                     </button>
@@ -140,6 +145,7 @@
                     <navigationItem key="navigationItem" id="2Mk-ES-9ik"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eW5-Pr-20D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Ajr-om-Llv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1728" y="-430"/>
         </scene>
@@ -241,6 +247,7 @@
                                             <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
+                                            <action selector="sendConfirmationButtonTapped:" destination="8Ma-Z2-eV9" eventType="touchUpInside" id="oVs-Vj-9Hl"/>
                                             <segue destination="lal-A8-rrP" kind="show" id="tmd-Er-JHP"/>
                                         </connections>
                                     </button>
@@ -270,7 +277,7 @@
         <!--Confirmation-->
         <scene sceneID="tmF-Bv-lcC">
             <objects>
-                <viewController id="lal-A8-rrP" customClass="ConfirmNewViewController" customModule="Delivery_TipR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lal-A8-rrP" customClass="ConfirmAccountViewController" customModule="Delivery_TipR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GX8-EP-dUq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -33,6 +33,9 @@
 		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
 		905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905216732410658B0020C238 /* MapViewLocationManager.swift */; };
 		905367A22439732800484796 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905367A12439732800484796 /* ForgotPasswordViewController.swift */; };
+		905367B5243A679100484796 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905367B4243A679100484796 /* UserController.swift */; };
+		905367B7243A68F900484796 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905367B6243A68F900484796 /* User+CoreDataProperties.swift */; };
+		905367B9243A690200484796 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905367B8243A690200484796 /* User+CoreDataClass.swift */; };
 		9053D94B24117FDE004692FC /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94924117FDE004692FC /* Trip+CoreDataClass.swift */; };
 		9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */; };
 		9053D94E2411814F004692FC /* TripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053D94D2411814F004692FC /* TripController.swift */; };
@@ -42,10 +45,10 @@
 		905544232424480A0027CC08 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905544222424480A0027CC08 /* EditAddressViewController.swift */; };
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
 		9094E5572435842700B18C91 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 9094E5562435842700B18C91 /* awsconfiguration.json */; };
-		9094E5592435851200B18C91 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E5582435851200B18C91 /* Authentication.swift */; };
+		9094E5592435851200B18C91 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E5582435851200B18C91 /* Authorization.swift */; };
 		9094E55B243651FC00B18C91 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E55A243651FC00B18C91 /* SignInViewController.swift */; };
 		9094E55E2436A49400B18C91 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E55D2436A49400B18C91 /* CreateAccountViewController.swift */; };
-		9094E5602436C70D00B18C91 /* ConfirmNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E55F2436C70D00B18C91 /* ConfirmNewViewController.swift */; };
+		9094E5602436C70D00B18C91 /* ConfirmAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E55F2436C70D00B18C91 /* ConfirmAccountViewController.swift */; };
 		90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90952BE5240DC060003F8ADF /* DeliveryController.swift */; };
 		90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5DDC024196235000DD266 /* MapViewDirections.swift */; };
 		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
@@ -98,6 +101,9 @@
 		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
 		905216732410658B0020C238 /* MapViewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewLocationManager.swift; sourceTree = "<group>"; };
 		905367A12439732800484796 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		905367B4243A679100484796 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		905367B6243A68F900484796 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/greghughes/Desktop/Delivery-TipR-Master/Delivery TipR/Models/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		905367B8243A690200484796 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/greghughes/Desktop/Delivery-TipR-Master/Delivery TipR/Models/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		9053D94924117FDE004692FC /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9053D94D2411814F004692FC /* TripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripController.swift; sourceTree = "<group>"; };
@@ -107,10 +113,10 @@
 		905544222424480A0027CC08 /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		9094E5562435842700B18C91 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
-		9094E5582435851200B18C91 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		9094E5582435851200B18C91 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		9094E55A243651FC00B18C91 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9094E55D2436A49400B18C91 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
-		9094E55F2436C70D00B18C91 /* ConfirmNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmNewViewController.swift; sourceTree = "<group>"; };
+		9094E55F2436C70D00B18C91 /* ConfirmAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAccountViewController.swift; sourceTree = "<group>"; };
 		90952BE5240DC060003F8ADF /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
 		90A5DDC024196235000DD266 /* MapViewDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDirections.swift; sourceTree = "<group>"; };
 		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
@@ -218,6 +224,8 @@
 		903E2965240C662C001BED71 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				905367B8243A690200484796 /* User+CoreDataClass.swift */,
+				905367B6243A68F900484796 /* User+CoreDataProperties.swift */,
 				9053D94924117FDE004692FC /* Trip+CoreDataClass.swift */,
 				9053D94A24117FDE004692FC /* Trip+CoreDataProperties.swift */,
 				903E2968240C7152001BED71 /* Location+CoreDataClass.swift */,
@@ -236,6 +244,7 @@
 				90952BE5240DC060003F8ADF /* DeliveryController.swift */,
 				90521671241061C30020C238 /* LocationManagerController.swift */,
 				9053D94D2411814F004692FC /* TripController.swift */,
+				905367B4243A679100484796 /* UserController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -263,7 +272,7 @@
 				903E2973240C7660001BED71 /* ExtensionsAndUtilities.swift */,
 				9042176724204FDA00F67287 /* TestFuncs.swift */,
 				9055442024241C700027CC08 /* TextFields.swift */,
-				9094E5582435851200B18C91 /* Authentication.swift */,
+				9094E5582435851200B18C91 /* Authorization.swift */,
 			);
 			path = ExtensionsAndUtilities;
 			sourceTree = "<group>";
@@ -306,12 +315,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		905367A3243A62D300484796 /* NewAccountViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9094E55D2436A49400B18C91 /* CreateAccountViewController.swift */,
+				9094E55F2436C70D00B18C91 /* ConfirmAccountViewController.swift */,
+			);
+			path = NewAccountViewControllers;
+			sourceTree = "<group>";
+		};
 		9094E55C2436A43600B18C91 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
 				9094E55A243651FC00B18C91 /* SignInViewController.swift */,
-				9094E55D2436A49400B18C91 /* CreateAccountViewController.swift */,
-				9094E55F2436C70D00B18C91 /* ConfirmNewViewController.swift */,
+				905367A3243A62D300484796 /* NewAccountViewControllers */,
 				905367A12439732800484796 /* ForgotPasswordViewController.swift */,
 			);
 			path = SignIn;
@@ -486,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				905367B5243A679100484796 /* UserController.swift in Sources */,
 				9094E55E2436A49400B18C91 /* CreateAccountViewController.swift in Sources */,
 				9053D95024143777004692FC /* AddTipViewController.swift in Sources */,
 				90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */,
@@ -499,6 +517,7 @@
 				9042176D2423EC1F00F67287 /* HistoryTableViewCell.swift in Sources */,
 				903E296D240C7152001BED71 /* Location+CoreDataProperties.swift in Sources */,
 				9052167024105C110020C238 /* Views.swift in Sources */,
+				905367B9243A690200484796 /* User+CoreDataClass.swift in Sources */,
 				903E296E240C7152001BED71 /* Delivery+CoreDataClass.swift in Sources */,
 				903E2974240C7660001BED71 /* ExtensionsAndUtilities.swift in Sources */,
 				903E2940240C6472001BED71 /* AppDelegate.swift in Sources */,
@@ -508,6 +527,7 @@
 				905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */,
 				9053D94E2411814F004692FC /* TripController.swift in Sources */,
 				903E2971240C7465001BED71 /* LocationController.swift in Sources */,
+				905367B7243A68F900484796 /* User+CoreDataProperties.swift in Sources */,
 				9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */,
 				903E2942240C6472001BED71 /* SceneDelegate.swift in Sources */,
 				90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */,
@@ -515,14 +535,14 @@
 				90521672241061C30020C238 /* LocationManagerController.swift in Sources */,
 				9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */,
 				9055441F24240EC20027CC08 /* EditDeliveryTableViewController.swift in Sources */,
-				9094E5602436C70D00B18C91 /* ConfirmNewViewController.swift in Sources */,
+				9094E5602436C70D00B18C91 /* ConfirmAccountViewController.swift in Sources */,
 				90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */,
 				9047FFA1241C327C009575AE /* NavViewController.swift in Sources */,
 				9094E55B243651FC00B18C91 /* SignInViewController.swift in Sources */,
 				90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */,
 				9042176824204FDA00F67287 /* TestFuncs.swift in Sources */,
 				9055442124241C700027CC08 /* TextFields.swift in Sources */,
-				9094E5592435851200B18C91 /* Authentication.swift in Sources */,
+				9094E5592435851200B18C91 /* Authorization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

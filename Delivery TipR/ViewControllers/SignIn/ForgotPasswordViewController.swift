@@ -10,11 +10,19 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController {
 
+    
+    @IBAction func emailTextField(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func resetPasswordButtonTapped(_ sender: Any) {
+    }
+    
     
 
     /*
