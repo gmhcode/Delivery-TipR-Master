@@ -20,6 +20,8 @@ class DeliveryController {
         let persistentManager = PersistenceManager.shared
         let delivery = Delivery(context: persistentManager.context)
         
+        delivery.userID = UserController.fetchUser()?.uuid ?? "ID NotWorking"
+        
         delivery.id = UUID().uuidString
         delivery.address = location.address
         delivery.locationId = location.id

@@ -8,6 +8,7 @@
         <attribute name="locationId" attributeType="String"/>
         <attribute name="tipAmonut" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="tripId" attributeType="String"/>
+        <attribute name="userID" attributeType="String"/>
     </entity>
     <entity name="Location" representedClassName=".Location" syncable="YES">
         <attribute name="address" attributeType="String"/>
@@ -31,7 +32,7 @@
         <attribute name="uuid" attributeType="String" defaultValueString="&quot;&quot;"/>
     </entity>
     <elements>
-        <element name="Delivery" positionX="18" positionY="63" width="128" height="148"/>
+        <element name="Delivery" positionX="18" positionY="63" width="128" height="163"/>
         <element name="Location" positionX="-27" positionY="18" width="128" height="163"/>
         <element name="Trip" positionX="0" positionY="90" width="128" height="88"/>
         <element name="User" positionX="0" positionY="90" width="128" height="103"/>

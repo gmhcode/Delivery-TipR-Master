@@ -160,6 +160,9 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="tIx-B2-Ey9" eventType="touchUpInside" id="iHg-8t-48N"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -197,7 +200,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="2Dr-Bs-9Ti"/>
                     <connections>
-                        <outlet property="helloTextField" destination="N9H-3g-hfE" id="ZC9-R6-yL7"/>
+                        <outlet property="emailTextField" destination="N9H-3g-hfE" id="ZC9-R6-yL7"/>
                         <outlet property="passwordTextField" destination="5wF-hg-jWu" id="kTo-xd-lLS"/>
                     </connections>
                 </viewController>
@@ -224,7 +227,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="emailTextField:" destination="RHE-fr-cHY" eventType="editingDidEnd" id="9wJ-HZ-Lgt"/>
                                             <action selector="emailTextField:" destination="Ajr-om-Llv" eventType="editingDidEnd" id="w3g-UI-5VY"/>
                                         </connections>
                                     </textField>
@@ -236,7 +238,7 @@
                                             <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="resetPasswordButtonTapped:" destination="RHE-fr-cHY" eventType="touchUpInside" id="Pit-wk-hua"/>
+                                            <action selector="resetPasswordButtonTapped:" destination="RHE-fr-cHY" eventType="touchUpInside" id="YOn-ke-quc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -252,7 +254,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2Mk-ES-9ik"/>
                     <connections>
-                        <outlet property="emailTextField" destination="HGW-9A-YVj" id="tTW-36-Kau"/>
+                        <outlet property="emailTextField" destination="HGW-9A-YVj" id="hvt-wq-yLx"/>
                         <segue destination="RrQ-88-P1T" kind="show" identifier="newPasswordSegue" id="eyx-DX-7Tv"/>
                     </connections>
                 </viewController>
@@ -575,7 +577,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-Ef-qQG">
                                 <rect key="frame" x="3" y="47" width="66" height="66"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bQr-Ef-qQG" secondAttribute="height" multiplier="1:1" id="9kw-qz-9lL"/>
                                 </constraints>

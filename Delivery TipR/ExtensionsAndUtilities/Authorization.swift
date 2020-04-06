@@ -84,7 +84,7 @@ class Authorization {
                 case .confirmationCodeSent:
                     print("Confirmation code sent via \(forgotPasswordResult.codeDeliveryDetails!.deliveryMedium) to: \(forgotPasswordResult.codeDeliveryDetails!.destination!)")
                     
-                    self.confirmationCodeSentAlert(vc: vc)
+//                    self.confirmationCodeSentAlert(vc: vc)
                     completion(.confirmationCodeSent)
                 default:
                     print("Error: Invalid case.")
@@ -100,7 +100,7 @@ class Authorization {
     }
     /// - Parameters:
     ///   - vc: The current ViewController
-    func signIn(email: String?, password: String?, vc:UIViewController) {
+    func signIn(email: String?, password: String?, vc:UIViewController, completion: @escaping(ConfirmationState?)->Void) {
         
         guard let email = email,
             let password = password else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
@@ -108,26 +108,20 @@ class Authorization {
         
         AWSMobileClient.default().signIn(username: email, password: password) { [weak self] (signInResult, error) in
             if let error = error as? AWSMobileClientError   {
-                
-                switch error {
-                case .notAuthorized(let message):
-                    print("\(message), 🎫")
-                    self?.invalidUsernameOrPasswordAlert(vc: vc)
-                    break
-                default:
-                    break
-                }
-                //                print()
+                self?.awsError(error: error, vc: vc)
+
             } else if let signInResult = signInResult {
                 switch (signInResult.signInState) {
                 case .signedIn:
                     print("User is signed in.")
+                    completion(.accepted)
                 case .smsMFA:
                     print("SMS message sent to \(signInResult.codeDetails!.destination!)")
                 default:
                     print("Sign In needs info which is not et supported.")
                 }
             }
+            completion(nil)
         }
     }
     

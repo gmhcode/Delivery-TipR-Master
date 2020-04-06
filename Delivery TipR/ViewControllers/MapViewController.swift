@@ -47,24 +47,34 @@ class MapViewController: UIViewController {
             performSegue(withIdentifier: "signUpSegue", sender: nil)
         }
     }
+    
+    
+    override func viewDidLayoutSubviews() {
+        setTableViewHeight()
+    }
+    
+    
+    
+    
     @IBAction func centerOnLocationTapped(_ sender: Any) {
+        centerOnLocationButton.pulsate()
         centerViewOnUserLocation()
     }
     
     func setViews(){
-        centerOnLocationButton.layer.borderWidth = 1
-        centerOnLocationButton.layer.borderColor = #colorLiteral(red: 0.01656158641, green: 0.01656158641, blue: 0.01656158641, alpha: 1)
-        centerOnLocationButton.layer.cornerRadius = //10
-            centerOnLocationButton.frame.height / 2
-        
-        centerOnLocationButton.layer.shadowPath =
-            UIBezierPath(roundedRect: self.centerOnLocationButton.bounds,
-                         cornerRadius: self.centerOnLocationButton.layer.cornerRadius).cgPath
-        centerOnLocationButton.layer.shadowColor = #colorLiteral(red: 0.1003180668, green: 0.1003180668, blue: 0.1003180668, alpha: 1)
-        centerOnLocationButton.layer.shadowOpacity = 0.5
-        centerOnLocationButton.layer.shadowOffset = CGSize(width: 0, height: 3)
-        centerOnLocationButton.layer.shadowRadius = 3
-        centerOnLocationButton.layer.masksToBounds = false
+//        centerOnLocationButton.layer.borderWidth = 1
+//        centerOnLocationButton.layer.borderColor = #colorLiteral(red: 0.01656158641, green: 0.01656158641, blue: 0.01656158641, alpha: 1)
+//        centerOnLocationButton.layer.cornerRadius = //10
+//            centerOnLocationButton.frame.height / 2
+//
+//        centerOnLocationButton.layer.shadowPath =
+//            UIBezierPath(roundedRect: self.centerOnLocationButton.bounds,
+//                         cornerRadius: self.centerOnLocationButton.layer.cornerRadius).cgPath
+//        centerOnLocationButton.layer.shadowColor = #colorLiteral(red: 0.1003180668, green: 0.1003180668, blue: 0.1003180668, alpha: 1)
+//        centerOnLocationButton.layer.shadowOpacity = 0.5
+//        centerOnLocationButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+//        centerOnLocationButton.layer.shadowRadius = 3
+//        centerOnLocationButton.layer.masksToBounds = false
         
     }
     
@@ -202,9 +212,18 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         let deliveries = DeliveryController.getTripDeliveries(trip: trip)
         //If there are no deliveries, hide the tableView
         tableView.isHidden = deliveries.count == 0 ? true : false
+        viewDidLayoutSubviews()
         #warning("UnComment Directions")
         directions()
         return deliveries.count
+    }
+    
+    func setTableViewHeight() {
+        guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
+        let deliveries = DeliveryController.getTripDeliveries(trip: trip)
+        self.tableView.frame.size.height = CGFloat(50 * deliveries.count)
+        self.tableView.contentSize.height = CGFloat(50 * deliveries.count)
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

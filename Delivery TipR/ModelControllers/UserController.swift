@@ -14,28 +14,28 @@ class UserController {
     
     /// Checks to see if a user already exists, if not, creates one
     static func createUser(email: String, uuid: String, username: String, password: String) -> User {
-        
+        let persistentManager = PersistenceManager.shared
         // If the user already exists with the preferred email, return that user
         if let fetchedUser = fetchUserWith(email: email) {
+            fetchedUser.password = password
+            persistentManager.saveContext()
             return fetchedUser
         }
         ///If Someone enteres the wrong email when signing up, we need to delete the old user
         if let _ = fetchUser() {
             deleteUser()
         }
-            
-            let persistentManager = PersistenceManager.shared
+        
             let user = User(context: persistentManager.context)
             user.email = email
             user.password = password
             user.username = username
             user.uuid = uuid
             persistentManager.saveContext()
-            
             return user
-        
-        
     }
+    
+    
     
     static func fetchUserWith(email:String) -> User? {
         let persistentManager = PersistenceManager.shared

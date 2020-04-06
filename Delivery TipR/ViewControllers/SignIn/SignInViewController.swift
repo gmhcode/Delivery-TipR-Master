@@ -8,35 +8,51 @@
 
 import UIKit
 import MaterialComponents.MaterialTextFields
+import AWSMobileClient
 
 class SignInViewController: UIViewController {
-
-    @IBOutlet weak var helloTextField: MDCTextField!
+    
+    @IBOutlet weak var emailTextField: MDCTextField!
     
     @IBOutlet weak var passwordTextField: MDCTextField!
     
-    var nameController: MDCTextInputControllerOutlined?
+    var emailController: MDCTextInputControllerOutlined?
     var passwordController : MDCTextInputControllerOutlined?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureTextControllers()
         
-        nameController = MDCTextInputControllerOutlined(textInput: helloTextField)
+    }
+    
+    func configureTextControllers(){
+        emailController = MDCTextInputControllerOutlined(textInput: emailTextField)
         passwordController = MDCTextInputControllerOutlined(textInput: passwordTextField)
     }
     
+    @IBAction func signInTapped(_ sender: Any) {
+        
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        Authorization.global.signIn(email: emailTextField.text, password: passwordTextField.text, vc: self) { [weak self] (state) in
+            if state != nil {
+                AWSMobileClient.default().getUserAttributes { (dictionary, error) in
+                
+                    guard let dictionary = dictionary,let uuid = dictionary["custom:uuid"] else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                    print(dictionary)
+                    let user = UserController.createUser(email: email, uuid: uuid, username: email, password: password)
+                   
+                    
+                    DispatchQueue.main.async {
+                        self?.navigationController?.dismiss(animated: true, completion: nil)
+                        
+                    }
+                }
+                
+            }
+        }
     }
-    */
-
 }

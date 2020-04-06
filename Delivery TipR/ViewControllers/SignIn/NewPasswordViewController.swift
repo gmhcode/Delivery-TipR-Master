@@ -53,7 +53,10 @@ class NewPasswordViewController: UIViewController {
             if confirmationState != nil {
                 
                 DispatchQueue.main.async {
-                    self?.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                   
+                        self?.navigationController?.dismiss(animated: true, completion: nil)
+                        
+                    
                 }
             }
         }
