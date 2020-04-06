@@ -20,6 +20,13 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
+        Authorization.global.forgotPassword(email: emailTextField.text, vc: self) { [weak self] (state) in
+            if state != nil {
+                DispatchQueue.main.async {
+                    self?.performSegue(withIdentifier: "newPasswordSegue", sender: nil)
+                }
+            }
+        }
     }
     
     

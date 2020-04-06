@@ -83,6 +83,7 @@ class Authorization {
                 switch(forgotPasswordResult.forgotPasswordState) {
                 case .confirmationCodeSent:
                     print("Confirmation code sent via \(forgotPasswordResult.codeDeliveryDetails!.deliveryMedium) to: \(forgotPasswordResult.codeDeliveryDetails!.destination!)")
+                    
                     self.confirmationCodeSentAlert(vc: vc)
                     completion(.confirmationCodeSent)
                 default:

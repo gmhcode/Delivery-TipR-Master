@@ -37,7 +37,15 @@ class MapViewController: UIViewController {
          #warning("UNCOMMENT DIRECTIONS")
         directions()
         setViews()
-        
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        UserController.deleteUser()
+        if  UserController.fetchUser() == nil {
+            performSegue(withIdentifier: "signUpSegue", sender: nil)
+        }
     }
     @IBAction func centerOnLocationTapped(_ sender: Any) {
         centerViewOnUserLocation()
@@ -47,7 +55,7 @@ class MapViewController: UIViewController {
         centerOnLocationButton.layer.borderWidth = 1
         centerOnLocationButton.layer.borderColor = #colorLiteral(red: 0.01656158641, green: 0.01656158641, blue: 0.01656158641, alpha: 1)
         centerOnLocationButton.layer.cornerRadius = //10
-            centerOnLocationButton.frame.width / 2
+            centerOnLocationButton.frame.height / 2
         
         centerOnLocationButton.layer.shadowPath =
             UIBezierPath(roundedRect: self.centerOnLocationButton.bounds,

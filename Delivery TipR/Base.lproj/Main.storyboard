@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RrQ-88-P1T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -36,9 +36,6 @@
                                 <rect key="frame" x="109" y="386" width="196" height="134"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="36e-Jk-vbp" kind="presentation" modalPresentationStyle="overCurrentContext" id="2os-QV-ANA"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -240,7 +237,6 @@
                                         </state>
                                         <connections>
                                             <action selector="resetPasswordButtonTapped:" destination="RHE-fr-cHY" eventType="touchUpInside" id="Pit-wk-hua"/>
-                                            <segue destination="RrQ-88-P1T" kind="show" id="KHP-BG-wAK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -257,6 +253,7 @@
                     <navigationItem key="navigationItem" id="2Mk-ES-9ik"/>
                     <connections>
                         <outlet property="emailTextField" destination="HGW-9A-YVj" id="tTW-36-Kau"/>
+                        <segue destination="RrQ-88-P1T" kind="show" identifier="newPasswordSegue" id="eyx-DX-7Tv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eW5-Pr-20D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -577,10 +574,10 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-Ef-qQG">
-                                <rect key="frame" x="0.0" y="44" width="66" height="63"/>
+                                <rect key="frame" x="3" y="47" width="66" height="66"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="bQr-Ef-qQG" secondAttribute="height" multiplier="22:21" id="9kw-qz-9lL"/>
+                                    <constraint firstAttribute="width" secondItem="bQr-Ef-qQG" secondAttribute="height" multiplier="1:1" id="9kw-qz-9lL"/>
                                 </constraints>
                                 <state key="normal" image="location.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -594,11 +591,11 @@
                         <constraints>
                             <constraint firstItem="bQr-Ef-qQG" firstAttribute="width" secondItem="NZ3-HZ-QMA" secondAttribute="width" multiplier="0.15942" id="5K2-fH-4J7"/>
                             <constraint firstItem="NZ3-HZ-QMA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EH6-Nx-vOL"/>
-                            <constraint firstItem="bQr-Ef-qQG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="It0-lp-KPT"/>
+                            <constraint firstItem="bQr-Ef-qQG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="3" id="It0-lp-KPT"/>
                             <constraint firstAttribute="bottom" secondItem="NZ3-HZ-QMA" secondAttribute="bottom" id="UV3-OM-4Qa"/>
                             <constraint firstItem="NZ3-HZ-QMA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ayx-F4-AQY"/>
                             <constraint firstItem="5jv-Vx-TiY" firstAttribute="width" secondItem="NZ3-HZ-QMA" secondAttribute="width" multiplier="0.384" id="eYD-nk-Yr2"/>
-                            <constraint firstItem="bQr-Ef-qQG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pqH-ar-1Wi"/>
+                            <constraint firstItem="bQr-Ef-qQG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="3" id="pqH-ar-1Wi"/>
                             <constraint firstItem="NZ3-HZ-QMA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="py4-jS-Zkl"/>
                             <constraint firstItem="5jv-Vx-TiY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="w2x-Ju-qmo"/>
                             <constraint firstItem="5jv-Vx-TiY" firstAttribute="height" secondItem="NZ3-HZ-QMA" secondAttribute="height" multiplier="0.253373" id="z6c-bo-Drj"/>
@@ -611,6 +608,7 @@
                         <outlet property="mapView" destination="NZ3-HZ-QMA" id="Uky-AM-TPD"/>
                         <outlet property="tableView" destination="5jv-Vx-TiY" id="TlV-GH-a0l"/>
                         <segue destination="UGd-1c-vOO" kind="presentation" identifier="addTipSegue" modalPresentationStyle="overCurrentContext" id="vDQ-VT-aQs"/>
+                        <segue destination="36e-Jk-vbp" kind="presentation" identifier="signUpSegue" modalPresentationStyle="overCurrentContext" id="Oeb-fl-4Cj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

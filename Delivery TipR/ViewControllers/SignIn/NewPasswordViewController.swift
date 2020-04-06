@@ -9,6 +9,7 @@
 import UIKit
 import MaterialComponents.MaterialTextFields
 class NewPasswordViewController: UIViewController {
+    
     @IBOutlet weak var confirmationCodeTextField: MDCTextField!
     @IBOutlet weak var newPasswordTextField: MDCTextField!
     @IBOutlet weak var retypePasswordTextField: MDCTextField!
@@ -33,9 +34,11 @@ class NewPasswordViewController: UIViewController {
         retypePasswordTextField.delegate = self
     }
     func configureTextFields() {
+        
         confirmationCodeTextField.tag = 0
         newPasswordTextField.tag = 1
         retypePasswordTextField.tag = 2
+        
         confirmationController = MDCTextInputControllerOutlined(textInput: confirmationCodeTextField)
         
         newPasswordController = MDCTextInputControllerOutlined(textInput: newPasswordTextField)
@@ -45,33 +48,17 @@ class NewPasswordViewController: UIViewController {
     
     
     @IBAction func updatePasswordTapped(_ sender: Any) {
-        Authorization.global.newPassword(email: email, newPassword: newPasswordTextField.text, reTypePassword: retypePasswordTextField.text, confirmationCode: confirmationCodeTextField.text, vc: self) { (confirmationState) in
+        Authorization.global.newPassword(email: email, newPassword: newPasswordTextField.text, reTypePassword: retypePasswordTextField.text, confirmationCode: confirmationCodeTextField.text, vc: self) { [weak self] (confirmationState) in
+            
             if confirmationState != nil {
                 
+                DispatchQueue.main.async {
+                    self?.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 extension NewPasswordViewController : UITextFieldDelegate {
