@@ -1172,8 +1172,8 @@
                                             <color key="textColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjG-dx-Rh2">
-                                            <rect key="frame" x="110.5" y="11" width="205.5" height="41"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjG-dx-Rh2">
+                                            <rect key="frame" x="122.5" y="11" width="186.5" height="41"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
@@ -1192,11 +1192,10 @@
                                         <constraint firstItem="kxu-Nl-Klh" firstAttribute="width" secondItem="wEx-K5-qcs" secondAttribute="width" multiplier="0.224" id="Gml-7x-Xfb"/>
                                         <constraint firstItem="YAE-pu-e6t" firstAttribute="height" secondItem="wEx-K5-qcs" secondAttribute="height" multiplier="0.650794" id="MQa-Lh-bpb"/>
                                         <constraint firstItem="jjG-dx-Rh2" firstAttribute="height" secondItem="wEx-K5-qcs" secondAttribute="height" multiplier="0.650794" id="T3h-gA-wPT"/>
-                                        <constraint firstItem="jjG-dx-Rh2" firstAttribute="width" secondItem="wEx-K5-qcs" secondAttribute="width" multiplier="0.496" id="WjK-ts-mF2"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="YAE-pu-e6t" secondAttribute="trailing" id="bgj-CM-KbN"/>
-                                        <constraint firstItem="YAE-pu-e6t" firstAttribute="leading" secondItem="jjG-dx-Rh2" secondAttribute="trailing" constant="3" id="cHK-Fs-lRe"/>
+                                        <constraint firstItem="YAE-pu-e6t" firstAttribute="leading" secondItem="jjG-dx-Rh2" secondAttribute="trailing" constant="10" id="cHK-Fs-lRe"/>
                                         <constraint firstItem="YAE-pu-e6t" firstAttribute="centerY" secondItem="wEx-K5-qcs" secondAttribute="centerY" id="egP-Ws-mon"/>
-                                        <constraint firstItem="jjG-dx-Rh2" firstAttribute="leading" secondItem="kxu-Nl-Klh" secondAttribute="trailing" constant="8" symbolic="YES" id="gKd-Bq-uTl"/>
+                                        <constraint firstItem="jjG-dx-Rh2" firstAttribute="leading" secondItem="kxu-Nl-Klh" secondAttribute="trailing" constant="10" id="gKd-Bq-uTl"/>
                                         <constraint firstItem="kxu-Nl-Klh" firstAttribute="centerY" secondItem="wEx-K5-qcs" secondAttribute="centerY" id="vQL-Fq-lrc"/>
                                         <constraint firstItem="jjG-dx-Rh2" firstAttribute="centerY" secondItem="wEx-K5-qcs" secondAttribute="centerY" id="yz9-X1-IrB"/>
                                     </constraints>
@@ -1219,7 +1218,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdS-73-uw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4366" y="815"/>
+            <point key="canvasLocation" x="4365.217391304348" y="814.95535714285711"/>
         </scene>
         <!--Edit Delivery Table View Controller-->
         <scene sceneID="sIc-Gs-2vu">

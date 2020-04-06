@@ -241,7 +241,8 @@ class DeliveryController {
         request.predicate = predicate
         
         do {
-            let deliveries = try persistentManager.context.fetch(request)
+            var deliveries = try persistentManager.context.fetch(request)
+            deliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInToday})
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
@@ -258,7 +259,8 @@ class DeliveryController {
         request.predicate = predicate
         
         do {
-            let deliveries = try persistentManager.context.fetch(request)
+            var deliveries = try persistentManager.context.fetch(request)
+            deliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisWeek})
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
@@ -274,7 +276,8 @@ class DeliveryController {
         request.predicate = predicate
         
         do {
-            let deliveries = try persistentManager.context.fetch(request)
+            var deliveries = try persistentManager.context.fetch(request)
+            deliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisMonth})
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
@@ -290,7 +293,8 @@ class DeliveryController {
         request.predicate = predicate
         
         do {
-            let deliveries = try persistentManager.context.fetch(request)
+            var deliveries = try persistentManager.context.fetch(request)
+            deliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisYear})
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")

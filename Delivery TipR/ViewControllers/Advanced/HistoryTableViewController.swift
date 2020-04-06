@@ -19,7 +19,7 @@ class HistoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = navigationTitle
-        timeFormatter.timeStyle = .short
+        setTimeFormatter()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,6 +27,26 @@ class HistoryTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    
+    func setTimeFormatter() {
+        switch navigationTitle {
+        case "Today":
+            timeFormatter.timeStyle = .short
+            break
+            case "Week":
+//            timeFormatter.dateFormat = "EEE hh:MM"
+            timeFormatter.dateFormat = "MMM d"
+            break
+            case "Month":
+                timeFormatter.dateFormat = "MMM d"
+            break
+            case "Year":
+                timeFormatter.dateFormat = "MMM d yyyy"
+            break
+        default:
+            break
+        }
+    }
     
     // MARK: - Table view data source
 
@@ -55,7 +75,9 @@ class HistoryTableViewController: UITableViewController {
         let dateString = timeFormatter.string(from: Date(timeIntervalSince1970: deliveries[indexPath.row].date))
         
         cell.delivery = deliveries[indexPath.row]
+        
         cell.timeLabel.text = dateString
+        cell.timeLabel.adjustsFontSizeToFitWidth = true
         
         
         

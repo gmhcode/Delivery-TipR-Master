@@ -33,8 +33,12 @@ class AdvancedViewController: UIViewController {
         
 //        if deliveries == nil {
 //            #warning("FOR TESTING ONLY")
-//            deliveries = TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
-//        } else {
+//            deliveries =
+        #warning("uncomment for test")
+        TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
+        
+//        }
+//        else {
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)], for: .normal)
        
 //            deliveries = DeliveryController.getAllFinishedDeliveries()
@@ -62,9 +66,9 @@ class AdvancedViewController: UIViewController {
             deliveryfetch = DeliveryController.fetchTodaysDeliveries
             guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             
-            let todaysDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInToday})
+
             
-            tripInfoView.deliveries = todaysDeliveries
+            tripInfoView.deliveries = deliveries
             break
             //This Week
         case 1:
@@ -75,9 +79,9 @@ class AdvancedViewController: UIViewController {
             
             
 //            guard let deliveries = DeliveryController.fetchThisWeeksDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            let thisWeeksDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisWeek})
+
             
-            tripInfoView.deliveries = thisWeeksDeliveries
+            tripInfoView.deliveries = deliveries
             break
             //This Month
         case 2:
@@ -89,9 +93,9 @@ class AdvancedViewController: UIViewController {
             
             
 //            guard let deliveries = DeliveryController.fetchThisMonthsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            let thisMonthssDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisMonth})
+
             
-            tripInfoView.deliveries = thisMonthssDeliveries
+            tripInfoView.deliveries = deliveries
             break
             //This Year
         case 3:
@@ -104,9 +108,9 @@ class AdvancedViewController: UIViewController {
             
             
 //            guard let deliveries = DeliveryController.fetchThisYearsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            let thisYearsDeliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisYear})
+
             
-            tripInfoView.deliveries = thisYearsDeliveries
+            tripInfoView.deliveries = deliveries
             break
         default :
             break
