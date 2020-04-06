@@ -39,6 +39,7 @@ extension EditDeliveryTableViewController {
         
         override func numberOfSections(in tableView: UITableView) -> Int {
             // #warning Incomplete implementation, return the number of sections
+            historyTVC?.tableView.reloadData()
             if let delivery = delivery {
                let deliveries = DeliveryController.getDeliveryWith(id: delivery.id)
                 if !deliveries.isEmpty {
@@ -133,6 +134,7 @@ extension EditDeliveryTableViewController {
             if let tip = Float(textField.text ?? "0.00") {
                 let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tip)
                 DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: tip, address: delivery.address)
+                self.tableView.reloadData()
             } else {
                 self.invalidTipAmountAlert()
             }

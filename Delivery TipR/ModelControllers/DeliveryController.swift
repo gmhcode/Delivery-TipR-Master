@@ -37,13 +37,15 @@ class DeliveryController {
   
     
     
-    static func editDelivery(delivery: Delivery, phoneNumber: String, tipAmount: Float, address : String ) {
+    static func editDelivery(delivery: Delivery, phoneNumber: String, tipAmount: Float, address : String )  {
         let persistentManager = PersistenceManager.shared
         delivery.locationId = phoneNumber
         delivery.tipAmonut = tipAmount
         delivery.address = address
         
         persistentManager.saveContext()
+        
+//        return delivery
 //        let location = LocationController.getExistingLocation(address: address)
 //        let deliv = getDeliveryWith(id: delivery.id)[0]
 //        print(deliv.tipAmonut," 🚣🏼‍♂️")
@@ -237,8 +239,9 @@ class DeliveryController {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInDay * 2)
-        let predicate = NSPredicate(format: "date >= \(date) AND isFinished == 1 AND unlocked == 1")
-        request.predicate = predicate
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        request.predicate = NSPredicate(format: "date >= \(date) AND isFinished == 1 AND unlocked == 1")
+         
         
         do {
             var deliveries = try persistentManager.context.fetch(request)
@@ -273,6 +276,7 @@ class DeliveryController {
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInMonth + secondsInWeek)
         let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1")
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         request.predicate = predicate
         
         do {
@@ -290,6 +294,7 @@ class DeliveryController {
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInYear + secondsInMonth)
         let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1")
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         request.predicate = predicate
         
         do {

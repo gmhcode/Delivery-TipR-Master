@@ -96,6 +96,7 @@ class HistoryTableViewController: UITableViewController {
             let destination = segue.destination as? EditDeliveryTableViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         let delivery = deliveries[indexPath.row]
         destination.delivery = delivery
+        destination.historyTVC = self
 //        destination.historyTVC = self
         
     }
