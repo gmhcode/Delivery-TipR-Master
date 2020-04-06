@@ -208,7 +208,7 @@
             </objects>
             <point key="canvasLocation" x="-2765" y="-635"/>
         </scene>
-        <!--Forgot Password View Controller-->
+        <!--Forgot Password-->
         <scene sceneID="8KT-0C-iRn">
             <objects>
                 <viewController id="RHE-fr-cHY" customClass="ForgotPasswordViewController" customModule="Delivery_TipR" customModuleProvider="target" sceneMemberID="viewController">
@@ -252,7 +252,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ULv-pC-QBl"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2Mk-ES-9ik"/>
+                    <navigationItem key="navigationItem" title="Forgot Password" id="2Mk-ES-9ik"/>
                     <connections>
                         <outlet property="emailTextField" destination="HGW-9A-YVj" id="hvt-wq-yLx"/>
                         <segue destination="RrQ-88-P1T" kind="show" identifier="newPasswordSegue" id="eyx-DX-7Tv"/>
@@ -263,7 +263,7 @@
             </objects>
             <point key="canvasLocation" x="-1728" y="-430"/>
         </scene>
-        <!--New Password View Controller-->
+        <!--Confirmation-->
         <scene sceneID="qJL-A9-wFP">
             <objects>
                 <viewController id="RrQ-88-P1T" customClass="NewPasswordViewController" customModule="Delivery_TipR" customModuleProvider="target" sceneMemberID="viewController">
@@ -335,7 +335,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kyG-d9-njG"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FXr-Sg-6OF"/>
+                    <navigationItem key="navigationItem" title="Confirmation" id="FXr-Sg-6OF"/>
                     <connections>
                         <outlet property="confirmationCodeTextField" destination="Sdd-v4-CEn" id="w81-i2-f4T"/>
                         <outlet property="newPasswordTextField" destination="KXH-VS-vTR" id="RXc-VJ-DqR"/>
@@ -1145,7 +1145,7 @@
             </objects>
             <point key="canvasLocation" x="5090" y="-410"/>
         </scene>
-        <!--Root View Controller-->
+        <!--History-->
         <scene sceneID="Byt-rO-1dM">
             <objects>
                 <tableViewController id="8qR-0C-AVC" customClass="HistoryTableViewController" customModule="Delivery_TipR" customModuleProvider="target" sceneMemberID="viewController">
@@ -1180,7 +1180,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAE-pu-e6t">
                                             <rect key="frame" x="319" y="11" width="75" height="41"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1201,7 +1201,7 @@
                                         <constraint firstItem="jjG-dx-Rh2" firstAttribute="centerY" secondItem="wEx-K5-qcs" secondAttribute="centerY" id="yz9-X1-IrB"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="addressLabel" destination="jjG-dx-Rh2" id="yLo-rK-m8H"/>
                                     <outlet property="timeLabel" destination="kxu-Nl-Klh" id="kUS-Bf-wce"/>
@@ -1215,7 +1215,7 @@
                             <outlet property="delegate" destination="8qR-0C-AVC" id="iEf-q3-XF6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="tVk-rU-itb"/>
+                    <navigationItem key="navigationItem" title="History" id="tVk-rU-itb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdS-73-uw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

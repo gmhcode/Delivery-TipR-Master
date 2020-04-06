@@ -255,7 +255,7 @@ class AddressSearchViewController: UIViewController {
         
         
         
-        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Is This Right?", message: "Are you sure you want to add \(address) to your trip?", preferredStyle: .alert)
         
         
         let okButton = UIAlertAction(title: "Yes", style: .default) { (yes) in

@@ -17,6 +17,7 @@ extension Delivery {
         return NSFetchRequest<Delivery>(entityName: "Delivery")
     }
 
+    @NSManaged public var unlocked : Int16
     @NSManaged public var userID : String
     @NSManaged public var tipAmonut: Float
     @NSManaged public var address: String

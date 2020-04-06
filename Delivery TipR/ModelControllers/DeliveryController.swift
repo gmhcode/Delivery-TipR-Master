@@ -21,7 +21,7 @@ class DeliveryController {
         let delivery = Delivery(context: persistentManager.context)
         
         delivery.userID = UserController.fetchUser()?.uuid ?? "ID NotWorking"
-        
+        delivery.unlocked = 1
         delivery.id = UUID().uuidString
         delivery.address = location.address
         delivery.locationId = location.id
@@ -52,7 +52,7 @@ class DeliveryController {
     static func getDeliveryWith(id:String) -> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let predicate = NSPredicate(format: "id == %@ ",id)
+        let predicate = NSPredicate(format: "id == %@ AND unlocked == 1",id)
         request.predicate = predicate
         
         do {
@@ -75,7 +75,7 @@ class DeliveryController {
     static func getTripDeliveries(trip: Trip)-> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let predicate = NSPredicate(format: "tripId == %@", trip.id)
+        let predicate = NSPredicate(format: "tripId == %@ AND unlocked == 1", trip.id)
         request.predicate = predicate
         
         do {
@@ -91,7 +91,7 @@ class DeliveryController {
     static func getUnfinishedTripDeliveries(trip: Trip)-> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let predicate = NSPredicate(format: "tripId == %@ AND isFinished == 0", trip.id)
+        let predicate = NSPredicate(format: "tripId == %@ AND isFinished == 0 AND unlocked == 1", trip.id)
         request.predicate = predicate
         
         do {
@@ -135,7 +135,7 @@ class DeliveryController {
     static func getUnfinishedDeliveries(for location: Location) -> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let predicate = NSPredicate(format: "locationId CONTAINS[cd] %@ AND isFinished == 0", location.id)
+        let predicate = NSPredicate(format: "locationId CONTAINS[cd] %@ AND isFinished == 0 AND unlocked == 1", location.id)
         request.predicate = predicate
         
         do {
@@ -151,7 +151,7 @@ class DeliveryController {
     static func getFinishedDeliveries(trip: Trip) -> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let predicate = NSPredicate(format: "tripId CONTAINS[cd] %@ AND isFinished == 1", trip.id)
+        let predicate = NSPredicate(format: "tripId CONTAINS[cd] %@ AND isFinished == 1 AND unlocked == 1", trip.id)
         request.predicate = predicate
         
         do {
@@ -169,7 +169,7 @@ class DeliveryController {
         
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-        let predicate = NSPredicate(format: "locationId CONTAINS[cd] %@ AND isFinished == 1", location.id)
+        let predicate = NSPredicate(format: "locationId CONTAINS[cd] %@ AND isFinished == 1 AND unlocked == 1", location.id)
         request.predicate = predicate
         
         do {
@@ -187,7 +187,7 @@ class DeliveryController {
             
             let persistentManager = PersistenceManager.shared
             let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-            let predicate = NSPredicate(format: "isFinished == 1")
+            let predicate = NSPredicate(format: "isFinished == 1 AND unlocked == 1")
             request.predicate = predicate
             
             do {
@@ -237,7 +237,7 @@ class DeliveryController {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInDay * 2)
-        let predicate = NSPredicate(format: "date >= \(date) AND isFinished == 1")
+        let predicate = NSPredicate(format: "date >= \(date) AND isFinished == 1 AND unlocked == 1")
         request.predicate = predicate
         
         do {
@@ -254,7 +254,7 @@ class DeliveryController {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInWeek + secondsInDay)
-        let predicate = NSPredicate(format: "date >= \(date)")
+        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1")
         request.predicate = predicate
         
         do {
@@ -270,7 +270,7 @@ class DeliveryController {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInMonth + secondsInWeek)
-        let predicate = NSPredicate(format: "date >= \(date)")
+        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1")
         request.predicate = predicate
         
         do {
@@ -286,7 +286,7 @@ class DeliveryController {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInYear + secondsInMonth)
-        let predicate = NSPredicate(format: "date >= \(date)")
+        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1")
         request.predicate = predicate
         
         do {

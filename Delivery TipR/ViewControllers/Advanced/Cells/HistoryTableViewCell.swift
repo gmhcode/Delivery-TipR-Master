@@ -39,7 +39,9 @@ class HistoryTableViewCell: UITableViewCell {
         guard let delivery = delivery else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
         addressLabel.adjustsFontSizeToFitWidth = true
         addressLabel.text = delivery.address
+        tipLabel.adjustsFontSizeToFitWidth = true
         tipLabel.text = delivery.tipAmonut.toCurrencyString()
+        
     }
     
     
