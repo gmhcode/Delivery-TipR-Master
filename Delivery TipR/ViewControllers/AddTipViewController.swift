@@ -15,7 +15,7 @@ import MaterialComponents.MaterialDialogs
 
 class AddTipViewController: UIViewController {
   
-    @IBOutlet weak var tipTextField:  MDCTextField!
+    @IBOutlet weak var tipTextField:  UITextField!
    
     
     @IBOutlet weak var averageTipLabel: UILabel!
@@ -31,7 +31,7 @@ class AddTipViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     
     var isPhoneTextField = false
-    var nameController: MDCTextInputControllerOutlined?
+//    var nameController: MDCTextInputControllerOutlined?
     var location : Location!
     var delivery : Delivery!
     lazy var finishedDeliveries = DeliveryController.getFinishedDeliveries(for: location)
@@ -45,13 +45,9 @@ class AddTipViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       
-        tipTextField.delegate = self
-        tipTextField.keyboardType = UIKeyboardType.decimalPad
-        tipTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
         setViews()
         phoneButton.setTitle(format(phoneNumber: delivery.locationId), for: .normal)
-         nameController = MDCTextInputControllerOutlined(textInput: tipTextField)
+//         nameController = MDCTextInputControllerOutlined(textInput: tipTextField)
         
        
     }
@@ -382,6 +378,12 @@ extension AddTipViewController {
         removeDeliveryButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         removeDeliveryButton.layer.shadowRadius = 2
         removeDeliveryButton.layer.masksToBounds = false
+        
+        tipTextField.delegate = self
+        tipTextField.keyboardType = UIKeyboardType.decimalPad
+        tipTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
+        tipTextField.attributedPlaceholder = NSAttributedString(string: "Enter Tip Amount",
+                                                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
     }
     
