@@ -234,13 +234,14 @@ class DeliveryController {
     }
     
     // MARK: - AdvancedViewController Functions
-    
+    #warning("UNWRAP USER")
     static func fetchTodaysDeliveries() -> [Delivery]? {
+        let user = UserController.fetchUser()!
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInDay * 2)
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        request.predicate = NSPredicate(format: "date >= \(date) AND isFinished == 1 AND unlocked == 1")
+        request.predicate = NSPredicate(format: "date >= \(date) AND isFinished == 1 AND unlocked == 1 AND userID == %@", user.uuid)
          
         
         do {
@@ -255,10 +256,11 @@ class DeliveryController {
     
     
     static func fetchThisWeeksDeliveries() -> [Delivery]? {
+        let user = UserController.fetchUser()!
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInWeek + secondsInDay)
-        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1")
+        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1 AND isFinished == 1 AND userID == %@", user.uuid)
         request.predicate = predicate
         
         do {
@@ -272,10 +274,11 @@ class DeliveryController {
     }
     
     static func fetchThisMonthsDeliveries() -> [Delivery]? {
+        let user = UserController.fetchUser()!
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInMonth + secondsInWeek)
-        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1")
+        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1 AND isFinished == 1 AND userID == %@", user.uuid)
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         request.predicate = predicate
         
@@ -290,10 +293,29 @@ class DeliveryController {
     }
     
     static func fetchThisYearsDeliveries() -> [Delivery]? {
+        let user = UserController.fetchUser()!
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let date = Date().timeIntervalSince1970 - (secondsInYear + secondsInMonth)
-        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1")
+        let predicate = NSPredicate(format: "date >= \(date) AND unlocked == 1 AND isFinished == 1 AND userID == %@", user.uuid)
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        request.predicate = predicate
+        
+        do {
+            var deliveries = try persistentManager.context.fetch(request)
+            deliveries = deliveries.filter({Date(timeIntervalSince1970: $0.date).isInThisYear})
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return nil
+        }
+    }
+    
+    static func fetchAllDeliveries() -> [Delivery]? {
+        let user = UserController.fetchUser()!
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let predicate = NSPredicate(format: "unlocked == 1 AND isFinished == 1 AND userID == %@", user.uuid)
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         request.predicate = predicate
         
