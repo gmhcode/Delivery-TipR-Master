@@ -1231,6 +1231,25 @@
                         <view key="tableHeaderView" contentMode="scaleToFill" id="aCx-oF-hU2">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3F-Q5-C5G">
+                                    <rect key="frame" x="8" y="8" width="107" height="46"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <state key="normal" title="Dismiss">
+                                        <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="dismissTapped:" destination="BcF-Z6-jKo" eventType="touchUpInside" id="YIS-LZ-V2i"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="IX0-fq-XQv">
@@ -1284,8 +1303,8 @@
                                                     <color key="textColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="46J-hZ-sXj">
-                                                    <rect key="frame" x="350" y="15" width="44" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Edit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="46J-hZ-sXj">
+                                                    <rect key="frame" x="364.5" y="15" width="29.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.18039215689999999" green="0.1843137255" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1352,8 +1371,8 @@
                                 <rect key="frame" x="17.5" y="37.5" width="379" height="777"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zRt-bY-phd">
-                                        <rect key="frame" x="15" y="79.5" width="349" height="574"/>
-                                        <color key="backgroundColor" red="0.89315878380000002" green="0.89315878380000002" blue="0.89315878380000002" alpha="0.87106699489999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="15" y="126" width="349" height="481"/>
+                                        <color key="backgroundColor" white="0.97073739035087714" alpha="0.87106699489999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <view key="tableFooterView" contentMode="scaleToFill" id="mQY-9E-KIZ">
                                             <rect key="frame" x="0.0" y="111.5" width="349" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1388,27 +1407,43 @@
                                         </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyi-43-Tsi">
-                                        <rect key="frame" x="110.5" y="685" width="158" height="51"/>
+                                        <rect key="frame" x="110.5" y="638.5" width="158" height="51"/>
+                                        <color key="backgroundColor" white="0.94204586990000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                <color key="value" white="0.09068896198830409" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="e52-yP-wVF" eventType="touchUpInside" id="qB0-kZ-Lsb"/>
+                                        </connections>
                                     </button>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Enter Delivery address" translatesAutoresizingMaskIntoConstraints="NO" id="7h7-VB-RGf">
-                                        <rect key="frame" x="15" y="8" width="349" height="52.5"/>
-                                        <color key="backgroundColor" red="0.9215573668" green="0.92156273129999999" blue="0.92157685759999997" alpha="0.86586257310000003" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <rect key="frame" x="15" y="58.5" width="349" height="52.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="zRt-bY-phd" firstAttribute="top" secondItem="7h7-VB-RGf" secondAttribute="bottom" constant="15" id="1qu-wD-8hM"/>
+                                    <constraint firstItem="zRt-bY-phd" firstAttribute="height" secondItem="Ek2-P0-5kV" secondAttribute="height" multiplier="0.619048" id="6EW-pb-Ett"/>
                                     <constraint firstItem="7h7-VB-RGf" firstAttribute="width" secondItem="Ek2-P0-5kV" secondAttribute="width" multiplier="0.920844" id="8jk-wp-OsF"/>
                                     <constraint firstItem="Pyi-43-Tsi" firstAttribute="centerX" secondItem="Ek2-P0-5kV" secondAttribute="centerX" id="9dl-j5-9d7"/>
                                     <constraint firstItem="Pyi-43-Tsi" firstAttribute="width" secondItem="Ek2-P0-5kV" secondAttribute="width" multiplier="0.416887" id="Bhl-sP-k7m"/>
                                     <constraint firstItem="Pyi-43-Tsi" firstAttribute="height" secondItem="Ek2-P0-5kV" secondAttribute="height" multiplier="0.0656371" id="Fkr-oW-Xfh"/>
                                     <constraint firstItem="7h7-VB-RGf" firstAttribute="centerX" secondItem="Ek2-P0-5kV" secondAttribute="centerX" id="MQ1-bP-4eA"/>
                                     <constraint firstItem="7h7-VB-RGf" firstAttribute="height" secondItem="Ek2-P0-5kV" secondAttribute="height" multiplier="0.0677146" id="Xpb-2p-mhL"/>
-                                    <constraint firstItem="7h7-VB-RGf" firstAttribute="top" secondItem="Ek2-P0-5kV" secondAttribute="top" constant="8" id="k1I-am-I7E"/>
                                     <constraint firstItem="Pyi-43-Tsi" firstAttribute="top" secondItem="zRt-bY-phd" secondAttribute="bottom" constant="31.5" id="mWQ-67-77f"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1422,7 +1457,6 @@
                         <constraints>
                             <constraint firstItem="Ek2-P0-5kV" firstAttribute="width" secondItem="AqE-vZ-0m5" secondAttribute="width" multiplier="0.915459" id="8HV-CG-YhU"/>
                             <constraint firstItem="Ek2-P0-5kV" firstAttribute="centerX" secondItem="jfe-Qt-9tM" secondAttribute="centerX" id="Ici-jC-4R7"/>
-                            <constraint firstItem="zRt-bY-phd" firstAttribute="height" secondItem="AqE-vZ-0m5" secondAttribute="height" multiplier="0.68171" id="Jqu-Sy-DpA"/>
                             <constraint firstItem="zRt-bY-phd" firstAttribute="centerX" secondItem="jfe-Qt-9tM" secondAttribute="centerX" id="K4p-Qe-vUZ"/>
                             <constraint firstItem="zRt-bY-phd" firstAttribute="width" secondItem="AqE-vZ-0m5" secondAttribute="width" multiplier="0.842995" id="UF8-K9-5CZ"/>
                             <constraint firstItem="zRt-bY-phd" firstAttribute="centerY" secondItem="jfe-Qt-9tM" secondAttribute="centerY" id="kqJ-ea-umH"/>

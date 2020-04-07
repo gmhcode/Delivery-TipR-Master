@@ -23,6 +23,11 @@ class EditDeliveryTableViewController: UITableViewController {
         super.viewDidAppear(animated)
        
     }
+    
+    @IBAction func dismissTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "changeAddressSegue" {
             guard let destination = segue.destination as? EditAddressViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
