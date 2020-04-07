@@ -112,6 +112,12 @@ class AdvancedViewController: UIViewController {
             
             tripInfoView.deliveries = deliveries
             break
+        case 4:
+            viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+            deliveryfetch = DeliveryController.fetchAllDeliveries
+            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            tripInfoView.deliveries = deliveries
+            break
         default :
             break
         }

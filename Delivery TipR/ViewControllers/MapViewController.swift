@@ -105,6 +105,7 @@ extension MapViewController : MKMapViewDelegate {
         //See if the Location exists in CoreData
         let location = LocationController.getExistingLocation(address: address)
         var view = mapView.dequeueReusableAnnotationView(withIdentifier: address)
+        
         //If the location exists, run this code, if not, skip this code
         if location.isEmpty == false {
             //if there are NOT unfinished deliveries, set the image to finishedDeliveryView
@@ -131,13 +132,7 @@ extension MapViewController : MKMapViewDelegate {
     // MARK: - MapView Select
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        //        guard let annotation = view.annotation,
-        //            let wrappedtitle = annotation.title,
-        //            let title = wrappedtitle,
-        //            let location = LocationController.locations[title] else {print("🔥❇️>>>\(#file) \(#line): guard ket failed<<<"); return  }
-        //        MARK: SelectedLocation set
-        //        LocationController.selectedLocation = location
-        //        performSegue(withIdentifier: "addTip", sender: nil)
+
     }
     
     // MARK: - Directions Line
@@ -148,10 +143,6 @@ extension MapViewController : MKMapViewDelegate {
         return renderer
     }
 }
-
-
-
-
 
 
 // MARK: - AddressSearchViewControllerDelegate
@@ -166,7 +157,7 @@ extension MapViewController: AddressSearchViewControllerDelegate {
 
         
         
-        if let trip = TripController.getCurrentTrip(){
+        if let trip = TripController.getCurrentTrip() {
             
         let _ = DeliveryController.createDelivery(for: location, trip: trip)
         createAddAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
@@ -220,7 +211,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setTableViewHeight() {
         guard let trip = TripController.getCurrentTrip(),
-            tableView.frame.height < 300 else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
+            tableView.frame.height < 150 else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
         
         let deliveries = DeliveryController.getTripDeliveries(trip: trip)
         
@@ -249,6 +240,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
         let deliveries = DeliveryController.getTripDeliveries(trip: trip).sorted {$0.date < $1.date}
@@ -270,6 +262,8 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         selectedLocation = location[0]
         performSegue(withIdentifier: "addTipSegue", sender: nil)
     }
+    
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
         let deliveries = DeliveryController.getTripDeliveries(trip: trip).sorted {$0.date < $1.date}

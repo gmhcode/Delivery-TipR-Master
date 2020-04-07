@@ -33,15 +33,17 @@ class HistoryTableViewController: UITableViewController {
         case "Today":
             timeFormatter.timeStyle = .short
             break
-            case "Week":
-//            timeFormatter.dateFormat = "EEE hh:MM"
+        case "Week":
             timeFormatter.dateFormat = "MMM d"
             break
-            case "Month":
-                timeFormatter.dateFormat = "MMM d"
+        case "Month":
+            timeFormatter.dateFormat = "MMM d"
             break
-            case "Year":
-                timeFormatter.dateFormat = "MMM d yyyy"
+        case "Year":
+            timeFormatter.dateFormat = "MMM d yyyy"
+            break
+        case "Total":
+            timeFormatter.dateFormat = "MMM d yyyy"
             break
         default:
             break
