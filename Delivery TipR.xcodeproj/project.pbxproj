@@ -14,7 +14,6 @@
 		903E2944240C6472001BED71 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2943240C6472001BED71 /* MapViewController.swift */; };
 		903E2947240C6472001BED71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903E2945240C6472001BED71 /* Main.storyboard */; };
 		903E294A240C6472001BED71 /* Delivery_TipR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 903E2948240C6472001BED71 /* Delivery_TipR.xcdatamodeld */; };
-		903E294C240C6475001BED71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 903E294B240C6475001BED71 /* Assets.xcassets */; };
 		903E294F240C6475001BED71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903E294D240C6475001BED71 /* LaunchScreen.storyboard */; };
 		903E295A240C6475001BED71 /* Delivery_TipRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2959240C6475001BED71 /* Delivery_TipRTests.swift */; };
 		903E296C240C7152001BED71 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2968240C7152001BED71 /* Location+CoreDataClass.swift */; };
@@ -31,6 +30,7 @@
 		9047FFA1241C327C009575AE /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047FFA0241C327C009575AE /* NavViewController.swift */; };
 		9048531B243A9DA900750779 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048531A243A9DA900750779 /* NewPasswordViewController.swift */; };
 		90485341243EC64700750779 /* LocationTipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90485340243EC64700750779 /* LocationTipViewModel.swift */; };
+		90485345243FA37600750779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90485344243FA37600750779 /* Assets.xcassets */; };
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
 		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
 		905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905216732410658B0020C238 /* MapViewLocationManager.swift */; };
@@ -80,7 +80,6 @@
 		903E2943240C6472001BED71 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		903E2946240C6472001BED71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		903E2949240C6472001BED71 /* Delivery_TipR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Delivery_TipR.xcdatamodel; sourceTree = "<group>"; };
-		903E294B240C6475001BED71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		903E294E240C6475001BED71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		903E2950240C6475001BED71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		903E2955240C6475001BED71 /* Delivery TipRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Delivery TipRTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +100,7 @@
 		9047FFA0241C327C009575AE /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		9048531A243A9DA900750779 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
 		90485340243EC64700750779 /* LocationTipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTipViewModel.swift; sourceTree = "<group>"; };
+		90485344243FA37600750779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = AppIcons/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
 		905216732410658B0020C238 /* MapViewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewLocationManager.swift; sourceTree = "<group>"; };
@@ -218,10 +218,10 @@
 		903E2964240C65A1001BED71 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				90485344243FA37600750779 /* Assets.xcassets */,
 				903E293F240C6472001BED71 /* AppDelegate.swift */,
 				903E2941240C6472001BED71 /* SceneDelegate.swift */,
 				903E294D240C6475001BED71 /* LaunchScreen.storyboard */,
-				903E294B240C6475001BED71 /* Assets.xcassets */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -434,7 +434,7 @@
 			files = (
 				9094E5572435842700B18C91 /* awsconfiguration.json in Resources */,
 				903E294F240C6475001BED71 /* LaunchScreen.storyboard in Resources */,
-				903E294C240C6475001BED71 /* Assets.xcassets in Resources */,
+				90485345243FA37600750779 /* Assets.xcassets in Resources */,
 				903E2947240C6472001BED71 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

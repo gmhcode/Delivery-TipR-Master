@@ -9,5 +9,12 @@
 import Foundation
 
 struct LocationTipViewModel {
+    let tip : String
+    let address : String
+    
+    init(location:Location) {
+        self.tip = location.averageTip.doubleToMoneyString()
+        self.address = location.address
+    }
     
 }
