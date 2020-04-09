@@ -64,38 +64,38 @@ class AdvancedViewController: UIViewController {
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             
             deliveryfetch = DeliveryController.fetchTodaysDeliveries
-            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             
-
+            guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             
-            tripInfoView.deliveries = deliveries
+             let advancedDisplayViewModel = AdvancedDisplayViewModel(deliveries: deliveryFetch() ?? [])
+            
+            
+            tripInfoView.advancedDisplayViewModel = advancedDisplayViewModel
             break
             //This Week
         case 1:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             
             deliveryfetch = DeliveryController.fetchThisWeeksDeliveries
-            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+            guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+             let advancedDisplayViewModel = AdvancedDisplayViewModel(deliveries: deliveryFetch() ?? [])
             
             
-//            guard let deliveries = DeliveryController.fetchThisWeeksDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
-            
-            tripInfoView.deliveries = deliveries
+            tripInfoView.advancedDisplayViewModel = advancedDisplayViewModel
             break
             //This Month
         case 2:
             
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             
-            deliveryfetch = DeliveryController.fetchThisMonthsDeliveries
-            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+             let advancedDisplayViewModel = AdvancedDisplayViewModel(deliveries: deliveryFetch() ?? [])
             
             
-//            guard let deliveries = DeliveryController.fetchThisMonthsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
-            
-            tripInfoView.deliveries = deliveries
+            tripInfoView.advancedDisplayViewModel = advancedDisplayViewModel
             break
             //This Year
         case 3:
@@ -103,28 +103,30 @@ class AdvancedViewController: UIViewController {
             
             
             deliveryfetch = DeliveryController.fetchThisYearsDeliveries
-            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+            guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+             let advancedDisplayViewModel = AdvancedDisplayViewModel(deliveries: deliveryFetch() ?? [])
             
             
-            
-//            guard let deliveries = DeliveryController.fetchThisYearsDeliveries() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
-            
-            tripInfoView.deliveries = deliveries
+            tripInfoView.advancedDisplayViewModel = advancedDisplayViewModel
             break
         case 4:
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             deliveryfetch = DeliveryController.fetchAllDeliveries
-            guard let deliveryFetch = deliveryfetch, let deliveries = deliveryFetch() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-            tripInfoView.deliveries = deliveries
+            
+            guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            
+             let advancedDisplayViewModel = AdvancedDisplayViewModel(deliveries: deliveryFetch() ?? [])
+            
+            
+            tripInfoView.advancedDisplayViewModel = advancedDisplayViewModel
             break
         default :
             break
         }
     }
-    func advancedDisplaySetup() {
-        
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "displaySegue"{
@@ -142,20 +144,6 @@ class AdvancedViewController: UIViewController {
 
 
 
-//extension AdvancedViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 10
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 70
-//    }
-//}
 extension AdvancedViewController {
     func setupViews(){
         

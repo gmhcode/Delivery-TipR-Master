@@ -157,6 +157,8 @@ class AddTipViewController: UIViewController {
     func returnPhoneString(number: String) -> String {
         return format(phoneNumber: number)
     }
+    
+    
     func format(phoneNumber: String, shouldRemoveLastDigit: Bool = false) -> String {
         guard !phoneNumber.isEmpty else { return "" }
         guard let regex = try? NSRegularExpression(pattern: "[\\s-\\(\\)]", options: .caseInsensitive) else { return "" }

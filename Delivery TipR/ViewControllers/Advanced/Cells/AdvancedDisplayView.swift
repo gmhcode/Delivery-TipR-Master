@@ -18,7 +18,7 @@ class AdvancedDisplayView: UIView {
  
     
     
-    var deliveries : [Delivery]? {
+    var advancedDisplayViewModel : AdvancedDisplayViewModel? {
         didSet {
             setViews()
         }
@@ -29,19 +29,20 @@ class AdvancedDisplayView: UIView {
      }
     
     func setViews() {
-        guard let deliveries = deliveries else { print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
-        // Seperate all the duplicate tripId's with Set, for each tripId, find the matching trip
-        let trips = Set(deliveries.map({$0.tripId})).compactMap({TripController.getTrip(from: $0)[0]})
-        let tripTips = (trips.map({getAverageTip(deliveries:DeliveryController.getTripDeliveries(trip: $0))}).reduce(0,+) / Double(trips.count)).doubleToMoneyString()
+        guard let advancedDisplayViewModel = advancedDisplayViewModel else { print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
+//        // Seperate all the duplicate tripId's with Set, for each tripId, find the matching trip
+//        let trips = Set(deliveries.map({$0.tripId})).compactMap({TripController.getTrip(from: $0)[0]})
+//
+//        let tripTips = (trips.map({getAverageTip(deliveries:DeliveryController.getTripDeliveries(trip: $0))}).reduce(0,+) / Double(trips.count)).doubleToMoneyString()
+//
+//        let totalTips = Double(deliveries.map({$0.tipAmonut}).reduce(0,+)).doubleToMoneyString()
         
-        let totalTips = Double(deliveries.map({$0.tipAmonut}).reduce(0,+)).doubleToMoneyString()
-        
-        tripCountView.text = String(trips.count)
-        deliveryCountLabel.text = String(deliveries.count)
+        tripCountView.text = advancedDisplayViewModel.tripCount
+        deliveryCountLabel.text = advancedDisplayViewModel.deliveryCount
         //Get the average of all the deliveries
-        avgDeliveryTipLabel.text = getAverageTipString(deliveries: deliveries)
-        avgTripTipLabel.text = tripTips
-        totalTipsLabel.text = totalTips
+        avgDeliveryTipLabel.text = advancedDisplayViewModel.avgDeliveryTip
+        avgTripTipLabel.text = advancedDisplayViewModel.avgTripTip
+        totalTipsLabel.text = advancedDisplayViewModel.totalTips
         
     }
 }
