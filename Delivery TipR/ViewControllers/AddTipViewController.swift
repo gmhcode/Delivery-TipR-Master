@@ -46,7 +46,7 @@ class AddTipViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setViews()
-        phoneButton.setTitle(format(phoneNumber: delivery.locationId), for: .normal)
+        
 //         nameController = MDCTextInputControllerOutlined(textInput: tipTextField)
         
        
@@ -323,6 +323,7 @@ extension AddTipViewController {
     func setViews() {
         averageTipLabel.text = finishedDeliveries.count > 0 ? "\(location.averageTip.doubleToMoneyString())" : "N/A"
         
+        phoneButton.setTitle(format(phoneNumber: delivery.locationId), for: .normal)
         
         delivNumberLabel.text = "\(finishedDeliveries.count)"
         

@@ -30,6 +30,7 @@
 		90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90470007241C6FC2009575AE /* AdvancedViewController.swift */; };
 		9047FFA1241C327C009575AE /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047FFA0241C327C009575AE /* NavViewController.swift */; };
 		9048531B243A9DA900750779 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048531A243A9DA900750779 /* NewPasswordViewController.swift */; };
+		90485341243EC64700750779 /* LocationTipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90485340243EC64700750779 /* LocationTipViewModel.swift */; };
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
 		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
 		905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905216732410658B0020C238 /* MapViewLocationManager.swift */; };
@@ -99,6 +100,7 @@
 		90470007241C6FC2009575AE /* AdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
 		9047FFA0241C327C009575AE /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		9048531A243A9DA900750779 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
+		90485340243EC64700750779 /* LocationTipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTipViewModel.swift; sourceTree = "<group>"; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
 		905216732410658B0020C238 /* MapViewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewLocationManager.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		903E293E240C6472001BED71 /* Delivery TipR */ = {
 			isa = PBXGroup;
 			children = (
+				9048533F243EC24200750779 /* ViewModel */,
 				9094E5562435842700B18C91 /* awsconfiguration.json */,
 				903E2972240C7655001BED71 /* ExtensionsAndUtilities */,
 				903E2967240C663A001BED71 /* ViewControllers */,
@@ -307,6 +310,14 @@
 				90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */,
 			);
 			path = Trip;
+			sourceTree = "<group>";
+		};
+		9048533F243EC24200750779 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				90485340243EC64700750779 /* LocationTipViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9052166E24105BFC0020C238 /* Views */ = {
@@ -515,6 +526,7 @@
 				9042176A2422C9DB00F67287 /* HistoryTableViewController.swift in Sources */,
 				905544232424480A0027CC08 /* EditAddressViewController.swift in Sources */,
 				905367A22439732800484796 /* ForgotPasswordViewController.swift in Sources */,
+				90485341243EC64700750779 /* LocationTipViewModel.swift in Sources */,
 				903E296F240C7152001BED71 /* Delivery+CoreDataProperties.swift in Sources */,
 				903E2944240C6472001BED71 /* MapViewController.swift in Sources */,
 				9048531B243A9DA900750779 /* NewPasswordViewController.swift in Sources */,
