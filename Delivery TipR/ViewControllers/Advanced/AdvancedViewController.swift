@@ -15,7 +15,6 @@ class AdvancedViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var viewTitle: UILabel!
     
-//    var deliveries : [Delivery]!
     var deliveryfetch : (() -> [Delivery]?)?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +29,14 @@ class AdvancedViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
         
-//        if deliveries == nil {
-//            #warning("FOR TESTING ONLY")
-//            deliveries =
         #warning("uncomment for test")
         TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
         
-//        }
-//        else {
+
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)], for: .normal)
        
-//            deliveries = DeliveryController.getAllFinishedDeliveries()
-//        }
         segmentChanged(self)
         
     }
