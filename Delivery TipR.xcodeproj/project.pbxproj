@@ -33,6 +33,7 @@
 		90485345243FA37600750779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90485344243FA37600750779 /* Assets.xcassets */; };
 		90485347243FA9F600750779 /* DeliveryTipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90485346243FA9F600750779 /* DeliveryTipViewModel.swift */; };
 		90485349243FBC9800750779 /* AdvancedDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90485348243FBC9800750779 /* AdvancedDisplayViewModel.swift */; };
+		9048534B244172F100750779 /* CustomerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048534A244172F100750779 /* CustomerDetailViewController.swift */; };
 		9052167024105C110020C238 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052166F24105C110020C238 /* Views.swift */; };
 		90521672241061C30020C238 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90521671241061C30020C238 /* LocationManagerController.swift */; };
 		905216742410658B0020C238 /* MapViewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905216732410658B0020C238 /* MapViewLocationManager.swift */; };
@@ -105,6 +106,7 @@
 		90485344243FA37600750779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = AppIcons/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		90485346243FA9F600750779 /* DeliveryTipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryTipViewModel.swift; sourceTree = "<group>"; };
 		90485348243FBC9800750779 /* AdvancedDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedDisplayViewModel.swift; sourceTree = "<group>"; };
+		9048534A244172F100750779 /* CustomerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailViewController.swift; sourceTree = "<group>"; };
 		9052166F24105C110020C238 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		90521671241061C30020C238 /* LocationManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
 		905216732410658B0020C238 /* MapViewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewLocationManager.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				905216732410658B0020C238 /* MapViewLocationManager.swift */,
 				90BD5A3324103D61006C88C8 /* TabViewController.swift */,
 				9053D94F24143777004692FC /* AddTipViewController.swift */,
+				9048534A244172F100750779 /* CustomerDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				9047FFA1241C327C009575AE /* NavViewController.swift in Sources */,
 				9094E55B243651FC00B18C91 /* SignInViewController.swift in Sources */,
 				90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */,
+				9048534B244172F100750779 /* CustomerDetailViewController.swift in Sources */,
 				9042176824204FDA00F67287 /* TestFuncs.swift in Sources */,
 				9055442124241C700027CC08 /* TextFields.swift in Sources */,
 				9094E5592435851200B18C91 /* Authorization.swift in Sources */,
