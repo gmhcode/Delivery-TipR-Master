@@ -172,6 +172,7 @@ class DeliveryController {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let predicate = NSPredicate(format: "locationId CONTAINS[cd] %@ AND isFinished == 1 AND unlocked == 1", location.id)
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         request.predicate = predicate
         
         do {

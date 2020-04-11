@@ -9,14 +9,43 @@
 import UIKit
 
 class CustomerDetailViewController: UIViewController {
+    
+    var location : Location? {
+        didSet {
+            guard let location = location else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
 
+            viewModel = CustomerDetailViewModel(location: location)
+        }
+    }
+    var viewModel : CustomerDetailViewModel? 
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var numberOfDeliveriesLabel: UILabel!
+    @IBOutlet weak var averageTipLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDelegates()
+        setViews()
+     
+    }
+    func setDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    func setViews(){
+        guard let viewModel = viewModel else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        addressLabel.adjustsFontSizeToFitWidth = true
+        addressLabel.text = viewModel.addressLabel
+        numberOfDeliveriesLabel.text = viewModel.numberOfDeliveries
+        averageTipLabel.text = viewModel.averageTip
 
-        // Do any additional setup after loading the view.
+    }
+    @IBAction func dismissTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -27,4 +56,31 @@ class CustomerDetailViewController: UIViewController {
     }
     */
 
+}
+
+extension CustomerDetailViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let viewModel = viewModel else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return 0}
+
+        
+        return viewModel.cellViews.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customerDetailViewCell", for: indexPath)
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.text = viewModel?.cellViews[indexPath.row].0
+        cell.detailTextLabel?.text = viewModel?.cellViews[indexPath.row].1
+        
+        return cell
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }

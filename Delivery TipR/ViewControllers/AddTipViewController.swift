@@ -52,7 +52,9 @@ class AddTipViewController: UIViewController {
        
     }
      
-  
+    @IBAction func customerDetailTapped(_ sender: Any) {
+    }
+    
     
     @IBAction func confirmAmountButtonTapped(_ sender: Any) {
         
@@ -158,6 +160,12 @@ class AddTipViewController: UIViewController {
         return format(phoneNumber: number)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "customerDetail" {
+            guard let destination = segue.destination as? CustomerDetailViewController else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+            destination.location = location
+        }
+    }
     
     func format(phoneNumber: String, shouldRemoveLastDigit: Bool = false) -> String {
         guard !phoneNumber.isEmpty else { return "" }

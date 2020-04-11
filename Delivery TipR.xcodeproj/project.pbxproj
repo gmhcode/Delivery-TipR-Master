@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C1293DEEEC465C144DB7BF6 /* Pods_Delivery_TipR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7AF071DE376A56B7F32136 /* Pods_Delivery_TipR.framework */; };
 		2C7DA97A19361F0A89B09D80 /* Pods_Delivery_TipRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874A103FC187C2E1841D4F8 /* Pods_Delivery_TipRTests.framework */; };
+		9026645F244234C20015743F /* CustomerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026645E244234C20015743F /* CustomerDetailViewModel.swift */; };
 		903E2940240C6472001BED71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E293F240C6472001BED71 /* AppDelegate.swift */; };
 		903E2942240C6472001BED71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2941240C6472001BED71 /* SceneDelegate.swift */; };
 		903E2944240C6472001BED71 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903E2943240C6472001BED71 /* MapViewController.swift */; };
@@ -77,6 +78,7 @@
 		53E77F924496CDA410932A3E /* Pods-Delivery TipR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delivery TipR.release.xcconfig"; path = "Target Support Files/Pods-Delivery TipR/Pods-Delivery TipR.release.xcconfig"; sourceTree = "<group>"; };
 		8B874A82A6E561242E401165 /* Pods-Delivery TipRTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delivery TipRTests.debug.xcconfig"; path = "Target Support Files/Pods-Delivery TipRTests/Pods-Delivery TipRTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E7E61C6D64CF9308CEB1EF5 /* Pods-Delivery TipRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delivery TipRTests.release.xcconfig"; path = "Target Support Files/Pods-Delivery TipRTests/Pods-Delivery TipRTests.release.xcconfig"; sourceTree = "<group>"; };
+		9026645E244234C20015743F /* CustomerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailViewModel.swift; sourceTree = "<group>"; };
 		903E293C240C6472001BED71 /* Delivery TipR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Delivery TipR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		903E293F240C6472001BED71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		903E2941240C6472001BED71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				90485340243EC64700750779 /* LocationTipViewModel.swift */,
 				90485346243FA9F600750779 /* DeliveryTipViewModel.swift */,
 				90485348243FBC9800750779 /* AdvancedDisplayViewModel.swift */,
+				9026645E244234C20015743F /* CustomerDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */,
 				90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */,
 				90521672241061C30020C238 /* LocationManagerController.swift in Sources */,
+				9026645F244234C20015743F /* CustomerDetailViewModel.swift in Sources */,
 				90485349243FBC9800750779 /* AdvancedDisplayViewModel.swift in Sources */,
 				9053D94C24117FDE004692FC /* Trip+CoreDataProperties.swift in Sources */,
 				9055441F24240EC20027CC08 /* EditDeliveryTableViewController.swift in Sources */,
