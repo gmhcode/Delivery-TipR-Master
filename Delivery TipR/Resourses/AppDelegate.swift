@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        LocationController.deleteDatabase()
-        TripController().deleteTrips()
-        DeliveryController.deleteALLDeliveries()
+//        LocationController.deleteDatabase()
+//        TripController().deleteTrips()
+//        DeliveryController.deleteALLDeliveries()
         //If there are no current trips, make one
         if  TripController.getCurrentTrip() == nil {
             let _ = TripController.createNewTrip()

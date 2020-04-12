@@ -10,6 +10,9 @@
 import UIKit
 
 func getAverageTipString(deliveries: [Delivery]) -> String {
+    if deliveries.count == 0 {
+        return "N/A"
+    }
     let average = Double(deliveries.map({$0.tipAmonut}).reduce(0,+) / Float(deliveries.count)).doubleToMoneyString()
     return average
 }
