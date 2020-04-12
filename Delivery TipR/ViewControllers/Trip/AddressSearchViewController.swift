@@ -337,7 +337,7 @@ extension AddressSearchViewController : UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         #warning("DeleteTestFunc")
-        TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
+//        TestFuncs.populateDeliveryTests(indexPath: indexPath, searchResults: searchResults)
         
         return cell
     }

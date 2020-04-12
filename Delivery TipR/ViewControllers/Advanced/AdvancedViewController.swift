@@ -32,7 +32,7 @@ class AdvancedViewController: UIViewController {
 
         
         #warning("uncomment for test")
-        TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
+//        TestFuncs.setUpTestDeliveries().sorted(by: {$0.date > $1.date})
         
 
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)], for: .normal)

@@ -56,8 +56,9 @@ extension MapViewController {
                         
                         let overlay = RouteOverlay(route: fastestRoute)
                         self.mapView.addOverlay(overlay.polyLine)
-                        self.mapView.setVisibleMapRect(overlay.polyLine.boundingMapRect, animated: true)
-//                        self.firstRoute = false
+                        let rect = MKMapRect(x: overlay.polyLine.boundingMapRect.origin.x, y: overlay.polyLine.boundingMapRect.origin.y, width: overlay.polyLine.boundingMapRect.width * 2, height: overlay.polyLine.boundingMapRect.height * 2)
+                        self.mapView.setVisibleMapRect(rect, animated: true)
+                        
                         //breaking here makes sure that we dont get more than one route per location
                         break
                     }
