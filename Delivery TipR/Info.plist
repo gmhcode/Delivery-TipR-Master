@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Hit Yes</string>
+	<string>Your location will be displayed on the map and used for nearby search results, and as a reference to see where you are located in relation to your destination.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Hit Yes</string>
+	<string>Your location will be displayed on the map and used for nearby search results, and as a reference to see where you are located in relation to your destination.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
