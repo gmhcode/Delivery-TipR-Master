@@ -40,6 +40,9 @@ class CustomerDetailViewController: UIViewController {
         addressLabel.text = viewModel.addressLabel
         numberOfDeliveriesLabel.text = viewModel.numberOfDeliveries
         averageTipLabel.text = viewModel.averageTip
+        
+        tableView.layer.borderWidth = 2
+        tableView.layer.borderColor = #colorLiteral(red: 0.1794748008, green: 0.1844923198, blue: 0.1886624992, alpha: 1)
 
     }
     @IBAction func dismissTapped(_ sender: Any) {
