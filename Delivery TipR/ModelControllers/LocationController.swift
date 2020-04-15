@@ -52,7 +52,7 @@ class LocationController {
         let persistentManager = PersistenceManager.shared
         location.phoneNumber = phoneNumber
         persistentManager.saveContext()
-               //        print(locations.count, " getALLLocations ⚡️")
+
     }
     
     ///Use only for tests

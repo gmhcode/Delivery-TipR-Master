@@ -14,17 +14,15 @@ class AdvancedViewController: UIViewController {
     @IBOutlet weak var tripInfoView: AdvancedDisplayView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var viewTitle: UILabel!
-    @IBOutlet weak var totalTipsLabel: UILabel!
-    @IBOutlet weak var averageTipsLabel: UILabel!
-    @IBOutlet weak var averageDeliveryTipLabel: UILabel!
-    @IBOutlet weak var deliveryCountTipLabel: UILabel!
-    @IBOutlet weak var tripCountLabel: UILabel!
+    @IBOutlet weak var detailsButton: UIButton!
+    
     
     
     var deliveryfetch : (() -> [Delivery]?)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -159,10 +157,7 @@ extension AdvancedViewController {
         tripInfoView.layer.borderColor = #colorLiteral(red: 0.1456923485, green: 0.1448334754, blue: 0.1463571787, alpha: 1)
         tripInfoView.layer.masksToBounds = true
         
-        totalTipsLabel.adjustsFontSizeToFitWidth = true
-        averageTipsLabel.adjustsFontSizeToFitWidth = true
-        averageDeliveryTipLabel.adjustsFontSizeToFitWidth = true
-        deliveryCountTipLabel.adjustsFontSizeToFitWidth = true
-        tripCountLabel.adjustsFontSizeToFitWidth = true
+        detailsButton.layer.borderWidth = 1
+        detailsButton.layer.borderColor = #colorLiteral(red: 0.1456923485, green: 0.1448334754, blue: 0.1463571787, alpha: 1)
     }
 }

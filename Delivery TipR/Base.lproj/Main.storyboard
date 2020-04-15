@@ -1845,12 +1845,8 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="p4k-8f-Avb"/>
                     <connections>
-                        <outlet property="averageDeliveryTipLabel" destination="dYL-HU-Lbl" id="3ZX-6H-xt4"/>
-                        <outlet property="averageTipsLabel" destination="7CW-zB-uAk" id="KIL-XS-ZKT"/>
-                        <outlet property="deliveryCountTipLabel" destination="qjO-wz-lRa" id="ccw-uM-STN"/>
+                        <outlet property="detailsButton" destination="fBR-0q-r8i" id="Kod-2c-Vkw"/>
                         <outlet property="segmentControl" destination="eOJ-zV-gdN" id="Yiv-rz-Oc6"/>
-                        <outlet property="totalTipsLabel" destination="Ep8-mU-seA" id="OKe-dN-R7c"/>
-                        <outlet property="tripCountLabel" destination="sVg-dS-91D" id="MIx-9Q-h7P"/>
                         <outlet property="tripInfoView" destination="OpZ-sd-jA1" id="Bsm-hA-TRE"/>
                         <outlet property="viewTitle" destination="3IK-yW-otR" id="KSy-LY-MVt"/>
                     </connections>

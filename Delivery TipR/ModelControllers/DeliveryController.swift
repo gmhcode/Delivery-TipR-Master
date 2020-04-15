@@ -74,7 +74,24 @@ class DeliveryController {
         return deliveries
     }
     
-    static func getTripDeliveries(trip: Trip)-> [Delivery] {
+    static func getFinishedTripDeliveries(trip: Trip)-> [Delivery] {
+            let persistentManager = PersistenceManager.shared
+            let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+            let predicate = NSPredicate(format: "tripId == %@ AND unlocked == 1 AND isFinished == 1", trip.id)
+            request.predicate = predicate
+            
+            do {
+                let deliveries = try persistentManager.context.fetch(request)
+    //            print(deliveries,"getTripDeliveries ❇️")
+                return deliveries
+            } catch  {
+                print("array could not be retrieved \(error)")
+                return []
+            }
+        }
+    
+    
+    static func getAllTripDeliveries(trip: Trip)-> [Delivery] {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
         let predicate = NSPredicate(format: "tripId == %@ AND unlocked == 1", trip.id)
@@ -204,7 +221,7 @@ class DeliveryController {
         }
     
     /// Finishes the delivery, adds the tip amount and saves
-    static func finishDelivery(delivery: Delivery, tipAmount: Float) -> Delivery {
+    @discardableResult static func finishDelivery(delivery: Delivery, tipAmount: Float) -> Delivery {
         let persistentManager = PersistenceManager.shared
         delivery.isFinished = 1
         delivery.tipAmonut = tipAmount
