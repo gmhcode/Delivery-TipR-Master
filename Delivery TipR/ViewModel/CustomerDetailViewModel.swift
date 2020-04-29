@@ -30,7 +30,7 @@ struct CustomerDetailViewModel {
             
             let date = Date(timeIntervalSince1970: delivery.date)
             let dateString = dateFormatter.string(from: date)
-            let tip = delivery.tipAmonut.toCurrencyString()
+            let tip = delivery.tipAmount.toCurrencyString()
             let tuple = (dateString,tip)
             deliveryTuples.append(tuple)
         }
@@ -49,7 +49,7 @@ struct CustomerDetailViewModel {
             
             let date = Date(timeIntervalSince1970: delivery.date)
             let dateString = dateFormatter.string(from: date)
-            let tip = delivery.tipAmonut.toCurrencyString()
+            let tip = delivery.tipAmount.toCurrencyString()
             let tuple = (dateString,tip)
             deliveryTuples.append(tuple)
         }

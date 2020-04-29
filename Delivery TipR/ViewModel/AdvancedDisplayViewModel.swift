@@ -22,7 +22,7 @@ struct AdvancedDisplayViewModel {
         
          let tripTips = (trips.map({getAverageTip(deliveries:DeliveryController.getFinishedTripDeliveries(trip: $0))}).reduce(0,+) / Double(trips.count)).doubleToMoneyString()
         
-        let totalTips = Double(deliveries.map({$0.tipAmonut}).reduce(0,+)).doubleToMoneyString()
+        let totalTips = Double(deliveries.map({$0.tipAmount}).reduce(0,+)).doubleToMoneyString()
         
         self.tripCount = String(trips.count)
         self.deliveryCount = String(deliveries.count)

@@ -125,7 +125,7 @@ extension EditAddressViewController {
             #warning("TAKE A CLOSER LOOK AT THIS, MIGHT CAUSE BUGS")
             LocationController.createLocation(address: strongSelf.address, latitude: coordinate.latitude, longitude: coordinate.longitude, subAddress: strongSelf.subAddress, phoneNumber: delivery.locationId)
             
-            DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: delivery.tipAmonut, address: strongSelf.address)
+            DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: delivery.tipAmount, address: strongSelf.address)
             MapViewController.MapVC.tableView.reloadData()
             self?.editDeliveryTableViewConttroller?.tableView.reloadData()
             self?.editDeliveryTableViewConttroller?.historyTVC?.tableView.reloadData()

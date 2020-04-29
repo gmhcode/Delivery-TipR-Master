@@ -40,7 +40,7 @@ class HistoryTableViewCell: UITableViewCell {
         addressLabel.adjustsFontSizeToFitWidth = true
         addressLabel.text = delivery.address
         tipLabel.adjustsFontSizeToFitWidth = true
-        tipLabel.text = delivery.tipAmonut.toCurrencyString()
+        tipLabel.text = delivery.tipAmount.toCurrencyString()
         
     }
     

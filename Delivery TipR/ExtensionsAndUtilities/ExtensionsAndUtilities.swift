@@ -13,11 +13,11 @@ func getAverageTipString(deliveries: [Delivery]) -> String {
     if deliveries.count == 0 {
         return "N/A"
     }
-    let average = Double(deliveries.map({$0.tipAmonut}).reduce(0,+) / Float(deliveries.count)).doubleToMoneyString()
+    let average = Double(deliveries.map({$0.tipAmount}).reduce(0,+) / Float(deliveries.count)).doubleToMoneyString()
     return average
 }
 func getAverageTip(deliveries:[Delivery]) -> Double {
-    let average = Double(deliveries.map({$0.tipAmonut}).reduce(0,+) / Float(deliveries.count))
+    let average = Double(deliveries.map({$0.tipAmount}).reduce(0,+) / Float(deliveries.count))
     return average
 }
 extension String {

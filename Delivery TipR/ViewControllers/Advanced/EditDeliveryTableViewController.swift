@@ -98,7 +98,7 @@ extension EditDeliveryTableViewController {
             switch indexPath.section {
             //Tip
             case 0:
-                cell.textLabel?.text = delivery.tipAmonut.toCurrencyString()
+                cell.textLabel?.text = delivery.tipAmount.toCurrencyString()
                 cell.detailTextLabel?.text = "Edit"
                 break
             //Address
@@ -180,7 +180,7 @@ extension EditDeliveryTableViewController {
                 self.checkIfRealPhoneNumber()}
             else {
                 guard let text = textField.text?.filter({Int(String($0)) != nil}) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                DeliveryController.editDelivery(delivery: delivery, phoneNumber: text, tipAmount: delivery.tipAmonut, address: delivery.address)
+                DeliveryController.editDelivery(delivery: delivery, phoneNumber: text, tipAmount: delivery.tipAmount, address: delivery.address)
                 
             }
         }

@@ -28,7 +28,7 @@ class DeliveryController {
         delivery.isFinished = 0
         delivery.tripId = trip.id
         delivery.date = Date().timeIntervalSince1970 
-        print(delivery.tipAmonut, " ❗️")
+        print(delivery.tipAmount, " ❗️")
         persistentManager.saveContext()
         
         return delivery
@@ -40,7 +40,7 @@ class DeliveryController {
     static func editDelivery(delivery: Delivery, phoneNumber: String, tipAmount: Float, address : String )  {
         let persistentManager = PersistenceManager.shared
         delivery.locationId = phoneNumber
-        delivery.tipAmonut = tipAmount
+        delivery.tipAmount = tipAmount
         delivery.address = address
         
         persistentManager.saveContext()
@@ -224,17 +224,45 @@ class DeliveryController {
     @discardableResult static func finishDelivery(delivery: Delivery, tipAmount: Float) -> Delivery {
         let persistentManager = PersistenceManager.shared
         delivery.isFinished = 1
-        delivery.tipAmonut = tipAmount
+        delivery.tipAmount = tipAmount
         persistentManager.saveContext()
+        postDelivery(delivery: delivery)
 //        print(delivery.isFinished, " finished Delivery with address \(delivery.address)")
         return delivery
+    }
+    
+    static func postDelivery(delivery: Delivery) {
+        DispatchQueue.global(qos: .userInitiated).async {
+        
+        let url = BackEndController.postDeliveryUrl
+        let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date]
+        
+        guard let deliveryData = try? JSONSerialization.data(withJSONObject: params, options: .init()) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = deliveryData
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+                return
+            }
+            if let response = response {
+                print("🏐 POST RESPONSE: ", response)
+            }
+        }.resume()
+        
+        }
+        
     }
     
     /// unFinishes the delivery, removes the tip amount and saves
     static func unFinishDelivery(delivery: Delivery) -> Delivery{
         let persistentManager = PersistenceManager.shared
         delivery.isFinished = 0
-        delivery.tipAmonut = 0
+        delivery.tipAmount = 0
         persistentManager.saveContext()
         return delivery
     }
@@ -346,4 +374,6 @@ class DeliveryController {
             return nil
         }
     }
+    
+    
 }

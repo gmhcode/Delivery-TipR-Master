@@ -19,7 +19,7 @@ extension Delivery {
 
     @NSManaged public var unlocked : Int16
     @NSManaged public var userID : String
-    @NSManaged public var tipAmonut: Float
+    @NSManaged public var tipAmount: Float
     @NSManaged public var address: String
     @NSManaged public var locationId: String
     @NSManaged public var id: String
