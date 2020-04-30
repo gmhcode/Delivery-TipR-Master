@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1418,13 +1418,33 @@
                                         <action selector="dismissTapped:" destination="BcF-Z6-jKo" eventType="touchUpInside" id="YIS-LZ-V2i"/>
                                     </connections>
                                 </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaU-Vg-m5G">
+                                    <rect key="frame" x="299" y="8" width="107" height="46"/>
+                                    <color key="backgroundColor" red="0.1804314554" green="0.1842602491" blue="0.18823796509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <state key="normal" title="Delete">
+                                        <color key="titleColor" red="0.94204586744308472" green="0.22641716216843347" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="deleteButtonTapped:" destination="BcF-Z6-jKo" eventType="touchUpInside" id="LC7-9h-rQS"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
+                                <constraint firstItem="TaU-Vg-m5G" firstAttribute="width" secondItem="aCx-oF-hU2" secondAttribute="width" multiplier="0.258454" id="8OM-Wr-cHW"/>
                                 <constraint firstItem="l3F-Q5-C5G" firstAttribute="top" secondItem="aCx-oF-hU2" secondAttribute="topMargin" id="8Ss-iw-J87"/>
                                 <constraint firstItem="l3F-Q5-C5G" firstAttribute="leading" secondItem="aCx-oF-hU2" secondAttribute="leadingMargin" id="CUL-I9-tWx"/>
                                 <constraint firstItem="l3F-Q5-C5G" firstAttribute="height" secondItem="aCx-oF-hU2" secondAttribute="height" multiplier="0.741935" id="ORd-QW-f0B"/>
+                                <constraint firstItem="TaU-Vg-m5G" firstAttribute="trailing" secondItem="aCx-oF-hU2" secondAttribute="trailingMargin" id="VyG-ly-U3l"/>
                                 <constraint firstItem="l3F-Q5-C5G" firstAttribute="width" secondItem="aCx-oF-hU2" secondAttribute="width" multiplier="0.258454" id="XSP-LH-eGe"/>
+                                <constraint firstItem="TaU-Vg-m5G" firstAttribute="top" secondItem="aCx-oF-hU2" secondAttribute="topMargin" id="bHp-SI-C7X"/>
+                                <constraint firstItem="TaU-Vg-m5G" firstAttribute="height" secondItem="aCx-oF-hU2" secondAttribute="height" multiplier="0.741935" id="tsm-7o-dgB"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="IX0-fq-XQv">
@@ -1614,7 +1634,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.96085554360000003" green="0.96454828979999996" blue="0.97648102049999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="5iW-mu-CAp" firstAttribute="height" secondItem="Ek2-P0-5kV" secondAttribute="height" multiplier="0.045045" id="0tP-Kq-PRL"/>

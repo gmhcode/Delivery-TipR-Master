@@ -77,7 +77,7 @@ class AddressSearchViewController: UIViewController {
         else if !finishedDeliveries.isEmpty && unfinishedDeliveries.isEmpty {
             
             
-            DeliveryController.postDelivery(deliveries: finishedDeliveries)
+            DeliveryController.BackEnd.postDelivery(deliveries: finishedDeliveries)
             
             let _ = TripController.createNewTrip()
             MapViewController.MapVC.tableView.reloadData()

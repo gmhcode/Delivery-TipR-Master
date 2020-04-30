@@ -23,7 +23,11 @@ class EditDeliveryTableViewController: UITableViewController {
         super.viewDidAppear(animated)
        
     }
-    
+//    
+//    @IBAction func deleteButtonTapped(_ sender: Any) {
+//        deleteDeliveryAlert()
+//        
+//    }
     @IBAction func dismissTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -160,6 +164,24 @@ extension EditDeliveryTableViewController {
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteDeliveryAlert() {
+        guard let delivery = delivery else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        let alertController = UIAlertController(title: "ARE YOU SURE YOU WANT TO DELETE THIS?", message: "The deletion of this delivery can never be undone", preferredStyle: .alert)
+        let yesButton = UIAlertAction(title: "Ok", style: .destructive) { [weak self] (tapped) in
+            DeliveryController.BackEnd.deleteDelivery(delivery: delivery)
+            DeliveryController.deleteDelivery(deliveries: [delivery])
+            self?.historyTVC?.tableView.reloadData()
+            self?.dismissTapped(self)
+        }
+        let noButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        
+        alertController.addAction(yesButton)
+        alertController.addAction(noButton)
+        self.present(alertController, animated: true, completion: nil)
+        
+        
     }
     
     func editPhoneNumberAlert(){
