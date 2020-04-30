@@ -9,9 +9,14 @@
 import Foundation
 struct BackEndController {
     
-    static let postDeliveryUrl = URL(string: !
+    static let postDeliveryUrl = URL(string: "https://sri4rxxjh7.execute-api.us-west-2.amazonaws.com/dev/delivery")!
     
-    
-    
-    
+    static func deleteDeliveryUrl(delivery: Delivery) -> URL? {
+        let urlString = "https://sri4rxxjh7.execute-api.us-west-2.amazonaws.com/dev/delivery" + "/\(delivery.userID)/\(delivery.id)"
+        if let url = URL(string: urlString) {
+            return url
+        }else {
+            return nil
+        }
+    }
 }

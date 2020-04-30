@@ -34,7 +34,7 @@ class DeliveryController {
         return delivery
     }
     
-  
+    
     
     
     static func editDelivery(delivery: Delivery, phoneNumber: String, tipAmount: Float, address : String )  {
@@ -45,10 +45,10 @@ class DeliveryController {
         
         persistentManager.saveContext()
         
-//        return delivery
-//        let location = LocationController.getExistingLocation(address: address)
-//        let deliv = getDeliveryWith(id: delivery.id)[0]
-//        print(deliv.tipAmonut," 🚣🏼‍♂️")
+        //        return delivery
+        //        let location = LocationController.getExistingLocation(address: address)
+        //        let deliv = getDeliveryWith(id: delivery.id)[0]
+        //        print(deliv.tipAmonut," 🚣🏼‍♂️")
     }
     
     static func getDeliveryWith(id:String) -> [Delivery] {
@@ -75,20 +75,20 @@ class DeliveryController {
     }
     
     static func getFinishedTripDeliveries(trip: Trip)-> [Delivery] {
-            let persistentManager = PersistenceManager.shared
-            let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-            let predicate = NSPredicate(format: "tripId == %@ AND unlocked == 1 AND isFinished == 1", trip.id)
-            request.predicate = predicate
-            
-            do {
-                let deliveries = try persistentManager.context.fetch(request)
-    //            print(deliveries,"getTripDeliveries ❇️")
-                return deliveries
-            } catch  {
-                print("array could not be retrieved \(error)")
-                return []
-            }
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let predicate = NSPredicate(format: "tripId == %@ AND unlocked == 1 AND isFinished == 1", trip.id)
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            //            print(deliveries,"getTripDeliveries ❇️")
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return []
         }
+    }
     
     
     static func getAllTripDeliveries(trip: Trip)-> [Delivery] {
@@ -99,7 +99,7 @@ class DeliveryController {
         
         do {
             let deliveries = try persistentManager.context.fetch(request)
-//            print(deliveries,"getTripDeliveries ❇️")
+            //            print(deliveries,"getTripDeliveries ❇️")
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
@@ -115,7 +115,7 @@ class DeliveryController {
         
         do {
             let deliveries = try persistentManager.context.fetch(request)
-//            print(deliveries,"getTripDeliveries ❇️")
+            //            print(deliveries,"getTripDeliveries ❇️")
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
@@ -194,7 +194,7 @@ class DeliveryController {
         
         do {
             let deliveries = try persistentManager.context.fetch(request)
-//            print(deliveries.count,"Get Finished Deliveries 🥶")
+            //            print(deliveries.count,"Get Finished Deliveries 🥶")
             return deliveries
         } catch  {
             print("array could not be retrieved \(error)")
@@ -203,22 +203,22 @@ class DeliveryController {
     }
     
     ///Gets all the finished deliveries for a location
-        static func getAllFinishedDeliveries() -> [Delivery] {
-            
-            let persistentManager = PersistenceManager.shared
-            let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
-            let predicate = NSPredicate(format: "isFinished == 1 AND unlocked == 1")
-            request.predicate = predicate
-            
-            do {
-                let deliveries = try persistentManager.context.fetch(request)
-    //            print(deliveries.count,"Get Finished Deliveries 🥶")
-                return deliveries
-            } catch  {
-                print("array could not be retrieved \(error)")
-                return []
-            }
+    static func getAllFinishedDeliveries() -> [Delivery] {
+        
+        let persistentManager = PersistenceManager.shared
+        let request : NSFetchRequest<Delivery> = Delivery.fetchRequest()
+        let predicate = NSPredicate(format: "isFinished == 1 AND unlocked == 1")
+        request.predicate = predicate
+        
+        do {
+            let deliveries = try persistentManager.context.fetch(request)
+            //            print(deliveries.count,"Get Finished Deliveries 🥶")
+            return deliveries
+        } catch  {
+            print("array could not be retrieved \(error)")
+            return []
         }
+    }
     
     /// Finishes the delivery, adds the tip amount and saves
     @discardableResult static func finishDelivery(delivery: Delivery, tipAmount: Float) -> Delivery {
@@ -226,12 +226,12 @@ class DeliveryController {
         delivery.isFinished = 1
         delivery.tipAmount = tipAmount
         persistentManager.saveContext()
-//        postDelivery(deliveries: [delivery])
-//        print(delivery.isFinished, " finished Delivery with address \(delivery.address)")
+        //        postDelivery(deliveries: [delivery])
+        //        print(delivery.isFinished, " finished Delivery with address \(delivery.address)")
         return delivery
     }
     
-
+    
     
     /// unFinishes the delivery, removes the tip amount and saves
     static func unFinishDelivery(delivery: Delivery) -> Delivery{
@@ -263,7 +263,7 @@ class DeliveryController {
         let date = Date().timeIntervalSince1970 - (secondsInDay * 2)
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         request.predicate = NSPredicate(format: "date >= \(date) AND isFinished == 1 AND unlocked == 1 AND userID == %@", user.uuid)
-         
+        
         
         do {
             var deliveries = try persistentManager.context.fetch(request)
@@ -350,7 +350,11 @@ class DeliveryController {
         }
     }
     
+    
+    
+    // MARK: - BackEnd
     struct BackEnd {
+        
         ///Deletes a delivery from the backend
         static func deleteDelivery(delivery: Delivery) {
             DispatchQueue.global(qos: .userInitiated).async {
@@ -368,11 +372,11 @@ class DeliveryController {
                     if let response = response {
                         print("🏐 POST RESPONSE: ", response)
                     }
-            }.resume()
+                }.resume()
             }
         }
         /// Sends a post Request to the AWS BackEnd for all the deliveries in the array
-            static func postDelivery(deliveries: [Delivery]) {
+        static func postDelivery(deliveries: [Delivery]) {
             
             for delivery in deliveries {
                 
@@ -402,5 +406,4 @@ class DeliveryController {
             }
         }
     }
-    
 }
