@@ -143,6 +143,7 @@ extension EditDeliveryTableViewController {
             if let tip = Float(textField.text ?? "0.00") {
                 let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tip)
                 DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: tip, address: delivery.address)
+                DeliveryController.BackEnd.updateDelivery(delivery: delivery)
                 self.tableView.reloadData()
             } else {
                 self.invalidTipAmountAlert()
@@ -173,7 +174,7 @@ extension EditDeliveryTableViewController {
             DeliveryController.BackEnd.deleteDelivery(delivery: delivery)
             DeliveryController.deleteDelivery(deliveries: [delivery])
             self?.historyTVC?.tableView.reloadData()
-            self?.dismissTapped(self)
+            self?.dismissTapped(self as Any)
         }
         let noButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
         

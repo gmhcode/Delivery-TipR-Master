@@ -17,11 +17,11 @@ struct AdvancedDisplayViewModel {
     
     init(deliveries: [Delivery]) {
         
-        
-         let trips = Set(deliveries.map({$0.tripId})).compactMap({TripController.getTrip(from: $0)[0]})
-        
-         let tripTips = (trips.map({getAverageTip(deliveries:DeliveryController.getFinishedTripDeliveries(trip: $0))}).reduce(0,+) / Double(trips.count)).doubleToMoneyString()
-        
+        //Make a function that does this
+        let trips = Set(deliveries.map({$0.tripId})).compactMap({TripController.getTrip(from: $0)[0]})
+        //Make a function that does this
+        let tripTips = (trips.map({getAverageTip(deliveries:DeliveryController.getFinishedTripDeliveries(trip: $0))}).reduce(0,+) / Double(trips.count)).doubleToMoneyString()
+        //Make a function that does this
         let totalTips = Double(deliveries.map({$0.tipAmount}).reduce(0,+)).doubleToMoneyString()
         
         self.tripCount = String(trips.count)

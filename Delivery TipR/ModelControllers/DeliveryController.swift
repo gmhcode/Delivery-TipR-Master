@@ -355,10 +355,42 @@ class DeliveryController {
     // MARK: - BackEnd
     struct BackEnd {
         
+        static func updateDelivery(delivery: Delivery) {
+            DispatchQueue.global(qos: .userInitiated).async {
+                guard let url = BackEndUrls.updateDeliveryUrl(delivery: delivery) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                    
+                let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date]
+                
+                do {
+                    let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "PUT"
+                    request.httpBody = requestBody
+                    request.setValue("application/json", forHTTPHeaderField: "content-type")
+                    
+                    URLSession.shared.dataTask(with: request) { (data, response, error) in
+                        if let error = error {
+                            print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+                            return
+                        }
+                        if let response = response {
+                            print("UPDATE RESPONSE: ", response)
+                        }
+                        
+                    }.resume()
+                    
+                    
+                }catch let er{
+                    
+                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                }
+            }
+        }
+        
         ///Deletes a delivery from the backend
         static func deleteDelivery(delivery: Delivery) {
             DispatchQueue.global(qos: .userInitiated).async {
-                guard let url = BackEndController.deleteDeliveryUrl(delivery: delivery) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                guard let url = BackEndUrls.deleteDeliveryUrl(delivery: delivery) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
                 
                 var request = URLRequest(url: url)
                 request.httpMethod = "DELETE"
@@ -382,7 +414,7 @@ class DeliveryController {
                 
                 DispatchQueue.global(qos: .userInitiated).async {
                     
-                    let url = BackEndController.postDeliveryUrl
+                    let url = BackEndUrls.postDeliveryUrl
                     let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date]
                     
                     guard let deliveryData = try? JSONSerialization.data(withJSONObject: params, options: .init()) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}

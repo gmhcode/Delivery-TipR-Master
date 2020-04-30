@@ -50,7 +50,7 @@
 		9055442124241C700027CC08 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055442024241C700027CC08 /* TextFields.swift */; };
 		905544232424480A0027CC08 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905544222424480A0027CC08 /* EditAddressViewController.swift */; };
 		9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067F995240CA6AF00EBA858 /* PersistenceManager.swift */; };
-		907C9821245A1A220089A7AA /* BackEndController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C9820245A1A220089A7AA /* BackEndController.swift */; };
+		907C9821245A1A220089A7AA /* BackEndUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C9820245A1A220089A7AA /* BackEndUrls.swift */; };
 		907C9823245A45C90089A7AA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C9822245A45C90089A7AA /* Keys.swift */; };
 		9094E5572435842700B18C91 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 9094E5562435842700B18C91 /* awsconfiguration.json */; };
 		9094E5592435851200B18C91 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094E5582435851200B18C91 /* Authorization.swift */; };
@@ -126,7 +126,7 @@
 		9055442024241C700027CC08 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		905544222424480A0027CC08 /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
 		9067F995240CA6AF00EBA858 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
-		907C9820245A1A220089A7AA /* BackEndController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEndController.swift; sourceTree = "<group>"; };
+		907C9820245A1A220089A7AA /* BackEndUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEndUrls.swift; sourceTree = "<group>"; };
 		907C9822245A45C90089A7AA /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		9094E5562435842700B18C91 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		9094E5582435851200B18C91 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 				90521671241061C30020C238 /* LocationManagerController.swift */,
 				9053D94D2411814F004692FC /* TripController.swift */,
 				905367B4243A679100484796 /* UserController.swift */,
-				907C9820245A1A220089A7AA /* BackEndController.swift */,
+				907C9820245A1A220089A7AA /* BackEndUrls.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 				9094E55E2436A49400B18C91 /* CreateAccountViewController.swift in Sources */,
 				9053D95024143777004692FC /* AddTipViewController.swift in Sources */,
 				90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */,
-				907C9821245A1A220089A7AA /* BackEndController.swift in Sources */,
+				907C9821245A1A220089A7AA /* BackEndUrls.swift in Sources */,
 				903E294A240C6472001BED71 /* Delivery_TipR.xcdatamodeld in Sources */,
 				904217652420339600F67287 /* AdvancedDisplayView.swift in Sources */,
 				9042176A2422C9DB00F67287 /* HistoryTableViewController.swift in Sources */,

@@ -64,8 +64,6 @@ class CustomerDetailViewController: UIViewController {
 extension CustomerDetailViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let viewModel = viewModel else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return 0}
-
-        
         return viewModel.cellViews.count
     }
     
