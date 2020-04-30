@@ -226,12 +226,17 @@ class DeliveryController {
         delivery.isFinished = 1
         delivery.tipAmount = tipAmount
         persistentManager.saveContext()
-        postDelivery(delivery: delivery)
+//        postDelivery(deliveries: [delivery])
 //        print(delivery.isFinished, " finished Delivery with address \(delivery.address)")
         return delivery
     }
     
-    static func postDelivery(delivery: Delivery) {
+    static func postDelivery(deliveries: [Delivery]) {
+        
+        for delivery in deliveries {
+            
+        
+        
         DispatchQueue.global(qos: .userInitiated).async {
         
         let url = BackEndController.postDeliveryUrl
@@ -254,6 +259,7 @@ class DeliveryController {
             }
         }.resume()
         
+        }
         }
         
     }

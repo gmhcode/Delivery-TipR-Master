@@ -75,6 +75,10 @@ class AddressSearchViewController: UIViewController {
         }
             // If there are completed deliveries but not unfinished delivereis
         else if !finishedDeliveries.isEmpty && unfinishedDeliveries.isEmpty {
+            
+            
+            DeliveryController.postDelivery(deliveries: finishedDeliveries)
+            
             let _ = TripController.createNewTrip()
             MapViewController.MapVC.tableView.reloadData()
             MapViewController.MapVC.mapView.removeAnnotations(MapViewController.MapVC.mapView.annotations)
