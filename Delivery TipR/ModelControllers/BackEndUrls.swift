@@ -9,11 +9,11 @@
 import Foundation
 struct BackEndUrls {
     
-    static let postDeliveryUrl = URL(string: "https://sri4rxxjh7.execute-api.us-west-2.amazonaws.com/dev/delivery")!
+    static let postDeliveryUrl = URL(string: "https://mev4ie27jb.execute-api.us-west-2.amazonaws.com/dev/delivery")!
     
     
     static func updateDeliveryUrl(delivery: Delivery) -> URL? {
-        let urlString = "https://sri4rxxjh7.execute-api.us-west-2.amazonaws.com/dev/delivery" + "/\(delivery.userID)/\(delivery.id)"
+        let urlString = "https://mev4ie27jb.execute-api.us-west-2.amazonaws.com/dev/delivery" + "/\(delivery.userID)/\(delivery.id)"
         if let url = URL(string: urlString) {
             return url
         }else {
@@ -22,7 +22,7 @@ struct BackEndUrls {
     }
     
     static func deleteDeliveryUrl(delivery: Delivery) -> URL? {
-        let urlString = "https://sri4rxxjh7.execute-api.us-west-2.amazonaws.com/dev/delivery" + "/\(delivery.userID)/\(delivery.id)"
+        let urlString = "https://mev4ie27jb.execute-api.us-west-2.amazonaws.com/dev/delivery" + "/\(delivery.userID)/\(delivery.id)"
         if let url = URL(string: urlString) {
             return url
         }else {

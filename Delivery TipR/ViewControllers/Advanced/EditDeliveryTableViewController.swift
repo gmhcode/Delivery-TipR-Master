@@ -135,6 +135,7 @@ extension EditDeliveryTableViewController {
             textField.placeholder = "Enter Tip Amount"
             textField.keyboardType = .decimalPad
             textField.textAlignment = .right
+            textField.addTarget(self, action: #selector(self.myTextFieldDidChange), for: .editingChanged)
         }
         
         let okButton = UIAlertAction(title: "Confirm", style: .default) { (yes) in
@@ -226,6 +227,14 @@ extension EditDeliveryTableViewController {
     }
 }
 
+
+extension EditDeliveryTableViewController {
+    @objc func myTextFieldDidChange(_ textField: UITextField) {
+        if let amountString = textField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
+    }
+}
 
 extension EditDeliveryTableViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
