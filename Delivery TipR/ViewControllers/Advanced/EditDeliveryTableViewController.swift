@@ -18,6 +18,7 @@ class EditDeliveryTableViewController: UITableViewController {
       
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryEditCell")
         view.backgroundColor = #colorLiteral(red: 0.9598043561, green: 0.9649370313, blue: 0.9775747657, alpha: 1)
+        phoneNumberFormat(string: "dhsajdhask")
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -40,6 +41,17 @@ class EditDeliveryTableViewController: UITableViewController {
 
         }
     }
+    func phoneNumberFormat(string: String)-> String{
+        var pocket : [Character] = Array(string)
+        pocket.insert("(", at: 0)
+        pocket.insert(")", at: 4)
+        pocket.insert(" ", at: 5)
+        pocket.insert("-", at: 9)
+        
+//        print(pocket)
+        return pocket.map({String($0)}).joined()
+    }
+    
 }
 
 // MARK: - TableView Functions
@@ -81,13 +93,7 @@ extension EditDeliveryTableViewController {
                 break
             default :
                 break
-                
-                
-                
-                
             }
-//            performSegue(withIdentifier: "changeAddressSegue", sender: nil)
-            
         }
         
         
@@ -112,7 +118,7 @@ extension EditDeliveryTableViewController {
                 break
             //CustomerPhone
             case 2:
-                cell.textLabel?.text = delivery.locationId
+                cell.textLabel?.text = phoneNumberFormat(string: delivery.locationId)
                 break
             default:
                 break
