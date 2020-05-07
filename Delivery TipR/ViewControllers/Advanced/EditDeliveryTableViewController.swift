@@ -18,7 +18,6 @@ class EditDeliveryTableViewController: UITableViewController {
       
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "deliveryEditCell")
         view.backgroundColor = #colorLiteral(red: 0.9598043561, green: 0.9649370313, blue: 0.9775747657, alpha: 1)
-        phoneNumberFormat(string: "dhsajdhask")
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

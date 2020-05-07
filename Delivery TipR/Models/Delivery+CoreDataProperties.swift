@@ -27,5 +27,7 @@ extension Delivery {
     @NSManaged public var isFinished : Int16
     @NSManaged public var tripId : String
     @NSManaged public var date : Double
+    @NSManaged public var latitude: Double
+    @NSManaged public var longitude: Double
 
 }

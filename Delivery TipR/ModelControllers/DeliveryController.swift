@@ -27,7 +27,9 @@ class DeliveryController {
         delivery.locationId = location.id
         delivery.isFinished = 0
         delivery.tripId = trip.id
-        delivery.date = Date().timeIntervalSince1970 
+        delivery.date = Date().timeIntervalSince1970
+        delivery.latitude = location.latitude
+        delivery.longitude = location.longitude
         print(delivery.tipAmount, " ❗️")
         persistentManager.saveContext()
         
@@ -355,11 +357,16 @@ class DeliveryController {
     // MARK: - BackEnd
     struct BackEnd {
         
+        static func getParams(delivery: Delivery) -> [String:Any] {
+            let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date, "latitude" : delivery.latitude, "longitude" : delivery.longitude]
+            return params
+        }
+        
         static func updateDelivery(delivery: Delivery) {
             DispatchQueue.global(qos: .userInitiated).async {
                 guard let url = BackEndUrls.updateDeliveryUrl(delivery: delivery) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
                     
-                let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date]
+                let params : [String : Any] = getParams(delivery: delivery)
                 
                 do {
                     let requestBody = try JSONSerialization.data(withJSONObject: params, options: .init())
@@ -415,7 +422,7 @@ class DeliveryController {
                 DispatchQueue.global(qos: .userInitiated).async {
                     
                     let url = BackEndUrls.postDeliveryUrl
-                    let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date]
+                    let params : [String : Any] = getParams(delivery: delivery)
                     
                     guard let deliveryData = try? JSONSerialization.data(withJSONObject: params, options: .init()) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
                     

@@ -87,6 +87,8 @@ class AdvancedViewController: UIViewController {
             
             viewTitle.text = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             
+            deliveryfetch = DeliveryController.fetchThisMonthsDeliveries
+            
             guard let deliveryFetch = deliveryfetch else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
             
              let advancedDisplayViewModel = AdvancedDisplayViewModel(deliveries: deliveryFetch() ?? [])

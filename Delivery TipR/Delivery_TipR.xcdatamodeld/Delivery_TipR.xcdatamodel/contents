@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Delivery" representedClassName=".Delivery" syncable="YES">
         <attribute name="address" attributeType="String"/>
         <attribute name="date" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="isFinished" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="locationId" attributeType="String"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="tipAmount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="tripId" attributeType="String"/>
         <attribute name="unlocked" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -33,7 +35,7 @@
         <attribute name="uuid" attributeType="String" defaultValueString="&quot;&quot;"/>
     </entity>
     <elements>
-        <element name="Delivery" positionX="18" positionY="63" width="128" height="178"/>
+        <element name="Delivery" positionX="18" positionY="63" width="128" height="208"/>
         <element name="Location" positionX="-27" positionY="18" width="128" height="163"/>
         <element name="Trip" positionX="0" positionY="90" width="128" height="88"/>
         <element name="User" positionX="0" positionY="90" width="128" height="103"/>
