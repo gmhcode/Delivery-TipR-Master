@@ -271,7 +271,7 @@ extension AddTipViewController {
                 self.checkIfRealPhoneNumber()}
             else {
                 guard let text = textField.text?.filter({Int(String($0)) != nil}) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<");self.isPhoneTextField = false; return}
-                DeliveryController.editDelivery(delivery: delivery, phoneNumber: text, tipAmount: delivery.tipAmount, address: delivery.address)
+                DeliveryController.editDelivery(delivery: delivery, phoneNumber: text, tipAmount: delivery.tipAmount, address: delivery.address, latitude: delivery.latitude, longitude: delivery.longitude)
                 
                 self.location = LocationController.createLocation(address: location.address, latitude: location.latitude, longitude: location.longitude, subAddress: location.subAddress, phoneNumber: text)
                 self.phoneButton.setTitle(text, for: .normal)

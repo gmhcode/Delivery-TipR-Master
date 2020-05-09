@@ -146,9 +146,9 @@ extension EditDeliveryTableViewController {
         let okButton = UIAlertAction(title: "Confirm", style: .default) { (yes) in
             guard let textField = alertController.textFields?.first else {return}
             
-            if let tip = Float(textField.text ?? "0.00") {
+            if let tip = Float(textField.text?.replacingOccurrences(of: "$", with: "").replacingOccurrences(of: ",", with: "") ?? "0.00") {
                 let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tip)
-                DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: tip, address: delivery.address)
+                DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: tip, address: delivery.address, latitude: delivery.latitude, longitude: delivery.longitude)
                 DeliveryController.BackEnd.updateDelivery(delivery: delivery)
                 self.tableView.reloadData()
             } else {
@@ -209,7 +209,7 @@ extension EditDeliveryTableViewController {
                 self.checkIfRealPhoneNumber()}
             else {
                 guard let text = textField.text?.filter({Int(String($0)) != nil}) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                DeliveryController.editDelivery(delivery: delivery, phoneNumber: text, tipAmount: delivery.tipAmount, address: delivery.address)
+                DeliveryController.editDelivery(delivery: delivery, phoneNumber: text, tipAmount: delivery.tipAmount, address: delivery.address, latitude: delivery.latitude, longitude: delivery.longitude)
                 
             }
         }

@@ -28,8 +28,8 @@ class DeliveryController {
         delivery.isFinished = 0
         delivery.tripId = trip.id
         delivery.date = Date().timeIntervalSince1970
-        delivery.latitude = location.latitude
-        delivery.longitude = location.longitude
+        delivery.latitude = String(location.latitude)
+        delivery.longitude = String(location.longitude)
         print(delivery.tipAmount, " ❗️")
         persistentManager.saveContext()
         
@@ -39,11 +39,13 @@ class DeliveryController {
     
     
     
-    static func editDelivery(delivery: Delivery, phoneNumber: String, tipAmount: Float, address : String )  {
+    static func editDelivery(delivery: Delivery, phoneNumber: String, tipAmount: Float, address : String, latitude: String, longitude: String)  {
         let persistentManager = PersistenceManager.shared
         delivery.locationId = phoneNumber
         delivery.tipAmount = tipAmount
         delivery.address = address
+        delivery.latitude = latitude
+        delivery.longitude = longitude
         
         persistentManager.saveContext()
         
@@ -381,7 +383,7 @@ class DeliveryController {
                             return
                         }
                         if let response = response {
-                            print("UPDATE RESPONSE: ", response)
+                            print("UPDATE RESPONSE: ", response, data)
                         }
                         
                     }.resume()
