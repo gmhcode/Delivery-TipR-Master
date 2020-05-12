@@ -200,6 +200,14 @@ extension Date {
     var isInThePast:   Bool { self < Date() }
 }
 
+extension String {
+    func removeCommasAnd$() -> String{
+        var theString = self
+        theString.removeAll(where: {$0 == "$" || $0 == ","})
+        return theString
+    }
+}
+
 struct IphoneSystem {
     static func vibrate() {
          if #available(iOS 10.0, *) {

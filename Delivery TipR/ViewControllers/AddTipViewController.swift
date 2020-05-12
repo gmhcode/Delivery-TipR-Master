@@ -59,8 +59,8 @@ class AddTipViewController: UIViewController {
     @IBAction func confirmAmountButtonTapped(_ sender: Any) {
         
         var tip = tipTextField.text ?? "0.00"
-            
-        tip.removeAll(where: {$0 == "$" || $0 == ","})
+        tip = tip.removeCommasAnd$()
+        
         if let tipFloat = Float(tip) {
             let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tipFloat)
             getReadyForDismiss()

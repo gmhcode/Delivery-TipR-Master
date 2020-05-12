@@ -141,6 +141,12 @@ class Delivery_TipRTests: XCTestCase {
     }
     
 
-    
+    func testRemoveCommasAnd$() {
+        var theString = "$123,123,123.00"
+        theString = theString.removeCommasAnd$()
+        let testBool = theString == "123123123.00"
+        XCTAssertTrue(testBool)
+        
+    }
 
 }

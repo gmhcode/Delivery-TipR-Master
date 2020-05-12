@@ -146,7 +146,7 @@ extension EditDeliveryTableViewController {
         let okButton = UIAlertAction(title: "Confirm", style: .default) { (yes) in
             guard let textField = alertController.textFields?.first else {return}
             
-            if let tip = Float(textField.text?.replacingOccurrences(of: "$", with: "").replacingOccurrences(of: ",", with: "") ?? "0.00") {
+            if let tip = Float(textField.text?.removeCommasAnd$() ?? "0.00") {
                 let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tip)
                 DeliveryController.editDelivery(delivery: delivery, phoneNumber: delivery.locationId, tipAmount: tip, address: delivery.address, latitude: delivery.latitude, longitude: delivery.longitude)
                 DeliveryController.BackEnd.updateDelivery(delivery: delivery)
