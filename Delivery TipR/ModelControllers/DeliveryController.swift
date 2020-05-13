@@ -358,11 +358,26 @@ class DeliveryController {
     
     // MARK: - BackEnd
     struct BackEnd {
-        
         static func getParams(delivery: Delivery) -> [String:Any] {
             let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date, "latitude" : delivery.latitude, "longitude" : delivery.longitude]
             return params
         }
+        
+        static func fetchAllDeliveries(for user:User) {
+            DispatchQueue.global(qos: .background).async {
+                guard let url = BackEndUrls.getAllDeliveriesUrl(user: user) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                do {
+                    
+                }catch let er{
+                    
+                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                }
+            }
+            
+            
+        }
+        
+        
         
         static func updateDelivery(delivery: Delivery) {
             DispatchQueue.global(qos: .userInitiated).async {
