@@ -30,4 +30,6 @@ extension Delivery {
     @NSManaged public var latitude: String
     @NSManaged public var longitude: String
 
+    
+    
 }

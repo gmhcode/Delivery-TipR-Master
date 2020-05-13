@@ -12,5 +12,6 @@ import CoreData
 
 @objc(Delivery)
 public class Delivery: NSManagedObject {
-
+ 
+    
 }

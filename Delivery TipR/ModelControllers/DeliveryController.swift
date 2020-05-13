@@ -36,7 +36,22 @@ class DeliveryController {
         return delivery
     }
     
-    
+    static func createDelivery(userId : String, id: String, address : String, locationId: String, tripId: String, date : String, latitude: String, longitude: String, tipAmount: Float){
+        let persistentManager = PersistenceManager.shared
+        let delivery = Delivery(context: persistentManager.context)
+        
+        delivery.userID = UserController.fetchUser()?.uuid ?? "ID NotWorking"
+        delivery.unlocked = 1
+        delivery.id = UUID().uuidString
+        delivery.address = address
+        delivery.locationId = locationId
+        delivery.isFinished = 0
+        delivery.tripId = tripId
+        delivery.date = Double(date) ?? 0
+        delivery.latitude = latitude
+        delivery.longitude = longitude
+        persistentManager.saveContext()
+    }
     
     
     static func editDelivery(delivery: Delivery, phoneNumber: String, tipAmount: Float, address : String, latitude: String, longitude: String)  {
@@ -363,18 +378,32 @@ class DeliveryController {
             return params
         }
         
-        static func fetchAllDeliveries(for user:User) {
+        static func fetchAllDeliveries(for user:User, completion: @escaping ([String: AnyObject]?) -> Void) {
             DispatchQueue.global(qos: .background).async {
-                guard let url = BackEndUrls.getAllDeliveriesUrl(user: user) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                do {
+                guard let url = BackEndUrls.getAllDeliveriesUrl(user: user) else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
+                
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
+                
+                URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    if let error = error {
+                        print("❌ There was an error in \(#function) \(error) : \(error.localizedDescription) : \(#file) \(#line)")
+                        completion(nil)
+                        return
+                    }
+                    guard let data = data else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); completion(nil); return}
                     
-                }catch let er{
-                    
-                    print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
-                }
+                    do {
+                        if let json = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String:AnyObject] {
+                            completion(json)
+                            print("🎾 resulting json",json)
+                        }
+                    }catch let er{
+                        print("❌ There was an error in \(#function) \(er) : \(er.localizedDescription) : \(#file) \(#line)")
+                        completion(nil)
+                    }
+                }.resume()
             }
-            
-            
         }
         
         
