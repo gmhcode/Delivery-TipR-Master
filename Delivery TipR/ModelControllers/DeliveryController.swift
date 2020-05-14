@@ -383,7 +383,7 @@ class DeliveryController {
 
             
             
-            print("DICT  🏀",itemsArray[1]["latitude"])
+//            print("DICT  🏀",itemsArray[1]["latitude"])
             for i in itemsArray {
                 if let address = i["address"] as? String,
                     let latitude = i["latitude"] as? String,

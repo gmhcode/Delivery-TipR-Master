@@ -205,23 +205,23 @@ extension AddTipViewController {
     
     func invalidTipAmountAlert() {
         
-//        let alertController = MDCAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ")
-//        let okButton = MDCAlertAction(title: "Ok", emphasis: .high, handler: nil)
-//
-//        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-//
-//        alertController.addAction(okButton)
-//        alertController.addAction(cancelButton)
-//
-//        present(alertController, animated:true, completion:nil)
-        
-        
-        let alertController = UIAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let alertController = MDCAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ")
+        let okButton = MDCAlertAction(title: "Ok", emphasis: .high, handler: nil)
+
+        let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
+
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
-        present(alertController, animated: true, completion: nil)
+
+        present(alertController, animated:true, completion:nil)
+        
+        
+//        let alertController = UIAlertController(title: "Invalid Amount", message: "Tip amount must be in this format '0' or '0.00' ", preferredStyle: .alert)
+//        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        alertController.addAction(okButton)
+//        alertController.addAction(cancelButton)
+//        present(alertController, animated: true, completion: nil)
     }
     
     func undoTappedInvalid() {
