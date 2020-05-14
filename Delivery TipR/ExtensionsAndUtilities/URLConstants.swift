@@ -8,6 +8,5 @@
 
 import Foundation
 struct UrlConstants {
-    let h = ""
-    let b = h
+let testing = 123
 }
