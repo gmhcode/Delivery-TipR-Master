@@ -62,6 +62,7 @@
 		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
 		90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3324103D61006C88C8 /* TabViewController.swift */; };
 		90BD5A3624104520006C88C8 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */; };
+		90F7D2B1246CD57C00C93AA6 /* BackEndController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F7D2B0246CD57C00C93AA6 /* BackEndController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
 		90BD5A3324103D61006C88C8 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
+		90F7D2B0246CD57C00C93AA6 /* BackEndController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEndController.swift; sourceTree = "<group>"; };
 		EA7AF071DE376A56B7F32136 /* Pods_Delivery_TipR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delivery_TipR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -263,6 +265,7 @@
 				9053D94D2411814F004692FC /* TripController.swift */,
 				905367B4243A679100484796 /* UserController.swift */,
 				907C9820245A1A220089A7AA /* BackEndUrls.swift */,
+				90F7D2B0246CD57C00C93AA6 /* BackEndController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				9048534B244172F100750779 /* CustomerDetailViewController.swift in Sources */,
 				9042176824204FDA00F67287 /* TestFuncs.swift in Sources */,
 				9055442124241C700027CC08 /* TextFields.swift in Sources */,
+				90F7D2B1246CD57C00C93AA6 /* BackEndController.swift in Sources */,
 				9094E5592435851200B18C91 /* Authorization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

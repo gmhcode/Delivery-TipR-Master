@@ -8,6 +8,7 @@
 
 import UIKit
 import MaterialComponents.MaterialTextFields
+import AWSMobileClient
 class NewPasswordViewController: UIViewController {
     
     @IBOutlet weak var confirmationCodeTextField: MDCTextField!
@@ -48,15 +49,21 @@ class NewPasswordViewController: UIViewController {
     
     
     @IBAction func updatePasswordTapped(_ sender: Any) {
+        guard let email = self.email, let password = self.newPasswordTextField.text else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+        
+        
+        
         Authorization.global.newPassword(email: email, newPassword: newPasswordTextField.text, reTypePassword: retypePasswordTextField.text, confirmationCode: confirmationCodeTextField.text, vc: self) { [weak self] (confirmationState) in
             
-            if confirmationState != nil {
+            AWSMobileClient.default().getUserAttributes { (dictionary, error) in
+                guard let dictionary = dictionary,let uuid = dictionary["custom:uuid"] else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                print(dictionary)
                 
-                DispatchQueue.main.async {
-                   
+                if confirmationState != nil {
+                    BackEndController.signInFetch(email: email, uuid: uuid, username: email, password: password)
+                    DispatchQueue.main.async {
                         self?.navigationController?.dismiss(animated: true, completion: nil)
-                        
-                    
+                    }
                 }
             }
         }
@@ -67,14 +74,14 @@ class NewPasswordViewController: UIViewController {
 extension NewPasswordViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
-           if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-              nextField.becomeFirstResponder()
-           } else {
-              // Not found, so remove keyboard.
-              textField.resignFirstResponder()
-           }
-           // Do not add a line break
-           return false
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
         }
+        // Do not add a line break
+        return false
+    }
     
 }

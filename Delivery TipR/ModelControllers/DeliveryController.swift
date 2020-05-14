@@ -36,7 +36,7 @@ class DeliveryController {
         return delivery
     }
     
-    static func createDelivery(userId : String, id: String, address : String, locationId: String, tripId: String, date : String, latitude: String, longitude: String, tipAmount: Float){
+    static func createDelivery(userId : String, id: String, address : String, locationId: String, tripId: String, date : Double, latitude: String, longitude: String, tipAmount: Float){
         let persistentManager = PersistenceManager.shared
         let delivery = Delivery(context: persistentManager.context)
         
@@ -45,11 +45,12 @@ class DeliveryController {
         delivery.id = UUID().uuidString
         delivery.address = address
         delivery.locationId = locationId
-        delivery.isFinished = 0
+        delivery.isFinished = 1
         delivery.tripId = tripId
-        delivery.date = Double(date) ?? 0
+        delivery.date = date
         delivery.latitude = latitude
         delivery.longitude = longitude
+        delivery.tipAmount = tipAmount
         persistentManager.saveContext()
     }
     
@@ -376,6 +377,38 @@ class DeliveryController {
         static func getParams(delivery: Delivery) -> [String:Any] {
             let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date, "latitude" : delivery.latitude, "longitude" : delivery.longitude]
             return params
+        }
+        static func parseFetchedDeliveries(dictionary: [String : AnyObject]) {
+            guard let itemsArray = dictionary["Items"] as? Array<[String:AnyObject]>, itemsArray.isEmpty == false else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+
+            
+            
+            print("DICT  🏀",itemsArray[1]["latitude"])
+            for i in itemsArray {
+                if let address = i["address"] as? String,
+                    let latitude = i["latitude"] as? String,
+                    let longitude = i["longitude"] as? String,
+                    let subaddress = i["id"] as? String,
+                    let phoneNumber = i["locationId"] as? String,
+                    let tripId = i["tripId"] as? String,
+                    let userId = i["userID"] as? String,
+                    let id = i["id"] as? String,
+                    let locationId = i["locationId"] as? String,
+                    let date = i["date"] as? Double,
+                    let tip = i["tipAmount"] as? Float{
+                    
+                    let lat = Double(latitude) ?? 0
+                    let lon = Double(longitude) ?? 0
+                    let location = LocationController.createLocation(address: address, latitude: lat, longitude: lon, subAddress: subaddress, phoneNumber: phoneNumber)
+                    
+                    //                        let trip = TripController.getTrip(from: tripId)
+                    
+                    
+                    DeliveryController.createDelivery(userId: userId, id: id, address: address, locationId: locationId, tripId: tripId, date: date, latitude: latitude, longitude: longitude, tipAmount: tip)
+                    LocationController.setAverageTipFor(location: location)
+                    let _ = TripController.createTripFromDownload(date: date, id: tripId)
+                }
+            }
         }
         
         static func fetchAllDeliveries(for user:User, completion: @escaping ([String: AnyObject]?) -> Void) {

@@ -29,6 +29,22 @@ class TripController {
         return trip
     }
     
+    static func createTripFromDownload(date: Double, id : String ) -> Trip? {
+        let persistentManager = PersistenceManager.shared
+        let existingTrip = getTrip(from: id)
+        if existingTrip.isEmpty{
+            
+            let trip = Trip(context: persistentManager.context)
+            trip.date = date
+            trip.id = id
+            trip.isCurrent = 0
+            persistentManager.saveContext()
+            return trip
+            
+        }
+        return nil
+    }
+    
     
     ///Get Trip from delivery
     static func getTrip(from tripId: String) -> [Trip] {

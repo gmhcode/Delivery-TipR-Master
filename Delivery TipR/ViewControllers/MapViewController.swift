@@ -29,15 +29,24 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         MapViewController.MapVC = self
         setDelegates()
         setDrawerFunctionality()
         checkLocationServices()
-         #warning("UNCOMMENT DIRECTIONS")
+        #warning("UNCOMMENT DIRECTIONS")
         directions()
         setViews()
-       
+        
+        if let user = UserController.fetchUser(), DeliveryController.getALLDeliveries().isEmpty {
+            
+            DeliveryController.BackEnd.fetchAllDeliveries(for: user) { (dict) in
+                guard let dict = dict else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
+                DeliveryController.BackEnd.parseFetchedDeliveries(dictionary: dict)
+                
+            }
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

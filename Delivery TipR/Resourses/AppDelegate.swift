@@ -23,37 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if  TripController.getCurrentTrip() == nil {
             let _ = TripController.createNewTrip()
         }
-        if let user = UserController.fetchUser(){
-            DeliveryController.BackEnd.fetchAllDeliveries(for: user) { (dict) in
-//                print("DICT  🏀",dict)
-                let itemsArray = dict!["Items"] as? Array<[String:AnyObject]>
-                print("DICT  🏀",itemsArray![1]["latitude"])
-                for i in itemsArray! {
-                    if let address = i["address"] as? String,
-                    let latitude = i["latitude"] as? String,
-                    let longitude = i["logitude"] as? String,
-                    let subaddress = i["id"] as? String,
-                    let phoneNumber = i["locationId"] as? String,
-                    let tripId = i["tripId"] as? String,
-                    let userId = i["userId"] as? String,
-                    let id = i["id"] as? String,
-                    let locationId = i["locationId"] as? String,
-                    let date = i["date"] as? String,
-                    let tip = i["tipAmount"] as? String{
-                        
-                        let lat = Double(latitude)
-                        let lon = Double(longitude)
-                        let location = LocationController.createLocation(address: address, latitude: lat ?? 0, longitude: lon ?? 0, subAddress: subaddress, phoneNumber: phoneNumber)
-                        
-//                        let trip = TripController.getTrip(from: tripId)
-                        let tipAmount = Float(tip)
-                        DeliveryController.createDelivery(userId: userId, id: id, address: address, locationId: locationId, tripId: tripId, date: date, latitude: latitude, longitude: longitude, tipAmount: tipAmount ?? 0)
-                    }
-                    
-                    
-                }
-            }
-        }
+        
        
         return true
     }
