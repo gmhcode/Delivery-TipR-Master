@@ -42,10 +42,10 @@ class SignInViewController: UIViewController {
                 AWSMobileClient.default().getUserAttributes { (dictionary, error) in
                     
                     guard let dictionary = dictionary,let uuid = dictionary["custom:uuid"] else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-                    print(dictionary)
-                    
+//                    print(dictionary)
+                    BackEndController.signInFetch(email: email, uuid: uuid, username: email, password: password)
                     DispatchQueue.main.async {
-                        BackEndController.signInFetch(email: email, uuid: uuid, username: email, password: password)
+                        
                         self?.navigationController?.dismiss(animated: true, completion: nil)
                     }
                 }
