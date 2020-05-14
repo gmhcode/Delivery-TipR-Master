@@ -9,32 +9,5 @@
 import Foundation
 struct BackEndUrls {
     
-    static let postDeliveryUrl = URL(string: "https://mev4ie27jb.execute-api.us-west-2.amazonaws.com/dev/delivery")!
-    
-    static func getAllDeliveriesUrl(user: User) -> URL? {
-        let urlString = "https://mev4ie27jb.execute-api.us-west-2.amazonaws.com/dev/delivery" + "/\(user.uuid)/\(user.uuid)"
-        if let url = URL(string: urlString) {
-            return url
-        }else {
-            return nil
-        }
-    }
-    
-    static func updateDeliveryUrl(delivery: Delivery) -> URL? {
-        let urlString = "https://mev4ie27jb.execute-api.us-west-2.amazonaws.com/dev/delivery" + "/\(delivery.userID)/\(delivery.id)"
-        if let url = URL(string: urlString) {
-            return url
-        }else {
-            return nil
-        }
-    }
-    
-    static func deleteDeliveryUrl(delivery: Delivery) -> URL? {
-        let urlString = "https://mev4ie27jb.execute-api.us-west-2.amazonaws.com/dev/delivery" + "/\(delivery.userID)/\(delivery.id)"
-        if let url = URL(string: urlString) {
-            return url
-        }else {
-            return nil
-        }
-    }
+ 
 }
