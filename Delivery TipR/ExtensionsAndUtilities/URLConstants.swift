@@ -8,5 +8,6 @@
 
 import Foundation
 struct UrlConstants {
-//    ghj
+    let h = ""
+    let b = h
 }
