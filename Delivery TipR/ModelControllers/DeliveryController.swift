@@ -375,7 +375,7 @@ class DeliveryController {
     // MARK: - BackEnd
     struct BackEnd {
         static func getParams(delivery: Delivery) -> [String:Any] {
-            let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": delivery.tipAmount, "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date, "latitude" : delivery.latitude, "longitude" : delivery.longitude]
+            let params : [String : Any] = ["userID" : delivery.userID, "tipAmount": String(delivery.tipAmount), "address": delivery.address, "locationId": delivery.locationId, "id" : delivery.id, "isFinished" : delivery.isFinished, "tripId" : delivery.tripId, "date" : delivery.date, "latitude" : delivery.latitude, "longitude" : delivery.longitude]
             return params
         }
         static func parseFetchedDeliveries(dictionary: [String : AnyObject]) {
@@ -395,7 +395,7 @@ class DeliveryController {
                     let id = i["id"] as? String,
                     let locationId = i["locationId"] as? String,
                     let date = i["date"] as? Double,
-                    let tip = i["tipAmount"] as? Float{
+                    let tip = i["tipAmount"] as? String{
                     
                     let lat = Double(latitude) ?? 0
                     let lon = Double(longitude) ?? 0
@@ -403,8 +403,8 @@ class DeliveryController {
                     
                     //                        let trip = TripController.getTrip(from: tripId)
                     
-                    
-                    DeliveryController.createDelivery(userId: userId, id: id, address: address, locationId: locationId, tripId: tripId, date: date, latitude: latitude, longitude: longitude, tipAmount: tip)
+                    let tipAmount = Float(tip)
+                    DeliveryController.createDelivery(userId: userId, id: id, address: address, locationId: locationId, tripId: tripId, date: date, latitude: latitude, longitude: longitude, tipAmount: tipAmount ?? 0)
                     LocationController.setAverageTipFor(location: location)
                     let _ = TripController.createTripFromDownload(date: date, id: tripId)
                 }
