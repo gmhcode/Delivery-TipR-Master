@@ -147,7 +147,6 @@ class AddressSearchViewController: UIViewController {
             }
             
             let cancelButton = MDCAlertAction(title: "Cancel", emphasis: .low, handler: nil)
-            //            alertController.add
             alertController.addAction(okButton)
             alertController.addAction(cancelButton)
             

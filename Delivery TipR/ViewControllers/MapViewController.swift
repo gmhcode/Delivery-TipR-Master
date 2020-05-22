@@ -26,7 +26,7 @@ class MapViewController: UIViewController {
     var selectedLocation : Location!
     var selectedDelivery : Delivery!
     var drawerIsOpen = false
-    
+    let adController = AdController()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +37,7 @@ class MapViewController: UIViewController {
         #warning("UNCOMMENT DIRECTIONS")
         directions()
         setViews()
+        setupBannerView()
         
         if let user = UserController.fetchUser(), DeliveryController.getALLDeliveries().isEmpty {
             
@@ -62,7 +63,11 @@ class MapViewController: UIViewController {
         setTableViewHeight()
     }
     
-    
+    func setupBannerView(){
+        adController.addBannerViewToView(adController.bannerView, vc: self)
+        adController.loadAd()
+        
+    }
     
     
     @IBAction func centerOnLocationTapped(_ sender: Any) {

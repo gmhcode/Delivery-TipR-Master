@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import GoogleMobileAds
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if  TripController.getCurrentTrip() == nil {
             let _ = TripController.createNewTrip()
         }
-        
-       
+        AdController.initialize()
         return true
     }
 

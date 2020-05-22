@@ -63,6 +63,9 @@
 		90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */; };
 		90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3324103D61006C88C8 /* TabViewController.swift */; };
 		90BD5A3624104520006C88C8 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */; };
+		90F4332F24783D5C001AFC71 /* AdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4332E24783D5C001AFC71 /* AdController.swift */; };
+		90F433312478471C001AFC71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F433302478471C001AFC71 /* ViewController.swift */; };
+		90F433332478625E001AFC71 /* MapViewAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F433322478625E001AFC71 /* MapViewAds.swift */; };
 		90F7D2B3246CE0E000C93AA6 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F7D2B2246CE0E000C93AA6 /* URLConstants.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +144,9 @@
 		90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDrawer.swift; sourceTree = "<group>"; };
 		90BD5A3324103D61006C88C8 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		90BD5A3524104520006C88C8 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
+		90F4332E24783D5C001AFC71 /* AdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdController.swift; sourceTree = "<group>"; };
+		90F433302478471C001AFC71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		90F433322478625E001AFC71 /* MapViewAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewAds.swift; sourceTree = "<group>"; };
 		90F7D2B2246CE0E000C93AA6 /* URLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		EA7AF071DE376A56B7F32136 /* Pods_Delivery_TipR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delivery_TipR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -268,6 +274,7 @@
 				905367B4243A679100484796 /* UserController.swift */,
 				907C9820245A1A220089A7AA /* BackEndUrls.swift */,
 				90995E37246CE736009AFB85 /* BackEndController.swift */,
+				90F4332E24783D5C001AFC71 /* AdController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -282,10 +289,12 @@
 				903E2943240C6472001BED71 /* MapViewController.swift */,
 				90A5DDC024196235000DD266 /* MapViewDirections.swift */,
 				90BD5A3124103C75006C88C8 /* MapViewDrawer.swift */,
+				90F433322478625E001AFC71 /* MapViewAds.swift */,
 				905216732410658B0020C238 /* MapViewLocationManager.swift */,
 				90BD5A3324103D61006C88C8 /* TabViewController.swift */,
 				9053D94F24143777004692FC /* AddTipViewController.swift */,
 				9048534A244172F100750779 /* CustomerDetailViewController.swift */,
+				90F433302478471C001AFC71 /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -548,6 +557,7 @@
 				90470008241C6FC2009575AE /* AdvancedViewController.swift in Sources */,
 				907C9821245A1A220089A7AA /* BackEndUrls.swift in Sources */,
 				903E294A240C6472001BED71 /* Delivery_TipR.xcdatamodeld in Sources */,
+				90F433332478625E001AFC71 /* MapViewAds.swift in Sources */,
 				904217652420339600F67287 /* AdvancedDisplayView.swift in Sources */,
 				9042176A2422C9DB00F67287 /* HistoryTableViewController.swift in Sources */,
 				905544232424480A0027CC08 /* EditAddressViewController.swift in Sources */,
@@ -575,6 +585,7 @@
 				9067F996240CA6AF00EBA858 /* PersistenceManager.swift in Sources */,
 				90F7D2B3246CE0E000C93AA6 /* URLConstants.swift in Sources */,
 				903E2942240C6472001BED71 /* SceneDelegate.swift in Sources */,
+				90F433312478471C001AFC71 /* ViewController.swift in Sources */,
 				90BD5A3224103C75006C88C8 /* MapViewDrawer.swift in Sources */,
 				90BD5A3424103D61006C88C8 /* TabViewController.swift in Sources */,
 				90521672241061C30020C238 /* LocationManagerController.swift in Sources */,
@@ -584,6 +595,7 @@
 				9055441F24240EC20027CC08 /* EditDeliveryTableViewController.swift in Sources */,
 				9094E5602436C70D00B18C91 /* ConfirmAccountViewController.swift in Sources */,
 				90A5DDC124196235000DD266 /* MapViewDirections.swift in Sources */,
+				90F4332F24783D5C001AFC71 /* AdController.swift in Sources */,
 				9047FFA1241C327C009575AE /* NavViewController.swift in Sources */,
 				9094E55B243651FC00B18C91 /* SignInViewController.swift in Sources */,
 				90952BE6240DC060003F8ADF /* DeliveryController.swift in Sources */,
@@ -752,7 +764,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.6;
+				CURRENT_PROJECT_VERSION = 1.7;
 				DEVELOPMENT_TEAM = 57FTCZV5HS;
 				INFOPLIST_FILE = "Delivery TipR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -772,7 +784,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.6;
+				CURRENT_PROJECT_VERSION = 1.7;
 				DEVELOPMENT_TEAM = 57FTCZV5HS;
 				INFOPLIST_FILE = "Delivery TipR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

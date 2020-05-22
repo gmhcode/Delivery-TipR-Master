@@ -120,33 +120,35 @@ extension MapViewController {
         
         // Sets target locations of views & then animates.
         let target = topDrawerTarget
-        self.userInteractionAnimate(view: self.drawerView, edge: self.drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y)
+
         
-        drawerIsOpen = true
+        self.userInteractionAnimate(view: drawerView, edge: drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y) {[weak self] (complete) in
+            self?.tabViewController?.addressSearchViewController.dismissKeyboard()
+            self?.drawerIsOpen = true
+        }
+        
     }
     
     func closeDrawer() {
         let target = bottomDrawerTarget
-        self.userInteractionAnimate(view: drawerView, edge: drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y)
-        self.tabViewController?.addressSearchViewController.dismissKeyboard()
-        drawerIsOpen = false
         
+        self.userInteractionAnimate(view: drawerView, edge: drawerView.frame.minY, to: target, velocity: drawerPanGestureRecognizer.velocity(in: drawerView).y) {[weak self] (complete) in
+            self?.tabViewController?.addressSearchViewController.dismissKeyboard()
+            self?.drawerIsOpen = false
+        }
     }
-    fileprivate func userInteractionAnimate(view: UIView, edge: CGFloat, to target: CGFloat, velocity: CGFloat) {
+    fileprivate func userInteractionAnimate(view: UIView, edge: CGFloat, to target: CGFloat, velocity: CGFloat, completion: @escaping (Bool?) -> Void) {
         let distanceToTranslate = target - edge
-        
+        let bannerView = adController.bannerView
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.97, initialSpringVelocity: abs(velocity) * 0.01, options: .curveEaseOut , animations: {
             
             //Sets view to new location (target
             view.frame =  view.frame.offsetBy(dx: 0, dy: distanceToTranslate)
+            bannerView.frame = bannerView.frame.offsetBy(dx: 0, dy: distanceToTranslate)
             
         }, completion: { (success) in
-            
-            //               if success {
-            //                   self.impact.prepare()
-            //                   self.impact.impactOccurred()
-            //               }
-            
+
+            completion(true)
         })
     }
     
