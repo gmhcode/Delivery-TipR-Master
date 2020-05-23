@@ -40,9 +40,7 @@ class AdController {
     }
     func loadAd() {
         let request =  GADRequest()
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["EA02BBB4-2258-4BFE-9B69-2640539B551F"]
-////            = ["EA02BBB4-2258-4BFE-9B69-2640539B551F"]
-
+//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["525D02AF-71DC-45C5-9BEF-175923F94DD0"]
         bannerView.load(request)
     }
 }

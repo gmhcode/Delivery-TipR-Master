@@ -19,6 +19,7 @@ extension MapViewController: GADBannerViewDelegate {
     /// Tells the delegate an ad request failed.
     func adView(_ bannerView: GADBannerView,
         didFailToReceiveAdWithError error: GADRequestError) {
+//        adController.loadAd()
       print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
 
