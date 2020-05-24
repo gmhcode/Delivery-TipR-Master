@@ -142,8 +142,8 @@
             filePath = "Delivery TipR/ViewControllers/AddTipViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "editPhoneNumberAlert()"
             landmarkType = "7">
          </BreakpointContent>
@@ -181,22 +181,6 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8CA248F0-9093-4767-ABBF-0B9C16AC52D6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Delivery TipR/ModelControllers/LocationController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "createLocation(address:latitude:longitude:subAddress:phoneNumber:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             uuid = "4AC48FE9-4F10-4900-9954-6B43F39A3729"
@@ -212,7 +196,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3FC649F5-692F-4D75-8097-F9F90BEE516F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Delivery TipR/ViewControllers/MapViewAds.swift"
@@ -227,16 +211,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FA846071-46A6-4AF5-B3AE-7F7CBAD62681"
+            uuid = "BACCAED8-1B68-4353-94C2-BBCAB9D1AD62"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Delivery TipR/ViewControllers/MapViewAds.swift"
+            filePath = "Delivery TipR/ViewControllers/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "adViewDidReceiveAd(_:)"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "removeUnusedAnnotations()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

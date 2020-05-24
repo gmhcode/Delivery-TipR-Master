@@ -19,9 +19,9 @@ class LocationController {
         
         let persistentManager = PersistenceManager.shared
         
-        let existingLocation = getExistingLocation(phoneNumber: phoneNumber)
-        if existingLocation.isEmpty == false {
-            let location = existingLocation[0]
+        
+        if let location = getExistingLocation(phoneNumber: phoneNumber) {
+//            let location = existingLocation
             if location.address != address {
                 location.address = address
                 location.subAddress = subAddress
@@ -31,10 +31,8 @@ class LocationController {
                 location.id = phoneNumber
                 persistentManager.saveContext()
             }
-            return existingLocation[0]
+            return location
         }
-        
-        
         let location = Location(context: persistentManager.context)
         location.address = address
         location.averageTip = 0
@@ -77,7 +75,7 @@ class LocationController {
     }
     
     /// Find a location with a specific address
-    static func getExistingLocation(phoneNumber: String) -> [Location] {
+    static func getExistingLocation(phoneNumber: String) -> Location? {
         let persistentManager = PersistenceManager.shared
         let request : NSFetchRequest<Location> = Location.fetchRequest()
         let predicate = NSPredicate(format: "id CONTAINS[cd] %@", phoneNumber)
@@ -85,11 +83,15 @@ class LocationController {
         
         do {
             let locations = try persistentManager.context.fetch(request)
-//            print(locations," 🤣 RETREIVED")
-            return locations
+            
+            if locations.count > 0 {
+                return locations[0]
+            }
+            
+            return nil
         } catch  {
             print("array could not be retrieved \(error)")
-            return []
+            return nil
         }
     }
     

@@ -17,7 +17,7 @@ extension MapViewController: CLLocationManagerDelegate {
     // MARK: - Did Update Locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return}
-
+//        directions()
         //MARK: Set Region
         //        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         //        let region = MKCoordinateRegion.init(center: center, span: mapView.region.span)

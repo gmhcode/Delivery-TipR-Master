@@ -97,6 +97,7 @@ extension MapViewController {
             }
             previousCoord = coordinate
         }
+        
     }
     
     func getDirections(starting: CLLocationCoordinate2D, Ending: CLLocationCoordinate2D) -> MKDirections.Request {

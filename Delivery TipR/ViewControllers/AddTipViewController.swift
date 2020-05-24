@@ -65,6 +65,7 @@ class AddTipViewController: UIViewController {
             let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tipFloat)
             getReadyForDismiss()
             dismissKeyboard()
+            AdvancedViewController.ADVVC.segmentChanged(self)
             self.dismiss(animated: true, completion: nil)
         }
         else {
@@ -81,6 +82,7 @@ class AddTipViewController: UIViewController {
             let _ = DeliveryController.unFinishDelivery(delivery: delivery)
             getReadyForDismiss()
             MapViewController.MapVC.createAddAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
+            AdvancedViewController.ADVVC.segmentChanged(self)
             cancelButtonTapped(self)
         }else {
             undoTappedInvalid()
@@ -134,7 +136,12 @@ class AddTipViewController: UIViewController {
         
         if unfinishedDeliveries.isEmpty {
             let annotation = MapViewController.MapVC.mapView.annotations.filter({$0.subtitle == location.subAddress})
-            MapViewController.MapVC.mapView.removeAnnotations(annotation)
+            /// Checks to see of there are multiple deliveries for the same annotation. if there are any unfinished deliveries left for the same annotation, it will keep the annotation.
+            if annotation.count == 1 {
+                MapViewController.MapVC.mapView.removeAnnotations(annotation)
+                MapViewController.MapVC.centerOnLocationTapped(self)
+            }
+            
         }
     }
     ///Sets average tip for location, removes finished Annotations, reloads tableView
@@ -199,9 +206,6 @@ class AddTipViewController: UIViewController {
 }
 // MARK: - Alerts
 extension AddTipViewController {
-    
-    
-    
     
     func invalidTipAmountAlert() {
         

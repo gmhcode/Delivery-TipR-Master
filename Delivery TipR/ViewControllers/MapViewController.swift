@@ -55,7 +55,17 @@ class MapViewController: UIViewController {
 //        UserController.deleteUser()
         if  UserController.fetchUser() == nil {
             performSegue(withIdentifier: "signUpSegue", sender: nil)
+        }else{
+            guard let currentTrip = TripController.getCurrentTrip() else {return}
+            let unfinishedDeliveries = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip)
+            if unfinishedDeliveries.count > 0 {
+                unfinishedDeliveries.forEach({createAnnotation(for: $0)})
+                removeUnusedAnnotations()
+                tableView.reloadData()
+            }
         }
+        centerOnLocationTapped(self)
+        
     }
     
     
@@ -141,6 +151,7 @@ extension MapViewController : MKMapViewDelegate {
         userView?.isUserInteractionEnabled = false
         userView?.isEnabled = false
         userView?.canShowCallout = false
+        
     }
     
     // MARK: - MapView Select
@@ -193,13 +204,35 @@ extension MapViewController: AddressSearchViewControllerDelegate {
 //        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 //        return annotation
 //    }
-    
+    func createAnnotation(for delivery: Delivery) {
+        guard let location = LocationController.getExistingLocation(phoneNumber: delivery.locationId) else {return}
+        let latitude = Double(delivery.latitude) ?? 0
+        let longitude = Double(delivery.longitude) ?? 0
+        createAddAnnotation(address: delivery.address, subAddress: location.subAddress, latitude: latitude, longitude:longitude )
+    }
     func createAddAnnotation(address: String, subAddress: String, latitude: Double, longitude: Double) {
         let annotation = MKPointAnnotation()
         annotation.title = address
         annotation.subtitle = subAddress
         annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+
+        let existingAnnotaion = mapView.annotations.filter({$0.title == address})
+        if existingAnnotaion.count > 0 {
+            mapView.removeAnnotation(existingAnnotaion[0])
+        }
         mapView.addAnnotation(annotation)
+    }
+    func removeUnusedAnnotations(){
+        guard let currentTrip = TripController.getCurrentTrip() else {return}
+        let unfinishedDeliveries = DeliveryController.getUnfinishedTripDeliveries(trip: currentTrip)
+        mapView.annotations.forEach({print("🎯",$0.title)})
+        
+        for i in mapView.annotations {
+            if !unfinishedDeliveries.contains(where: {$0.address == i.title}) && i.title != "My Location" {
+               print("ding")
+                mapView.removeAnnotation(i)
+            }
+        }
     }
 }
 
@@ -274,7 +307,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         
         let delivery = deliveries[indexPath.row]
         selectedDelivery = delivery
-        selectedLocation = location[0]
+        selectedLocation = location
         performSegue(withIdentifier: "addTipSegue", sender: nil)
     }
     
