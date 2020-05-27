@@ -65,7 +65,8 @@ class AddTipViewController: UIViewController {
             let _ = DeliveryController.finishDelivery(delivery: delivery, tipAmount: tipFloat)
             getReadyForDismiss()
             dismissKeyboard()
-            AdvancedViewController.ADVVC.segmentChanged(self)
+            
+            AdvancedViewController.ADVVC?.segmentChanged(self)
             self.dismiss(animated: true, completion: nil)
         }
         else {
@@ -82,7 +83,7 @@ class AddTipViewController: UIViewController {
             let _ = DeliveryController.unFinishDelivery(delivery: delivery)
             getReadyForDismiss()
             MapViewController.MapVC.createAddAnnotation(address: location.address, subAddress: location.subAddress, latitude: location.latitude, longitude: location.longitude)
-            AdvancedViewController.ADVVC.segmentChanged(self)
+            AdvancedViewController.ADVVC?.segmentChanged(self)
             cancelButtonTapped(self)
         }else {
             undoTappedInvalid()

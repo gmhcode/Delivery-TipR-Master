@@ -27,6 +27,7 @@ class MapViewController: UIViewController {
     var selectedDelivery : Delivery!
     var drawerIsOpen = false
     let adController = AdController()
+    let lock = NSLock()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +36,6 @@ class MapViewController: UIViewController {
         setDrawerFunctionality()
         checkLocationServices()
         #warning("UNCOMMENT DIRECTIONS")
-        directions()
         setViews()
         setupBannerView()
         
@@ -47,7 +47,6 @@ class MapViewController: UIViewController {
                 
             }
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,11 +60,11 @@ class MapViewController: UIViewController {
             if unfinishedDeliveries.count > 0 {
                 unfinishedDeliveries.forEach({createAnnotation(for: $0)})
                 removeUnusedAnnotations()
+                
                 tableView.reloadData()
             }
         }
-        centerOnLocationTapped(self)
-        
+        self.centerOnLocationTapped(self)
     }
     
     
@@ -81,6 +80,7 @@ class MapViewController: UIViewController {
     
     
     @IBAction func centerOnLocationTapped(_ sender: Any) {
+        directions()
         centerOnLocationButton.pulsate()
         centerViewOnUserLocation()
     }
@@ -136,8 +136,6 @@ extension MapViewController : MKMapViewDelegate {
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: address)
             let deliveryView = AnnotationViews.finishedDeliveryView
             view?.image = UIImage(view: deliveryView)
-            
-         
         }
         view?.canShowCallout = true
         view?.annotation = annotation

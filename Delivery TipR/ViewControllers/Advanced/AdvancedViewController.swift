@@ -15,7 +15,7 @@ class AdvancedViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var viewTitle: UILabel!
     @IBOutlet weak var detailsButton: UIButton!
-     static var ADVVC : AdvancedViewController!
+     static var ADVVC : AdvancedViewController?
     
     
     var deliveryfetch : (() -> [Delivery]?)?
@@ -23,7 +23,8 @@ class AdvancedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    AdvancedViewController.ADVVC = self
+        AdvancedViewController.ADVVC = self
+        segmentChanged(self)
     }
     
     override func viewDidLayoutSubviews() {

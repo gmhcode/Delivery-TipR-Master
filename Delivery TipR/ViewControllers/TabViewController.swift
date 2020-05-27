@@ -78,9 +78,6 @@ class TabViewController: UIViewController {
         } else {
              MapViewController.MapVC.drawerTogglePosition()
         }
-        
-        
-        
     }
 
     

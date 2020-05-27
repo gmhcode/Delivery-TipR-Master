@@ -25,7 +25,7 @@ extension MapViewController {
         
         var previousCoord : CLLocationCoordinate2D?
         var request = MKDirections.Request()
-        
+        var rect = MKMapRect()
         var directions : MKDirections {
             return MKDirections(request: request)
         }
@@ -42,7 +42,7 @@ extension MapViewController {
                 request = getDirections(starting: previousCoord!, Ending: coordinate)
             }
             
-            directions.calculate { [unowned self] (response, error) in
+            directions.calculate { [weak self] (response, error) in
                 guard let response = response else { return }
                 
                 for (rIndex,_) in response.routes.enumerated() {
@@ -55,9 +55,10 @@ extension MapViewController {
                     if rIndex == 0 {
                         
                         let overlay = RouteOverlay(route: fastestRoute)
-                        self.mapView.addOverlay(overlay.polyLine)
-                        let rect = MKMapRect(x: overlay.polyLine.boundingMapRect.origin.x, y: overlay.polyLine.boundingMapRect.origin.y, width: overlay.polyLine.boundingMapRect.width * 2, height: overlay.polyLine.boundingMapRect.height * 2)
-                        self.mapView.setVisibleMapRect(rect, animated: true)
+                        self?.mapView.addOverlay(overlay.polyLine)
+                        let theRect = MKMapRect(x: overlay.polyLine.boundingMapRect.origin.x, y: overlay.polyLine.boundingMapRect.origin.y, width: overlay.polyLine.boundingMapRect.width * 2, height: overlay.polyLine.boundingMapRect.height * 2)
+                        rect = theRect
+//
                         
                         //breaking here makes sure that we dont get more than one route per location
                         break
@@ -95,9 +96,11 @@ extension MapViewController {
                 
                 
             }
+            
             previousCoord = coordinate
         }
-        
+        self.mapView.setVisibleMapRect(rect, animated: true)
+        centerViewOnUserLocation()
     }
     
     func getDirections(starting: CLLocationCoordinate2D, Ending: CLLocationCoordinate2D) -> MKDirections.Request {
