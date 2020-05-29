@@ -27,7 +27,7 @@ struct AdvancedDisplayViewModel {
         self.tripCount = String(trips.count)
         self.deliveryCount = String(deliveries.count)
         self.avgDeliveryTip = getAverageTipString(deliveries: deliveries)
-        self.avgTripTip = tripTips
+        self.avgTripTip = tripTips == "NaN" ? "N/A" : tripTips
         self.totalTips = totalTips
         
     }
