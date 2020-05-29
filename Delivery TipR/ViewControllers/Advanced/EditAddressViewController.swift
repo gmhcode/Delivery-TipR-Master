@@ -37,6 +37,7 @@ class EditAddressViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        searchBar.searchTextField.delegate = self
         searchCompleter.delegate = self
     }
     func setViews() {
@@ -102,6 +103,7 @@ extension EditAddressViewController : UISearchBarDelegate {
         searchCompleter.queryFragment = searchText
         
     }
+    
 }
 // MARK: - Alerts
 extension EditAddressViewController {
@@ -149,4 +151,10 @@ extension EditAddressViewController : MKLocalSearchCompleterDelegate {
         tableView.reloadData()
     }
     
+}
+extension EditAddressViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
