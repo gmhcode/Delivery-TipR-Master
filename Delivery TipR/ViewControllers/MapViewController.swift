@@ -255,8 +255,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func setTableViewHeight() {
-        guard let trip = TripController.getCurrentTrip(),
-            tableView.frame.height < 150 else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
+        guard let trip = TripController.getCurrentTrip() else {print("❇️♊️>>>\(#file) \(#line): guard let failed<<<"); return }
         
         let deliveries = DeliveryController.getAllTripDeliveries(trip: trip)
         
